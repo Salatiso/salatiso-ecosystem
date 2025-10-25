@@ -1,0 +1,29 @@
+{
+  "projects": {
+    "default": "salatiso-lifecv",
+    "testing": "lifecv-d2724"
+  },
+  "targets": {
+    "lifecv-d2724": {
+      "hosting": {
+        "lifecv-d2724": [
+          "lifecv-d2724"
+        ],
+        "salatiso-lifecv": [
+          "salatiso-lifecv"
+        ]
+      }
+    },
+    "salatiso-lifecv": {
+      "hosting": {
+        "salatiso-lifecv": [
+          "salatiso-lifecv"
+        ],
+        "lifecv-d2724": [
+          "lifecv-d2724"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

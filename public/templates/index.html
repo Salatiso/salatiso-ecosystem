@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp Template Catalog - Salatiso Ecosystem</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --bg-card: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: var(--bg-card);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: var(--primary-blue);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .template-card {
+            background: var(--bg-card);
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .template-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .template-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .template-card p {
+            <!DOCTYPE html>
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .template-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .template-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1E3A8A;
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background: #F3F4F6;
+            color: var(--text-dark);
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background: #E5E7EB;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .category-tab {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-light);
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .category-tab.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+
+        .search-bar {
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            border-top: 1px solid #E5E7EB;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">🧭 BizHelp Templates</div>
+            <div class="tagline">Professional Business Document Templates for South African Entrepreneurs</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>📚 Template Library</h2>
+            <p>Access our comprehensive collection of business document templates designed specifically for South African entrepreneurs and family businesses.</p>
+
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search templates..." id="searchInput">
+            </div>
+
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">All Templates</button>
+                <button class="category-tab" data-category="personal">Personal</button>
+                <button class="category-tab" data-category="professional">Professional</button>
+                <button class="category-tab" data-category="family">Family</button>
+                <button class="category-tab" data-category="quickstart">QuickStart</button>
+            </div>
+
+            <div id="templateGrid" class="template-grid">
+                <!-- Templates will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>🧭 BizHelp - Business Formalization Hub</div>
+        <div>Part of the Salatiso Ecosystem | Powered by LifeSync</div>
+    </div>
+
+    <script>
+        const templates = [
+            // Personal Templates
+            {
+                id: 'p1-welcome-orientation',
+                name: 'Welcome Orientation Brochure',
+                category: 'personal',
+                type: 'brochure',
+                description: 'Introduction to BizHelp and the Salatiso ecosystem for new users',
+                version: '1.0',
+                path: '/templates/personal/p1-welcome-orientation.html',
+                saziFocus: 'Personal Level 1',
+                lifecvProofType: 'Orientation Completion'
+            },
+            {
+                id: 'p2-business-basics',
+                name: 'Business Basics Guide',
+                category: 'personal',
+                type: 'guide',
+                description: 'Fundamental concepts of starting and running a business in South Africa',
+                version: '1.0',
+                path: '/templates/personal/p2-business-basics.html',
+                saziFocus: 'Personal Level 2',
+                lifecvProofType: 'Business Fundamentals'
+            },
+            {
+                id: 'p3-business-idea-journal',
+                name: 'Business Idea Journal',
+                category: 'personal',
+                type: 'interactive',
+                description: 'Interactive workbook for developing and validating business ideas',
+                version: '1.0',
+                path: '/templates/personal/p3-business-idea-journal.html',
+                saziFocus: 'Personal Level 3',
+                lifecvProofType: 'Idea Validation'
+            },
+            {
+                id: 'p4-business-names-branding',
+                name: 'Business Names & Branding Guide',
+                category: 'personal',
+                type: 'guide',
+                description: 'Complete guide to choosing business names and building brand identity',
+                version: '1.0',
+                path: '/templates/personal/p4-business-names-branding.html',
+                saziFocus: 'Personal Level 4',
+                lifecvProofType: 'Brand Development'
+            },
+            {
+                id: 'p5-money-basics',
+                name: 'Money Basics Guide',
+                category: 'personal',
+                type: 'guide',
+                description: 'Essential financial literacy and money management for entrepreneurs',
+                version: '1.0',
+                path: '/templates/personal/p5-money-basics.html',
+                saziFocus: 'Personal Level 5',
+                lifecvProofType: 'Financial Literacy'
+            },
+
+            // Professional Templates
+            {
+                id: 'pr1-wizard-guide',
+                name: 'Business Setup Wizard Guide',
+                category: 'professional',
+                type: 'manual',
+                description: 'Step-by-step guide for setting up your professional business structure',
+                version: '1.0',
+                path: '/templates/professional/pr1-wizard-guide.html',
+                saziFocus: 'Professional Level 1',
+                lifecvProofType: 'Business Setup'
+            },
+            {
+                id: 'pr2-business-operations',
+                name: 'Professional Business Operations Guide',
+                category: 'professional',
+                type: 'guide',
+                description: 'Comprehensive guide to running professional business operations',
+                version: '1.0',
+                path: '/templates/professional/pr2-business-operations.html',
+                saziFocus: 'Professional Level 2',
+                lifecvProofType: 'Operations Management'
+            },
+            {
+                id: 'pr3-marketing-sales',
+                name: 'Marketing & Sales Guide',
+                category: 'professional',
+                type: 'guide',
+                description: 'Professional marketing and sales strategies for South African businesses',
+                version: '1.0',
+                path: '/templates/professional/pr3-marketing-sales.html',
+                saziFocus: 'Professional Level 3',
+                lifecvProofType: 'Marketing Strategy'
+            },
+            {
+                id: 'pr4-financial-management',
+                name: 'Financial Management Guide',
+                category: 'professional',
+                type: 'guide',
+                description: 'Professional financial management and accounting practices',
+                version: '1.0',
+                path: '/templates/professional/pr4-financial-management.html',
+                saziFocus: 'Professional Level 4',
+                lifecvProofType: 'Financial Management'
+            },
+            {
+                id: 'pr5-operations-compliance',
+                name: 'Operations & Compliance Guide',
+                category: 'professional',
+                type: 'guide',
+                description: 'Operational excellence and regulatory compliance for businesses',
+                version: '1.0',
+                path: '/templates/professional/pr5-operations-compliance.html',
+                saziFocus: 'Professional Level 5',
+                lifecvProofType: 'Compliance Achievement'
+            },
+            {
+                id: 'pr6-scaling-growth',
+                name: 'Scaling & Growth Guide',
+                category: 'professional',
+                type: 'guide',
+                description: 'Strategies for scaling and growing your professional business',
+                version: '1.0',
+                path: '/templates/professional/pr6-scaling-growth.html',
+                saziFocus: 'Professional Level 6',
+                lifecvProofType: 'Business Scaling'
+            },
+
+            // Family Templates
+            {
+                id: 'f1-business-together',
+                name: 'Business Together Guide',
+                category: 'family',
+                type: 'guide',
+                description: 'Starting a business with family members and maintaining relationships',
+                version: '1.0',
+                path: '/templates/family/f1-business-together.html',
+                saziFocus: 'Family Level 1',
+                lifecvProofType: 'Family Business Start'
+            },
+            {
+                id: 'f2-council-governance',
+                name: 'Council Governance Guide',
+                category: 'family',
+                type: 'guide',
+                description: 'Setting up family councils and governance structures',
+                version: '1.0',
+                path: '/templates/family/f2-council-governance.html',
+                saziFocus: 'Family Level 2',
+                lifecvProofType: 'Governance Setup'
+            },
+            {
+                id: 'f3-company-registration',
+                name: 'Company Registration Guide',
+                category: 'family',
+                type: 'guide',
+                description: 'Registering family businesses with CIPC and related processes',
+                version: '1.0',
+                path: '/templates/family/f3-company-registration.html',
+                saziFocus: 'Family Level 3',
+                lifecvProofType: 'Company Registration'
+            },
+            {
+                id: 'f3-succession-planning',
+                name: 'Succession Planning Guide',
+                category: 'family',
+                type: 'guide',
+                description: 'Planning for business succession and family wealth transfer',
+                version: '1.0',
+                path: '/templates/family/f3-succession-planning.html',
+                saziFocus: 'Family Level 3',
+                lifecvProofType: 'Succession Planning'
+            },
+            {
+                id: 'f4-shareholders-agreement',
+                name: 'Shareholders Agreement Guide',
+                category: 'family',
+                type: 'guide',
+                description: 'Creating shareholder agreements for family businesses',
+                version: '1.0',
+                path: '/templates/family/f4-shareholders-agreement.html',
+                saziFocus: 'Family Level 4',
+                lifecvProofType: 'Shareholder Agreement'
+            },
+            {
+                id: 'f5-ip-protection',
+                name: 'IP Protection Guide',
+                category: 'family',
+                type: 'guide',
+                description: 'Protecting intellectual property in family businesses',
+                version: '1.0',
+                path: '/templates/family/f5-ip-protection.html',
+                saziFocus: 'Family Level 5',
+                lifecvProofType: 'IP Protection'
+            },
+            {
+                id: 'f6-trust-setup',
+                name: 'Trust Setup Guide',
+                category: 'family',
+                type: 'guide',
+                description: 'Setting up family trusts for asset protection and succession',
+                version: '1.0',
+                path: '/templates/family/f6-trust-setup.html',
+                saziFocus: 'Family Level 6',
+                lifecvProofType: 'Trust Establishment'
+            },
+
+            // QuickStart Templates
+            {
+                id: 'mission-cards',
+                name: 'Mission Cards Pack',
+                category: 'quickstart',
+                type: 'pack',
+                description: 'Quick-start mission cards for immediate business action',
+                version: '1.0',
+                path: '/templates/quickstart/mission-cards.html',
+                saziFocus: 'QuickStart',
+                lifecvProofType: 'Mission Initiation'
+            }
+        ];
+
+        let currentCategory = 'all';
+        let searchTerm = '';
+
+        function renderTemplates() {
+            const grid = document.getElementById('templateGrid');
+            const filteredTemplates = templates.filter(template => {
+                const matchesCategory = currentCategory === 'all' || template.category === currentCategory;
+                const matchesSearch = template.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                    template.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                    template.saziFocus.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            grid.innerHTML = filteredTemplates.map(template => `
+                <div class="template-card">
+                    <h3>${template.name}</h3>
+                    <p>${template.description}</p>
+                    <div class="template-meta">
+                        <span>${template.saziFocus}</span>
+                        <span>v${template.version}</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="${template.path}" target="_blank" class="btn btn-primary">View Template</a>
+                        <button onclick="downloadTemplate('${template.id}')" class="btn btn-secondary">Download</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function downloadTemplate(templateId) {
+            const template = templates.find(t => t.id === templateId);
+            if (template) {
+                // For now, just open in new tab (same as view)
+                // Future: implement actual download functionality
+                window.open(template.path, '_blank');
+            }
+        }
+
+        // Category tabs
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentCategory = tab.dataset.category;
+                renderTemplates();
+            });
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchTerm = e.target.value;
+            renderTemplates();
+        });
+
+        // Initial render
+        renderTemplates();
+    </script>
+</body>
+</html>

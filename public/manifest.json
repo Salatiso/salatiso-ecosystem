@@ -1,0 +1,80 @@
+{
+  "name": "Salatiso - Family & Business Ecosystem",
+  "short_name": "Salatiso",
+  "description": "Enterprise-grade family and business management platform with offline support and push notifications",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["business", "productivity"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-540x720.png",
+      "sizes": "540x720",
+      "form_factor": "narrow",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/screenshot-1280x720.png",
+      "sizes": "1280x720",
+      "form_factor": "wide",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "Open the main dashboard",
+      "url": "/intranet/simple-dashboard",
+      "icons": [{ "src": "/images/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Escalations",
+      "short_name": "Escalations",
+      "description": "View and manage escalations",
+      "url": "/intranet/simple-dashboard?tab=escalations",
+      "icons": [{ "src": "/images/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Team",
+      "short_name": "Team",
+      "description": "Manage team and assignments",
+      "url": "/intranet/simple-dashboard?tab=team-assignment",
+      "icons": [{ "src": "/images/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "share_target": {
+    "action": "/api/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+}

@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp by Salatiso - Your First Business Idea Journal</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .level-badge {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .journal-section {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .journal-section h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--ubuntu-orange);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .prompt-card {
+            background: var(--bg-light);
+            border-left: 4px solid var(--ubuntu-orange);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .prompt-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .prompt-card textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checkbox-item:hover {
+            background: var(--ubuntu-orange);
+            color: white;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .idea-canvas {
+            background: white;
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .canvas-section {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            min-height: 120px;
+        }
+
+        .canvas-section h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .canvas-section textarea {
+            width: 100%;
+            min-height: 80px;
+            border: none;
+            background: transparent;
+            resize: none;
+            font-family: inherit;
+        }
+
+        .btn {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #d4550a;
+        }
+
+        .btn.secondary {
+            background: var(--primary-blue);
+        }
+
+        .btn.secondary:hover {
+            background: #152c6b;
+        }
+
+        .progress-tracker {
+            background: var(--success-green);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">BizHelp by Salatiso</div>
+            <div class="tagline">Your First Business Idea Journal</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;" data-translate="customize_document">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label data-translate="your_name">Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label data-translate="family_name">Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label data-translate="date">Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label data-translate="document_version">Document Version:</label>
+                <input type="text" id="docVersion" value="Personal Journal v1.0" placeholder="e.g., Personal Journal v1.0">
+            </div>
+            <div class="form-field">
+                <label data-translate="language_label">Language / Taal:</label>
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="af">Afrikaans</option>
+                    <option value="nr">isiNdebele</option>
+                    <option value="xh">isiXhosa</option>
+                    <option value="zu">isiZulu</option>
+                    <option value="nso">Sepedi</option>
+                    <option value="st">Sesotho</option>
+                    <option value="tn">Setswana</option>
+                    <option value="ss">siSwati</option>
+                    <option value="ve">Tshivenda</option>
+                    <option value="ts">Xitsonga</option>
+                </select>
+            </div>
+            <button onclick="applyCustomization()" data-translate="apply_changes" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" data-translate="hide_panel" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;" data-translate="share_guide">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" data-translate="customize_document_btn" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+
+        <div class="level-badge">Personal • Level 1</div>
+
+        <div class="journal-section">
+            <h1 style="text-align: center; color: var(--primary-blue);">💡 Your Business Idea Journey</h1>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+                Every great business starts with a simple idea. This journal will guide you through a 7-day process to develop your first business concept.
+                Answer each question honestly and let your creativity flow!
+            </p>
+
+            <div class="progress-tracker">
+                <h3>📊 Your Progress: <span id="progressText">Getting Started</span></h3>
+                <div style="background: rgba(255,255,255,0.2); height: 20px; border-radius: 10px; margin-top: 1rem;">
+                    <div id="progressBar" style="background: white; height: 100%; border-radius: 10px; width: 10%; transition: width 0.3s;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="journal-section">
+            <h2 data-translate="main_title">Day 1: What Problems Do You See? 🎯</h2>
+            <p>Great businesses solve real problems. Look around you—what frustrates people in your community?</p>
+
+            <div class="prompt-card">
+                <h3>Problem Identification</h3>
+                <p>List 5 problems you've noticed in your daily life, school, or community:</p>
+                <textarea id="day1_problems" placeholder="1. Long queues at the bank&#10;2. No good places for kids to play&#10;3. People struggling with homework&#10;4. ...&#10;5. ..."></textarea>
+            </div>
+
+            <div class="prompt-card">
+                <h3>Personal Experience</h3>
+                <p>Which of these problems have you experienced yourself? Why does it bother you?</p>
+                <textarea id="day1_personal" placeholder="Describe your personal experience with one of these problems..."></textarea>
+            </div>
+        </div>
+
+        <div class="journal-section">
+            <h2>Day 2: Your Strengths & Passions 🔥</h2>
+            <p>Successful businesses are built on what you're good at and what you love doing.</p>
+
+            <div class="prompt-card">
+                <h3>Skills & Talents</h3>
+                <p>What are you really good at? What do people compliment you on?</p>
+                <textarea id="day2_skills" placeholder="I'm good at:&#10;- Drawing/Art&#10;- Explaining things&#10;- Organizing&#10;- Sports&#10;- Technology&#10;- Helping others"></textarea>
+            </div>
+
+            <div class="prompt-card">
+                <h3>What You Love</h3>
+                <p>What activities make you lose track of time? What would you do even if you weren't paid?</p>
+                <textarea id="day2_passions" placeholder="I love:&#10;- Playing soccer&#10;- Cooking&#10;- Reading&#10;- Building things&#10;- Teaching others"></textarea>
+            </div>
+
+            <div class="checkbox-group">
+                <label class="checkbox-item">
+                    <input type="checkbox" id="creative"> 🎨 Creative (art, music, writing)
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" id="technical"> 🔧 Technical (computers, fixing things)
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" id="social"> 👥 Social (helping, teaching, organizing)
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" id="physical"> ⚽ Physical (sports, outdoors, building)
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" id="analytical"> 📊 Analytical (math, planning, research)
+                </label>
+            </div>
+        </div>
+
+        <div class="journal-section">
+            <h2>Day 3: Brainstorming Solutions 💡</h2>
+            <p>Now let's combine the problems you identified with your strengths to create potential business ideas.</p>
+
+            <div class="prompt-card">
+                <h3>Idea Generation</h3>
+                <p>Pick one problem from Day 1 and brainstorm 3 different ways you could solve it using your skills:</p>
+                <textarea id="day3_ideas" placeholder="Problem: [from Day 1]&#10;&#10;Solution 1:&#10;Solution 2:&#10;Solution 3:"></textarea>
+            </div>
+
+            <div class="prompt-card">
+                <h3>Reality Check</h3>
+                <p>For each idea, ask: Is this something people would actually pay for? Why or why not?</p>
+                <textarea id="day3_reality" placeholder="Idea 1: Would people pay? Why?&#10;&#10;Idea 2: Would people pay? Why?&#10;&#10;Idea 3: Would people pay? Why?"></textarea>
+            </div>
+        </div>
+
+        <div class="journal-section">
+            <h2>Day 4: Mini Business Canvas 📋</h2>
+            <p>Let's organize your best idea using a simple business model. Pick your favorite idea from Day 3.</p>
+
+            <div class="idea-canvas">
+                <h3 style="text-align: center; color: var(--primary-blue);">My Business Idea: <input type="text" id="business_name" placeholder="Name your business" style="border: none; border-bottom: 1px solid var(--primary-blue); text-align: center; font-size: 1.2rem; margin-left: 1rem;"></h3>
+
+                <div class="canvas-grid">
+                    <div class="canvas-section">
+                        <h4>🎯 Problem I Solve</h4>
+                        <textarea id="canvas_problem" placeholder="What problem does your business solve?"></textarea>
+                    </div>
+                    <div class="canvas-section">
+                        <h4>👥 Who Benefits</h4>
+                        <textarea id="canvas_customers" placeholder="Who are your customers? Age, location, needs?"></textarea>
+                    </div>
+                    <div class="canvas-section">
+                        <h4>✨ My Solution</h4>
+                        <textarea id="canvas_solution" placeholder="How will you solve their problem?"></textarea>
+                    </div>
+                    <div class="canvas-section">
+                        <h4>💰 How You Make Money</h4>
+                        <textarea id="canvas_revenue" placeholder="How will customers pay you? Product sales, service fees, subscriptions?"></textarea>
+                    </div>
+                    <div class="canvas-section">
+                        <h4>🛠️ What You Need</h4>
+                        <textarea id="canvas_resources" placeholder="What do you need to start? Tools, materials, skills, location?"></textarea>
+                    </div>
+                    <div class="canvas-section">
+                        <h4>🎯 Next Steps</h4>
+                        <textarea id="canvas_action" placeholder="What will you do first? Talk to potential customers, make a prototype, research prices?"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="journal-section">
+            <h2>Day 5: Testing Your Idea 🧪</h2>
+            <p>Don't build a business in secret! Talk to potential customers to validate your idea.</p>
+
+            <div class="prompt-card">
+                <h3>Customer Interviews</h3>
+                <p>Plan to talk to 3 potential customers. What questions will you ask?</p>
+                <textarea id="day5_questions" placeholder="1. Have you experienced [problem]?&#10;2. How do you currently solve it?&#10;3. Would you pay for a better solution?&#10;4. What would make it worth paying for?"></textarea>
+            </div>
+
+            <div class="prompt-card">
+                <h3>Interview Results</h3>
+                <p>After talking to people, what did you learn? Did they confirm the problem exists?</p>
+                <textarea id="day5_results" placeholder="Person 1:&#10;Person 2:&#10;Person 3:&#10;&#10;Overall insights:"></textarea>
+            </div>
+        </div>
+
+        <div class="journal-section">
+            <h2>Day 6: Your First Prototype 🛠️</h2>
+            <p>Create a simple version of your solution to test. It doesn't have to be perfect!</p>
+
+            <div class="prompt-card">
+                <h3>Prototype Plan</h3>
+                <p>What simple version can you create this week? Focus on the core solution.</p>
+                <textarea id="day6_prototype" placeholder="My prototype will be:&#10;&#10;Materials needed:&#10;&#10;Time required:&#10;&#10;How I'll test it:"></textarea>
+            </div>
+
+            <div class="prompt-card">
+                <h3>Learning Goals</h3>
+                <p>What do you want to learn from this prototype? What questions will it answer?</p>
+                <textarea id="day6_learning" placeholder="I want to learn:&#10;1. If people like my solution&#10;2. What they would actually pay&#10;3. What needs to be improved&#10;4. ..."></textarea>
+            </div>
+        </div>
+
+        <div class="journal-section">
+            <h2>Day 7: Reflection & Next Steps 🤔</h2>
+            <p>Congratulations! You've completed your first business idea development journey.</p>
+
+            <div class="prompt-card">
+                <h3>What I Learned</h3>
+                <p>What surprised you during this process? What was harder/easier than expected?</p>
+                <textarea id="day7_reflection" placeholder="Surprises:&#10;&#10;Challenges:&#10;&#10;Successes:&#10;&#10;New ideas:"></textarea>
+            </div>
+
+            <div class="prompt-card">
+                <h3>My Business Decision</h3>
+                <p>Based on what you've learned, what will you do next with this business idea?</p>
+                <textarea id="day7_decision" placeholder="I'll:&#10;1. Start building the prototype&#10;2. Talk to more potential customers&#10;3. Research similar businesses&#10;4. Start with a small test&#10;5. ..."></textarea>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="color: var(--primary-blue);">Ready to Turn Your Idea into Reality?</h2>
+            <p>Great job completing your business idea journal! Now let's use the BizHelp Wizard to create an action plan.</p>
+            <button onclick="generateReport()" class="btn">📊 Generate My Idea Report</button>
+            <a href="https://bizhelp-lifecv.web.app/wizard" class="btn secondary">Continue with BizHelp Wizard</a>
+        </div>
+    </div>
+
+    <footer>
+        <div style="text-align: center; padding: 2rem;">
+            <p>© 2025 BizHelp by Salatiso - Family Business Legacy. Prepared for Professional User on October 6, 2025</p>
+            <p style="margin-top: 1rem;">
+                <a href="https://bizhelp-lifecv.web.app/wizard" style="color: var(--ubuntu-orange);">BizHelp Wizard</a> |
+                <a href="mailto:hub@salatiso.com" style="color: var(--ubuntu-orange);">Get Support</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                customize_document: "✏️ Customize This Document",
+                your_name: "Your Name:",
+                family_name: "Family/Entity Name:",
+                date: "Date:",
+                document_version: "Document Version:",
+                language_label: "Language / Taal:",
+                apply_changes: "Apply Changes",
+                hide_panel: "Hide Panel",
+                customize_document_btn: "⚙️ Customize Document",
+                share_guide: "📤 Share This Guide",
+                main_title: "Day 1: What Problems Do You See? 🎯",
+            },
+            af: {
+                customize_document: "✏️ Pas Hierdie Dokument Aan",
+                your_name: "Jou Naam:",
+                family_name: "Familie/Entiteit Naam:",
+                date: "Datum:",
+                document_version: "Dokument Weergawe:",
+                language_label: "Taal / Taal:",
+                apply_changes: "Pas Veranderinge Toe",
+                hide_panel: "Versteek Paneel",
+                customize_document_btn: "⚙️ Pas Dokument Aan",
+                share_guide: "📤 Deel Hierdie Gids",
+                main_title: "Dag 1: Watter Probleme Sien Jy? 🎯",
+            },
+            nr: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Ibizo Lakho:",
+                family_name: "Ibizo Lemndeni/Lesikhungo:",
+                date: "Umhla:",
+                document_version: "Uhlobo Lwedokumenti:",
+                language_label: "Ulimi / Ulimi:",
+                apply_changes: "Sebenzisa Izinguquko",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadana",
+                main_title: "Usuku 1: Yibuphi Izingqinamba Ozi Bona? 🎯",
+            },
+            xh: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Igama Lakho:",
+                family_name: "Igama Losapho/Lombutho:",
+                date: "Umhla:",
+                document_version: "Uhlobo Lwedokumenti:",
+                language_label: "Ulwimi / Ulwimi:",
+                apply_changes: "Sebenzisa Utshintsho",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadana",
+                main_title: "Usuku 1: Yintoni Iingxaki Ozibonayo? 🎯",
+            },
+            zu: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Ibizo Lakho:",
+                family_name: "Ibizo Lomndeni/Lesikhungo:",
+                date: "Usuku:",
+                document_version: "Uhlobo Lwedokumenti:",
+                language_label: "Ulimi / Ulimi:",
+                apply_changes: "Sebenzisa Izinguquko",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadana",
+                main_title: "Usuku 1: Yibuphi Izingqinamba Ozibonayo? 🎯",
+            },
+            nso: {
+                customize_document: "✏️ Fetola Tokumente Ye",
+                your_name: "Leina La Gago:",
+                family_name: "Leina La Lapa/Le Entiti:",
+                date: "Letšatši:",
+                document_version: "Mofuta wa Tokumente:",
+                language_label: "Polelo / Polelo:",
+                apply_changes: "Diriša Diphetogo",
+                hide_panel: "Fihla Phanele",
+                customize_document_btn: "⚙️ Fetola Tokumente",
+                share_guide: "📤 Abelana ka Tataiso Ye",
+                main_title: "Letšatši 1: Ke mathata afe ao o a bonago? 🎯",
+            },
+            st: {
+                customize_document: "✏️ Fetola Tokomane Ena",
+                your_name: "Lebitso La Hao:",
+                family_name: "Lebitso La Lelapa/Entiti:",
+                date: "Letsatsi:",
+                document_version: "Mofuta wa Tokomane:",
+                language_label: "Puo / Puo:",
+                apply_changes: "Sebelisa Liphetoho",
+                hide_panel: "Pata Phanele",
+                customize_document_btn: "⚙️ Fetola Tokomane",
+                share_guide: "📤 Arolelana ka Tataiso Ena",
+                main_title: "Letsatsi 1: Ke mathata afe ao u a bonang? 🎯",
+            },
+            tn: {
+                customize_document: "✏️ Fetola Tokumente Ye",
+                your_name: "Leina La Gago:",
+                family_name: "Leina La Lapa/Le Entiti:",
+                date: "Letšatši:",
+                document_version: "Mofuta wa Tokumente:",
+                language_label: "Polelo / Polelo:",
+                apply_changes: "Diriša Diphetogo",
+                hide_panel: "Fihla Phanele",
+                customize_document_btn: "⚙️ Fetola Tokumente",
+                share_guide: "📤 Abelana ka Tataiso Ye",
+                main_title: "Letšatši 1: Ke mathata afe ao o a bonago? 🎯",
+            },
+            ss: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Libito Lakho:",
+                family_name: "Libito Lemndzaba/Lesikhungo:",
+                date: "Lilanga:",
+                document_version: "Inhlobo Yedokumenti:",
+                language_label: "Lulwimi / Lulwimi:",
+                apply_changes: "Sebentisa Tinchubo",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadzi",
+                main_title: "Lilanga 1: Yini tinhlupho lotibonako? 🎯",
+            },
+            ve: {
+                customize_document: "✏️ Dziṅwalisele Ḓokhumente Ḽi",
+                your_name: "Dzina Ḽa Ḽu:",
+                family_name: "Dzina Ḽa Muya/Dzithavhelo:",
+                date: "Ḓuvha:",
+                document_version: "Mvele wa Ḓokhumente:",
+                language_label: "Ḽuambo / Ḽuambo:",
+                apply_changes: "Shumisani Tshanduko",
+                hide_panel: "Dzumbani Phaneli",
+                customize_document_btn: "⚙️ Dziṅwalisele Ḓokhumente",
+                share_guide: "📤 Kumedzani Ḽiṅwaliso Ḽi",
+                main_title: "Ḓuvha 1: Ndi mishumo ifhio yo ni i vhona? 🎯",
+            },
+            ts: {
+                customize_document: "✏️ Lungiselela Dokumente Leyi",
+                your_name: "Vito Ra Wena:",
+                family_name: "Vito Ra Nandzu/Xiyimo:",
+                date: "Siku:",
+                document_version: "Muxaka wa Dokumente:",
+                language_label: "Ririmi / Ririmi:",
+                apply_changes: "Tirhisa Ku Cinca",
+                hide_panel: "Tumbeta Phaneli",
+                customize_document_btn: "⚙️ Lungiselela Dokumente",
+                share_guide: "📤 Avelana hi Buku Leyi",
+                main_title: "Siku 1: Hi yini swiphiqo leswi u swi vonaka? 🎯",
+            },
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('languageSelect').value;
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Customization Functions
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value;
+            const familyName = document.getElementById('familyName').value;
+            const docDate = document.getElementById('docDate').value;
+            const docVersion = document.getElementById('docVersion').value;
+
+            // Update document title
+            document.title = `Business Idea Journal - ${familyName || 'Family Business'} - ${docVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `Business Idea Journal for ${familyName || 'Everyone'} - ${docVersion}`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) {
+                footer.innerHTML = `© 2025 BizHelp by Salatiso - ${familyName || 'Family Business'} Legacy. Prepared for ${userName || 'Professional User'} on ${new Date(docDate).toLocaleDateString()}`;
+            }
+
+            alert('✅ Document customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Journal Functions
+        function generateReport() {
+            const businessName = document.getElementById('business_name').value;
+            const problem = document.getElementById('canvas_problem').value;
+            const customers = document.getElementById('canvas_customers').value;
+            const solution = document.getElementById('canvas_solution').value;
+
+            if (!businessName || !problem) {
+                alert('Please fill in at least your business name and the problem it solves.');
+                return;
+            }
+
+            const report = `
+📊 BUSINESS IDEA REPORT
+Business Name: ${businessName}
+
+🎯 Problem Solved: ${problem}
+👥 Target Customers: ${customers}
+✨ Solution: ${solution}
+
+Generated on: ${new Date().toLocaleDateString()}
+            `;
+
+            alert(report);
+        }
+
+        // Progress tracking
+        function updateProgress() {
+            const fields = [
+                'day1_problems', 'day1_personal', 'day2_skills', 'day2_passions',
+                'day3_ideas', 'day3_reality', 'canvas_problem', 'canvas_customers',
+                'canvas_solution', 'day5_questions', 'day6_prototype', 'day7_reflection'
+            ];
+
+            let completed = 0;
+            fields.forEach(field => {
+                if (document.getElementById(field).value.trim()) completed++;
+            });
+
+            const progress = Math.round((completed / fields.length) * 100);
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            let status = 'Getting Started';
+            if (progress > 80) status = 'Almost Done!';
+            else if (progress > 60) status = 'Making Progress';
+            else if (progress > 40) status = 'Halfway There';
+            else if (progress > 20) status = 'Building Momentum';
+
+            document.getElementById('progressText').textContent = status + ' (' + progress + '% complete)';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('docDate').value = today;
+
+            // Add progress tracking to all textareas
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                textarea.addEventListener('input', updateProgress);
+            });
+
+            updateProgress();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="salatiso">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar & Contacts Testing Guide - Salatiso Ecosystem</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;900&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        :root {
+            --brand-primary-color: #2563eb;
+            --brand-secondary-color: #60a5fa;
+            --brand-accent-color: #10b981;
+            --brand-warning-color: #f59e0b;
+            --brand-danger-color: #ef4444;
+            --brand-text-main: #1f2937;
+            --brand-text-light: #6b7280;
+            --brand-bg-main: #f9fafb;
+            --brand-bg-page: #ffffff;
+            --brand-heading-font: 'Roboto Slab', serif;
+            --brand-body-font: 'Manrope', sans-serif;
+        }
+
+        body {
+            font-family: var(--brand-body-font);
+            background-color: var(--brand-bg-main);
+            color: var(--brand-text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--brand-heading-font);
+            font-weight: 700;
+            color: var(--brand-primary-color);
+        }
+
+        .test-item {
+            background: white;
+            border-left: 4px solid var(--brand-primary-color);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .test-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .status-pass {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-fail {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        input[type="checkbox"] {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.75rem;
+            cursor: pointer;
+        }
+
+        .feature-section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--brand-primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+
+        .btn-success {
+            background-color: var(--brand-accent-color);
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: var(--brand-warning-color);
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th {
+            background-color: var(--brand-primary-color);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .notes-area {
+            width: 100%;
+            min-height: 100px;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-family: var(--brand-body-font);
+            margin-top: 0.5rem;
+        }
+
+        .critical {
+            border-left-color: var(--brand-danger-color);
+        }
+
+        .high-priority {
+            border-left-color: var(--brand-warning-color);
+        }
+
+        @media print {
+            body {
+                background-color: white;
+            }
+            .no-print {
+                display: none;
+            }
+            .feature-section {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+            }
+        }
+    </style>
+</head>
+<body class="p-6">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-bold mb-2">Calendar & Contacts Testing Guide</h1>
+            <p class="text-xl text-gray-600">Salatiso Ecosystem - Phase 2 Feature Testing</p>
+            <p class="text-sm text-gray-500 mt-2">Last Updated: October 25, 2025</p>
+        </header>
+
+        <!-- Quick Actions -->
+        <div class="feature-section no-print">
+            <h2 class="text-2xl mb-4">Quick Actions</h2>
+            <div class="flex gap-4 flex-wrap">
+                <button class="btn btn-primary" onclick="window.print()">
+                    <i class="fas fa-print mr-2"></i> Print Report
+                </button>
+                <button class="btn btn-success" onclick="exportToPDF()">
+                    <i class="fas fa-file-pdf mr-2"></i> Export to PDF
+                </button>
+                <button class="btn btn-warning" onclick="resetAllChecks()">
+                    <i class="fas fa-redo mr-2"></i> Reset All Checks
+                </button>
+            </div>
+        </div>
+
+        <!-- Testing Overview -->
+        <div class="feature-section">
+            <h2 class="text-2xl mb-4">Testing Overview</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="text-center p-4 bg-blue-50 rounded">
+                    <div class="text-3xl font-bold text-blue-600" id="totalTests">0</div>
+                    <div class="text-sm text-gray-600">Total Tests</div>
+                </div>
+                <div class="text-center p-4 bg-green-50 rounded">
+                    <div class="text-3xl font-bold text-green-600" id="passedTests">0</div>
+                    <div class="text-sm text-gray-600">Passed</div>
+                </div>
+                <div class="text-center p-4 bg-red-50 rounded">
+                    <div class="text-3xl font-bold text-red-600" id="failedTests">0</div>
+                    <div class="text-sm text-gray-600">Failed</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACTS TESTING SECTION -->
+        <div class="feature-section">
+            <h2 class="text-2xl mb-4"><i class="fas fa-address-book mr-2"></i> Contacts Management Testing</h2>
+            
+            <!-- 1. Contact CRUD Operations -->
+            <div class="test-item">
+                <h3 class="text-xl font-semibold mb-3">1. Contact CRUD Operations</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Create Contact:</strong> Add a new contact with all fields (name, email, phone, company, notes)
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes: Expected result, actual result, issues..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>View Contact:</strong> Click on a contact to view full details in modal/detail view
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Update Contact:</strong> Edit contact information and save changes
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Delete Contact:</strong> Remove a contact and confirm deletion
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Data Persistence:</strong> Refresh page and verify contact data persists in Firestore
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 2. Contact Import Features -->
+            <div class="test-item high-priority">
+                <h3 class="text-xl font-semibold mb-3">2. Contact Import Features</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>CSV Import:</strong> Upload a CSV file with contacts and verify successful import
+                        </label>
+                        <textarea class="notes-area" placeholder="Test with various CSV formats..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Field Mapping:</strong> Map CSV columns to contact fields correctly
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Duplicate Detection:</strong> Test import with duplicate contacts and verify handling
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Import Preview:</strong> Preview imported data before confirmation
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Error Handling:</strong> Test with invalid CSV format and verify error messages
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 3. Contact Bulk Operations -->
+            <div class="test-item">
+                <h3 class="text-xl font-semibold mb-3">3. Contact Bulk Operations</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Select Multiple:</strong> Select multiple contacts using checkboxes
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Bulk Delete:</strong> Delete multiple contacts at once
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Bulk Export:</strong> Export selected contacts to CSV
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Select All/None:</strong> Test select all and deselect all functionality
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 4. Contact Search & Filter -->
+            <div class="test-item">
+                <h3 class="text-xl font-semibold mb-3">4. Contact Search & Filter</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Search by Name:</strong> Search contacts by first/last name
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Search by Email:</strong> Search contacts by email address
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Filter by Company:</strong> Filter contacts by company name
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Real-time Search:</strong> Verify search updates as you type
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 5. Contact Image Upload -->
+            <div class="test-item">
+                <h3 class="text-xl font-semibold mb-3">5. Contact Image Upload</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Upload Image:</strong> Upload a profile image for a contact
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Image Preview:</strong> Preview image before upload
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Image Storage:</strong> Verify image is stored in Firebase Storage
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="contacts">
+                            <strong>Image Display:</strong> Verify uploaded image displays in contact list and detail view
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CALENDAR TESTING SECTION -->
+        <div class="feature-section">
+            <h2 class="text-2xl mb-4"><i class="fas fa-calendar-alt mr-2"></i> Calendar System Testing</h2>
+            
+            <!-- 1. Calendar View & Navigation -->
+            <div class="test-item">
+                <h3 class="text-xl font-semibold mb-3">1. Calendar View & Navigation</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Month View:</strong> Display calendar in month view with proper grid layout
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Week View:</strong> Switch to week view and verify proper display
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Day View:</strong> Switch to day view with hourly slots
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Navigation:</strong> Navigate between months/weeks using prev/next buttons
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Today Button:</strong> Click "Today" to return to current date
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 2. Event CRUD Operations -->
+            <div class="test-item critical">
+                <h3 class="text-xl font-semibold mb-3">2. Event CRUD Operations</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Create Event:</strong> Create a new event with title, date, time, and description
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Quick Add:</strong> Quick add event by clicking on a date/time slot
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>View Event:</strong> Click on event to view full details
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Edit Event:</strong> Modify event details and save
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Delete Event:</strong> Remove event with confirmation
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Event Persistence:</strong> Refresh page and verify events persist
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 3. Event Types & Categories -->
+            <div class="test-item">
+                <h3 class="text-xl font-semibold mb-3">3. Event Types & Categories</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Event Types:</strong> Create events with different types (meeting, task, reminder, etc.)
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Color Coding:</strong> Verify events display with correct color based on type
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Filter by Type:</strong> Filter calendar to show only specific event types
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 4. Recurring Events -->
+            <div class="test-item high-priority">
+                <h3 class="text-xl font-semibold mb-3">4. Recurring Events</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Daily Recurrence:</strong> Create event recurring daily
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Weekly Recurrence:</strong> Create event recurring weekly on specific days
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Monthly Recurrence:</strong> Create event recurring monthly
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Edit Recurring:</strong> Edit single instance vs. all instances
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Delete Recurring:</strong> Delete single instance vs. all instances
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 5. Event Notifications -->
+            <div class="test-item">
+                <h3 class="text-xl font-semibold mb-3">5. Event Notifications & Reminders</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Set Reminder:</strong> Add reminder to event (15 min, 1 hour, 1 day before)
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Multiple Reminders:</strong> Add multiple reminders to single event
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Notification Display:</strong> Verify reminder notifications appear correctly
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 6. Calendar Integration -->
+            <div class="test-item">
+                <h3 class="text-xl font-semibold mb-3">6. Calendar Integration Features</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Contact Linking:</strong> Link event to a contact from contact list
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Export Event:</strong> Export event to .ics file
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="calendar">
+                            <strong>Print Calendar:</strong> Print calendar view
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CROSS-FEATURE TESTING -->
+        <div class="feature-section">
+            <h2 class="text-2xl mb-4"><i class="fas fa-link mr-2"></i> Cross-Feature Integration Testing</h2>
+            
+            <div class="test-item critical">
+                <h3 class="text-xl font-semibold mb-3">Integration Tests</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="integration">
+                            <strong>Contact to Calendar:</strong> Create calendar event from contact detail view
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="integration">
+                            <strong>Calendar to Contact:</strong> View contact details from calendar event
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="integration">
+                            <strong>Data Sync:</strong> Verify changes in contacts reflect in linked calendar events
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="integration">
+                            <strong>Dashboard Integration:</strong> Verify both features appear correctly on dashboard
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PERFORMANCE & SECURITY TESTING -->
+        <div class="feature-section">
+            <h2 class="text-2xl mb-4"><i class="fas fa-shield-alt mr-2"></i> Performance & Security Testing</h2>
+            
+            <div class="test-item">
+                <h3 class="text-xl font-semibold mb-3">Performance Tests</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="performance">
+                            <strong>Load Time:</strong> Test initial page load time for contacts and calendar
+                        </label>
+                        <textarea class="notes-area" placeholder="Target: < 3 seconds..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="performance">
+                            <strong>Large Dataset:</strong> Test with 100+ contacts and 50+ events
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="performance">
+                            <strong>Search Performance:</strong> Test search with large dataset
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="performance">
+                            <strong>Image Loading:</strong> Test performance with multiple contact images
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="test-item critical">
+                <h3 class="text-xl font-semibold mb-3">Security & Data Tests</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="security">
+                            <strong>Authentication:</strong> Verify only authenticated users can access features
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="security">
+                            <strong>Data Isolation:</strong> Verify users only see their own data
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="security">
+                            <strong>Firestore Rules:</strong> Test Firestore security rules are working
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="security">
+                            <strong>Input Validation:</strong> Test with malformed/malicious input
+                        </label>
+                        <textarea class="notes-area" placeholder="Notes..."></textarea>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- BROWSER & DEVICE TESTING -->
+        <div class="feature-section">
+            <h2 class="text-2xl mb-4"><i class="fas fa-mobile-alt mr-2"></i> Browser & Device Compatibility</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Browser/Device</th>
+                        <th>Contacts</th>
+                        <th>Calendar</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Chrome Desktop</td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="text" class="w-full p-1 border rounded" placeholder="Notes..."></td>
+                    </tr>
+                    <tr>
+                        <td>Firefox Desktop</td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="text" class="w-full p-1 border rounded" placeholder="Notes..."></td>
+                    </tr>
+                    <tr>
+                        <td>Safari Desktop</td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="text" class="w-full p-1 border rounded" placeholder="Notes..."></td>
+                    </tr>
+                    <tr>
+                        <td>Edge Desktop</td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="text" class="w-full p-1 border rounded" placeholder="Notes..."></td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Chrome (Android)</td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="text" class="w-full p-1 border rounded" placeholder="Notes..."></td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Safari (iOS)</td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="text" class="w-full p-1 border rounded" placeholder="Notes..."></td>
+                    </tr>
+                    <tr>
+                        <td>Tablet (iPad)</td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="checkbox" class="test-checkbox" data-category="browser"></td>
+                        <td><input type="text" class="w-full p-1 border rounded" placeholder="Notes..."></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- KNOWN ISSUES -->
+        <div class="feature-section">
+            <h2 class="text-2xl mb-4"><i class="fas fa-exclamation-triangle mr-2"></i> Known Issues & Notes</h2>
+            <div class="test-item">
+                <h3 class="text-xl font-semibold mb-3">Console Warnings</h3>
+                <ul class="checklist">
+                    <li>
+                        <label>
+                            <input type="checkbox" class="test-checkbox" data-category="issues">
+                            <strong>COOP Warnings:</strong> Cross-Origin-Opener-Policy warnings in console
+                        </label>
+                        <div class="bg-yellow-50 p-3 rounded mt-2 text-sm">
+                            <strong>Status:</strong> Known issue with Firebase Auth popup/redirect flow<br>
+                            <strong>Impact:</strong> Cosmetic - does not affect functionality<br>
+                            <strong>Fix:</strong> Add proper COOP headers in next.config.js or firebase.json
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mt-4">
+                <h3 class="text-lg font-semibold mb-2">Additional Issues Found During Testing:</h3>
+                <textarea class="notes-area" style="min-height: 150px;" placeholder="Document any new issues, bugs, or unexpected behavior found during testing..."></textarea>
+            </div>
+        </div>
+
+        <!-- TEST SUMMARY -->
+        <div class="feature-section no-print">
+            <h2 class="text-2xl mb-4"><i class="fas fa-clipboard-check mr-2"></i> Test Summary & Sign-off</h2>
+            
+            <div class="mb-4">
+                <label class="block font-semibold mb-2">Tested By:</label>
+                <input type="text" class="w-full p-2 border rounded" placeholder="Your name">
+            </div>
+
+            <div class="mb-4">
+                <label class="block font-semibold mb-2">Test Date:</label>
+                <input type="date" class="w-full p-2 border rounded" value="2025-10-25">
+            </div>
+
+            <div class="mb-4">
+                <label class="block font-semibold mb-2">Overall Assessment:</label>
+                <select class="w-full p-2 border rounded">
+                    <option>Select status...</option>
+                    <option>✅ All tests passed - Ready for production</option>
+                    <option>⚠️ Minor issues found - Acceptable for release</option>
+                    <option>❌ Critical issues found - Requires fixes</option>
+                    <option>🔄 Testing in progress</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block font-semibold mb-2">Final Comments:</label>
+                <textarea class="notes-area" style="min-height: 120px;" placeholder="Overall impressions, recommendations, next steps..."></textarea>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 text-sm mt-8 pb-4">
+            <p>Salatiso Ecosystem - Calendar & Contacts Testing Guide</p>
+            <p>Generated: October 25, 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        // Update test counters
+        function updateCounters() {
+            const checkboxes = document.querySelectorAll('.test-checkbox');
+            const total = checkboxes.length;
+            const checked = document.querySelectorAll('.test-checkbox:checked').length;
+            
+            document.getElementById('totalTests').textContent = total;
+            document.getElementById('passedTests').textContent = checked;
+            document.getElementById('failedTests').textContent = total - checked;
+        }
+
+        // Reset all checkboxes
+        function resetAllChecks() {
+            if (confirm('Are you sure you want to reset all test checkboxes?')) {
+                document.querySelectorAll('.test-checkbox').forEach(cb => cb.checked = false);
+                document.querySelectorAll('.notes-area').forEach(ta => ta.value = '');
+                updateCounters();
+            }
+        }
+
+        // Export to PDF
+        async function exportToPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('p', 'mm', 'a4');
+            
+            // Hide no-print elements
+            document.querySelectorAll('.no-print').forEach(el => el.style.display = 'none');
+            
+            const content = document.querySelector('.max-w-7xl');
+            
+            try {
+                const canvas = await html2canvas(content, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false
+                });
+                
+                const imgData = canvas.toDataURL('image/png');
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 297; // A4 height in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+
+                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    doc.addPage();
+                    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+
+                doc.save('Calendar_Contacts_Testing_Report_' + new Date().toISOString().split('T')[0] + '.pdf');
+            } catch (error) {
+                alert('Error generating PDF: ' + error.message);
+            } finally {
+                // Show no-print elements again
+                document.querySelectorAll('.no-print').forEach(el => el.style.display = '');
+            }
+        }
+
+        // Save state to localStorage
+        function saveState() {
+            const state = {
+                checkboxes: [],
+                textareas: []
+            };
+
+            document.querySelectorAll('.test-checkbox').forEach((cb, index) => {
+                state.checkboxes[index] = cb.checked;
+            });
+
+            document.querySelectorAll('.notes-area').forEach((ta, index) => {
+                state.textareas[index] = ta.value;
+            });
+
+            localStorage.setItem('testingState', JSON.stringify(state));
+        }
+
+        // Load state from localStorage
+        function loadState() {
+            const saved = localStorage.getItem('testingState');
+            if (saved) {
+                const state = JSON.parse(saved);
+                
+                document.querySelectorAll('.test-checkbox').forEach((cb, index) => {
+                    if (state.checkboxes[index] !== undefined) {
+                        cb.checked = state.checkboxes[index];
+                    }
+                });
+
+                document.querySelectorAll('.notes-area').forEach((ta, index) => {
+                    if (state.textareas[index] !== undefined) {
+                        ta.value = state.textareas[index];
+                    }
+                });
+
+                updateCounters();
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCounters();
+            loadState();
+
+            // Add event listeners to all checkboxes
+            document.querySelectorAll('.test-checkbox').forEach(cb => {
+                cb.addEventListener('change', function() {
+                    updateCounters();
+                    saveState();
+                });
+            });
+
+            // Add event listeners to all textareas
+            document.querySelectorAll('.notes-area').forEach(ta => {
+                ta.addEventListener('blur', saveState);
+            });
+
+            // Auto-save every 30 seconds
+            setInterval(saveState, 30000);
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + P for print
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                window.print();
+            }
+            // Ctrl/Cmd + S for save (triggers auto-save)
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                saveState();
+                alert('Progress saved!');
+            }
+        });
+    </script>
+</body>
+</html>

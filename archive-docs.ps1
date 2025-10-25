@@ -1,0 +1,224 @@
+# Archive Outdated Documentation Script
+# Run this to move old/superseded documentation to Archive folder
+
+$archivePath = "d:\WebSites\salatiso-ecosystem\Salatiso-React-App\Documents\Archive"
+$docsPath = "d:\WebSites\salatiso-ecosystem\Salatiso-React-App\Documents"
+
+# Files to archive (superseded or historical)
+$filesToArchive = @(
+    # Old API/Spec versions
+    "API_DOCUMENTATION.md",  # Use V3 instead
+    "TECHNICAL_SPECIFICATIONS.md",  # Use V2 instead
+    "ANDROID_APP_SPECIFICATION_.md",  # Duplicate with underscore
+    
+    # Old phase summaries (before October 2025)
+    "SESSION_SUMMARY_OCTOBER_9_2025.md",
+    "SESSION_SUMMARY_OCTOBER_14_2025.md",
+    "DEPLOYMENT_SUCCESS_SEPTEMBER_29_2025.md",
+    "DEPLOYMENT_UPDATE_OCTOBER_2_2025.md",
+    "OCT_22_COMPLETE_SPRINT_SUMMARY.md",
+    "OCT_22_SPRINT_COMPLETE_STAGING_LIVE.md",
+    "OCTOBER_22_23_SPRINT_FINAL_SUMMARY.md",
+    
+    # Resolved bug fixes (historical reference only)
+    "BUGFIX_HOMEPAGE_I18N_OCTOBER_12_2025.md",
+    "CSS_IMPORT_ERROR_RESOLVED.md",
+    "LOGIN_REDIRECT_FIX_SEPTEMBER_29_2025.md",
+    "COOP_FIRESTORE_FIXES_SEPTEMBER_29_2025.md",
+    "GOOGLE_SIGNIN_REDIRECT_FIX.md",
+    "HMR_AND_SW_FIXES.md",
+    "FIREBASE_MESSAGING_INDEXEDDB_ERROR_ANALYSIS.md",
+    "INTRANET_LOGIN_DEBUG_GUIDE.md",
+    "INTRANET_LOGIN_ROOT_CAUSE_ANALYSIS.md",
+    "INTRANET_LOGIN_QUICK_FIX.md",
+    "INTRANET_LOGIN_QUICK_FIX_UPDATED.md",
+    "FIRESTORE_FIX_READY_TO_TEST.md",
+    "FIRESTORE_RULES_CHANGE_SUMMARY.md",
+    "FIRESTORE_RULES_MODIFICATION_GUIDE.md",
+    "DEV_SERVER_RECOVERY_REPORT.md",
+    "OFFLINE_INDICATOR_REMOVAL_SUMMARY.md",
+    "OFFLINE_INDICATOR_REMOVAL_SUMMARY_.md",
+    "BUILD_FIX_COMPLETE.md",
+    
+    # Duplicate/redundant phase documents
+    "PHASE_4_STATUS_UPDATE.md",  # Use COMPLETION_SUMMARY
+    "PHASE_4_2_SESSION_SUMMARY.md",
+    "PHASE_4_2_QUICK_REFERENCE.md",
+    "PHASE_4_2_IMPLEMENTATION_SUMMARY.md",
+    "PHASE_4_3_STATUS_CARD.md",
+    "SESSION_RECAP.md",
+    "SESSION_SUMMARY_PHASE_4_3_UI.md",
+    "PHASE_4_3_QUICK_START.md",
+    "PHASE_4_3_VISUAL_SUMMARY.md",
+    "EXECUTIVE_SUMMARY_PHASE_4_3.md",
+    "DELIVERY_COMPLETE_PHASE_4_3_UI.md",
+    "PHASE_4_INTEGRATION_COMPLETE.md",
+    "QUICK_START_TESTING.md",  # Use TESTING_GUIDE.md
+    "TESTING_CHECKLIST_PHASE_4.md",
+    "PROJECT_STATUS_COMPLETE.md",  # Use PHASE_6_EXECUTIVE_SUMMARY.md
+    "TESTING_READY_REPORT.md",
+    "EXECUTIVE_SUMMARY.md",  # Use PHASE_6_EXECUTIVE_SUMMARY.md
+    "DEPLOYMENT_SUMMARY.md",
+    "README_TESTING_NOW.md",
+    
+    # Old Phase 3 details
+    "PHASE3B_SESSION_SUMMARY.md",
+    "PHASE3B_FILE_MANIFEST.md",
+    "PHASE3B_TESTING_QUICK_START.md",
+    "PHASE3B_IMPLEMENTATION_COMPLETE_FOUNDATION.md",
+    "PHASE3_EXECUTIVE_BRIEF.md",
+    "PHASE3_QUICK_STATUS.md",
+    "PHASE3_OUTSTANDING_ITEMS_STATUS.md",
+    "PHASE3B_LIVE_TESTING.md",
+    "PHASE3B_COMPLETE_OPERATIONAL.md",
+    "DELIVERY_SUMMARY_PHASE3B.md",
+    "PHASE3B_COMPLETE_FINAL_SUMMARY.md",
+    "PHASE_3_COMPLETION_REPORT.md",
+    "PHASE3_SPRINT_PROGRESS.md",
+    "PHASE3_COMPLETION_REPORT.md",
+    
+    # Old Phase 2 details
+    "PHASE2_COMPLETION_REPORT_OCTOBER_13_2025.md",
+    
+    # Old Phase 1 details
+    "PHASE1_STAGING_DEPLOYMENT_COMPLETE.md",
+    "PHASE1_FINAL_SUMMARY_OCT_22.md",
+    "PHASE1_SONNY_ECOSYSTEM_ALIGNMENT_REPORT_OCTOBER_13_2025.md",
+    
+    # Old calendar phase documents
+    "CALENDAR_PHASE1_PROGRESS.md",
+    "CALENDAR_PHASE1_MASSIVE_UPDATE.md",
+    "CALENDAR_PHASE1_FINAL_SESSION_SUMMARY.md",
+    "CALENDAR_IMPLEMENTATION_KICKOFF.md",
+    "CALENDAR_PHASE1_QUICKSTART.md",
+    
+    # Old Phase 5B documents
+    "PHASE_5B_SESSION_COMPLETE_OCT_22.md",
+    "PHASE_5B_WEEK_1_COMPLETION.md",
+    "PHASE_5B_DEPLOYMENT_READY.md",
+    "PHASE_5B_OCT21_FINAL_CHECKLIST.md",
+    "PHASE_5B_OCT21_SESSION_COMPLETE.md",
+    "PHASE_5B_QUICK_TEST_GUIDE.md",
+    "PHASE_5B_OCT21_COMPLETE_SUMMARY.md",
+    "PHASE_5B_CALENDAR_ENHANCEMENTS.md",
+    "PHASE_5B_OCT21_FINDINGS.md",
+    "PHASE_5B_TODAY_ROADMAP.md",
+    "PHASE_5B_COMPLETE_DELIVERABLES.md",
+    "PHASE_5B_READY_TO_TEST.md",
+    "PHASE_5B_TESTING_QUICK_START.md",
+    "PHASE_5B_EXECUTION_SUMMARY.md",
+    "PHASE_5B_DOCUMENTATION_COMPLETE_SUMMARY.md",
+    "PHASE_5B_TESTING_DOCUMENTATION_LIBRARY.md",
+    "PHASE_5B_SPECIFICATION_DOCUMENT.md",
+    
+    # Old recovery/restoration docs
+    "RESTORATION_CHECKLIST.md",
+    "RECOVERY_QUICK_SUMMARY.md",
+    "RECOVERY_AUDIT_REPORT.md",
+    
+    # Old IP/Asset phase documents
+    "PHASE_13_YOU_ARE_HERE.md",
+    "PHASE_13_FINAL_REPORT.md",
+    "PHASE_13_QUICK_REFERENCE.md",
+    "PHASE_13_ASSET_ECOSYSTEM_EXPANSION_COMPLETE.md",
+    "PHASE_11_REAL_DATA_EXTRACTION_COMPLETE.md",
+    "IP_IMPLEMENTATION_FINAL_STATUS.md",
+    "IP_ASSETS_EXECUTIVE_SUMMARY.md",
+    "IP_ASSETS_QUICK_REFERENCE.md",
+    "IP_ASSETS_COMPLETE_DOCUMENTATION.md",
+    
+    # Deprecated specs
+    "LIFESYNC_WEB_UPGRADE_SPECIFICATION.md",
+    "MNI_WEB_APPS_UPGRADE_PLAN.md",
+    "MNI_ECOSYSTEM_UPGRADE_SUMMARY.md",
+    "UPGRADE_EXECUTIVE_SUMMARY.md",
+    
+    # Old deployment updates
+    "DEPLOYMENT_UPDATE_DECEMBER_2025.md",  # Future date, likely placeholder
+    "INTEGRATION_UPDATE_OCTOBER_12_2025.md",
+    "DEPLOYMENT_AND_REVISED_PLAN_SUMMARY.md",
+    
+    # Redundant quick refs
+    "QUICK_REFERENCE_CARD.md",
+    "QUICK_LOGIN_VERIFICATION.md",
+    
+    # Old dashboard documents (superseded by Phase 6)
+    "DASHBOARD_PROJECT_COMPLETION_SUMMARY.md",
+    "DASHBOARD_PHASE3_COMPLETION_REPORT.md",
+    "DASHBOARD_PHASE1_COMPLETION_REPORT.md",
+    "DASHBOARD_FILE_MANIFEST.md",
+    "DASHBOARD_PHASE4_TESTING_GUIDE.md",
+    
+    # Other redundant/old
+    "FEEDBACK_FIXES_APPLIED.md",
+    "FINAL_SUMMARY.md",  # Use PHASE_6_EXECUTIVE_SUMMARY.md
+    "REMAINING_WORK_ROADMAP_OCTOBER_9_2025.md",
+    "HIGH_PRIORITY_COMPLETE_OCTOBER_9_2025.md",
+    "FAMILY_DATA_CORRECTIONS_OCTOBER_9_2025.md",
+    "FAMILY_STRUCTURE_CORRECTION_2_OCTOBER_8_2025.md",
+    "FAMILY_STRUCTURE_CORRECTION_OCTOBER_8_2025.md",
+    "COMPLETE_FAMILY_CORRECTION_SUMMARY_OCTOBER_8_2025.md",
+    "PERSONALIZATION_ENHANCEMENT_PLAN_OCTOBER_9_2025.md",
+    "COMPREHENSIVE_SESSION_SUMMARY_OCTOBER_9_2025.md",
+    "PHASE_4_TRAINING_COMPLETION_OCTOBER_8_2025.md",
+    "PHASE_3_CULTURAL_INTEGRATION_COMPLETED.md",
+    "PHASE_3_PROMOTIONAL_COMPLETED.md",
+    "MOTHER_FAMILY_DIRECTORY_UPDATE_SEPTEMBER_29_2025.md",
+    "INTRANET_AUDIT_AND_I18N_REPORT.md",
+    "ECOSYSTEM_I18N_COMPLETION_REPORT.md",
+    "PROJECT_COST_ANALYSIS_SEPTEMBER_29_2025.md",
+    "SOLO_SUCCESSION_SETUP.md",
+    "FAMILY_BRIEFING_SUMMARY.md",
+    "MNI_COMPLETENESS_AUDIT.md",
+    "PROJECT_COMPLETION_STATUS.md",
+    "OUTSTANDING_ITEMS_AND_TIMELINE.md",
+    "DELIVERY_SUMMARY_COMPLETE.md",
+    "DELIVERABLES_MANIFEST.md",
+    "SONNY_FEATURE_AUDIT_OCTOBER_14_2025.md",
+    "SONNY_IMPLEMENTATION_PROGRESS_OCTOBER_14_2025.md",
+    "TIMELINE_UPDATE_VERIFICATION.md",
+    "COMPREHENSIVE_FIX_REPORT_OCTOBER_14_2025.md",
+    "CONTACT_MANAGEMENT_COMPLETE_OCTOBER_14_2025.md",
+    "DEPLOYMENT_SUCCESS_OCTOBER_14_2025.md",
+    "DEPLOYMENT_SUCCESS_OCTOBER_15_2025.md",
+    "PROJECT_COMPLETION_REPORT.md",
+    "PWA_OPTIMIZATION_REPORT.md",
+    "TESTING_QA_REPORT.md",
+    "REVISED_ECOSYSTEM_PLAN_v2.0.md",
+    "SPECIFICATION_UPDATE_SUMMARY_OCTOBER_22.md",
+    "FINAL_ARCHITECTURE_SUMMARY.md",
+    "COMPLETION_CHECKLIST_OCTOBER_22.md",
+    "FINAL_VERIFICATION_CHECKLIST.md",
+    "WEB_APP_ERROR_FREE_GUIDE.md",
+    "FEATURE_ROADMAP_WEB_VS_NATIVE.md",
+    "PRODUCTION_READINESS_CHECKLIST.md",
+    "PHASE_3_DEPLOYMENT_VERIFICATION_CHECKLIST.md",
+    "dashboard.txt"  # Text file, not markdown
+)
+
+# Move files to archive
+$movedCount = 0
+$notFoundCount = 0
+
+foreach ($file in $filesToArchive) {
+    $sourcePath = Join-Path $docsPath $file
+    if (Test-Path $sourcePath) {
+        try {
+            Move-Item -Path $sourcePath -Destination $archivePath -Force
+            Write-Host "✅ Archived: $file" -ForegroundColor Green
+            $movedCount++
+        }
+        catch {
+            Write-Host "❌ Error moving $file : $_" -ForegroundColor Red
+        }
+    }
+    else {
+        Write-Host "⚠️  Not found: $file" -ForegroundColor Yellow
+        $notFoundCount++
+    }
+}
+
+Write-Host "`n📊 Archive Summary:" -ForegroundColor Cyan
+Write-Host "   Moved: $movedCount files" -ForegroundColor Green
+Write-Host "   Not found: $notFoundCount files" -ForegroundColor Yellow
+Write-Host "   Archive location: $archivePath" -ForegroundColor Cyan

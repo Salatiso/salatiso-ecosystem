@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp by Salatiso - Business Basics for Everyone</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .level-badge {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .intro-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .business-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .business-type-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .business-type-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .business-type-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .business-type-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .ubuntu-section {
+            background: linear-gradient(135deg, var(--ubuntu-orange), #ff6b35);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .age-versions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .age-version {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .age-version h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #d4550a;
+        }
+
+        .btn.secondary {
+            background: var(--primary-blue);
+        }
+
+        .btn.secondary:hover {
+            background: #152c6b;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        footer .footer-section h4 {
+            color: var(--ubuntu-orange);
+            margin-bottom: 1rem;
+        }
+
+        footer .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">BizHelp by Salatiso</div>
+            <div class="tagline">Business Basics for Everyone</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;" data-translate="customize_document">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label data-translate="your_name">Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label data-translate="family_name">Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label data-translate="date">Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label data-translate="document_version">Document Version:</label>
+                <input type="text" id="docVersion" value="Personal Guide v1.0" placeholder="e.g., Personal Guide v1.0">
+            </div>
+            <div class="form-field">
+                <label data-translate="language_label">Language / Taal:</label>
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="af">Afrikaans</option>
+                    <option value="nr">isiNdebele</option>
+                    <option value="xh">isiXhosa</option>
+                    <option value="zu">isiZulu</option>
+                    <option value="nso">Sepedi</option>
+                    <option value="st">Sesotho</option>
+                    <option value="tn">Setswana</option>
+                    <option value="ss">siSwati</option>
+                    <option value="ve">Tshivenda</option>
+                    <option value="ts">Xitsonga</option>
+                </select>
+            </div>
+            <button onclick="applyCustomization()" data-translate="apply_changes" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" data-translate="hide_panel" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;" data-translate="share_guide">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" data-translate="customize_document_btn" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+
+        <div class="level-badge">Personal • Level 1</div>
+
+        <div class="intro-section">
+            <h1>🏢 What is a Business? Understanding the Basics</h1>
+            <p>A business is simply a way to create value and solve problems for people. Whether you're 8 years old selling homemade lemonade or 80 years old running a consulting company, business is about making a positive difference while creating opportunities for yourself and your family.</p>
+            <p style="font-size: 1.2rem; font-weight: bold; color: var(--ubuntu-orange); margin-top: 1rem;">
+                "Business is not just about money—it's about building a better future for everyone involved." 🌟
+            </p>
+        </div>
+
+        <div class="business-types-grid">
+            <div class="business-type-card">
+                <div class="icon">👤</div>
+                <h3>Sole Proprietor</h3>
+                <p>You own and run everything yourself. Simple to start, but you're personally responsible for everything. Perfect for side hustles and small operations.</p>
+                <p><strong>Examples:</strong> Freelance writing, tutoring, selling crafts, gardening services</p>
+            </div>
+
+            <div class="business-type-card">
+                <div class="icon">👥</div>
+                <h3>Partnership</h3>
+                <p>Two or more people share ownership and responsibilities. Great for families or friends who want to work together. Everyone shares the profits and risks.</p>
+                <p><strong>Examples:</strong> Family restaurant, consulting firm, creative agency, farming cooperative</p>
+            </div>
+
+            <div class="business-type-card">
+                <div class="icon">🏢</div>
+                <h3>Company (Pty) Ltd</h3>
+                <p>A formal legal entity separate from its owners. Offers protection and credibility. Requires registration with CIPC but provides professional structure.</p>
+                <p><strong>Examples:</strong> Family holding companies, tech startups, manufacturing businesses, investment firms</p>
+            </div>
+        </div>
+
+        <div class="ubuntu-section">
+            <h2 data-translate="main_title">🤝 Ubuntu in Business: Building Together</h2>
+            <p>In South African culture, Ubuntu means "I am because we are." In business, this means:</p>
+            <ul style="text-align: left; max-width: 600px; margin: 1rem auto; background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px;">
+                <li><strong>Community First:</strong> Your business should benefit your community, not just yourself</li>
+                <li><strong>Shared Success:</strong> When your business grows, it creates opportunities for others</li>
+                <li><strong>Family Legacy:</strong> Building businesses that last generations and strengthen family bonds</li>
+                <li><strong>Reciprocity:</strong> Give back to the community that supports your business</li>
+            </ul>
+            <p style="font-style: italic; margin-top: 1rem;">
+                "A person is a person through other people" - Ubuntu philosophy
+            </p>
+        </div>
+
+        <div style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--primary-blue); text-align: center;">Why Businesses Matter to Families</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">💰</div>
+                    <h4>Financial Security</h4>
+                    <p>Create income streams that support your family and build wealth for future generations.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🎓</div>
+                    <h4>Learning & Growth</h4>
+                    <p>Every business teaches valuable skills like problem-solving, communication, and leadership.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">👨🏾‍👩🏾‍👧🏾‍👦🏾</div>
+                    <h4>Family Bonding</h4>
+                    <p>Working together on business projects strengthens family relationships and creates shared memories.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🌍</div>
+                    <h4>Community Impact</h4>
+                    <p>Successful businesses create jobs, solve problems, and improve the communities they serve.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="age-versions">
+            <div class="age-version">
+                <h4>👶 Kids (8-12)</h4>
+                <p>Think of business like a game! You find problems people have and create fun solutions. Like making friendship bracelets for your friends or helping neighbors with their gardens.</p>
+                <p><strong>Start Small:</strong> Lemonade stand, car wash, pet sitting</p>
+            </div>
+
+            <div class="age-version">
+                <h4>🧑‍🎓 Teens (13-17)</h4>
+                <p>Business is about turning your hobbies and skills into something people will pay for. Use your phone and social media to reach customers. Perfect time to learn about money and responsibility.</p>
+                <p><strong>Ideas:</strong> Social media management, tutoring, content creation, app development</p>
+            </div>
+
+            <div class="age-version">
+                <h4>👨‍💼 Adults (18+)</h4>
+                <p>Professional businesses require planning, legal compliance, and market research. Focus on solving real problems with sustainable solutions that can grow and create jobs.</p>
+                <p><strong>Consider:</strong> Consulting, manufacturing, technology services, healthcare</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="color: var(--primary-blue);">Ready to Start Your Business Journey?</h2>
+            <p>Every successful business starts with understanding the basics. The next step is developing your first business idea!</p>
+            <a href="https://bizhelp-lifecv.web.app/wizard" class="btn">Start with BizHelp Wizard</a>
+            <a href="mailto:hub@salatiso.com" class="btn secondary">Get Family Support</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🌟 BizHelp Ecosystem</h4>
+                <ul>
+                    <li><a href="https://bizhelp-lifecv.web.app/wizard">BizHelp Wizard</a></li>
+                    <li><a href="https://lifecv-d2724.web.app/training/">LifeCV Training</a></li>
+                    <li><a href="https://salatiso.com">Salatiso Platform</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>📚 Learning Paths</h4>
+                <ul>
+                    <li>Personal First (Level 1-2)</li>
+                    <li>Family First (Level 2-3)</li>
+                    <li>Professional (Level 3-5)</li>
+                    <li>Sazi Life Academy</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>📞 Support</h4>
+                <p>Wizard: bizhelp-lifecv.web.app/wizard</p>
+                <p>Support: hub@salatiso.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>💡 Remember</h4>
+                <p>Personal First • Family First</p>
+                <p>Powered by Salatiso</p>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.8;">© 2025 BizHelp by Salatiso - Family Business Legacy. Prepared for Professional User on October 6, 2025</p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                customize_document: "✏️ Customize This Document",
+                your_name: "Your Name:",
+                family_name: "Family/Entity Name:",
+                date: "Date:",
+                document_version: "Document Version:",
+                language_label: "Language / Taal:",
+                apply_changes: "Apply Changes",
+                hide_panel: "Hide Panel",
+                customize_document_btn: "⚙️ Customize Document",
+                share_guide: "📤 Share This Guide",
+                main_title: "🤝 Ubuntu in Business: Building Together",
+            },
+            af: {
+                customize_document: "✏️ Pas Hierdie Dokument Aan",
+                your_name: "Jou Naam:",
+                family_name: "Familie/Entiteit Naam:",
+                date: "Datum:",
+                document_version: "Dokument Weergawe:",
+                language_label: "Taal / Taal:",
+                apply_changes: "Pas Veranderinge Toe",
+                hide_panel: "Versteek Paneel",
+                customize_document_btn: "⚙️ Pas Dokument Aan",
+                share_guide: "📤 Deel Hierdie Gids",
+                main_title: "🤝 Ubuntu in Besigheid: Saam Bou",
+            },
+            nr: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Ibizo Lakho:",
+                family_name: "Ibizo Lemndeni/Lesikhungo:",
+                date: "Umhla:",
+                document_version: "Uhlobo Lwedokumenti:",
+                language_label: "Ulimi / Ulimi:",
+                apply_changes: "Sebenzisa Izinguquko",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadana",
+                main_title: "🤝 Ubuntu ebhizinisini: Sakha ndawonye",
+            },
+            xh: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Igama Lakho:",
+                family_name: "Igama Losapho/Lombutho:",
+                date: "Umhla:",
+                document_version: "Uhlobo Lwedokumenti:",
+                language_label: "Ulwimi / Ulwimi:",
+                apply_changes: "Sebenzisa Utshintsho",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadana",
+                main_title: "🤝 Ubuntu kwishishini: Sakha kunye",
+            },
+            zu: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Ibizo Lakho:",
+                family_name: "Ibizo Lomndeni/Lesikhungo:",
+                date: "Usuku:",
+                document_version: "Uhlobo Lwedokumenti:",
+                language_label: "Ulimi / Ulimi:",
+                apply_changes: "Sebenzisa Izinguquko",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadana",
+                main_title: "🤝 Ubuntu ebhizinisini: Sakha ndawonye",
+            },
+            nso: {
+                customize_document: "✏️ Fetola Tokumente Ye",
+                your_name: "Leina La Gago:",
+                family_name: "Leina La Lapa/Le Entiti:",
+                date: "Letšatši:",
+                document_version: "Mofuta wa Tokumente:",
+                language_label: "Polelo / Polelo:",
+                apply_changes: "Diriša Diphetogo",
+                hide_panel: "Fihla Phanele",
+                customize_document_btn: "⚙️ Fetola Tokumente",
+                share_guide: "📤 Abelana ka Tataiso Ye",
+                main_title: "🤝 Ubuntu kgwehong: Aga mmogo",
+            },
+            st: {
+                customize_document: "✏️ Fetola Tokomane Ena",
+                your_name: "Lebitso La Hao:",
+                family_name: "Lebitso La Lelapa/Entiti:",
+                date: "Letsatsi:",
+                document_version: "Mofuta wa Tokomane:",
+                language_label: "Puo / Puo:",
+                apply_changes: "Sebelisa Liphetoho",
+                hide_panel: "Pata Phanele",
+                customize_document_btn: "⚙️ Fetola Tokomane",
+                share_guide: "📤 Arolelana ka Tataiso Ena",
+                main_title: "🤝 Ubuntu khoebo: Aha hammoho",
+            },
+            tn: {
+                customize_document: "✏️ Fetola Tokumente Ye",
+                your_name: "Leina La Gago:",
+                family_name: "Leina La Lapa/Le Entiti:",
+                date: "Letšatši:",
+                document_version: "Mofuta wa Tokumente:",
+                language_label: "Polelo / Polelo:",
+                apply_changes: "Diriša Diphetogo",
+                hide_panel: "Fihla Phanele",
+                customize_document_btn: "⚙️ Fetola Tokumente",
+                share_guide: "📤 Abelana ka Tataiso Ye",
+                main_title: "🤝 Ubuntu kgwehong: Aga mmogo",
+            },
+            ss: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Libito Lakho:",
+                family_name: "Libito Lemndzaba/Lesikhungo:",
+                date: "Lilanga:",
+                document_version: "Inhlobo Yedokumenti:",
+                language_label: "Lulwimi / Lulwimi:",
+                apply_changes: "Sebentisa Tinchubo",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadzi",
+                main_title: "🤝 Ubuntu ebhizinisini: Sakha ndzawonye",
+            },
+            ve: {
+                customize_document: "✏️ Dziṅwalisele Ḓokhumente Ḽi",
+                your_name: "Dzina Ḽa Ḽu:",
+                family_name: "Dzina Ḽa Muya/Dzithavhelo:",
+                date: "Ḓuvha:",
+                document_version: "Mvele wa Ḓokhumente:",
+                language_label: "Ḽuambo / Ḽuambo:",
+                apply_changes: "Shumisani Tshanduko",
+                hide_panel: "Dzumbani Phaneli",
+                customize_document_btn: "⚙️ Dziṅwalisele Ḓokhumente",
+                share_guide: "📤 Kumedzani Ḽiṅwaliso Ḽi",
+                main_title: "🤝 Ubuntu kha mushumo: Ḓi vhule ḓi tshi ḓi vhule",
+            },
+            ts: {
+                customize_document: "✏️ Lungiselela Dokumente Leyi",
+                your_name: "Vito Ra Wena:",
+                family_name: "Vito Ra Nandzu/Xiyimo:",
+                date: "Siku:",
+                document_version: "Muxaka wa Dokumente:",
+                language_label: "Ririmi / Ririmi:",
+                apply_changes: "Tirhisa Ku Cinca",
+                hide_panel: "Tumbeta Phaneli",
+                customize_document_btn: "⚙️ Lungiselela Dokumente",
+                share_guide: "📤 Avelana hi Buku Leyi",
+                main_title: "🤝 Ubuntu eka ntirho: Akaneta swin'we",
+            },
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('languageSelect').value;
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Customization Functions
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value;
+            const familyName = document.getElementById('familyName').value;
+            const docDate = document.getElementById('docDate').value;
+            const docVersion = document.getElementById('docVersion').value;
+
+            // Update document title
+            document.title = `Business Basics - ${familyName || 'Family Business'} - ${docVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `Business Basics for ${familyName || 'Everyone'} - ${docVersion}`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) {
+                footer.innerHTML = `© 2025 BizHelp by Salatiso - ${familyName || 'Family Business'} Legacy. Prepared for ${userName || 'Professional User'} on ${new Date(docDate).toLocaleDateString()}`;
+            }
+
+            alert('✅ Document customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('docDate').value = today;
+        });
+    </script>
+</body>
+</html>

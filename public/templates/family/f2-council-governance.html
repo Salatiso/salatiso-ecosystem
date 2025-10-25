@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp by Salatiso - Family Business Council Governance Guide</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .level-badge {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .council-overview {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .council-overview h1 {
+            margin-bottom: 1rem;
+        }
+
+        .council-structure {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .structure-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .structure-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .structure-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .meeting-guide {
+            background: var(--bg-light);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .meeting-guide h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .meeting-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .process-step {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--ubuntu-orange);
+        }
+
+        .decision-framework {
+            background: var(--success-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .decision-framework h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .approval-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .approval-level {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .conflict-resolution {
+            background: var(--warning-amber);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .conflict-resolution h2 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .resolution-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .resolution-step {
+            background: rgba(255,255,255,0.8);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .templates-section {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .templates-section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .template-card {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .template-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .age-participation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .age-group {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .age-group .age-badge {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .age-group h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #d4550a;
+        }
+
+        .btn.secondary {
+            background: var(--primary-blue);
+        }
+
+        .btn.secondary:hover {
+            background: #152c6b;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        footer .footer-section h4 {
+            color: var(--ubuntu-orange);
+            margin-bottom: 1rem;
+        }
+
+        footer .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">BizHelp by Salatiso</div>
+            <div class="tagline">Family Business Council: Governance Guide</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label>Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label>Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label>Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label>Document Version:</label>
+                <input type="text" id="docVersion" value="Governance Guide v1.0" placeholder="e.g., Governance Guide v1.0">
+            </div>
+            <button onclick="applyCustomization()" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+
+        <div class="level-badge">Family • Level 2</div>
+
+        <div class="council-overview">
+            <h1>🏛️ The Family Business Council</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+                Your family's decision-making body that ensures fairness, wisdom, and long-term success
+            </p>
+            <p>
+                A Family Business Council is like a family parliament. It brings together representatives from all generations
+                to make important decisions, resolve conflicts, and plan for the future. The council ensures that business
+                decisions consider family values and long-term impact.
+            </p>
+        </div>
+
+        <div style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--primary-blue); text-align: center;">Why You Need a Family Council</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">⚖️</div>
+                    <h4>Fair Decision Making</h4>
+                    <p>Ensures all family members have a voice and decisions are made fairly, not based on power or position.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🔮</div>
+                    <h4>Long-term Vision</h4>
+                    <p>Focuses on multi-generational success rather than short-term gains or individual interests.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🛡️</div>
+                    <h4>Conflict Prevention</h4>
+                    <p>Provides structured ways to discuss issues before they become major family or business problems.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📚</div>
+                    <h4>Knowledge Transfer</h4>
+                    <p>Creates regular opportunities for elders to share wisdom and younger members to learn business skills.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="council-structure">
+            <div class="structure-card">
+                <div class="icon">👑</div>
+                <h3>Council Chairperson</h3>
+                <p>Facilitates meetings, ensures fair participation, and represents the council's decisions. Often rotates annually to give different family members leadership experience.</p>
+            </div>
+
+            <div class="structure-card">
+                <div class="icon">📝</div>
+                <h3>Secretary</h3>
+                <p>Records meeting minutes, maintains decision logs, and ensures follow-up on action items. Keeps the family's institutional memory.</p>
+            </div>
+
+            <div class="structure-card">
+                <div class="icon">👨🏾‍⚖️</div>
+                <h3>Family Elders</h3>
+                <p>Provide wisdom, experience, and continuity. Ensure family values and traditions are preserved in business decisions.</p>
+            </div>
+
+            <div class="structure-card">
+                <div class="icon">🚀</div>
+                <h3>Young Leaders</h3>
+                <p>Bring fresh ideas, technology skills, and future vision. Learn governance while contributing to family success.</p>
+            </div>
+
+            <div class="structure-card">
+                <div class="icon">👥</div>
+                <h3>All Family Members</h3>
+                <p>Everyone participates according to their age and interest level. Even young children can observe and learn council procedures.</p>
+            </div>
+
+            <div class="structure-card">
+                <div class="icon">⚖️</div>
+                <h3>Independent Advisors</h3>
+                <p>Professional advisors (legal, financial) can be invited for specific topics, but family makes the final decisions.</p>
+            </div>
+        </div>
+
+        <div class="meeting-guide">
+            <h2>📅 How Council Meetings Work</h2>
+            <p>Regular meetings create rhythm and predictability. Start with monthly meetings, then adjust based on your family's needs.</p>
+
+            <div class="meeting-process">
+                <div class="process-step">
+                    <h4>1. Preparation (1 week before)</h4>
+                    <ul>
+                        <li>Set agenda with chairperson</li>
+                        <li>Share agenda with all members</li>
+                        <li>Prepare reports or proposals</li>
+                        <li>Review previous meeting minutes</li>
+                    </ul>
+                </div>
+
+                <div class="process-step">
+                    <h4>2. Opening (10 minutes)</h4>
+                    <ul>
+                        <li>Welcome and attendance check</li>
+                        <li>Review agenda and time allocation</li>
+                        <li>Set ground rules for discussion</li>
+                        <li>Family sharing or check-in</li>
+                    </ul>
+                </div>
+
+                <div class="process-step">
+                    <h4>3. Business Discussion (60-90 minutes)</h4>
+                    <ul>
+                        <li>Review action items from last meeting</li>
+                        <li>Discuss agenda items in order</li>
+                        <li>Allow time for questions and discussion</li>
+                        <li>Make decisions using approval framework</li>
+                    </ul>
+                </div>
+
+                <div class="process-step">
+                    <h4>4. Closing (20 minutes)</h4>
+                    <ul>
+                        <li>Summarize decisions and action items</li>
+                        <li>Schedule next meeting</li>
+                        <li>Positive close and appreciation</li>
+                        <li>Record and distribute minutes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1rem; background: white; border-radius: 4px;">
+                <h4 style="color: var(--primary-blue);">Meeting Best Practices</h4>
+                <ul style="column-count: 2; column-gap: 2rem;">
+                    <li>Start and end on time</li>
+                    <li>One person speaks at a time</li>
+                    <li>Focus on facts, not personalities</li>
+                    <li>Listen more than you speak</li>
+                    <li>Respect different opinions</li>
+                    <li>Follow up on commitments</li>
+                    <li>Rotate meeting roles</li>
+                    <li>Celebrate achievements</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="decision-framework">
+            <h2>✅ Decision-Making Framework</h2>
+            <p>Different types of decisions need different levels of approval. This prevents conflicts and ensures important decisions get proper consideration.</p>
+
+            <div class="approval-matrix">
+                <div class="approval-level">
+                    <h4>🔵 Individual Decisions</h4>
+                    <p>Day-to-day business operations, small purchases under R1,000</p>
+                    <p><strong>Approval:</strong> Business owner or manager</p>
+                </div>
+
+                <div class="approval-level">
+                    <h4>🟡 Family Council Review</h4>
+                    <p>New business ventures, partnerships, significant expenses (R1,000-R50,000)</p>
+                    <p><strong>Approval:</strong> Simple majority (50% + 1)</p>
+                </div>
+
+                <div class="approval-level">
+                    <h4>🟠 Family Council Approval</h4>
+                    <p>Major investments, company restructuring, succession changes</p>
+                    <p><strong>Approval:</strong> 60% supermajority</p>
+                </div>
+
+                <div class="approval-level">
+                    <h4>🔴 Full Family Consensus</h4>
+                    <p>Sale of family business, major asset sales, fundamental changes</p>
+                    <p><strong>Approval:</strong> 80% or higher</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem; text-align: center;">
+                <strong>Key Principle:</strong> Important decisions get more scrutiny. Family unity matters more than speed.
+            </p>
+        </div>
+
+        <div class="conflict-resolution">
+            <h2>🤝 Resolving Family Business Conflicts</h2>
+            <p>Conflicts are normal in family businesses. The key is having fair processes to resolve them before they damage relationships or the business.</p>
+
+            <div class="resolution-steps">
+                <div class="resolution-step">
+                    <h4>1. Acknowledge the Issue</h4>
+                    <p>Bring the conflict to the council agenda. Don't let problems fester in private conversations.</p>
+                </div>
+
+                <div class="resolution-step">
+                    <h4>2. Understand All Perspectives</h4>
+                    <p>Each person involved gets time to explain their viewpoint without interruption.</p>
+                </div>
+
+                <div class="resolution-step">
+                    <h4>3. Focus on Interests, Not Positions</h4>
+                    <p>Ask "why" questions to understand underlying needs and concerns.</p>
+                </div>
+
+                <div class="resolution-step">
+                    <h4>4. Generate Options Together</h4>
+                    <p>Brainstorm multiple solutions that address everyone's key interests.</p>
+                </div>
+
+                <div class="resolution-step">
+                    <h4>5. Choose Fair Solution</h4>
+                    <p>Use council voting procedures. If needed, involve a neutral mediator.</p>
+                </div>
+
+                <div class="resolution-step">
+                    <h4>6. Follow Up & Learn</h4>
+                    <p>Check that the solution works. Discuss what you learned for future conflicts.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>When to Get External Help:</strong> If conflicts involve legal issues, significant financial disputes, or threaten family relationships,
+                consider professional mediation or family business consultants.
+            </p>
+        </div>
+
+        <div class="templates-section">
+            <h2>📋 Council Templates & Tools</h2>
+            <p>Use these templates to make your council meetings more effective and professional.</p>
+
+            <div class="template-grid">
+                <div class="template-card">
+                    <h4>📅 Meeting Agenda Template</h4>
+                    <ul>
+                        <li>Meeting date, time, location</li>
+                        <li>Attendees and roles</li>
+                        <li>Agenda items with time allocations</li>
+                        <li>Previous meeting action items</li>
+                    </ul>
+                    <button onclick="showAgendaTemplate()" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">View Template</button>
+                </div>
+
+                <div class="template-card">
+                    <h4>📝 Decision Log</h4>
+                    <ul>
+                        <li>Decision date and context</li>
+                        <li>Options considered</li>
+                        <li>Decision made and rationale</li>
+                        <li>Implementation timeline</li>
+                    </ul>
+                    <button onclick="showDecisionLog()" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">View Template</button>
+                </div>
+
+                <div class="template-card">
+                    <h4>⭐️ Validator Scorecard</h4>
+                    <ul>
+                        <li>Family member assessment criteria</li>
+                        <li>Business contribution metrics</li>
+                        <li>Personal development goals</li>
+                        <li>Annual review process</li>
+                    </ul>
+                    <button onclick="showScorecard()" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">View Template</button>
+                </div>
+
+                <div class="template-card">
+                    <h4>🤝 Family Charter</h4>
+                    <ul>
+                        <li>Family mission and values</li>
+                        <li>Council roles and responsibilities</li>
+                        <li>Decision-making processes</li>
+                        <li>Conflict resolution procedures</li>
+                    </ul>
+                    <button onclick="showFamilyCharter()" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">View Template</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="age-participation">
+            <div class="age-group">
+                <div class="age-badge">Ages 8-12</div>
+                <h4>🌟 Young Observers & Contributors</h4>
+                <ul>
+                    <li>Attend meetings as observers</li>
+                    <li>Present "kid reports" on family activities</li>
+                    <li>Learn meeting procedures and respect</li>
+                    <li>Participate in fun, low-stakes decisions</li>
+                </ul>
+                <p><strong>Goal:</strong> Learn governance while feeling included</p>
+            </div>
+
+            <div class="age-group">
+                <div class="age-badge">Ages 13-17</div>
+                <h4>🚀 Teen Decision Makers</h4>
+                <ul>
+                    <li>Full voting rights on appropriate issues</li>
+                    <li>Lead specific projects or initiatives</li>
+                    <li>Present business ideas and proposals</li>
+                    <li>Learn to make data-driven arguments</li>
+                </ul>
+                <p><strong>Goal:</strong> Develop leadership and decision-making skills</p>
+            </div>
+
+            <div class="age-group">
+                <div class="age-badge">Ages 18-35</div>
+                <h4>💼 Young Adult Leaders</h4>
+                <ul>
+                    <li>Serve in council leadership roles</li>
+                    <li>Drive business strategy and innovation</li>
+                    <li>Mentor younger family members</li>
+                    <li>Balance individual and family interests</li>
+                </ul>
+                <p><strong>Goal:</strong> Lead while learning from elders</p>
+            </div>
+
+            <div class="age-group">
+                <div class="age-badge">Ages 36+</div>
+                <h4>🧠 Elders & Mentors</h4>
+                <ul>
+                    <li>Provide wisdom and continuity</li>
+                    <li>Ensure family values are upheld</li>
+                    <li>Support smooth leadership transitions</li>
+                    <li>Preserve institutional knowledge</li>
+                </ul>
+                <p><strong>Goal:</strong> Transfer wisdom while staying engaged</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="color: var(--primary-blue);">Ready to Start Your Family Council?</h2>
+            <p>Begin with a simple first meeting. Focus on building relationships and trust before tackling complex decisions.</p>
+            <button onclick="planFirstMeeting()" class="btn">📅 Plan First Council Meeting</button>
+            <a href="mailto:hub@salatiso.com" class="btn secondary">Get Governance Support</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🌟 BizHelp Ecosystem</h4>
+                <ul>
+                    <li><a href="https://bizhelp-lifecv.web.app/wizard">BizHelp Wizard</a></li>
+                    <li><a href="https://lifecv-d2724.web.app/training/">LifeCV Training</a></li>
+                    <li><a href="https://salatiso.com">Salatiso Platform</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>📚 Learning Paths</h4>
+                <ul>
+                    <li>Personal First (Level 1-2)</li>
+                    <li>Family First (Level 2-3)</li>
+                    <li>Professional (Level 3-5)</li>
+                    <li>Sazi Life Academy</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>🏛️ Governance Resources</h4>
+                <ul>
+                    <li>Meeting Templates</li>
+                    <li>Decision Frameworks</li>
+                    <li>Conflict Resolution</li>
+                    <li>Succession Planning</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>💡 Remember</h4>
+                <p>Personal First • Family First</p>
+                <p>Powered by Salatiso</p>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.8;">© 2025 BizHelp by Salatiso - Family Business Legacy. Prepared for Professional User on October 6, 2025</p>
+    </footer>
+
+    <script>
+        // Customization Functions
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value;
+            const familyName = document.getElementById('familyName').value;
+            const docDate = document.getElementById('docDate').value;
+            const docVersion = document.getElementById('docVersion').value;
+
+            // Update document title
+            document.title = `Family Council Guide - ${familyName || 'Family Business'} - ${docVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `Family Business Council: Governance Guide - ${docVersion}`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) {
+                footer.innerHTML = `© 2025 BizHelp by Salatiso - ${familyName || 'Family Business'} Legacy. Prepared for ${userName || 'Professional User'} on ${new Date(docDate).toLocaleDateString()}`;
+            }
+
+            alert('✅ Document customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Template Functions
+        function showAgendaTemplate() {
+            const template = `
+FAMILY BUSINESS COUNCIL MEETING AGENDA
+
+Meeting Date: [Date]
+Time: [Start Time] - [End Time]
+Location: [Physical location or virtual link]
+Chairperson: [Name]
+Secretary: [Name]
+
+ATTENDEES:
+- [List expected attendees and roles]
+
+AGENDA ITEMS:
+
+1. Opening & Welcome (10 minutes)
+   - Attendance check
+   - Review of previous meeting minutes
+   - Agenda approval
+
+2. Action Items Review (15 minutes)
+   - [Item 1 from previous meeting]
+   - [Item 2 from previous meeting]
+   - [Item 3 from previous meeting]
+
+3. Business Discussion Items (60 minutes)
+   - [Topic 1] - Presenter: [Name] - Time: [minutes]
+   - [Topic 2] - Presenter: [Name] - Time: [minutes]
+   - [Topic 3] - Presenter: [Name] - Time: [minutes]
+
+4. New Business & Open Discussion (20 minutes)
+   - Any other matters
+
+5. Closing (10 minutes)
+   - Decision summary
+   - Action items assignment
+   - Next meeting date
+   - Appreciation
+
+MATERIALS NEEDED:
+- Previous meeting minutes
+- Any reports or proposals
+- Decision log
+- Refreshments
+
+FOLLOW-UP:
+- Minutes distributed within 3 days
+- Action items tracked to completion
+            `;
+            alert(template);
+        }
+
+        function showDecisionLog() {
+            const template = `
+FAMILY BUSINESS COUNCIL DECISION LOG
+
+Date: [Date]
+Topic: [Brief description]
+Decision Maker(s): [Who made the decision]
+
+CONTEXT:
+[Why was this decision needed? What problem were we solving?]
+
+OPTIONS CONSIDERED:
+1. [Option 1] - Pros: [list] Cons: [list]
+2. [Option 2] - Pros: [list] Cons: [list]
+3. [Option 3] - Pros: [list] Cons: [list]
+
+DECISION MADE:
+[What was decided? Include specific details]
+
+RATIONALE:
+[Why was this option chosen? What factors were most important?]
+
+IMPLEMENTATION:
+- Responsible: [Who will implement]
+- Timeline: [When will it be done]
+- Resources needed: [What support is required]
+- Success measures: [How will we know it worked]
+
+FOLLOW-UP DATE: [When will we review this decision]
+            `;
+            alert(template);
+        }
+
+        function showScorecard() {
+            const template = `
+FAMILY BUSINESS VALIDATOR SCORECARD
+
+Family Member: [Name]
+Review Period: [Date range]
+Reviewer: [Council chairperson or elder]
+
+BUSINESS CONTRIBUTION (1-5 scale):
+- Reliability: [Score] - [Comments]
+- Initiative: [Score] - [Comments]  
+- Teamwork: [Score] - [Comments]
+- Results: [Score] - [Comments]
+
+FAMILY VALUES ALIGNMENT (1-5 scale):
+- Respect: [Score] - [Comments]
+- Responsibility: [Score] - [Comments]
+- Ubuntu: [Score] - [Comments]
+- Growth: [Score] - [Comments]
+
+PERSONAL DEVELOPMENT:
+Strengths: [List top 3]
+Areas for Growth: [List 2-3 with specific suggestions]
+Goals for Next Period: [1-2 specific, measurable goals]
+
+OVERALL ASSESSMENT:
+Total Score: [Sum of all scores]
+Validator Status: [Recommended level]
+Comments: [Overall feedback and encouragement]
+
+NEXT STEPS:
+- [Specific actions for the family member]
+- [Support the council will provide]
+- [Timeline for follow-up]
+            `;
+            alert(template);
+        }
+
+        function showFamilyCharter() {
+            const template = `
+FAMILY BUSINESS CHARTER
+
+[Family Name] Family Business Charter
+
+PREAMBLE:
+We, the [Family Name] family, recognize that our business is both an economic enterprise and a family legacy.
+This charter establishes the principles that will guide our business decisions and family relationships.
+
+OUR MISSION:
+[State your family's business mission in 1-2 sentences]
+
+OUR VALUES:
+1. [Value 1] - [Brief explanation]
+2. [Value 2] - [Brief explanation]
+3. [Value 3] - [Brief explanation]
+4. [Value 4] - [Brief explanation]
+
+FAMILY COUNCIL:
+- Meets [frequency, e.g., monthly]
+- Chaired by [rotation system or specific person]
+- Decisions require [approval level, e.g., 60% majority]
+- All family members [age and up] participate
+
+DECISION-MAKING:
+- Individual decisions: [Scope and limits]
+- Council review: [What requires review]
+- Council approval: [What requires approval]
+- Family consensus: [What requires consensus]
+
+CONFLICT RESOLUTION:
+1. Discuss privately first
+2. Bring to council if unresolved
+3. Use [mediation/arbitration] if needed
+4. Focus on family relationships over business issues
+
+SUCCESSION PLANNING:
+- Leadership transitions planned [timeframe]
+- Skills development prioritized
+- Fair opportunity for all qualified family members
+- External candidates considered when appropriate
+
+COMMITMENT:
+We commit to regular review of this charter and to upholding these principles
+even when business conditions are challenging.
+
+Signed: ___________________________ Date: __________
+[Family member signatures]
+            `;
+            alert(template);
+        }
+
+        function planFirstMeeting() {
+            const plan = `
+🎯 PLANNING YOUR FIRST FAMILY COUNCIL MEETING
+
+Choose a Date & Time:
+- Weekend morning when everyone is fresh
+- Include breakfast or lunch to make it enjoyable
+- 90 minutes maximum for first meeting
+
+Set the Tone:
+- Emphasize this is about unity and shared success
+- No major decisions - focus on relationship building
+- End with celebration and positive energy
+
+Agenda for First Meeting:
+
+1. Welcome & Icebreaker (15 min)
+   - Go around circle: "One thing I'm proud of in our family"
+   - Share why you're excited about family business
+
+2. Charter Discussion (30 min)
+   - Review draft family charter
+   - Discuss mission, values, and principles
+   - Get initial agreement on council structure
+
+3. Fun Decision Practice (20 min)
+   - Practice decision-making with low-stakes topic
+   - Example: "How should we celebrate family business milestones?"
+
+4. Next Steps Planning (15 min)
+   - Schedule regular meetings
+   - Assign initial roles (chairperson, secretary)
+   - Plan first real business discussion
+
+5. Celebration & Close (10 min)
+   - Acknowledge everyone's participation
+   - Take family photo
+   - Plan follow-up communication
+
+Success Tips:
+- Keep it positive and inclusive
+- Listen more than you talk
+- Focus on relationships, not business problems
+- Document what worked well for next time
+
+LifeCV Proof: Meeting photo + attendance list + draft charter
+            `;
+            alert(plan);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('docDate').value = today;
+        });
+    </script>
+</body>
+</html>

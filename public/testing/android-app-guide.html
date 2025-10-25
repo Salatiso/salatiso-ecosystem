@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salatiso Ecosystem Android App Testing Guide</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --lifecv-purple: #7C3AED;
+            --pigeeback-cyan: #06B6D4;
+            --android-green: #3DDC84;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --bg-card: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--android-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success-green);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: var(--bg-card);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .section.completed {
+            border-left-color: var(--success-green);
+            background: linear-gradient(135deg, var(--bg-card), rgba(16, 185, 129, 0.05));
+        }
+
+        .section h2 {
+            color: var(--primary-blue);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section.completed h2::before {
+            content: '✅';
+        }
+
+        .section h3 {
+            color: var(--ubuntu-orange);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .test-step {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--ubuntu-orange);
+        }
+
+        .test-step.completed {
+            background: rgba(16, 185, 129, 0.1);
+            border-left-color: var(--success-green);
+        }
+
+        .step-number {
+            background: var(--ubuntu-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .step-number.completed {
+            background: var(--success-green);
+        }
+
+        .feedback-form {
+            background: linear-gradient(135deg, var(--lifecv-purple), var(--primary-blue));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .form-group {
+            margin: 1rem 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group select, .form-group textarea, .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .cta-button {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem 0.5rem 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #DC2626;
+            transform: translateY(-2px);
+        }
+
+        .cta-button.secondary {
+            background: var(--primary-blue);
+        }
+
+        .cta-button.secondary:hover {
+            background: #1E40AF;
+        }
+
+        .cta-button.android {
+            background: var(--android-green);
+        }
+
+        .cta-button.android:hover {
+            background: #22C55E;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--android-green), var(--primary-blue));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--ubuntu-orange);
+            text-align: center;
+        }
+
+        .feature-card.completed {
+            background: rgba(16, 185, 129, 0.1);
+            border-left-color: var(--success-green);
+        }
+
+        .feature-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--warning-amber);
+            margin-left: 0.5rem;
+        }
+
+        .status-indicator.completed {
+            background: var(--success-green);
+        }
+
+        .status-indicator.failed {
+            background: var(--error-red);
+        }
+
+        .completion-badge {
+            background: var(--success-green);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 1rem 0;
+            animation: celebrate 0.5s ease;
+        }
+
+        @keyframes celebrate {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .app-selector {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .app-option {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .app-option:hover, .app-option.selected {
+            border-color: var(--android-green);
+            background: rgba(61, 220, 132, 0.05);
+        }
+
+        .app-option .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-option .name {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .app-option .desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .device-specs {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .device-specs strong {
+            color: var(--primary-blue);
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--text-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--text-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--text-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">📱 Salatiso Ecosystem</div>
+            <div class="tagline">Android App Testing Guide - Native Mobile Experience</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div>Progress: <span id="progressText">0%</span></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">✏️ Customize This Testing Guide</h3>
+            <div class="form-field">
+                <label>Tester Name:</label>
+                <input type="text" id="testerName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label>Organization:</label>
+                <input type="text" id="organization" placeholder="Enter organization or company name">
+            </div>
+            <div class="form-field">
+                <label>Test Date:</label>
+                <input type="date" id="testDate" value="2025-10-08">
+            </div>
+            <div class="form-field">
+                <label>Guide Version:</label>
+                <input type="text" id="guideVersion" value="Android App Testing Guide v1.0" placeholder="e.g., Android App Testing Guide v1.0">
+            </div>
+            <button onclick="applyCustomization()" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📤 Share This Testing Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with team members or keeping printed records
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+        <!-- App Selection Section -->
+        <div class="section" id="appSelectSection">
+            <h2>🎯 Select Android App to Test</h2>
+            <p>Choose which Salatiso Ecosystem Android app you want to test. Each app has native mobile features and offline capabilities.</p>
+
+            <div class="app-selector">
+                <h3>Available Android Apps:</h3>
+                <div class="app-grid">
+                    <div class="app-option" data-app="lifesync">
+                        <div class="icon">👤</div>
+                        <div class="name">LifeSync</div>
+                        <div class="desc">Personal profile & trust system</div>
+                    </div>
+                    <div class="app-option" data-app="bizhelp">
+                        <div class="icon">🧭</div>
+                        <div class="name">BizHelp</div>
+                        <div class="desc">Business formalization hub</div>
+                    </div>
+                    <div class="app-option" data-app="pigeeback">
+                        <div class="icon">🐷</div>
+                        <div class="name">PigeeBack</div>
+                        <div class="desc">Community savings platform</div>
+                    </div>
+                    <div class="app-option" data-app="other">
+                        <div class="icon">🔧</div>
+                        <div class="name">Other App</div>
+                        <div class="desc">Custom ecosystem app</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" id="appDetails" style="display: none;">
+                <h3 id="selectedAppTitle">Selected Android App Details</h3>
+                <div class="app-links">
+                    <strong>Download:</strong> <span id="downloadLink">Please select an app</span><br>
+                    <strong>Minimum Android:</strong> <span id="minAndroid">API 26 (Android 8.0)</span><br>
+                    <strong>Target Android:</strong> <span id="targetAndroid">API 34 (Android 14)</span>
+                </div>
+                <p id="appDescription">Select an app above to see specific details and download links.</p>
+            </div>
+
+            <div class="device-specs">
+                <strong>📋 Testing Device Requirements:</strong><br>
+                • Android device or emulator (API 26+ recommended)<br>
+                • Stable internet connection for initial testing<br>
+                • GPS/location services for location features<br>
+                • Camera access for document/photo features<br>
+                • Storage permissions for offline data
+            </div>
+
+            <button class="cta-button android" id="startTestingBtn" style="display: none;" onclick="startTesting()">🚀 Start Android Testing</button>
+        </div>
+
+        <!-- Installation & Setup Testing -->
+        <div class="section hidden" id="installSection">
+            <h2>📦 Installation & Setup <span class="status-indicator" id="installStatus"></span></h2>
+
+            <div class="test-step" id="step1">
+                <div class="step-number">1</div>
+                <strong>App Download & Installation</strong>
+                <p>Download the app from Google Play Store and install it on your Android device.</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Download success:</label>
+                        <select id="downloadSuccess">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Downloaded and installed successfully</option>
+                            <option value="slow">⏰ Download was slow but completed</option>
+                            <option value="failed">❌ Download or install failed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>App size:</label>
+                        <input type="text" id="appSize" placeholder="e.g., 25MB, 50MB...">
+                    </div>
+                    <div class="form-group">
+                        <label>Installation issues:</label>
+                        <textarea id="installIssues" placeholder="Any problems during installation..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step2">
+                <div class="step-number">2</div>
+                <strong>App Launch & Permissions</strong>
+                <p>Launch the app and check permission requests and initial setup.</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>App launches successfully:</label>
+                        <select id="appLaunches">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Launches immediately</option>
+                            <option value="slow">⏰ Launches slowly</option>
+                            <option value="crash">💥 Crashes on launch</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Permission requests:</label>
+                        <select id="permissions">
+                            <option value="">Select appropriateness...</option>
+                            <option value="appropriate">✅ Appropriate permissions requested</option>
+                            <option value="excessive">⚠️ Too many permissions requested</option>
+                            <option value="insufficient">❌ Missing required permissions</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Permission clarity:</label>
+                        <select id="permissionClarity">
+                            <option value="">Select clarity...</option>
+                            <option value="clear">📋 Clear explanations provided</option>
+                            <option value="confusing">🤔 Confusing permission requests</option>
+                            <option value="none">❌ No explanations given</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step3">
+                <div class="step-number">3</div>
+                <strong>Initial Setup & Onboarding</strong>
+                <p>Test the initial setup process and user onboarding experience.</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Onboarding experience:</label>
+                        <select id="onboarding">
+                            <option value="">Select experience...</option>
+                            <option value="excellent">🌟 Excellent onboarding</option>
+                            <option value="good">✅ Good introduction</option>
+                            <option value="confusing">🤔 Confusing setup</option>
+                            <option value="broken">❌ Broken onboarding</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Setup completion time:</label>
+                        <select id="setupTime">
+                            <option value="">Select time...</option>
+                            <option value="quick">⚡ Quick (< 2 minutes)</option>
+                            <option value="medium">⏰ Medium (2-5 minutes)</option>
+                            <option value="long">🐌 Long (> 5 minutes)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Setup issues:</label>
+                        <textarea id="setupIssues" placeholder="Problems during initial setup..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="completeInstallSection()">✅ Complete Installation</button>
+        </div>
+
+        <!-- Native Android Features Testing -->
+        <div class="section hidden" id="nativeSection">
+            <h2>🤖 Native Android Features <span class="status-indicator" id="nativeStatus"></span></h2>
+
+            <div class="test-step" id="step4">
+                <div class="step-number">4</div>
+                <strong>Offline Functionality</strong>
+                <p>Test app behavior when offline and data synchronization when reconnected.</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Offline capability:</label>
+                        <select id="offlineCapability">
+                            <option value="">Select capability...</option>
+                            <option value="full">🔄 Full offline functionality</option>
+                            <option value="partial">⚠️ Partial offline features</option>
+                            <option value="read-only">📖 Read-only when offline</option>
+                            <option value="none">❌ No offline support</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Offline indicators:</label>
+                        <select id="offlineIndicators">
+                            <option value="">Select indicators...</option>
+                            <option value="clear">📡 Clear online/offline status</option>
+                            <option value="subtle">⚠️ Subtle indicators</option>
+                            <option value="none">❌ No offline indicators</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Data sync on reconnect:</label>
+                        <select id="dataSync">
+                            <option value="">Select sync behavior...</option>
+                            <option value="automatic">🔄 Automatic sync</option>
+                            <option value="manual">👆 Manual sync required</option>
+                            <option value="failed">❌ Sync fails</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step5">
+                <div class="step-number">5</div>
+                <strong>Device Integration</strong>
+                <p>Test camera, GPS, biometric authentication, and other device features.</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Camera integration:</label>
+                        <select id="cameraIntegration">
+                            <option value="">Select camera functionality...</option>
+                            <option value="excellent">📷 Perfect camera integration</option>
+                            <option value="good">✅ Good camera features</option>
+                            <option value="basic">📷 Basic camera support</option>
+                            <option value="none">❌ No camera features</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>GPS/Location services:</label>
+                        <select id="gpsLocation">
+                            <option value="">Select location functionality...</option>
+                            <option value="accurate">📍 Accurate location services</option>
+                            <option value="basic">📍 Basic location support</option>
+                            <option value="none">❌ No location features</option>
+                            <option value="broken">💥 Location services broken</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Biometric authentication:</label>
+                        <select id="biometricAuth">
+                            <option value="">Select biometric support...</option>
+                            <option value="fingerprint">👆 Fingerprint supported</option>
+                            <option value="face">😀 Face ID supported</option>
+                            <option value="both">🔐 Both fingerprint and face</option>
+                            <option value="none">❌ No biometric auth</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step6">
+                <div class="step-number">6</div>
+                <strong>Notifications & Background Tasks</strong>
+                <p>Test push notifications, background sync, and system integration.</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Push notifications:</label>
+                        <select id="pushNotifications">
+                            <option value="">Select notification quality...</option>
+                            <option value="excellent">🔔 Perfect notifications</option>
+                            <option value="good">✅ Good notification system</option>
+                            <option value="annoying">⚠️ Too frequent/annoying</option>
+                            <option value="none">❌ No notifications</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Background sync:</label>
+                        <select id="backgroundSync">
+                            <option value="">Select background performance...</option>
+                            <option value="efficient">🔋 Efficient background tasks</option>
+                            <option value="moderate">⚠️ Moderate battery usage</option>
+                            <option value="heavy">🔋 Heavy battery drain</option>
+                            <option value="none">❌ No background tasks</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>System integration:</label>
+                        <select id="systemIntegration">
+                            <option value="">Select integration...</option>
+                            <option value="excellent">🔗 Perfect system integration</option>
+                            <option value="good">✅ Good Android integration</option>
+                            <option value="poor">⚠️ Poor system integration</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="completeNativeSection()">✅ Complete Native Features</button>
+        </div>
+
+        <!-- App-Specific Android Testing -->
+        <div class="section hidden" id="specificAndroidSection">
+            <h2>📱 App-Specific Android Features <span class="status-indicator" id="specificAndroidStatus"></span></h2>
+            <p id="androidSpecificIntro">Test Android-specific features and optimizations for the selected app.</p>
+
+            <div class="test-step" id="step7">
+                <div class="step-number">7</div>
+                <strong>Core Android Functionality</strong>
+                <p id="androidCoreDesc">Test the primary Android features and workflows of the app.</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Android optimization:</label>
+                        <select id="androidOptimization">
+                            <option value="">Select optimization...</option>
+                            <option value="excellent">🌟 Perfectly optimized for Android</option>
+                            <option value="good">✅ Well optimized</option>
+                            <option value="average">⚠️ Average optimization</option>
+                            <option value="poor">❌ Poor Android experience</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Native performance:</label>
+                        <select id="nativePerformance">
+                            <option value="">Select performance...</option>
+                            <option value="smooth">⚡ Smooth and responsive</option>
+                            <option value="good">✅ Good performance</option>
+                            <option value="laggy">🐌 Laggy or slow</option>
+                            <option value="unusable">💥 Unusable performance</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Android-specific features:</label>
+                        <textarea id="androidFeatures" placeholder="Unique Android features tested..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step8">
+                <div class="step-number">8</div>
+                <strong>Data Management & Storage</strong>
+                <p>Test local data storage, caching, and Android-specific data handling.</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Local data storage:</label>
+                        <select id="localStorage">
+                            <option value="">Select storage capability...</option>
+                            <option value="excellent">💾 Excellent local storage</option>
+                            <option value="good">✅ Good data persistence</option>
+                            <option value="poor">⚠️ Poor data handling</option>
+                            <option value="broken">❌ Data loss issues</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Storage permissions:</label>
+                        <select id="storagePermissions">
+                            <option value="">Select permission handling...</option>
+                            <option value="transparent">📋 Clear permission requests</option>
+                            <option value="reasonable">✅ Reasonable storage access</option>
+                            <option value="excessive">⚠️ Too much storage access</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Cache management:</label>
+                        <select id="cacheManagement">
+                            <option value="">Select cache handling...</option>
+                            <option value="smart">🧠 Smart caching</option>
+                            <option value="basic">✅ Basic caching</option>
+                            <option value="poor">⚠️ Poor cache management</option>
+                            <option value="none">❌ No caching</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step9">
+                <div class="step-number">9</div>
+                <strong>Ecosystem Android Integration</strong>
+                <p>Test Android-specific cross-app integration and deep linking.</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Deep linking:</label>
+                        <select id="deepLinking">
+                            <option value="">Select deep linking...</option>
+                            <option value="perfect">🎯 Perfect deep linking</option>
+                            <option value="functional">✅ Functional deep linking</option>
+                            <option value="partial">⚠️ Partial deep linking</option>
+                            <option value="none">❌ No deep linking</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Cross-app data sharing:</label>
+                        <select id="crossAppSharing">
+                            <option value="">Select data sharing...</option>
+                            <option value="seamless">🔄 Seamless data sharing</option>
+                            <option value="functional">✅ Functional sharing</option>
+                            <option value="manual">👆 Manual transfer required</option>
+                            <option value="none">❌ No data sharing</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Android ecosystem integration:</label>
+                        <select id="androidEcosystem">
+                            <option value="">Select integration...</option>
+                            <option value="excellent">🤖 Perfect Android integration</option>
+                            <option value="good">✅ Good Android integration</option>
+                            <option value="poor">⚠️ Poor Android integration</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="completeSpecificAndroidSection()">✅ Complete App-Specific Android</button>
+        </div>
+
+        <!-- Performance & Stability Testing -->
+        <div class="section hidden" id="performanceSection">
+            <h2>⚡ Performance & Stability <span class="status-indicator" id="performanceStatus"></span></h2>
+
+            <div class="test-step" id="step10">
+                <div class="step-number">10</div>
+                <strong>App Stability & Crashes</strong>
+                <p>Test app stability across different scenarios and usage patterns.</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Crash frequency:</label>
+                        <select id="crashFrequency">
+                            <option value="">Select crash frequency...</option>
+                            <option value="none">✅ No crashes experienced</option>
+                            <option value="rare">⚠️ Rare crashes</option>
+                            <option value="occasional">❌ Occasional crashes</option>
+                            <option value="frequent">💥 Frequent crashes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>App recovery:</label>
+                        <select id="appRecovery">
+                            <option value="">Select recovery...</option>
+                            <option value="automatic">🔄 Automatic recovery</option>
+                            <option value="manual">👆 Manual restart required</option>
+                            <option value="poor">❌ Poor recovery</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Error handling:</label>
+                        <select id="errorHandling">
+                            <option value="">Select error handling...</option>
+                            <option value="excellent">🛡️ Excellent error handling</option>
+                            <option value="good">✅ Good error messages</option>
+                            <option value="poor">⚠️ Poor error handling</option>
+                            <option value="none">❌ No error handling</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step11">
+                <div class="step-number">11</div>
+                <strong>Battery & Resource Usage</strong>
+                <p>Monitor battery usage, memory consumption, and resource efficiency.</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Battery usage:</label>
+                        <select id="batteryUsage">
+                            <option value="">Select battery impact...</option>
+                            <option value="efficient">🔋 Very efficient</option>
+                            <option value="moderate">⚠️ Moderate usage</option>
+                            <option value="high">🔋 High battery drain</option>
+                            <option value="excessive">💥 Excessive battery usage</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Memory usage:</label>
+                        <select id="memoryUsage">
+                            <option value="">Select memory usage...</option>
+                            <option value="efficient">🧠 Efficient memory usage</option>
+                            <option value="moderate">⚠️ Moderate memory usage</option>
+                            <option value="high">🧠 High memory consumption</option>
+                            <option value="leaks">💧 Memory leaks detected</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Background performance:</label>
+                        <select id="backgroundPerf">
+                            <option value="">Select background performance...</option>
+                            <option value="excellent">⚡ Excellent background performance</option>
+                            <option value="good">✅ Good background handling</option>
+                            <option value="poor">⚠️ Poor background performance</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="completePerformanceSection()">✅ Complete Performance</button>
+        </div>
+
+        <!-- Final Android Feedback -->
+        <div class="section hidden" id="finalAndroidSection">
+            <h2>🎉 Final Android Testing Feedback</h2>
+
+            <div class="completion-badge" id="completionBadge" style="display: none;">
+                🎊 Android Testing Complete! Thank you! 🎊
+            </div>
+
+            <div class="feedback-form">
+                <h3>📊 Overall Android Experience</h3>
+                <div class="form-group">
+                    <label>Android app rating:</label>
+                    <select id="overallAndroidRating">
+                        <option value="">Select rating...</option>
+                        <option value="5">⭐⭐⭐⭐⭐ Excellent Android app</option>
+                        <option value="4">⭐⭐⭐⭐ Very good Android experience</option>
+                        <option value="3">⭐⭐⭐ Average Android app</option>
+                        <option value="2">⭐⭐ Poor Android experience</option>
+                        <option value="1">⭐ Terrible Android app</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Best Android features:</label>
+                    <textarea id="bestAndroidFeatures" placeholder="What Android features work great..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Android-specific issues:</label>
+                    <textarea id="androidIssues" placeholder="Android-specific problems or bugs..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Device compatibility:</label>
+                    <select id="deviceCompatibility">
+                        <option value="">Select compatibility...</option>
+                        <option value="excellent">📱 Works on all Android devices</option>
+                        <option value="good">✅ Works on most devices</option>
+                        <option value="limited">⚠️ Limited device support</option>
+                        <option value="poor">❌ Poor device compatibility</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Compared to web version:</label>
+                    <select id="vsWebVersion">
+                        <option value="">Select comparison...</option>
+                        <option value="much_better">📱 Much better than web</option>
+                        <option value="better">📱 Better than web</option>
+                        <option value="similar">⚖️ Similar experience</option>
+                        <option value="worse">🌐 Web version is better</option>
+                        <option value="much_worse">🌐 Much worse than web</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Android feedback:</label>
+                    <textarea id="additionalAndroidFeedback" placeholder="Any other Android-specific feedback..."></textarea>
+                </div>
+            </div>
+
+            <button class="cta-button android" onclick="submitAndroidFeedback()">📤 Submit Android Feedback</button>
+            <button class="cta-button secondary" onclick="downloadAndroidResults()">💾 Download Android Results</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>📱 Salatiso Ecosystem - Android App Testing</div>
+        <div>Testing native Android experiences | Powered by Kotlin & Jetpack Compose</div>
+        <div>Thank you for your valuable Android testing feedback! 🚀</div>
+    </div>
+
+    <script>
+        let selectedApp = null;
+        let currentSection = 0;
+        const sections = ['appSelectSection', 'installSection', 'nativeSection', 'specificAndroidSection', 'performanceSection', 'finalAndroidSection'];
+        const totalSteps = 11;
+        let completedSteps = 0;
+
+        const appData = {
+            lifesync: {
+                name: 'LifeSync',
+                downloadLink: 'LifeSync on Google Play Store',
+                description: 'Native Android app for personal profiles and trust system with offline capabilities.',
+                androidFeatures: 'Biometric authentication, offline profile management, local trust calculations'
+            },
+            bizhelp: {
+                name: 'BizHelp',
+                downloadLink: 'BizHelp on Google Play Store',
+                description: 'Native Android business formalization with document scanning and offline templates.',
+                androidFeatures: 'Camera document scanning, offline business registration, local SA ID validation'
+            },
+            pigeeback: {
+                name: 'PigeeBack',
+                downloadLink: 'PigeeBack on Google Play Store',
+                description: 'Native Android savings platform with local group management and offline transactions.',
+                androidFeatures: 'Offline transaction recording, local group coordination, SMS integration'
+            },
+            other: {
+                name: 'Custom Ecosystem Android App',
+                downloadLink: 'Check Google Play Store',
+                description: 'Testing a custom Salatiso ecosystem Android application.',
+                androidFeatures: 'Please describe Android-specific features'
+            }
+        };
+
+        function updateProgress() {
+            const progress = (completedSteps / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = Math.round(progress) + '%';
+        }
+
+        // App selection
+        document.querySelectorAll('.app-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.app-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedApp = this.dataset.app;
+
+                const data = appData[selectedApp];
+                document.getElementById('selectedAppTitle').textContent = `${data.name} Android Testing Details`;
+                document.getElementById('downloadLink').textContent = data.downloadLink;
+                document.getElementById('appDescription').textContent = data.description;
+                document.getElementById('appDetails').style.display = 'block';
+                document.getElementById('startTestingBtn').style.display = 'inline-block';
+
+                // Update specific section content
+                document.getElementById('androidSpecificIntro').textContent = `Test Android-specific features and optimizations for ${data.name}.`;
+                document.getElementById('androidCoreDesc').textContent = `Test the primary Android features of ${data.name}: ${data.androidFeatures}`;
+            });
+        });
+
+        function startTesting() {
+            if (!selectedApp) {
+                alert('Please select an Android app to test first!');
+                return;
+            }
+            document.getElementById('appSelectSection').classList.add('completed');
+            document.getElementById('installSection').classList.remove('hidden');
+            currentSection = 1;
+        }
+
+        function completeInstallSection() {
+            document.getElementById('installSection').classList.add('completed');
+            document.getElementById('installStatus').classList.add('completed');
+            document.getElementById('nativeSection').classList.remove('hidden');
+            completedSteps += 3;
+            updateProgress();
+            currentSection = 2;
+        }
+
+        function completeNativeSection() {
+            document.getElementById('nativeSection').classList.add('completed');
+            document.getElementById('nativeStatus').classList.add('completed');
+            document.getElementById('specificAndroidSection').classList.remove('hidden');
+            completedSteps += 3;
+            updateProgress();
+            currentSection = 3;
+        }
+
+        function completeSpecificAndroidSection() {
+            document.getElementById('specificAndroidSection').classList.add('completed');
+            document.getElementById('specificAndroidStatus').classList.add('completed');
+            document.getElementById('performanceSection').classList.remove('hidden');
+            completedSteps += 3;
+            updateProgress();
+            currentSection = 4;
+        }
+
+        function completePerformanceSection() {
+            document.getElementById('performanceSection').classList.add('completed');
+            document.getElementById('performanceStatus').classList.add('completed');
+            document.getElementById('finalAndroidSection').classList.remove('hidden');
+            completedSteps += 2;
+            updateProgress();
+            currentSection = 5;
+        }
+
+        function submitAndroidFeedback() {
+            const feedback = {
+                timestamp: new Date().toISOString(),
+                selectedApp: selectedApp,
+                appData: appData[selectedApp],
+                // Installation
+                downloadSuccess: document.getElementById('downloadSuccess').value,
+                appSize: document.getElementById('appSize').value,
+                installIssues: document.getElementById('installIssues').value,
+                appLaunches: document.getElementById('appLaunches').value,
+                permissions: document.getElementById('permissions').value,
+                permissionClarity: document.getElementById('permissionClarity').value,
+                onboarding: document.getElementById('onboarding').value,
+                setupTime: document.getElementById('setupTime').value,
+                setupIssues: document.getElementById('setupIssues').value,
+                // Native features
+                offlineCapability: document.getElementById('offlineCapability').value,
+                offlineIndicators: document.getElementById('offlineIndicators').value,
+                dataSync: document.getElementById('dataSync').value,
+                cameraIntegration: document.getElementById('cameraIntegration').value,
+                gpsLocation: document.getElementById('gpsLocation').value,
+                biometricAuth: document.getElementById('biometricAuth').value,
+                pushNotifications: document.getElementById('pushNotifications').value,
+                backgroundSync: document.getElementById('backgroundSync').value,
+                systemIntegration: document.getElementById('systemIntegration').value,
+                // App-specific
+                androidOptimization: document.getElementById('androidOptimization').value,
+                nativePerformance: document.getElementById('nativePerformance').value,
+                androidFeatures: document.getElementById('androidFeatures').value,
+                localStorage: document.getElementById('localStorage').value,
+                storagePermissions: document.getElementById('storagePermissions').value,
+                cacheManagement: document.getElementById('cacheManagement').value,
+                deepLinking: document.getElementById('deepLinking').value,
+                crossAppSharing: document.getElementById('crossAppSharing').value,
+                androidEcosystem: document.getElementById('androidEcosystem').value,
+                // Performance
+                crashFrequency: document.getElementById('crashFrequency').value,
+                appRecovery: document.getElementById('appRecovery').value,
+                errorHandling: document.getElementById('errorHandling').value,
+                batteryUsage: document.getElementById('batteryUsage').value,
+                memoryUsage: document.getElementById('memoryUsage').value,
+                backgroundPerf: document.getElementById('backgroundPerf').value,
+                // Final feedback
+                overallAndroidRating: document.getElementById('overallAndroidRating').value,
+                bestAndroidFeatures: document.getElementById('bestAndroidFeatures').value,
+                androidIssues: document.getElementById('androidIssues').value,
+                deviceCompatibility: document.getElementById('deviceCompatibility').value,
+                vsWebVersion: document.getElementById('vsWebVersion').value,
+                additionalAndroidFeedback: document.getElementById('additionalAndroidFeedback').value
+            };
+
+            document.getElementById('completionBadge').style.display = 'inline-block';
+
+            console.log('Android feedback submitted:', feedback);
+            alert(`Thank you for testing ${appData[selectedApp].name} Android app! Your feedback has been recorded.`);
+        }
+
+        function downloadAndroidResults() {
+            const appName = selectedApp ? appData[selectedApp].name : 'Unknown Android App';
+            let results = `Salatiso Ecosystem Android App Testing Results - ${appName}\\n\\n`;
+
+            results += '=== APP DETAILS ===\\n';
+            if (selectedApp) {
+                results += `App: ${appData[selectedApp].name}\\n`;
+                results += `Download: ${appData[selectedApp].downloadLink}\\n`;
+                results += `Description: ${appData[selectedApp].description}\\n\\n`;
+            }
+
+            results += '=== INSTALLATION & SETUP ===\\n';
+            results += `Download Success: ${document.getElementById('downloadSuccess').value}\\n`;
+            results += `App Launches: ${document.getElementById('appLaunches').value}\\n`;
+            results += `Permissions: ${document.getElementById('permissions').value}\\n`;
+            results += `Onboarding: ${document.getElementById('onboarding').value}\\n\\n`;
+
+            results += '=== NATIVE ANDROID FEATURES ===\\n';
+            results += `Offline Capability: ${document.getElementById('offlineCapability').value}\\n`;
+            results += `Camera Integration: ${document.getElementById('cameraIntegration').value}\\n`;
+            results += `GPS/Location: ${document.getElementById('gpsLocation').value}\\n`;
+            results += `Biometric Auth: ${document.getElementById('biometricAuth').value}\\n`;
+            results += `Push Notifications: ${document.getElementById('pushNotifications').value}\\n\\n`;
+
+            results += '=== PERFORMANCE & STABILITY ===\\n';
+            results += `Crash Frequency: ${document.getElementById('crashFrequency').value}\\n`;
+            results += `Battery Usage: ${document.getElementById('batteryUsage').value}\\n`;
+            results += `Memory Usage: ${document.getElementById('memoryUsage').value}\\n\\n`;
+
+            results += '=== FINAL ANDROID FEEDBACK ===\\n';
+            results += `Overall Rating: ${document.getElementById('overallAndroidRating').value}\\n`;
+            results += `Best Features: ${document.getElementById('bestAndroidFeatures').value}\\n`;
+            results += `Issues: ${document.getElementById('androidIssues').value}\\n`;
+            results += `Device Compatibility: ${document.getElementById('deviceCompatibility').value}\\n`;
+            results += `vs Web Version: ${document.getElementById('vsWebVersion').value}\\n`;
+            results += `Additional Feedback: ${document.getElementById('additionalAndroidFeedback').value}\\n`;
+
+            const blob = new Blob([results], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `salatiso-${selectedApp || 'unknown'}-android-testing-results.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Mark steps as completed when forms are filled
+        document.querySelectorAll('select, textarea, input').forEach(element => {
+            element.addEventListener('change', function() {
+                if (this.value) {
+                    this.closest('.test-step').classList.add('completed');
+                }
+            });
+        });
+
+        // Customization Functions
+        function applyCustomization() {
+            const testerName = document.getElementById('testerName').value;
+            const organization = document.getElementById('organization').value;
+            const testDate = document.getElementById('testDate').value;
+            const guideVersion = document.getElementById('guideVersion').value;
+
+            // Update document title
+            document.title = `Salatiso Android App Testing - ${organization || 'Testing Guide'} - ${guideVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `Android App Testing Guide - ${guideVersion}`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('.footer');
+            if (footer) {
+                const footerDivs = footer.querySelectorAll('div');
+                if (footerDivs.length >= 3) {
+                    footerDivs[2].innerHTML = `Completed by ${testerName || 'Tester'} on ${new Date(testDate).toLocaleDateString()} 🚀`;
+                }
+            }
+
+            alert('✅ Testing guide customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('testDate').value = today;
+        });
+    </script>
+</body>
+</html>

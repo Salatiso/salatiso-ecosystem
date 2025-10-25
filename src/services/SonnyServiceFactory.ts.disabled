@@ -1,0 +1,327 @@
+/**
+ * Sonny Service Factory
+ * 
+ * Creates fully initialized Sonny services with all required dependencies.
+ * Handles complex dependency injection for:
+ * - SonnyBridgeService (5 parameters)
+ * - MeshEngineService (3 parameters)
+ * - TriggerManagerService (6 parameters)
+ * - ConsentLedgerService (3 parameters)
+ * - TrustFrameworkService (2 parameters)
+ * 
+ * @module SonnyServiceFactory
+ */
+
+import { SonnyBridgeService, SonnyBridgeConfig } from '@/services/SonnyBridgeService';
+import { MeshEngineService, MeshEngineConfig } from '@/services/MeshEngineService';
+import { TriggerManagerService, TriggerManagerConfig } from '@/services/TriggerManagerService';
+import { ConsentLedgerService, ConsentLedgerConfig } from '@/services/ConsentLedgerService';
+import { TrustFrameworkService, TrustFrameworkConfig } from '@/services/TrustFrameworkService';
+
+// ============================================================================
+// MOCK DEPENDENCIES (For services that require external dependencies)
+// ============================================================================
+
+/**
+ * Simple Logger implementation
+ */
+class Logger {
+  info(message: string, ...args: any[]) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`[INFO] ${message}`, ...args);
+    }
+  }
+
+  warn(message: string, ...args: any[]) {
+    console.warn(`[WARN] ${message}`, ...args);
+  }
+
+  error(message: string, ...args: any[]) {
+    console.error(`[ERROR] ${message}`, ...args);
+  }
+
+  debug(message: string, ...args: any[]) {
+    if (process.env.NODE_ENV === 'development') {
+      console.debug(`[DEBUG] ${message}`, ...args);
+    }
+  }
+}
+
+/**
+ * Mock NetworkAdapter for SonnyBridgeService
+ */
+class NetworkAdapter {
+  async initialize(): Promise<void> {
+    // Mock implementation
+  }
+
+  async connect(): Promise<void> {
+    // Mock implementation
+  }
+
+  async disconnect(): Promise<void> {
+    // Mock implementation
+  }
+
+  on(event: string, callback: Function): void {
+    // Mock event handler
+  }
+
+  off(event: string, callback: Function): void {
+    // Mock event handler
+  }
+}
+
+/**
+ * Mock SecurityManager for SonnyBridgeService
+ */
+class SecurityManager {
+  async initialize(): Promise<void> {
+    // Mock implementation
+  }
+
+  async encrypt(data: any): Promise<any> {
+    return data;
+  }
+
+  async decrypt(data: any): Promise<any> {
+    return data;
+  }
+
+  async validateSignature(data: any, signature: string): Promise<boolean> {
+    return true;
+  }
+}
+
+/**
+ * Mock RoutingEngine for SonnyBridgeService
+ */
+class RoutingEngine {
+  async initialize(): Promise<void> {
+    // Mock implementation
+  }
+
+  async findRoute(destination: string): Promise<any[]> {
+    return [];
+  }
+
+  async updateRoutes(): Promise<void> {
+    // Mock implementation
+  }
+}
+
+/**
+ * Mock CryptoService for MeshEngineService
+ */
+class CryptoService {
+  async generateKey(): Promise<string> {
+    return 'mock-key';
+  }
+
+  async encrypt(data: any): Promise<any> {
+    return data;
+  }
+
+  async decrypt(data: any): Promise<any> {
+    return data;
+  }
+
+  async hash(data: string): Promise<string> {
+    return `hash-${data}`;
+  }
+}
+
+/**
+ * Mock MeshBridge for TriggerManagerService
+ */
+class MeshBridge {
+  async sendMessage(message: any): Promise<void> {
+    // Mock implementation
+  }
+
+  async broadcastMessage(message: any): Promise<void> {
+    // Mock implementation
+  }
+
+  on(event: string, callback: Function): void {
+    // Mock event handler
+  }
+}
+
+/**
+ * Mock LocationService for TriggerManagerService
+ */
+class LocationService {
+  async getCurrentLocation(): Promise<{ latitude: number; longitude: number }> {
+    return { latitude: 0, longitude: 0 };
+  }
+
+  async trackLocation(): Promise<void> {
+    // Mock implementation
+  }
+
+  on(event: string, callback: Function): void {
+    // Mock event handler
+  }
+}
+
+/**
+ * Mock NotificationService for TriggerManagerService
+ */
+class NotificationService {
+  async sendNotification(notification: any): Promise<void> {
+    // Mock implementation
+  }
+
+  async requestPermission(): Promise<boolean> {
+    return true;
+  }
+}
+
+/**
+ * Mock FirestoreAdapter for ConsentLedgerService
+ */
+class FirestoreAdapter {
+  async initialize(): Promise<void> {
+    // Mock implementation
+  }
+
+  async save(collection: string, document: any): Promise<string> {
+    return 'mock-doc-id';
+  }
+
+  async get(collection: string, id: string): Promise<any> {
+    return {};
+  }
+
+  async query(collection: string, filters: any[]): Promise<any[]> {
+    return [];
+  }
+}
+
+/**
+ * Mock EncryptionService for ConsentLedgerService
+ */
+class EncryptionService {
+  async encrypt(data: any): Promise<string> {
+    return JSON.stringify(data);
+  }
+
+  async decrypt(data: string): Promise<any> {
+    return JSON.parse(data);
+  }
+}
+
+/**
+ * Mock ReputationEngine for TrustFrameworkService
+ */
+class ReputationEngine {
+  async calculateScore(userId: string): Promise<number> {
+    return 75;
+  }
+
+  async updateScore(userId: string, delta: number): Promise<void> {
+    // Mock implementation
+  }
+}
+
+// ============================================================================
+// SERVICE FACTORY
+// ============================================================================
+
+export class SonnyServiceFactory {
+  private static logger = new Logger();
+  private static networkAdapter = new NetworkAdapter();
+  private static securityManager = new SecurityManager();
+  private static routingEngine = new RoutingEngine();
+  private static cryptoService = new CryptoService();
+  private static meshBridge = new MeshBridge();
+  private static locationService = new LocationService();
+  private static notificationService = new NotificationService();
+  private static firestoreAdapter = new FirestoreAdapter();
+  private static encryptionService = new EncryptionService();
+  private static reputationEngine = new ReputationEngine();
+
+  /**
+   * Create SonnyBridgeService with all dependencies
+   */
+  static createSonnyBridge(config: SonnyBridgeConfig): SonnyBridgeService {
+    return new SonnyBridgeService(
+      config,
+      this.logger,
+      this.networkAdapter,
+      this.securityManager,
+      this.routingEngine
+    );
+  }
+
+  /**
+   * Create MeshEngineService with all dependencies
+   */
+  static createMeshEngine(config: MeshEngineConfig): MeshEngineService {
+    return new MeshEngineService(
+      config,
+      this.logger,
+      this.cryptoService
+    );
+  }
+
+  /**
+   * Create TriggerManagerService with all dependencies
+   */
+  static createTriggerManager(config: TriggerManagerConfig): TriggerManagerService {
+    return new TriggerManagerService(
+      config,
+      this.logger,
+      this.meshBridge,
+      this.locationService,
+      this.notificationService
+    );
+  }
+
+  /**
+   * Create ConsentLedgerService with all dependencies
+   */
+  static createConsentLedger(config: ConsentLedgerConfig): ConsentLedgerService {
+    return new ConsentLedgerService(
+      config,
+      this.firestoreAdapter,
+      this.encryptionService
+    );
+  }
+
+  /**
+   * Create TrustFrameworkService with all dependencies
+   */
+  static createTrustFramework(config: TrustFrameworkConfig): TrustFrameworkService {
+    return new TrustFrameworkService(
+      config,
+      this.reputationEngine
+    );
+  }
+
+  /**
+   * Initialize all dependencies (call once at app startup)
+   */
+  static async initializeDependencies(): Promise<void> {
+    try {
+      await this.networkAdapter.initialize();
+      await this.securityManager.initialize();
+      await this.routingEngine.initialize();
+      await this.firestoreAdapter.initialize();
+      this.logger.info('SonnyServiceFactory dependencies initialized');
+    } catch (error) {
+      this.logger.error('Failed to initialize dependencies:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Check if dependencies are ready
+   */
+  static isDependenciesReady(): boolean {
+    return true; // Mock implementation always returns true
+  }
+}
+
+export default SonnyServiceFactory;

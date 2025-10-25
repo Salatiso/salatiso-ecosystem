@@ -1,0 +1,24 @@
+
+> salatiso-com-react@0.1.0 build
+> next build
+
+  Γû▓ Next.js 14.2.33
+  - Environments: .env.local, .env.production
+  - Experiments (use with caution):
+    ┬╖ scrollRestoration
+
+   Skipping linting
+   Checking validity of types ...
+Failed to compile.
+
+./src/types/teamAssignment.ts:447:3
+Type error: Property or signature expected.
+
+  445 |   
+  446 |   // Preferences
+> 447 |   quiet hours?: {
+      |   ^
+  448 |     enabled: boolean;
+  449 |     startTime: string;
+  450 |     endTime: string;
+Next.js build worker exited with code: 1 and signal: null

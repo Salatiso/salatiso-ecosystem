@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Salatiso Lonwabo Mdeni</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.js"></script>
+    <style>
+        .video-section iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border: none;
+            border-radius: 8px;
+        }
+        .video-switch {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .video-switch button {
+            background: #e63946;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: background 0.3s;
+        }
+        .video-switch button:hover {
+            background: #b32d38;
+        }
+        .section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(245, 233, 226, 0.9);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem auto;
+            max-width: 800px;
+        }
+        .skill-item {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        .skill-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .skill-item i {
+            font-size: 2rem;
+            color: #e63946;
+            margin-bottom: 0.5rem;
+        }
+        .skill-item p {
+            margin: 0;
+            font-size: 1rem;
+            color: #2a2a2a;
+        }
+        .section ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 1rem auto;
+            max-width: 600px;
+        }
+        .section li {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        .resume-link, .contact-link {
+            color: #e63946;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .resume-link:hover, .contact-link:hover {
+            color: #b32d38;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoButtons = document.querySelectorAll('.video-switch button');
+            let currentVideo = 'https://www.youtube.com/embed/dQw4w9WgXcQ'; // Replace with latest @Salatiso/shorts video ID
+            const videoFrame = document.querySelector('.video-section iframe');
+
+            videoButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (this.dataset.channel === 'salatiso') {
+                        currentVideo = 'https://www.youtube.com/embed/dQw4w9WgXcQ'; // Replace with latest @Salatiso/shorts video ID
+                    } else if (this.dataset.channel === 'audiobooks') {
+                        currentVideo = 'https://www.youtube.com/embed/anotherVideoID'; // Replace with latest @SalatisoAudioBooks video ID
+                    }
+                    videoFrame.src = currentVideo;
+                });
+            });
+
+            // Note: Video IDs need manual updates based on latest uploads
+            console.log('Video switch initialized');
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Salatiso Lonwabo Mdeni</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="about-bg">
+        <section class="about">
+            <h2>About Me</h2>
+            <p>I’m Salatiso Lonwabo Mdeni, a South African with a rich tapestry of experiences—risk and compliance expert, author, father, and DIY enthusiast. This page reflects my journey, blending professional expertise with personal passions, shaped by my family and heritage. From managing complex risks to writing transformative stories, and nurturing my kids through homeschooling, I strive to inspire and connect with both my professional network and personal circle.</p>
+
+            <div class="section">
+                <h2>Professional Career</h2>
+                <p>With over 20 years of experience, I specialize in risk management, compliance, business continuity, occupational health and safety (OHS), and auditing. My career spans roles at Gyro Group, Barclays Africa, Liberty Group, and more, where I’ve developed and implemented EHS programs, conducted audits, and earned certifications from Coursera (e.g., Cybersecurity, AI & Law) and institutions like Pretoria Technikon, UNISA, TUT, GIBS, and more. My resume is available upon request—reach out via the <a href="contact.html" class="resume-link">Contact page</a>.</p>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <p>Risk Management (Operational & Enterprise)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Compliance Management (Regulatory, POPI, Anti-Corruption)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Emergency Response Management (ERP Development, Implementation, Testing)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-briefcase"></i>
+                        <p>Business Continuity Management (BCP Development, Implementation, Testing)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-search"></i>
+                        <p>Auditing (Planning, Coordination, Reporting)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-hard-hat"></i>
+                        <p>EHS/Asbestos/Construction Management (Design, Execution, Programs)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-leaf"></i>
+                        <p>Occupational Hygiene and Environmental Management</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-users"></i>
+                        <p>Project and Stakeholder Management</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-certificate"></i>
+                        <p>Recent Certifications: Cybersecurity, AI & Law (2023-2024)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Website Development</h2>
+                <p>I’m also a skilled website developer, creating platforms that blend functionality with purpose. Here are some of my projects:</p>
+                <ul>
+                    <li><strong>Completed Projects:</strong>
+                        <ul>
+                            <li><a href="https://flamea.org" class="contact-link">flamea.org</a> - A platform advocating for fathers’ rights and family equality.</li>
+                            <li><a href="https://salatiso.com" class="contact-link">salatiso.com</a> - My personal portfolio showcasing my books, advocacy, and passions.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Upcoming Projects:</strong>
+                        <ul>
+                            <li><a href="https://salatiso.github.io/safety-plans/" class="contact-link">Safety First Tools Website</a> - An evolving platform centralizing OHS expertise with automated tools and a Health and Safety Expert Chatbot.</li>
+                            <li><a href="https://salatiso.github.io/sazi-isixhosa/" class="contact-link">Sazi isiXhosa</a> - A site dedicated to preserving and sharing Xhosa language and culture.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>Looking for website development services? Contact me via the <a href="contact.html" class="contact-link">Contact page</a> to discuss your project!</p>
+            </div>
+
+            <div class="section">
+                <h2>Authorship</h2>
+                <p>I’m the author of impactful works like *Goliath’s Reckoning*, which fights for fathers’ rights, and *The Perfect Cage*, a dystopian thriller series. These books, along with others, reflect my passion for storytelling and advocacy. Explore my full collection on the <a href="books.html">Books page</a>.</p>
+            </div>
+
+            <div class="section">
+                <h2>Personal Life</h2>
+                <p>Beyond my career and writing, I cherish homeschooling my kids, teaching them through hands-on learning and DIY projects that foster self-sufficiency. I’m also a property rental entrepreneur, offering furnished and unfurnished properties in Johannesburg South, specifically Bassonia and Glenvista. If you’re looking for a rental, check my active adverts on <a href="https://www.gumtree.co.za/u-seller-listings/salatiso/v1u100230254p1" class="contact-link">Gumtree</a>. Watch my journey on YouTube, where I share DIY tips, homeschooling insights, and more. You can also explore my latest podcast on my Spotify channel (<a href="https://open.spotify.com/show/12WMTrtBmnytgMwMQeOhYI">visit Spotify</a>), blending my personal passions with my creative output.</p>
+                <div class="video-section">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe> <!-- Replace with latest @Salatiso/shorts video ID -->
+                </div>
+                <div class="video-switch">
+                    <button data-channel="salatiso">Switch to @Salatiso/shorts</button>
+                    <button data-channel="audiobooks">Switch to @SalatisoAudioBooks</button>
+                    <p><em>Note: Video IDs need manual updates based on latest uploads. Check your channels and replace 'dQw4w9WgXcQ' and 'anotherVideoID' with the latest video IDs.</em></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Salatiso. All rights reserved.</p>
+    </footer>
+</body>
+</html>

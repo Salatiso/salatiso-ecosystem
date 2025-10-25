@@ -1,0 +1,39 @@
+
+I need you to help me deasign the perfect dashboard for the ecosystem. 
+
+First start by auding all the ecossytem dashbaords and apps to udnerstand each apps functionality. 
+
+I want to create a best in class dashboard that is primarily family friendly (person) but allows for seamless transion to the proffessional in libne wiht the eocsystem gpoals; individual fiest then proffesioanl, 
+
+The best dashboard currently is in the-hub-legacy-app but the features are outdated, however what si perfect avbout it is the seemleas transition betweeen personal and proffessional 
+
+We need to get the hub dashboard correct because the hub is the master app for all the ecosystem app, with the hub one is able to manage all tehir ecossytem whether it be sazi life, docuhelp, biozhelp flamea etc, all the ecosystem apps have the hub as the master dashboard 
+
+The legacy dashbaord is perfect because of the seemless transitin between personal and proffesional, I want this approach to eb carried throughght the ecosyste,
+
+All ecosystem dashboards will be specific to the app but intergrated to lifesync and lthe hub for the full intergration. 
+
+My goal is that irrespective of which app int he ecosyste  I use all my information foes towards the central point
+
+For manageability however we need to have dashbaoirds that ahve enough informaiton for the specifyc app but fullt intergrated to the whoe ecosyste, for ecsmple i the first app i discover in the ecosyste ins flamea, i register and create my profioe and get a dshboard specific to flamea but later on i learn about the hub and the full ecosystem so i log into the hub, all the information and details that i created in flamea must already be part of my profile and i just uodate it, 
+
+The ecosystem has to be intergrated and this starts with a unitfied dashboard. 
+
+My idea is that we do one comprehenisve dashboard and this becomes the hub, then each app in the ecosystem gets a smaller version of the full dashbaord that si specific to the app whcih is why the hub dashboard is cruscial as a departure point. 
+
+Lifesync has an exceleltn dashboard as does poigeeback and the other apps including sazi life academy but i need a unitfied dashboard for the whoel ecosyetm that can be broken for the specifc app while fully intergrated. 
+
+he roel of Mlandeli Notemba Investements https://salatiso-lifecv.web.app/ is crucial , 
+
+Mni is the master intranet for the family starting from me to manage the whome ecosystem including my family as the primary shareholders but we need to make sure this is comprehensive for the family and currently has most of the fuiicntionality
+
+When we go commercial we need to have the neccssaru dashbaords to manage the subscruptions , issue and manage vauchers and so on, the mni dashboard has to be comprehensive to maage the whole ecossytem
+
+So I want you to first go throguh the existing dashboards, msot of them already ahve most functionality so i need you to unify them into one fdashboard that has lla th features which will  be the hib dashboard then do the individual app specifi dashbaords based on the same hub dashboard catering seamlessly between personal and proffessioanl
+
+Start by reviewing ecisting dashboard of https://salatiso-lifecv.web.app/, the-hub-legacy-app, LifeSync-React-App , PigeeBack-React , Salatiso-React-App, sazi-life-academy
+
+It is crucial that in the process of buodling a new dashboard we intergrate the existing dashbaords withoutn loosing any of the ecisiting functionality, 
+
+then compile the technical dashboard specification for the dashbaords then also compilevibrant informatiove and educational html documents about the details o gthe dashboard, how it works for my famiy, superusers, and administrators in the ecosyste, his must be postrs, brocures etc and must be comprehensive and itneractive
+
