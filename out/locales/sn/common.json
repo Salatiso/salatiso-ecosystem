@@ -1,0 +1,50 @@
+{
+  "common": {
+    "loading": "Kurodha...",
+    "error": "Kukanganisa",
+    "success": "Kubudirira",
+    "save": "Chengetedza",
+    "cancel": "Dzosera",
+    "delete": "Bvisa",
+    "edit": "Gadzirisa",
+    "add": "Wedzera",
+    "search": "Tsvaga",
+    "filter": "Sefa",
+    "close": "Vhara",
+    "open": "Vhura",
+    "back": "Dzokera",
+    "next": "Inotevera",
+    "previous": "Yakapfuura",
+    "home": "Kumba",
+    "about": "Nezvatauri",
+    "contact": "Batanidza",
+    "login": "Pinda",
+    "logout": "Buda",
+    "welcome": "Tinokugamuchirai"
+  },
+  "navigation": {
+    "home": "Kumba",
+    "about": "Nezvatauri",
+    "ecosystem": "Ecosystem",
+    "journey": "Rwendo Rwedu",
+    "library": "Library",
+    "testing": "Testing Hub",
+    "templates": "Ma-Templates",
+    "contact": "Batanidza",
+    "intranet": "Intranet"
+  },
+  "intranet": {
+    "title": "Salatiso Family Intranet",
+    "subtitle": "Ubuntu-centered governance yechizvarwa chinotevera",
+    "dashboard": "Dashboard",
+    "projects": "Mapurojekiti",
+    "family": "Mhuri",
+    "business_plan": "Chirongwa cheBhizimisi",
+    "career": "Nzira dzeBasa",
+    "ecosystem": "Ecosystem Apps",
+    "learning": "Kudzidza",
+    "timeline": "Timeline",
+    "lifecv": "LifeCV",
+    "simple_dashboard": "Simple Dashboard"
+  }
+}

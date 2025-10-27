@@ -1,0 +1,677 @@
+I need you to help me design a bridge static html site like https://safetyfirst.help/; this site will be hosted on salatiso.com and will be the bridge between the old and th new site, shwoign the grownth and transition , so on landing the user must have clear option to go to the new web app or the old site hosted on https://salatiso.com/salatiso/
+
+
+The page is great but lets improve it, 
+
+We also need to update the https://salatiso-lifecv.web.app/journey/; I am much more interest in the human (65%) then the proffessioanl; the history that precceeded what is to give context, for example in the homeschooling father i make an example that my father used to walk to school barefoot, ive never been without shoes, that progress,  first the colour scheme must be alsigned twith both the salatiso.com/salatiso and the react ap to show this is a bridge.
+
+At the bottommof the page lets have a carousel like https://flamea.org/publications.html of the bnooks including brief summaries and links to purchase sites 
+
+While keeping the story on the bridge page brief because it must be updated on the web app 
+
+The story on the bridge is not just about websites or apps, not just about my proffesisoanl career but holistic startic from the individual to proffessional. I wantt people to take pride in themselves, knwo that eve when they dont have formal qualifications they have knwoledge adn expertise which is suefull. I dont want to define myself by my proffessional or academic acheivements, yes i got them but they were merely the means, there's always beeen one end; being a father to my son, and the successor my father wanted me to be for my family. 
+
+We need to weave the story that shows even the most rural of us can rise then go and learn in the formal systems then bring those skills back to the roots to enance the lives of those coming after, the ecossytem provides people with teh tools to empower themselves, provides safety features i wish i would have had, pigeeback ensure ride sharing, parcel delivery can be done everywhere especially where needed most, sonny ensure commnuication can be done low cos t includign for emergency and so on https://flamea.org/research.html https://flamea.org/Publications/Flamea_Research_&_Advocacy-Systemic%20Failures%20in%20South%20African_Family_Law.html
+
+Then I need tou to review the content of the page because currently it focuses too much on the journey of web development byt the journey is not of web development but that of me https://salatiso-lifecv.web.app/about/ https://salatiso-lifecv.web.app/journey/
+How Experience Became an Ecosystem
+Every season of work, advocacy, and writing added another building block. This timeline captures the progression from hands-on OHS practice to open-source knowledge and finally to the interconnected platforms that run today.
+
+The current content on https://salatiso-lifecv.web.app/journey/ thsi si grosly inacurrate and we need to fix it oi tthe web app as well, I have provided you with my books especially the homesciooling father and the safety first book which show relevant jhourneys i need you to intergrate; the beginign sin transkei are key to the storey, the family and schiolling from mahasana to lenance to kiriyatswana and so on, these are all critical including my journey for formal schooling, what i went through, from 18 my independendence from my parents and ability to provide from 21. The aspiration towards law studu=ies, actually studdiying it and dropout, I take pride in dropping out of the law because the judiciary is corrupt and no longer stands for the constitutiin as per my personal journey in the research and other documentaiton 
+
+Lived Experience & Mastery
+2003 – 2012
+
+Documented through journals, audits, and later, books.
+From rural Eastern Cape roots to national OHS leadership, mastering the systems that keep workplaces, communities, and infrastructure safe.
+
+Junior Environmental Health Practitioner for the Eastern Cape Department of Health.
+Ventilation & Occupational Hygiene Technologist at Anglo Platinum – awarded Best Trainee (2004).
+Safety leadership across SARCC Metrorail, Liberty Group Properties, and 5G Property Consultants.
+Strategic Stewardship
+2013 – 2022
+
+Documented through journals, audits, and later, books.
+Guiding enterprise risk, audit, and business continuity for Telkom (CRES) / Gyro Group and advising corporate boards while keeping the family mission central.
+
+Designed national compliance frameworks, emergency readiness, and resilience playbooks.
+Mentored teams across finance, property, and technology portfolios to embed safety-first cultures.
+Mapped recurring injustices facing fathers, boys, and families inside South Africa’s legal system.
+Knowledge to Books
+2023
+
+Documented through journals, audits, and later, books.
+Transforming personal battles into open-access books that document the evidence, the pain, and the path to reform.
+
+Launched the Safety First series and “Goliath’s Reckoning”, exposing systemic bias against fathers.
+Published “Beyond the Grave” and “The Homeschooling Father”, blending spirituality, tradition, and practical homeschooling.
+Released every book, podcast, and guide for free to maximise societal reach.
+Books to Ecosystem
+2023 – Present
+
+Documented through journals, audits, and later, books.
+Each manuscript became a module; each insight evolved into software. Salatiso.com matured into Mlandeni-Notemba Investments (MNI) – a tribute to the parents who seeded the vision.
+
+Built interconnected platforms (LifeSync, Sazi suite, FinHelp, SafetyHelp, DocuHelp, BizHelp Marketplace, Flamea advocacy).
+Codified the family governance model so the business organogram mirrors the family organogram.
+Kept personal usage free for life while enabling sustainable professional partnerships.
+LifeCV Snapshot • Salatiso Lonwabo Mdeni
+A comprehensive record of professional, personal, and advocacy work – the blueprint that informs every platform decision inside the ecosystem.
+
+Mission Statement
+“I am a father to my son; all else is a means to this end.” Every platform is engineered to defend family integrity, equality before the law, and practical opportunities for the next generation.
+
+Career Vision
+Leverage two decades of OHS, risk, and legal advocacy to dismantle discriminatory systems, especially in family law, while giving individuals free access to world-class tools.
+
+Core Values
+Equality before the law, reciprocity, resilience, meritocracy, and the golden rule. Policy scepticism balanced with data, evidence, and lived experience.
+
+Work Style
+Proactive, strategic, data-driven. Comfortable in boardrooms and township councils alike, translating complexity into actionable systems that honour Ubuntu.
+
+Family & Business Organogram
+The family organogram is the business organogram. Governance, stewardship, and accountability flow through the same council structures, honouring the legacy of Mlandeni and Notemba while empowering every new voice.
+
+Foundational Generation
+Decision-making tier 1
+
+Mlandeni Mdeni
+Patriarch & Co-Founder of the Legacy
+
+Modelled disciplined entrepreneurship and community duty.
+
+Notemba Mdeni
+Matriarch & Cultural Custodian
+
+Anchored the family in faith, education, and Ubuntu reciprocity.
+
+Current Stewards
+Decision-making tier 2
+
+Salatiso Lonwabo Mdeni
+Chief Steward • Ecosystem Architect
+
+Risk strategist, author, and digital builder translating lived experience into the Salatiso ecosystem and MNI portfolio.
+
+Visa Sande Mdeni
+SafetyHelp & Community Security Lead
+
+Municipal partnerships, emergency readiness, and LifeSync Seal deployments.
+
+Kwakho Eyona Mdeni
+DocuHelp & Knowledge Systems Custodian
+
+Document automation, legal workflows, and archival governance.
+
+Tina Sisonke Mdeni
+LifeSync Hub & Family Wellness Champion
+
+Household rituals, events, and the Family Planning Board.
+
+Legacy Builders (Children)
+Decision-making tier 3
+
+Next Generation Guild
+Kids Zones Explorers
+
+Immersed in Sazi Life Academy labs, language quests, coding studios, and LifeSync safety drills designed to protect and elevate every child.
+
+How the Ecosystem Interconnects
+Inspired by the BizHelp marketplace tabs, this overview shows how individual access, family collaboration, business engagements, and community impact loop into one another.
+
+Individual • Free Personal Access
+Family • Collective Prosperity
+Professional • BizHelp Marketplace
+Community • Safety & Governance
+Individual • Free Personal Access
+Lifetime tools for identity, safety, and learning – no paywall, no expiry.
+
+Anyone can register, download, or self-host the personal stack at zero cost. Your story, evidence, finances, and safety blueprint stay yours.
+
+LifeKey OS
+Secure personal operating system for identity, credentials, and reciprocity scores. Offline capable for Homestead OS deployments.
+
+LifeCV
+Dynamic portfolio for documenting experience, achievements, and community impact. Integrates with every module in the ecosystem.
+
+Sazi Suite
+Micro-courses, homeschooling support, language immersion, and maker labs that capture evidence back into LifeCV.
+
+LifeSync Safety
+Follow Me Home journeys, emergency contacts, and mesh-based alerts for individuals and kids on the move.
+
+Personal use is deliberately free for life. Families keep sovereignty over their data while benefiting from enterprise-grade infrastructure
+
+Published Books by Salatiso Mdeni
+#
+Book Title
+Version
+Summary
+Key Themes
+Buy Links
+1
+Goliath's Reckoning
+eBook, Audiobook, Paperback
+Exposes gender bias in South Africa's Children's Courts, revealing systemic discrimination against fathers seeking custody, advocating for legal equality.
+• Equality before the law<br>• Legal battles<br>• Parental rights<br>• Gender bias in courts
+• Google Play<br>• Apple Books<br>• Takealot
+2
+Beyond Redress
+eBook, Audiobook,Paperback
+Critiques race-based policies like Affirmative Action, arguing the "best interests of the child" should guide constitutional law over redress.
+• Constitutional law<br>• Children's rights<br>• Equality<br>• Policy critique
+• Google Play<br>• Apple Books<br>• Amazon
+3
+The Homeschooling Father
+eBook, Audiobook,Paperback
+Guides fathers navigating homeschooling, emphasizing their role as educators and protectors, rooted in personal experience and advocacy.
+• Family autonomy<br>• Parental responsibility<br>• Education<br>• Father's role
+• Google Play<br>• Apple Books<br>• Amazon
+4
+Die Tuisonderrig Vader
+eBook
+Afrikaans guide for fathers on homeschooling (Die Tuisonderrig Vader: Hoekom en hoe ek begin het), offering practical advice and personal insights.
+• Family autonomy<br>• Parental responsibility<br>• Education<br>• Cultural perspective
+• Google Play<br>• eBay
+5
+Ntate ea rutang bana ba hae hae, hobaneng le hore na ke qalile joang
+eBook
+Sesotho guide for fathers on homeschooling, exploring why and how to start, reflecting personal and cultural insights.
+• Family autonomy<br>• Parental responsibility<br>• Education<br>• Cultural context
+• Google Play<br>• Smashwords
+6
+Modern, Broke, and Confused
+eBook, Audiobook,Paperback
+A satirical exploration of modern socio-economic struggles, personal finance, and societal confusion, offering a humorous guide to progress.
+• Financial insecurity<br>• Societal pressure<br>• Modern disillusionment<br>• Self-improvement
+• Google Play<br>• Apple Books<br>• Amazon
+7
+Getting to Know Yourself as a South African: Unravelling Xhosa History
+eBook, Audiobook, Paperback
+Explores personal identity through the lens of Xhosa history, offering insights into cultural heritage and self-discovery.
+• Cultural identity<br>• Xhosa heritage<br>• Self-awareness<br>• South African history
+• Google Play<br>• Fable
+8
+Beyond the Grave: A Son's Journey Through Xhosa Tradition, Spirituality, and Freedom
+eBook, Audiobook, Paperback
+Chronicles a son's spiritual journey through Xhosa traditions, exploring ancestry, spirituality, and liberation.
+• Xhosa tradition<br>• Spirituality<br>• Freedom<br>• Cultural heritage
+• Google Play<br>• Fable
+9
+Safety First: Essentials for Your OHS Career Journey
+eBook, Audiobook, Paperback
+A practical guide simplifying Occupational Health and Safety (OHS) compliance in South Africa for career professionals.
+• Occupational health<br>• Safety compliance<br>• Career guidance<br>• Professional development
+• Google Play<br>• Fable
+10
+Safety First: The Essentials of OHS Plans
+eBook, Audiobook, Paperback
+Provides essential strategies and plans for implementing Occupational Health and Safety (OHS) standards in workplaces.
+• Occupational health<br>• Safety planning<br>• Workplace safety<br>• Compliance
+• Google Play<br>• Fable
+11
+The Perfect Cage: Isivumo Legacy – The Rise of Q
+eBook, Audiobook, Paperback
+A dystopian thriller segment exploring the rise of Q, blending surveillance themes with the Isivumo Legacy narrative.
+• Dystopian fiction<br>• Surveillance society<br>• Personal freedom<br>• Social control
+• Google Play<br>• Amazon
+12
+The Perfect Cage: A Dystopian Struggle for Legacy and Survival
+eBook
+
+
+In a dystopian city controlled by an AI, Q awakens to a world where humanity has lost its identity to technology and embarks on a perilous journey to reclaim his father's legacy and fight for freedom. 
+dystopian society, artificial intelligence control, loss of identity, legacy, survival, the fight for freedom.
+Google Play
+13
+The Perfect Cage: Secrets of the Inner Earth
+eBook
+
+
+The resistance continues its fight against a controlling AI, facing betrayals and gang warfare while uncovering secrets of an inner-earth civilization and realizing the AI was a tool of a larger alien threat.
+dystopian resistance, inner-earth secrets, betrayal, unity, alien threat, resilience.
+Google Play
+14
+The Perfect Cage: Journey Beyond the Horizon
+eBook
+
+
+One year after a dystopian regime's fall, the resistance journeys to an alien planet to confront invaders and stop a solar system-destroying superweapon, utilizing ancient secrets and advanced technology.
+intergalactic conflict, ancient mysteries, technological advancement, hope, unity, resilience.
+Google Play
+15
+Zazi Mzantsi Afrika, Yazi inombo yomXhosa
+eBook
+
+
+Umbhali, indoda engumXhosa ekhulele eTranskei, uhlolisisa imvelaphi yamaXhosa, echaza ukuba isizwe sasingasoloko sikho kwaye sakhiwa ziintlanga ezahlukeneyo ezahlukeneyo ngaphambi kokuba zidityaniswe phantsi koKumkani uHintsa.
+Xhosa history, cultural origins, tribal diversity, pre-colonial history, self-education, South African identity.
+Google Play
+16
+Utata ozifundiselayo ekhayeni, Kutheni, kwaye ndiqalise njani.
+eBook
+
+
+Lo mbhali ukhupha umngeni kwinkqubo yezemfundo esesikweni eMzantsi Afrika, egxininisa ukuba ayiphumelelanga kwaye ilahlekisa indima yabazali ekufundiseni abantwana babo, aze anike umdla kwiindlela ezizezinye zemfundo yasekhaya.
+homeschooling advocacy, critique of formal education, parental involvement, educational alternatives, South African social issues, family autonomy.
+Google Play
+
+
+
+
+Upcoming Books
+Goliath's Stand: A Father's Fight for Family Equality Before the Law
+Challenging Discrimination in Family Courts to Protect Children's Right to Both Parents and Extended Families
+This upcoming book, a follow-up to "Goliath's Reckoning" and "Beyond Redress," details the author's legal battles in the Children’s Court and Equality Court against systemic discrimination faced by fathers in South Africa's Children's Courts, advocating for equal treatment and the paramountcy of the child's best interests over redress policies. 
+Key themes: systemic discrimination, fathers' rights, equality before the law, children's rights, legal reform, challenging affirmative action in family law, judicial transparency (upcoming).
+The Quest for BuggZ (TQ4B)
+The Quest for Buggz: A Journey Through Justice, Bias, and the Best Interests of a Child
+This upcoming book delves into the author's personal experiences with family dynamics, societal expectations, and the South African legal system, particularly concerning parental rights and equality. It explores themes of cultural conflict, gender roles, and the challenges of navigating a society grappling with its past while striving for a more equitable future.
+Key themes: parental equality, family law, gender roles, cultural conflict, socio-economic disparities, South African society, personal responsibility.
+Iqhina: The Unbreakable Bond
+“Blood ties run deep. But some knots were never meant to be untied.”
+This upcoming novel is a thriller set in Johannesburg, South Africa, where a web of corruption within a pharmaceutical giant intertwines with a personal quest for vengeance and the rediscovery of family ties. It follows characters navigating a dangerous world of secrets, betrayal, and violence, ultimately forging unbreakable bonds in the face of overwhelming darkness.
+Family and loyalty, betrayal and vengeance, corruption and justice, identity and truth, past and present, good vs. evil
+The Unfairness of Fair Discrimination in South Africa:The injustice of fair discrimination in South Africa.
+How seemingly well-intentioned programs promoting redress led to a nation's regress.
+The book critically analyzes South Africa's redress programs, arguing that their implementation has led to unintended negative consequences and a perpetuation of discrimination, despite their aim to rectify past injustices. It calls for a reevaluation of these policies and a shift towards principles of meritocracy and equality before the law.
+Redress policies, affirmative action, equality before the law, equity, social justice, historical injustice, systemic discrimination, unintended consequences, meritocracy, social cohesion, South African history, constitutional law, economic empowerment, transformation, inequality.
+
+You can use the links below for the books, 
+
+First correct the link (file:///D:/salatiso/)to the orifginal salatiso .com its https://salatiso.com/salatiso/
+
+You can find all the books here https://play.google.com/store/search?q=salatiso&c=books&hl=en
+
+I have uplodaed a folder with tbhe book covers /images/
+
+Also correct the icons/ logos; i am black so 
+The html site is hosted on namecheap, i normally do the deployment manually (upload the files) but I would like tonknow if there is any other way to do it, for today once you've impmeented the changes tI will uploda them myself. 
+
+The only udate i need you to change is th
+
+Ebooks
+Icon image Getting to know yourself as a South African, Unravelling Xhosa History
+Getting to know yourself as a South African, Unravelling Xhosa History
+5.0
+star
+Purchased
+Icon image Safety First: The Essentials of OHS Plans
+Safety First: The Essentials of OHS Plans
+5.0
+star
+Purchased
+Icon image Goliath's Reckoning: Unveiling the Biassed Truth Behind Children's Court that discriminates against Fathers: How the Best Interests of the Child Can Topple State-Sanctioned Race and Gender Discrimination
+Goliath's Reckoning: Unveiling the Biassed Truth Behind Children's Court that discriminates against Fathers: How the Best Interests of the Child Can Topple State-Sanctioned Race and Gender Discrimination
+5.0
+star
+Purchased
+Icon image The Homeschooling Father, How and Why I got started
+The Homeschooling Father, How and Why I got started
+Purchased
+Icon image Beyond Redress: Prioritising the Child's Best Interests to Achieve Equality before the Law in South Africa
+Beyond Redress: Prioritising the Child's Best Interests to Achieve Equality before the Law in South Africa
+R 253,00
+Icon image Modern, Broke, and Confused: A Beginner’s Guide to Progress
+Modern, Broke, and Confused: A Beginner’s Guide to Progress
+R 194,35
+Icon image Beyond the Grave: A Son's Journey Through Xhosa Tradition, Spirituality, and Freedom: The Harmony of Tradition, Science, and Spirituality in Xhosa Culture
+Beyond the Grave: A Son's Journey Through Xhosa Tradition, Spirituality, and Freedom: The Harmony of Tradition, Science, and Spirituality in Xhosa Culture
+Purchased
+Icon image Safety First, Essentials for Your OHS Career Journey
+Safety First, Essentials for Your OHS Career Journey
+Purchased
+Icon image The Perfect Cage: Journey Beyond the Horizon
+The Perfect Cage: Journey Beyond the Horizon
+Book 3
+Purchased
+Icon image The Perfect Cage: Secrets of the Inner Earth
+The Perfect Cage: Secrets of the Inner Earth
+Book 2
+Purchased
+Icon image The Perfect Cage: A Dystopian Struggle for Legacy and Survival
+The Perfect Cage: A Dystopian Struggle for Legacy and Survival
+Book 1
+Purchased
+Icon image The Perfect Cage, Isivumo Legacy: The Rise of Q
+The Perfect Cage, Isivumo Legacy: The Rise of Q
+Book 4
+R 194,35
+Icon image Ntate ea rutang bana ba hae hae, hobaneng le hore na ke qalile joang.
+Ntate ea rutang bana ba hae hae, hobaneng le hore na ke qalile joang.
+Purchased
+Icon image Utata ozifundiselayo ekhayeni, Kutheni, kwaye ndiqalise njani.
+Utata ozifundiselayo ekhayeni, Kutheni, kwaye ndiqalise njani.
+R 113,85
+Icon image Die Tuisonderrig Vader, Hoekom en hoe ek begin het.
+Die Tuisonderrig Vader, Hoekom en hoe ek begin het.
+Purchased
+Icon image Zazi Mzantsi Afrika, Yazi inombo yomXhosa
+Zazi Mzantsi Afrika, Yazi inombo yomXhosa
+5.0
+star
+R 228,85
+Icon image The Sound of Thunder: The Courtney Series 2
+The Sound of Thunder: The Courtney Series 2
+Book 2
+4.8
+star
+R 159,93
+Icon image Mini Astronaut's Handbook
+Mini Astronaut's Handbook
+4.7
+star
+R 67,07R 50,30
+Icon image All Boys Aren't Blue: A Memoir-Manifesto
+All Boys Aren't Blue: A Memoir-Manifesto
+3.5
+star
+R 219,02
+Icon image Fly Guy Presents: Firefighters (Scholastic Reader, Level 2)
+Fly Guy Presents: Firefighters (Scholastic Reader, Level 2)
+4.2
+star
+R 118,82
+Audiobooks
+Icon image Getting to know yourself as a South African, Unravelling Xhosa History
+Getting to know yourself as a South African, Unravelling Xhosa History
+Purchased
+Icon image Goliath's Reckoning: Unveiling the Biassed Truth Behind Children's Court that discriminates against Fathers: How the Best Interests of the Child Can Topple State-Sanctioned Race and Gender Discrimination
+Goliath's Reckoning: Unveiling the Biassed Truth Behind Children's Court that discriminates against Fathers: How the Best Interests of the Child Can Topple State-Sanctioned Race and Gender Discrimination
+Purchased
+Icon image The Homeschooling Father, How and Why I got started
+The Homeschooling Father, How and Why I got started
+Purchased
+Icon image Beyond Redress: Prioritising the Child's Best Interests to Achieve Equality before the Law in South Africa
+Beyond Redress: Prioritising the Child's Best Interests to Achieve Equality before the Law in South Africa
+Purchased
+Icon image The Perfect Cage: A Dystopian Struggle for Legacy and Survival
+The Perfect Cage: A Dystopian Struggle for Legacy and Survival
+5.0
+star
+Purchased
+Icon image The Perfect Cage: Journey Beyond the Horizon
+The Perfect Cage: Journey Beyond the Horizon
+5.0
+star
+Purchased
+Icon image The Perfect Cage: Secrets of the Inner Earth
+The Perfect Cage: Secrets of the Inner Earth
+5
+Icon image Getting to know yourself as a South African, Unravelling Xhosa History
+Getting to know yourself as a South African, Unravelling Xhosa History
+Purchased
+Icon image Goliath's Reckoning: Unveiling the Biassed Truth Behind Children's Court that discriminates against Fathers: How the Best Interests of the Child Can Topple State-Sanctioned Race and Gender Discrimination
+Goliath's Reckoning: Unveiling the Biassed Truth Behind Children's Court that discriminates against Fathers: How the Best Interests of the Child Can Topple State-Sanctioned Race and Gender Discrimination
+Purchased
+Icon image The Homeschooling Father, How and Why I got started
+The Homeschooling Father, How and Why I got started
+Purchased
+Icon image Beyond Redress: Prioritising the Child's Best Interests to Achieve Equality before the Law in South Africa
+Beyond Redress: Prioritising the Child's Best Interests to Achieve Equality before the Law in South Africa
+Purchased
+Icon image The Perfect Cage: A Dystopian Struggle for Legacy and Survival
+The Perfect Cage: A Dystopian Struggle for Legacy and Survival
+5.0
+star
+Purchased
+Icon image The Perfect Cage: Journey Beyond the Horizon
+The Perfect Cage: Journey Beyond the Horizon
+5.0
+star
+Purchased
+Icon image The Perfect Cage: Secrets of the Inner Earth
+The Perfect Cage: Secrets of the Inner Earth
+5.0
+star
+Purchased
+Icon image Safety First, Essentials for Your OHS Career Journey
+Safety First, Essentials for Your OHS Career Journey
+Purchased
+Icon image Beyond the Grave: A Son's Journey Through Xhosa Tradition, Spirituality, and Freedom: The Harmony of Tradition, Science, and Spirituality in Xhosa Culture
+Beyond the Grave: A Son's Journey Through Xhosa Tradition, Spirituality, and Freedom: The Harmony of Tradition, Science, and Spirituality in Xhosa Culture
+Purchased
+Icon image The Perfect Cage, Isivumo Legacy: The Rise of Q
+The Perfect Cage, Isivumo Legacy: The Rise of Q
+Purchased
+Icon image Modern, Broke, and Confused: A Beginner’s Guide to Progress
+Modern, Broke, and Confused: A Beginner’s Guide to Progress
+PurchasedEbooks
+Icon image Getting to know yourself as a South African, Unravelling Xhosa History
+Getting to know yourself as a South African, Unravelling Xhosa History
+5.0
+star
+Purchased
+Icon image Safety First: The Essentials of OHS Plans
+Safety First: The Essentials of OHS Plans
+5.0
+star
+Purchased
+Icon image Goliath's Reckoning: Unveiling the Biassed Truth Behind Children's Court that discriminates against Fathers: How the Best Interests of the Child Can Topple State-Sanctioned Race and Gender Discrimination
+Goliath's Reckoning: Unveiling the Biassed Truth Behind Children's Court that discriminates against Fathers: How the Best Interests of the Child Can Topple State-Sanctioned Race and Gender Discrimination
+5.0
+star
+Purchased
+Icon image The Homeschooling Father, How and Why I got started
+The Homeschooling Father, How and Why I got started
+Purchased
+Icon image Beyond Redress: Prioritising the Child's Best Interests to Achieve Equality before the Law in South Africa
+Beyond Redress: Prioritising the Child's Best Interests to Achieve Equality before the Law in South Africa
+R 253,00
+Icon image Modern, Broke, and Confused: A Beginner’s Guide to Progress
+Modern, Broke, and Confused: A Beginner’s Guide to Progress
+R 194,35
+Icon image Beyond the Grave: A Son's Journey Through Xhosa Tradition, Spirituality, and Freedom: The Harmony of Tradition, Science, and Spirituality in Xhosa Culture
+Beyond the Grave: A Son's Journey Through Xhosa Tradition, Spirituality, and Freedom: The Harmony of Tradition, Science, and Spirituality in Xhosa Culture
+Purchased
+Icon image Safety First, Essentials for Your OHS Career Journey
+Safety First, Essentials for Your OHS Career Journey
+Purchased
+Icon image The Perfect Cage: Journey Beyond the Horizon
+The Perfect Cage: Journey Beyond the Horizon
+Book 3
+Purchased
+Icon image The Perfect Cage: Secrets of the Inner Earth
+The Perfect Cage: Secrets of the Inner Earth
+Book 2
+Purchased
+Icon image The Perfect Cage: A Dystopian Struggle for Legacy and Survival
+The Perfect Cage: A Dystopian Struggle for Legacy and Survival
+Book 1
+Purchased
+Icon image The Perfect Cage, Isivumo Legacy: The Rise of Q
+The Perfect Cage, Isivumo Legacy: The Rise of Q
+Book 4
+R 194,35
+Icon image Ntate ea rutang bana ba hae hae, hobaneng le hore na ke qalile joang.
+Ntate ea rutang bana ba hae hae, hobaneng le hore na ke qalile joang.
+Purchased
+Icon image Utata ozifundiselayo ekhayeni, Kutheni, kwaye ndiqalise njani.
+Utata ozifundiselayo ekhayeni, Kutheni, kwaye ndiqalise njani.
+R 113,85
+Icon image Die Tuisonderrig Vader, Hoekom en hoe ek begin het.
+Die Tuisonderrig Vader, Hoekom en hoe ek begin het.
+Purchased
+Icon image Zazi Mzantsi Afrika, Yazi inombo yomXhosa
+Zazi Mzantsi Afrika, Yazi i
+
+In salatiso.com there is aclear documentation of my ideas as ventures and the ecossytem realiss them
+<section id="ventures" class="content-section">
+            <h2 class="mb-0">My Ventures & Passions <i class="fa-solid fa-rocket"></i></h2>
+            <div class="swiper-container" id="venturesSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/SafetyHelp_Logo.jpg" alt="SafetyHelp Platform" class="venture-image">
+                        <h3><i class="fa-solid fa-helmet-safety"></i>SafetyHelp</h3>
+                        <p>Launching June 1, 2025, an online platform simplifying OHS compliance for businesses, schools, and informal sectors with tools for risk assessments, training, and management.</p>
+                        <a href="https://safetyfirst.help/" target="_blank" class="cta-link">Visit SafetyHelp</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Sazi_Learning_Logo.jpg" alt="Sazi Learning Platform" class="venture-image">
+                        <h3><i class="fa-solid fa-graduation-cap"></i>Sazi Learning</h3>
+                        <p>Inspired by my son, Sazi, this platform focuses on personalized education, homeschooling resources, and preserving Xhosa language and culture.</p>
+                        <a href="https://www.sazi.life/sazi/" target="_blank" class="cta-link">Explore Sazi.life</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Flamea_Logo.jpg" alt="Flamea Organization" class="venture-image">
+                        <h3><i class="fa-solid fa-scale-balanced"></i>Flamea</h3>
+                        <p>Promoting Equality before the Law, through education, Flamea provides learning opportunities for underserved communities and advocates for fathers' rights and family equality.</p>
+                        <a href="https://flamea.org/" target="_blank" class="cta-link">Learn about Flamea</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="./assets/photos/Author_Speaker_Salatiso.jpg" alt="Salatiso Mdeni - Author and Creative Writer" class="venture-image">
+                        <h3><i class="fa-solid fa-pen-nib"></i>Author & Thought Leader</h3>
+                        <p>I share insights through books, articles, e-learning content, and creative writing, including poetry, focusing on OHS, risk, personal development, and cultural narratives.</p>
+                        <button data-section="books" class="cta-link nav-button-trigger">Explore My Books</button>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Digital_Creator_Salatiso.jpg" alt="Web Development and Tech Skills" class="venture-image">
+                        <h3><i class="fa-solid fa-laptop-code"></i>Digital Creator & Tech Innovator</h3>
+                        <p>Leveraging self-taught web development skills to build impactful platforms like <a href="https://salatiso.com/" target="_blank">salatiso.com</a>, <a href="https://safetyfirst.help/" target="_blank">safetyfirst.help</a>, <a href="https://flamea.org/" target="_blank">flamea.org</a>, and <a href="https://www.sazi.life/sazi/" target="_blank">sazi.life</a>.</p>
+                        <a href="https://salatiso.com/" target="_blank" class="cta-link">View My Portfolio</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Family_Community_Salatiso.jpg" alt="Family and Community" class="venture-image">
+                        <h3><i class="fa-solid fa-users-line"></i>Family & Community Pillar</h3>
+                        <p>My commitment extends to being a father-figure, an uncle, a dutiful son, and a provider for my mother and sisters, nurturing a strong family and community foundation.</p>
+                         <button data-section="about" class="cta-link nav-button-trigger">Learn More</button>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Core_Expertise_Salatiso.jpg" alt="OHS and Risk Management Skills" class="venture-image">
+                        <h3><i class="fa-solid fa-brain"></i>Core Expertise</h3>
+                        <p>Specializing in OHS Management, Risk Management & Auditing, Business Continuity, Emergency Response, Training Development, Occupational Hygiene, and Website Development.</p>
+                        <a href="https://safetyfirst.help/" target="_blank" class="cta-link">Learn More</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/DIY_Salatiso.jpg" alt="DIY and Home Improvement" class="venture-image">
+                        <h3><i class="fa-solid fa-screwdriver-wrench"></i>DIY & Home Improvement</h3>
+                        <p>Passionate about hands-on work: woodworking, plumbing, welding, and IT projects, embodying self-sufficiency and practical problem-solving.</p>
+                        <a href="https://www.youtube.com/@Salatiso" target="_blank" class="cta-link">Watch DIY Projects</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Homeschooling_Salatiso.jpg" alt="Homeschooling my son Sazi" class="venture-image">
+                        <h3><i class="fa-solid fa-child-reaching"></i>Homeschooling Advocate</h3>
+                        <p>Actively homeschooling my son, Sazi, integrating learning into daily life and developing resources through the Sazi platform to support others.</p>
+                        <a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en_IE" target="_blank" class="cta-link">Read "The Homeschooling Father"</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Reader_Learner_Salatiso.jpg" alt="Avid Reader and Lifelong Learner" class="venture-image">
+                        <h3><i class="fa-solid fa-book-reader"></i>Avid Reader & Lifelong Learner</h3>
+                        <p>A firm believer in uncertified knowledge, I'm an avid reader and audiobook enthusiast. Authors like Thomas Sowell, Steven Pinker, and Richard Dawkins profoundly shape my perspectives.</p>
+                        <button data-section="books" class="cta-link nav-button-trigger">See Recommendations</button>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <section id="books" class="content-section">
+            <h2>My Books <i class="fa-solid fa-swatchbook"></i></h2>
+            <p class="text-center mb-6 text-gray-300">Explore my collection of works, including eBooks, Audiobooks, and Paperbacks. Many are also accessible for free on my YouTube Channel. These works share lived experiences, Xhosa wisdom, and professional insights.</p>
+            
+            <div class="swiper-container" id="booksSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/goliath.jpg" alt="Goliath's Reckoning" class="book-cover-image">
+                        <h3>Goliath's Reckoning</h3>
+                        <p class="text-xs text-gray-400">Advocacy & Fathers' Rights</p>
+                        <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&pg=GBS.PP1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/redress.jpg" alt="Beyond Redress" class="book-cover-image">
+                        <h3>Beyond Redress</h3>
+                         <p class="text-xs text-gray-400">Social Commentary</p>
+                        <a href="https://play.google.com/books/reader?id=fs0SEQAAQBAJ&pg=GBS.PA1" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/homeschooling_father.jpg" alt="The Homeschooling Father" class="book-cover-image">
+                        <h3>The Homeschooling Father</h3>
+                        <p class="text-xs text-gray-400">Education & Parenting</p>
+                        <a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en_IE" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="./assets/photos/SF_Career.jpg" alt="Safety First: Essentials for Your OHS Career" class="book-cover-image">
+                        <h3>Safety First: OHS Career</h3>
+                        <p class="text-xs text-gray-400">Occupational Health & Safety</p>
+                        <a href="https://play.google.com/books/reader?id=vscJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/SF_Plans.jpg" alt="Safety First: The Essentials of OHS Plans" class="book-cover-image">
+                        <h3>Safety First: OHS Plans</h3>
+                        <p class="text-xs text-gray-400">Occupational Health & Safety</p>
+                        <a href="https://play.google.com/books/reader?id=psgJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Rise_of_Q.jpg" alt="The Perfect Cage: Isivumo Legacy" class="book-cover-image">
+                        <h3>The Perfect Cage: Isivumo</h3>
+                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
+                        <a href="https://play.google.com/books/reader?id=s51DEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="./assets/photos/Modern_Broke.jpg" alt="Modern, Broke, and Confused" class="book-cover-image">
+                        <h3>Modern, Broke, and Confused</h3>
+                        <p class="text-xs text-gray-400">Social Commentary</p>
+                        <a href="https://play.google.com/books/reader?id=X3ZDEQAAQBAJ&hl=en_IE" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="./assets/photos/Unravelling_Xhosa_History.jpg" alt="Getting to Know Yourself as a South African" class="book-cover-image">
+                        <h3>Getting to Know Yourself...</h3>
+                        <p class="text-xs text-gray-400">Culture & History</p>
+                        <a href="https://play.google.com/books/reader?id=VU__EAAAQBAJ&pg=GBS.PA50&hl=en_IE" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="./assets/photos/Beyond_the_Grave.jpg" alt="Beyond the Grave" class="book-cover-image">
+                        <h3>Beyond the Grave</h3>
+                        <p class="text-xs text-gray-400">Spirituality & Tradition</p>
+                        <a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&pg=GBS.PA1923.w.0.0.0.2&hl=en_IE" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Die_Tuisonderrig_Vader.jpg" alt="Die Tuisonderrig Vader" class="book-cover-image">
+                        <h3>Die Tuisonderrig Vader</h3>
+                        <p class="text-xs text-gray-400">Education & Parenting (Afrikaans)</p>
+                        <a href="https://play.google.com/books/reader?id=CsoJEQAAQBAJ&pg=GBS.PA1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="./assets/photos/Ntate.jpg" alt="Ntate ea rutang bana ba hae hae" class="book-cover-image">
+                        <h3>Ntate ea rutang...</h3>
+                        <p class="text-xs text-gray-400">Education & Parenting (Sesotho)</p>
+                        <a href="https://play.google.com/books/reader?id=MsoJEQAAQBAJ&pg=GBS.PA1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="./assets/photos/The_Perfect_Cage1.jpg" alt="The Perfect Cage: Dystopian Struggle" class="book-cover-image">
+                        <h3>The Perfect Cage: Dystopian</h3>
+                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
+                        <a href="https://play.google.com/books/reader?id=RdU8EQAAQBAJ&pg=GBS.PA1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="./assets/photos/The_Perfect_Cage2.jpg" alt="The Perfect Cage: Secrets of the Inner Earth" class="book-cover-image">
+                        <h3>The Perfect Cage: Inner Earth</h3>
+                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
+                        <a href="https://play.google.com/books/reader?id=GIQ9EQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="./assets/photos/The_Perfect_Cage3.jpg" alt="The Perfect Cage: Journey Beyond the Horizon" class="book-cover-image">
+                        <h3>The Perfect Cage: Horizon</h3>
+                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
+                        <a href="https://play.google.com/books/reader?id=7fE9EQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="./assets/photos/Zazi_Mzantsi_Afrika.jpg" alt="Zazi Mzantsi Afrika" class="book-cover-image">
+                        <h3>Zazi Mzantsi Afrika</h3>
+                        <p class="text-xs text-gray-400">Culture & History (isiXhosa)</p>
+                        <a href="https://play.google.com/books/reader?id=9sgJEQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="./assets/photos/Utata_Ozifundiselayo.jpg" alt="Utata ozifundiselayo ekhayeni" class="book-cover-image">
+                        <h3>Utata ozifundiselayo...</h3>
+                        <p class="text-xs text-gray-400">Education & Parenting (isiXhosa)</p>
+                        <a href="https://play.google.com/books/reader?id=wMkJEQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>

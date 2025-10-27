@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp by Salatiso - The BizHelp Wizard: Complete User Guide</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .level-badge {
+            background: var(--success-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: var(--primary-blue);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--ubuntu-orange);
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: var(--ubuntu-orange);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--lifecv-purple), var(--primary-blue));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .wizard-overview {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .wizard-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--ubuntu-orange);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem auto;
+        }
+
+        .step-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--border-light);
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .step-card:hover {
+            border-color: var(--ubuntu-orange);
+        }
+
+        .screenshot-placeholder {
+            background: var(--bg-light);
+            border: 2px dashed var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1rem 0;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .form-section {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--ubuntu-orange);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .form-field input, .form-field select, .form-field textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .btn {
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary { background: var(--ubuntu-orange); color: white; }
+        .btn-primary:hover { background: #DC2626; }
+
+        .btn-secondary { background: var(--primary-blue); color: white; }
+        .btn-secondary:hover { background: #1E40AF; }
+
+        .btn-success { background: var(--success-green); color: white; }
+        .btn-success:hover { background: #059669; }
+
+        .progress-bar {
+            background: var(--border-light);
+            border-radius: 10px;
+            height: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--ubuntu-orange), var(--success-green));
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .module-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--ubuntu-orange);
+        }
+
+        .module-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .proof-drop {
+            background: var(--success-green);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .proof-drop::before {
+            content: '📤';
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .warning-box {
+            background: var(--warning-amber);
+            color: var(--text-dark);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #D97706;
+        }
+
+        .cta-button {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem 0;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #DC2626;
+        }
+
+        .footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-section h4 {
+            color: var(--ubuntu-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .header {
+                padding: 1.5rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .wizard-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .module-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .customization-panel {
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .customization-panel.show {
+            display: block;
+        }
+
+        .customization-panel label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .customization-panel input, .customization-panel select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-family: inherit;
+        }
+
+        .custom-fields {
+            background: var(--warning-amber);
+            color: var(--text-dark);
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .share-section {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .share-btn:hover {
+            background: #1E40AF;
+        }
+
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            display: inline-block;
+            margin: 1rem;
+            text-align: center;
+            line-height: 100px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+
+            .custom-fields {
+                background: white !important;
+                border: 1px solid #ccc !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">BizHelp by Salatiso</div>
+            <div class="tagline">The BizHelp Wizard: Complete User Guide</div>
+            <div class="level-badge">Professional • Level 3</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label>Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label>Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label>Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label>Document Version:</label>
+                <input type="text" id="docVersion" value="Professional Copy v1.0" placeholder="e.g., Professional Copy v1.0">
+            </div>
+            <button onclick="applyCustomization()" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+        <section class="section">
+            <h2>What is the BizHelp Wizard?</h2>
+            <p>The BizHelp Wizard is your intelligent guide that transforms business dreams into reality. Like a trusted family elder, it asks the right questions, understands your unique situation, and provides step-by-step guidance tailored to your needs.</p>
+
+            <div class="wizard-overview">
+                <h3>🎯 Your Personal Business Advisor</h3>
+                <p>The Wizard doesn't just give generic advice—it learns about your family, your goals, and your resources to recommend the perfect business structure. Whether you're 15 starting a side hustle or 65 launching a consulting practice, the Wizard adapts to you.</p>
+
+                <div class="wizard-steps">
+                    <div class="step-card">
+                        <div class="step-icon">1</div>
+                        <h4>Tell Your Story</h4>
+                        <p>Share your business idea, family situation, and goals</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">2</div>
+                        <h4>Get Recommendations</h4>
+                        <p>Receive personalized advice for your unique situation</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">3</div>
+                        <h4>Follow the Path</h4>
+                        <p>Step-by-step guidance to make it happen</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">4</div>
+                        <h4>Celebrate Success</h4>
+                        <p>Generate proof for LifeCV and unlock next level</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>How to Access the Wizard</h2>
+
+            <div class="highlight-box">
+                <h3>🚀 Getting Started</h3>
+                <ol>
+                    <li>Go to <strong>https://bizhelp-lifecv.web.app/wizard</strong></li>
+                    <li>Sign in with your Salatiso account (or create one)</li>
+                    <li>Click "Start New Business Journey"</li>
+                    <li>Answer questions honestly—the Wizard learns from you!</li>
+                </ol>
+            </div>
+
+            <div class="screenshot-placeholder">
+                [Screenshot: BizHelp Wizard welcome screen with "Start Your Journey" button]
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Wizard Modules & Flow</h2>
+            <p>The Wizard is divided into smart modules that guide you through different aspects of business creation:</p>
+
+            <div class="module-grid">
+                <div class="module-card">
+                    <h4>🎭 Personal Assessment</h4>
+                    <p>Questions about your age, experience, family situation, and personal goals. This helps the Wizard understand your starting point and recommend appropriate complexity.</p>
+                    <strong>Sample Questions:</strong>
+                    <ul>
+                        <li>How old are you?</li>
+                        <li>Do you have business experience?</li>
+                        <li>Who in your family will be involved?</li>
+                        <li>What's your main goal? (fun, income, legacy)</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>💡 Business Idea Exploration</h4>
+                    <p>Help refine and validate your business concept. The Wizard asks about your idea, target customers, and unique value proposition.</p>
+                    <strong>Sample Questions:</strong>
+                    <ul>
+                        <li>What problem does your business solve?</li>
+                        <li>Who will buy your product/service?</li>
+                        <li>What makes you different from competitors?</li>
+                        <li>How will you make money?</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>🏗️ Structure Recommendation</h4>
+                    <p>Based on your answers, recommends the best legal structure: Sole Proprietor, Partnership, Close Corporation, or Company.</p>
+                    <strong>Recommendation Factors:</strong>
+                    <ul>
+                        <li>Liability protection needed</li>
+                        <li>Number of owners</li>
+                        <li>Tax implications</li>
+                        <li>Complexity vs. simplicity</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>📋 Action Plan Generator</h4>
+                    <p>Creates a customized checklist with deadlines, required documents, and step-by-step instructions.</p>
+                    <strong>Generated Items:</strong>
+                    <ul>
+                        <li>Document checklist</li>
+                        <li>Timeline with milestones</li>
+                        <li>Cost estimates</li>
+                        <li>Next action reminders</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>📄 Form Auto-Filler</h4>
+                    <p>Automatically fills CIPC forms, SARS applications, and other paperwork based on your answers.</p>
+                    <strong>Supported Forms:</strong>
+                    <ul>
+                        <li>CoR 14.1 (Company Incorporation)</li>
+                        <li>CoR 15.1A (Memorandum of Incorporation)</li>
+                        <li>SARS tax registration</li>
+                        <li>Shareholder agreements</li>
+                    </ul>
+                </div>
+
+                <div class="module-card">
+                    <h4>📈 Progress Tracker</h4>
+                    <p>Monitors your completion status and sends reminders. Integrates with LifeCV for proof tracking.</p>
+                    <strong>Tracking Features:</strong>
+                    <ul>
+                        <li>Completion percentage</li>
+                        <li>Milestone celebrations</li>
+                        <li>Document upload status</li>
+                        <li>Proof drop suggestions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Step-by-Step Wizard Walkthrough</h2>
+
+            <h3>Step 1: Welcome & Assessment</h3>
+            <div class="form-section">
+                <p>The Wizard starts by understanding you:</p>
+                <div class="form-field">
+                    <label>What's your age group?</label>
+                    <select>
+                        <option>Under 18 (with guardian)</option>
+                        <option>18-25</option>
+                        <option>26-40</option>
+                        <option>41-60</option>
+                        <option>60+</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>What's your business experience level?</label>
+                    <select>
+                        <option>Complete beginner</option>
+                        <option>Some experience (side hustles)</option>
+                        <option>Experienced entrepreneur</option>
+                        <option>Business professional</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3>Step 2: Business Idea Refinement</h3>
+            <div class="form-section">
+                <p>Help the Wizard understand your vision:</p>
+                <div class="form-field">
+                    <label>Describe your business idea in one sentence:</label>
+                    <textarea placeholder="Example: I want to create custom artwork for local businesses"></textarea>
+                </div>
+                <div class="form-field">
+                    <label>Who will be your customers?</label>
+                    <input type="text" placeholder="Local families, small businesses, tourists, etc.">
+                </div>
+                <div class="form-field">
+                    <label>How much money do you need to start?</label>
+                    <select>
+                        <option>Under R5,000</option>
+                        <option>R5,000 - R20,000</option>
+                        <option>R20,000 - R100,000</option>
+                        <option>Over R100,000</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3>Step 3: Structure Recommendation</h3>
+            <div class="screenshot-placeholder">
+                [Screenshot: Recommendation screen showing "Based on your answers, we recommend: Private Company (Pty) Ltd"]
+            </div>
+
+            <h3>Step 4: Action Plan Generation</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%;"></div>
+            </div>
+            <p>Your personalized action plan appears with:</p>
+            <ul>
+                <li>✅ Completed: Business idea assessment</li>
+                <li>🔄 In Progress: Company name selection</li>
+                <li>⏳ Pending: Document preparation</li>
+                <li>⏳ Pending: CIPC submission</li>
+            </ul>
+
+            <h3>Step 5: Form Auto-Filling</h3>
+            <div class="form-section">
+                <p>The Wizard pre-fills forms with your information:</p>
+                <div class="button-grid">
+                    <button class="btn btn-primary">Download CoR 14.1</button>
+                    <button class="btn btn-secondary">Download CoR 15.1A</button>
+                    <button class="btn btn-success">Save Progress</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Common Wizard Scenarios</h2>
+
+            <h3>Scenario 1: Teen Side Hustle (Your Situation!)</h3>
+            <div class="form-section">
+                <strong>Wizard Input:</strong> 15-year-old, no experience, family involved, small scale
+                <br><br>
+                <strong>Wizard Recommendation:</strong> Start with Sole Proprietor for simplicity, upgrade to company later
+                <br><br>
+                <strong>Action Plan:</strong> Focus on basic registration, simple tax requirements, family mentorship
+            </div>
+
+            <h3>Scenario 2: Family Investment Holding</h3>
+            <div class="form-section">
+                <strong>Wizard Input:</strong> Multi-generational, asset protection needed, long-term planning
+                <br><br>
+                <strong>Wizard Recommendation:</strong> Private Company (Pty) Ltd with family shareholders agreement
+                <br><br>
+                <strong>Action Plan:</strong> Company registration, trust setup, governance framework
+            </div>
+
+            <h3>Scenario 3: Professional Consulting</h3>
+            <div class="form-section">
+                <strong>Wizard Input:</strong> Experienced professional, B2B services, credibility important
+                <br><br>
+                <strong>Wizard Recommendation:</strong> Professional Close Corporation or Private Company
+                <br><br>
+                <strong>Action Plan:</strong> Company registration, professional indemnity insurance, service contracts
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Troubleshooting & Tips</h2>
+
+            <div class="warning-box">
+                <h3>💡 Pro Tips for Success</h3>
+                <ul>
+                    <li><strong>Be Honest:</strong> The Wizard gives better advice when you answer truthfully</li>
+                    <li><strong>Save Progress:</strong> Use the "Save & Continue Later" button—your answers are stored</li>
+                    <li><strong>Family Input:</strong> Involve elders for wisdom, youth for fresh ideas</li>
+                    <li><strong>Document Ready:</strong> Have ID copies ready before starting complex forms</li>
+                    <li><strong>Start Small:</strong> You can always upgrade your business structure later</li>
+                </ul>
+            </div>
+
+            <h3>Common Issues & Solutions</h3>
+            <div class="module-grid">
+                <div class="module-card">
+                    <h4>❓ "I don't know what business to start"</h4>
+                    <p><strong>Solution:</strong> The Wizard has idea prompts. Start with your interests and skills. Talk to family about community needs.</p>
+                </div>
+
+                <div class="module-card">
+                    <h4>❓ "The recommended structure seems too complex"</h4>
+                    <p><strong>Solution:</strong> You can start simpler and upgrade later. The Wizard explains trade-offs clearly.</p>
+                </div>
+
+                <div class="module-card">
+                    <h4>❓ "I need help with documents"</h4>
+                    <p><strong>Solution:</strong> Use the document checklist. Contact hub@salatiso.com for guidance.</p>
+                </div>
+
+                <div class="module-card">
+                    <h4>❓ "My family disagrees on the business idea"</h4>
+                    <p><strong>Solution:</strong> Use the family council feature. The Wizard can help facilitate discussions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Integration with LifeCV & Sazi Academy</h2>
+
+            <div class="proof-drop">
+                <div>
+                    <strong>Proof Drop Integration:</strong> Every Wizard completion generates LifeCV proof. Your business journey becomes part of your personal and family legacy.
+                </div>
+            </div>
+
+            <h3>Level Progression Unlocks</h3>
+            <ul>
+                <li><strong>Level 1:</strong> Complete personal assessment → Unlock basic business literacy badges</li>
+                <li><strong>Level 2:</strong> Generate first action plan → Family collaboration missions</li>
+                <li><strong>Level 3:</strong> Submit company registration → Professional business tools</li>
+                <li><strong>Level 4:</strong> Launch first business → Community stewardship opportunities</li>
+                <li><strong>Level 5:</strong> Mentor others → Ecosystem superuser status</li>
+            </ul>
+
+            <h3>Family Learning Features</h3>
+            <ul>
+                <li><strong>Shared Progress:</strong> Family members can view each other's wizard progress (with permission)</li>
+                <li><strong>Collaborative Ideas:</strong> Joint business brainstorming sessions</li>
+                <li><strong>Mentorship Matching:</strong> Connect experienced family members with beginners</li>
+                <li><strong>Group Proof Drops:</strong> Family achievements celebrated together</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Getting Help & Support</h2>
+
+            <div class="highlight-box">
+                <h3>🤝 You're Not Alone</h3>
+                <p>The BizHelp Wizard is designed to be your guide, but you have a whole community behind you:</p>
+
+                <div class="button-grid">
+                    <a href="mailto:hub@salatiso.com" class="btn btn-primary">Email Support</a>
+                    <a href="https://the-hub-lifecv.web.app" class="btn btn-secondary">Family Hub</a>
+                    <a href="https://lifecv-d2724.web.app/training" class="btn btn-success">Sazi Academy</a>
+                </div>
+            </div>
+
+            <h3>Support Resources</h3>
+            <ul>
+                <li><strong>Video Tutorials:</strong> Step-by-step walkthroughs on YouTube</li>
+                <li><strong>Document Templates:</strong> Pre-filled forms and checklists</li>
+                <li><strong>Community Forum:</strong> Ask questions, share experiences</li>
+                <li><strong>Mentor Matching:</strong> Connect with experienced business owners</li>
+                <li><strong>Office Hours:</strong> Live Q&A sessions (check The Hub for schedule)</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Ready to Start Your Journey?</h2>
+
+            <div style="text-align: center;">
+                <a href="https://bizhelp-lifecv.web.app/wizard" class="cta-button">Launch BizHelp Wizard</a>
+            </div>
+
+            <p style="text-align: center; margin-top: 1rem; color: var(--text-light);">
+                Remember: Every expert was once a beginner. Your first step today creates tomorrow's success story.
+            </p>
+
+            <div class="proof-drop">
+                <div>
+                    <strong>Final Proof Drop:</strong> After completing your first Wizard session, upload a screenshot of your personalized action plan to LifeCV. Include a voice note about what excited you most about your business journey.
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>📤 Proof Drop</h4>
+                <p>Upload to LifeCV Training | Level 3</p>
+                <p>Part of Sazi Life Academy</p>
+            </div>
+            <div class="footer-section">
+                <h4>🔗 Quick Links</h4>
+                <p>Wizard: bizhelp-lifecv.web.app/wizard</p>
+                <p>Support: hub@salatiso.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>💡 Remember</h4>
+                <p>Personal First • Family First</p>
+                <p>Powered by Salatiso</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Customization Functions
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value;
+            const familyName = document.getElementById('familyName').value;
+            const docDate = document.getElementById('docDate').value;
+            const docVersion = document.getElementById('docVersion').value;
+
+            // Update document title
+            document.title = `BizHelp Wizard Guide - ${familyName || 'Family Business'} - ${docVersion}`;
+
+            // Update header
+            const header = document.querySelector('header h1');
+            if (header) {
+                header.innerHTML = `BizHelp Wizard Guide<br><small style="font-size: 0.8em; color: var(--text-light);">Professional Manual for ${familyName || 'Your Family'} - ${docVersion}</small>`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) {
+                footer.innerHTML = `© 2025 BizHelp by Salatiso - ${familyName || 'Family Business'} Legacy. Prepared for ${userName || 'Professional User'} on ${new Date(docDate).toLocaleDateString()}`;
+            }
+
+            alert('✅ Document customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('docDate').value = today;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp by Salatiso - Shareholders Agreement for Families</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .level-badge {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .agreement-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .agreement-hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .agreement-structure {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .structure-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .structure-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .structure-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .key-provisions {
+            background: var(--bg-light);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .key-provisions h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .provisions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .provision-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .provision-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .family-specific {
+            background: var(--success-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .family-specific h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .family-clauses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .family-clause {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .family-clause h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .ownership-rights {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .ownership-rights h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .rights-card {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .rights-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .dispute-resolution {
+            background: var(--warning-amber);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .dispute-resolution h2 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .resolution-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .resolution-step {
+            background: rgba(255,255,255,0.8);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .exit-strategies {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .exit-strategies h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .exit-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .exit-option {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .exit-option h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .valuation-methods {
+            background: var(--error-red);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .valuation-methods h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .valuation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .valuation-method {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .implementation-guide {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .implementation-guide h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #d4550a;
+        }
+
+        .btn.secondary {
+            background: var(--primary-blue);
+        }
+
+        .btn.secondary:hover {
+            background: #152c6b;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        footer .footer-section h4 {
+            color: var(--ubuntu-orange);
+            margin-bottom: 1rem;
+        }
+
+        footer .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">BizHelp by Salatiso</div>
+            <div class="tagline">Shareholders Agreement for Families</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label>Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label>Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label>Company Name:</label>
+                <input type="text" id="companyName" placeholder="Enter company name">
+            </div>
+            <div class="form-field">
+                <label>Document Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label>Document Version:</label>
+                <input type="text" id="docVersion" value="Shareholders Agreement v1.0" placeholder="e.g., Shareholders Agreement v1.0">
+            </div>
+            <button onclick="applyCustomization()" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+
+        <div class="level-badge">Family • Level 2</div>
+
+        <div class="agreement-hero">
+            <h1>📋 Shareholders Agreement for Families</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+                Protecting your family business and relationships through clear legal agreements
+            </p>
+            <p>
+                A Shareholders Agreement is your family's constitution. It establishes rules for ownership,
+                decision-making, and conflict resolution that preserve both business value and family harmony.
+            </p>
+        </div>
+
+        <div style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--primary-blue); text-align: center;">Why Your Family Needs a Shareholders Agreement</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🛡️</div>
+                    <h4>Protect Business Value</h4>
+                    <p>Prevents unwanted sale of shares and ensures business stays in family hands</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">⚖️</div>
+                    <h4>Clear Decision Rules</h4>
+                    <p>Establishes how major decisions are made and who has voting rights</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🤝</div>
+                    <h4>Resolve Conflicts</h4>
+                    <p>Provides fair processes for handling disagreements before they damage relationships</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📈</div>
+                    <h4>Plan for Future</h4>
+                    <p>Addresses succession, new shareholders, and business growth scenarios</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="agreement-structure">
+            <div class="structure-card">
+                <div class="icon">📄</div>
+                <h3>Legal Foundation</h3>
+                <p>The agreement that governs shareholder rights and company operations. It works alongside your company's Memorandum of Incorporation.</p>
+            </div>
+
+            <div class="structure-card">
+                <div class="icon">👨🏾‍👩🏾‍👧🏾‍👦🏾</div>
+                <h3>Family First</h3>
+                <p>Includes family-specific provisions that balance business needs with family relationships and values.</p>
+            </div>
+
+            <div class="structure-card">
+                <div class="icon">🔄</div>
+                <h3>Living Document</h3>
+                <p>Regularly reviewed and updated as your family and business circumstances change over time.</p>
+            </div>
+
+            <div class="structure-card">
+                <div class="icon">⚖️</div>
+                <h3>Enforceable</h3>
+                <p>Legally binding agreement that can be enforced in court if disputes arise between shareholders.</p>
+            </div>
+        </div>
+
+        <div class="key-provisions">
+            <h2>🔑 Key Provisions Every Family Agreement Should Include</h2>
+            <p>These are the essential clauses that protect your family business and relationships</p>
+
+            <div class="provisions-grid">
+                <div class="provision-card">
+                    <h4>Share Ownership & Transfer</h4>
+                    <p>Controls who can own shares and how they can be sold or transferred</p>
+                    <ul>
+                        <li>Right of first refusal for family members</li>
+                        <li>Restrictions on selling to outsiders</li>
+                        <li>Share transfer upon death or divorce</li>
+                        <li>Minimum shareholding requirements</li>
+                    </ul>
+                </div>
+
+                <div class="provision-card">
+                    <h4>Decision-Making Authority</h4>
+                    <p>Establishes who makes what decisions and voting procedures</p>
+                    <ul>
+                        <li>Board composition and appointment</li>
+                        <li>Majority vs supermajority voting</li>
+                        <li>Reserved matters requiring consent</li>
+                        <li>Deadlock resolution procedures</li>
+                    </ul>
+                </div>
+
+                <div class="provision-card">
+                    <h4>Dividend & Profit Distribution</h4>
+                    <p>How profits are shared among shareholders</p>
+                    <ul>
+                        <li>Dividend payment policies</li>
+                        <li>Equal vs performance-based distribution</li>
+                        <li>Reinvestment requirements</li>
+                        <li>Tax-efficient distribution methods</li>
+                    </ul>
+                </div>
+
+                <div class="provision-card">
+                    <h4>Management & Employment</h4>
+                    <p>Rules for family members working in the business</p>
+                    <ul>
+                        <li>Employment terms and conditions</li>
+                        <li>Performance evaluation processes</li>
+                        <li>Termination procedures</li>
+                        <li>Compensation policies</li>
+                    </ul>
+                </div>
+
+                <div class="provision-card">
+                    <h4>Valuation Methods</h4>
+                    <p>How to determine share value for buying/selling</p>
+                    <ul>
+                        <li>Independent valuation requirements</li>
+                        <li>Regular valuation frequency</li>
+                        <li>Dispute resolution for valuations</li>
+                        <li>Pre-agreed valuation formulas</li>
+                    </ul>
+                </div>
+
+                <div class="provision-card">
+                    <h4>Dispute Resolution</h4>
+                    <p>How to handle conflicts between shareholders</p>
+                    <ul>
+                        <li>Mediation and arbitration procedures</li>
+                        <li>Escalation processes</li>
+                        <li>Independent expert involvement</li>
+                        <li>Buyout options for irreconcilable disputes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="family-specific">
+            <h2>👨🏾‍👩🏾‍👧🏾‍👦🏾 Family-Specific Provisions</h2>
+            <p>Special clauses that address the unique dynamics of family business ownership</p>
+
+            <div class="family-clauses">
+                <div class="family-clause">
+                    <h4>Family Employment Rules</h4>
+                    <p>Requirements for family members to work in the business</p>
+                    <ul>
+                        <li>Minimum qualifications or experience</li>
+                        <li>Fair hiring and promotion processes</li>
+                        <li>Performance standards for all</li>
+                        <li>Non-family employment protections</li>
+                    </ul>
+                </div>
+
+                <div class="family-clause">
+                    <h4>Succession Rights</h4>
+                    <p>How leadership and ownership pass to next generation</p>
+                    <ul>
+                        <li>Succession planning requirements</li>
+                        <li>Leadership transition procedures</li>
+                        <li>Share transfer to heirs</li>
+                        <li>Development requirements for successors</li>
+                    </ul>
+                </div>
+
+                <div class="family-clause">
+                    <h4>Marriage & Divorce</h4>
+                    <p>Protecting business interests in personal life changes</p>
+                    <ul>
+                        <li>Pre-nuptial agreement requirements</li>
+                        <li>Share treatment in divorce</li>
+                        <li>Spouse involvement restrictions</li>
+                        <li>Family approval for new spouses</li>
+                    </ul>
+                </div>
+
+                <div class="family-clause">
+                    <h4>Death & Inheritance</h4>
+                    <p>Managing ownership transfer when family members pass</p>
+                    <ul>
+                        <li>Life insurance requirements</li>
+                        <li>Estate planning coordination</li>
+                        <li>Trust structures for minors</li>
+                        <li>Buyout provisions for estates</li>
+                    </ul>
+                </div>
+
+                <div class="family-clause">
+                    <h4>Non-Working Shareholders</h4>
+                    <p>Rights of family members not actively involved</p>
+                    <ul>
+                        <li>Information and reporting rights</li>
+                        <li>Dividend entitlements</li>
+                        <li>Voting rights and limitations</li>
+                        <li>Exit options and valuations</li>
+                    </ul>
+                </div>
+
+                <div class="family-clause">
+                    <h4>Family Council Integration</h4>
+                    <p>Connecting shareholder decisions with family governance</p>
+                    <ul>
+                        <li>Council approval for major decisions</li>
+                        <li>Family charter alignment</li>
+                        <li>Regular family meetings</li>
+                        <li>Values-based decision framework</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="ownership-rights">
+            <h2>🎫 Shareholder Rights & Responsibilities</h2>
+            <p>Understanding what ownership means in your family business</p>
+
+            <div class="rights-grid">
+                <div class="rights-card">
+                    <h4>Voting Rights</h4>
+                    <p>How shareholders participate in decisions</p>
+                    <ul>
+                        <li>One share, one vote (usually)</li>
+                        <li>Major decisions require higher thresholds</li>
+                        <li>Proxy voting for absent shareholders</li>
+                        <li>Special voting rules for family matters</li>
+                    </ul>
+                </div>
+
+                <div class="rights-card">
+                    <h4>Information Rights</h4>
+                    <p>Access to business information and records</p>
+                    <ul>
+                        <li>Regular financial reports</li>
+                        <li>Annual general meetings</li>
+                        <li>Access to company records</li>
+                        <li>Management reporting requirements</li>
+                    </ul>
+                </div>
+
+                <div class="rights-card">
+                    <h4>Dividend Rights</h4>
+                    <p>Entitlement to share in company profits</p>
+                    <ul>
+                        <li>Pro-rata distribution based on shares</li>
+                        <li>Board discretion on dividend payments</li>
+                        <li>Reinvestment options</li>
+                        <li>Tax-efficient distribution methods</li>
+                    </ul>
+                </div>
+
+                <div class="rights-card">
+                    <h4>Pre-emptive Rights</h4>
+                    <p>Right to maintain ownership percentage</p>
+                    <ul>
+                        <li>First right to buy new shares</li>
+                        <li>Maintain proportional ownership</li>
+                        <li>Protect against dilution</li>
+                        <li>Funding requirements for exercise</li>
+                    </ul>
+                </div>
+
+                <div class="rights-card">
+                    <h4>Responsibilities</h4>
+                    <p>What shareholders must do to maintain rights</p>
+                    <ul>
+                        <li>Capital contribution commitments</li>
+                        <li>Confidentiality obligations</li>
+                        <li>Non-compete agreements</li>
+                        <li>Active participation requirements</li>
+                    </ul>
+                </div>
+
+                <div class="rights-card">
+                    <h4>Exit Rights</h4>
+                    <p>How shareholders can sell or transfer shares</p>
+                    <ul>
+                        <li>Right of first refusal to other shareholders</li>
+                        <li>Fair valuation requirements</li>
+                        <li>Drag-along and tag-along rights</li>
+                        <li>Compulsory buyout provisions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dispute-resolution">
+            <h2>⚖️ Resolving Shareholder Disputes</h2>
+            <p>Fair processes to handle disagreements without destroying family relationships</p>
+
+            <div class="resolution-steps">
+                <div class="resolution-step">
+                    <h4>1. Direct Discussion</h4>
+                    <p>Shareholders attempt to resolve issues through open conversation</p>
+                </div>
+
+                <div class="resolution-step">
+                    <h4>2. Family Council Mediation</h4>
+                    <p>Neutral family members facilitate discussion and find common ground</p>
+                </div>
+
+                <div class="resolution-step">
+                    <h4>3. Independent Mediation</h4>
+                    <p>Professional mediator helps parties reach mutually acceptable solution</p>
+                </div>
+
+                <div class="resolution-step">
+                    <h4>4. Expert Determination</h4>
+                    <p>Independent expert (accountant, lawyer) makes binding decision on facts</p>
+                </div>
+
+                <div class="resolution-step">
+                    <h4>5. Arbitration</h4>
+                    <p>Formal arbitration process with binding decision by arbitrator</p>
+                </div>
+
+                <div class="resolution-step">
+                    <h4>6. Buyout Option</h4>
+                    <p>Dissatisfied shareholder can require company or other shareholders to buy their shares</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>Key Principle:</strong> Start with family-friendly methods and escalate to formal procedures only when necessary.
+                The goal is to preserve both business value and family relationships.
+            </p>
+        </div>
+
+        <div class="exit-strategies">
+            <h2>🚪 Exit Strategies for Family Shareholders</h2>
+            <p>Planning for when shareholders want or need to leave the business</p>
+
+            <div class="exit-options">
+                <div class="exit-option">
+                    <h4>Right of First Refusal</h4>
+                    <p>Other shareholders get first chance to buy shares before they're sold to outsiders</p>
+                    <ul>
+                        <li>Protects family control</li>
+                        <li>Provides fair pricing mechanism</li>
+                        <li>Requires prompt response timelines</li>
+                        <li>Common in family business agreements</li>
+                    </ul>
+                </div>
+
+                <div class="exit-option">
+                    <h4>Shotgun Clause</h4>
+                    <p>Shareholder offers to sell at a price, buyer can accept or buy at same price</p>
+                    <ul>
+                        <li>Forces fair valuation</li>
+                        <li>Resolves deadlock situations</li>
+                        <li>Requires independent valuation</li>
+                        <li>Can be emotionally charged</li>
+                    </ul>
+                </div>
+
+                <div class="exit-option">
+                    <h4>Drag-Along Rights</h4>
+                    <p>Majority shareholders can force minority to sell if they receive good offer</p>
+                    <ul>
+                        <li>Enables third-party sales</li>
+                        <li>Protects majority interests</li>
+                        <li>Requires supermajority approval</li>
+                        <li>Provides liquidity option</li>
+                    </ul>
+                </div>
+
+                <div class="exit-option">
+                    <h4>Tag-Along Rights</h4>
+                    <p>Minority shareholders can join majority sale on same terms</p>
+                    <ul>
+                        <li>Protects minority interests</li>
+                        <li>Ensures fair treatment</li>
+                        <li>Prevents majority from getting better deals</li>
+                        <li>Requires same price and terms</li>
+                    </ul>
+                </div>
+
+                <div class="exit-option">
+                    <h4>Compulsory Buyout</h4>
+                    <p>Company or other shareholders must buy shares in specific circumstances</p>
+                    <ul>
+                        <li>For breach of agreement</li>
+                        <li>Death or disability</li>
+                        <li>Divorce or family disputes</li>
+                        <li>Failure to meet obligations</li>
+                    </ul>
+                </div>
+
+                <div class="exit-option">
+                    <h4>Put Option</h4>
+                    <p>Shareholder can require company to buy their shares at agreed price</p>
+                    <ul>
+                        <li>Provides liquidity guarantee</li>
+                        <li>Requires funding availability</li>
+                        <li>Triggers at specific events</li>
+                        <li>Prevents forced retention</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="valuation-methods">
+            <h2>💰 Share Valuation Methods</h2>
+            <p>How to determine fair value when shares need to be bought or sold</p>
+
+            <div class="valuation-grid">
+                <div class="valuation-method">
+                    <h4>Independent Valuation</h4>
+                    <p>Professional valuer determines fair market value</p>
+                    <ul>
+                        <li>Most accurate method</li>
+                        <li>Required for major transactions</li>
+                        <li>Can be expensive</li>
+                        <li>Provides dispute resolution</li>
+                    </ul>
+                </div>
+
+                <div class="valuation-method">
+                    <h4>Formula-Based</h4>
+                    <p>Pre-agreed formula using financial metrics</p>
+                    <ul>
+                        <li>Multiple of earnings</li>
+                        <li>Asset-based valuation</li>
+                        <li>Discounted cash flow</li>
+                        <li>Predictable and fair</li>
+                    </ul>
+                </div>
+
+                <div class="valuation-method">
+                    <h4>Book Value</h4>
+                    <p>Based on balance sheet net asset value</p>
+                    <ul>
+                        <li>Simple to calculate</li>
+                        <li>May not reflect true value</li>
+                        <li>Good for stable businesses</li>
+                        <li>Tax-efficient for transfers</li>
+                    </ul>
+                </div>
+
+                <div class="valuation-method">
+                    <h4>Fixed Price</h4>
+                    <p>Pre-determined price per share</p>
+                    <ul>
+                        <li>Simple and predictable</li>
+                        <li>May become outdated</li>
+                        <li>Requires regular updates</li>
+                        <li>Good for estate planning</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>Best Practice:</strong> Use independent valuation for significant transactions and formula-based methods for routine transfers.
+                Always include dispute resolution procedures for valuation disagreements.
+            </p>
+        </div>
+
+        <div class="implementation-guide">
+            <h2>📝 Creating Your Family Shareholders Agreement</h2>
+            <p>A step-by-step guide to developing an agreement that works for your family</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div>
+                    <h4>1. Assess Your Needs</h4>
+                    <p>Evaluate your current structure and identify potential issues</p>
+                </div>
+                <div>
+                    <h4>2. Involve Key Stakeholders</h4>
+                    <p>Include all shareholders and key family members in discussions</p>
+                </div>
+                <div>
+                    <h4>3. Get Professional Help</h4>
+                    <p>Work with lawyers experienced in family business</p>
+                </div>
+                <div>
+                    <h4>4. Start Simple</h4>
+                    <p>Begin with core provisions and add complexity as needed</p>
+                </div>
+                <div>
+                    <h4>5. Plan for Changes</h4>
+                    <p>Include amendment procedures for future updates</p>
+                </div>
+                <div>
+                    <h4>6. Regular Reviews</h4>
+                    <p>Review agreement annually and update as circumstances change</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="color: var(--primary-blue);">Ready to Create Your Agreement?</h2>
+            <p>Protect your family business and relationships with a clear shareholders agreement</p>
+            <button onclick="createAgreementTemplate()" class="btn">📄 Create Agreement Template</button>
+            <button onclick="findLegalHelp()" class="btn secondary">⚖️ Find Legal Assistance</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🌟 BizHelp Ecosystem</h4>
+                <ul>
+                    <li><a href="https://bizhelp-lifecv.web.app/wizard">BizHelp Wizard</a></li>
+                    <li><a href="https://lifecv-d2724.web.app/training/">LifeCV Training</a></li>
+                    <li><a href="https://salatiso.com">Salatiso Platform</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>📚 Learning Paths</h4>
+                <ul>
+                    <li>Personal First (Level 1-2)</li>
+                    <li>Family First (Level 2-3)</li>
+                    <li>Professional (Level 3-5)</li>
+                    <li>Sazi Life Academy</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>🏛️ Legal Resources</h4>
+                <ul>
+                    <li>Shareholders Agreements</li>
+                        <li>Company Law Compliance</li>
+                    <li>Family Business Law</li>
+                    <li>Dispute Resolution</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>💡 Remember</h4>
+                <p>Personal First • Family First</p>
+                <p>Powered by Salatiso</p>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.8;">© 2025 BizHelp by Salatiso - Family Business Legacy. Prepared for Professional User on October 6, 2025</p>
+    </footer>
+
+    <script>
+        // Customization Functions
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value;
+            const familyName = document.getElementById('familyName').value;
+            const companyName = document.getElementById('companyName').value;
+            const docDate = document.getElementById('docDate').value;
+            const docVersion = document.getElementById('docVersion').value;
+
+            // Update document title
+            document.title = `Shareholders Agreement - ${familyName || 'Family Business'} - ${docVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `Shareholders Agreement for Families - ${docVersion}`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) {
+                footer.innerHTML = `© 2025 BizHelp by Salatiso - ${familyName || 'Family Business'} Legacy. Prepared for ${userName || 'Professional User'} on ${new Date(docDate).toLocaleDateString()}`;
+            }
+
+            // Update company references
+            if (companyName) {
+                const elements = document.querySelectorAll('.company-placeholder');
+                elements.forEach(el => {
+                    el.textContent = companyName;
+                });
+            }
+
+            alert('✅ Document customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Action Functions
+        function createAgreementTemplate() {
+            const template = `
+SHAREHOLDERS AGREEMENT TEMPLATE OUTLINE
+
+This template provides the basic structure for your family business shareholders agreement.
+Always have this reviewed by a qualified attorney before using.
+
+PRELIMINARY PROVISIONS:
+- Parties (shareholders and company)
+- Recitals (background and purpose)
+- Definitions (key terms used)
+
+SHARE OWNERSHIP PROVISIONS:
+- Share classes and rights
+- Transfer restrictions
+- Right of first refusal
+- Pre-emptive rights
+
+DECISION-MAKING PROVISIONS:
+- Board composition
+- Reserved matters
+- Voting thresholds
+- Meeting procedures
+
+FINANCIAL PROVISIONS:
+- Dividend policy
+- Capital contributions
+- Loans and guarantees
+- Financial reporting
+
+FAMILY-SPECIFIC PROVISIONS:
+- Employment rules
+- Succession planning
+- Marriage/divorce protections
+- Death and inheritance
+
+DISPUTE RESOLUTION:
+- Mediation procedures
+- Arbitration clauses
+- Buyout provisions
+- Governing law
+
+GENERAL PROVISIONS:
+- Amendment procedures
+- Termination clauses
+- Notices and communications
+- Entire agreement
+
+CUSTOMIZE FOR YOUR FAMILY:
+- Add your company and family details
+- Include specific family values
+- Address unique business circumstances
+- Add local legal requirements
+
+GET PROFESSIONAL HELP:
+- Family business attorney
+- Accountant familiar with valuations
+- Mediator experienced in family disputes
+- Business consultant for governance
+
+LifeCV Proof: Agreement draft + attorney consultation confirmation + family council approval
+            `;
+            alert(template);
+        }
+
+        function findLegalHelp() {
+            const resources = `
+LEGAL RESOURCES FOR FAMILY BUSINESS AGREEMENTS
+
+SOUTH AFRICAN LEGAL RESOURCES:
+
+1. Company Law Specialists:
+   - Werksmans Attorneys (family business focus)
+   - Cliffe Dekker Hofmeyr
+   - Webber Wentzel
+   - Edward Nathan Sonnenbergs
+
+2. Family Business Associations:
+   - South African Institute of Family Business
+   - Family Business Network South Africa
+   - Business Families Foundation
+
+3. Professional Services:
+   - Chartered Accountants (SAICA)
+   - Family Business Advisors
+   - Mediators and Arbitrators
+
+WHAT TO LOOK FOR IN LEGAL ADVICE:
+- Experience with family businesses
+- Understanding of Ubuntu principles
+- Knowledge of South African company law
+- Mediation and dispute resolution skills
+
+COST CONSIDERATIONS:
+- Initial consultation: R2,000-R5,000
+- Basic agreement: R15,000-R30,000
+- Complex family provisions: R30,000-R75,000
+- Ongoing advice: R5,000-R15,000/year
+
+QUESTIONS TO ASK:
+- How many family business agreements have you done?
+- Do you understand South African company law?
+- What is your approach to family dynamics?
+- Can you provide references?
+
+START WITH A CONSULTATION:
+Call 2-3 attorneys for initial meetings.
+Choose based on comfort level and expertise.
+Don't rush - this is your family's future.
+            `;
+            alert(resources);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('docDate').value = today;
+        });
+    </script>
+</body>
+</html>

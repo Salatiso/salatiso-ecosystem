@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp by Salatiso - Family Business: Why We Build Together</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .level-badge {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--ubuntu-orange), #ff6b35);
+            color: white;
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .ubuntu-principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .principle-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .principle-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .principle-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .case-study {
+            background: var(--bg-light);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .case-study h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--ubuntu-orange);
+        }
+
+        .family-roles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .role-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .role-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .role-card .age-range {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .vision-workshop {
+            background: linear-gradient(135deg, var(--success-green), #059669);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .vision-workshop h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .workshop-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .workshop-step {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .workshop-step .step-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #d4550a;
+        }
+
+        .btn.secondary {
+            background: var(--primary-blue);
+        }
+
+        .btn.secondary:hover {
+            background: #152c6b;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        footer .footer-section h4 {
+            color: var(--ubuntu-orange);
+            margin-bottom: 1rem;
+        }
+
+        footer .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">BizHelp by Salatiso</div>
+            <div class="tagline">Family Business: Why We Build Together</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label>Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label>Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label>Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label>Document Version:</label>
+                <input type="text" id="docVersion" value="Family Guide v1.0" placeholder="e.g., Family Guide v1.0">
+            </div>
+            <button onclick="applyCustomization()" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+
+        <div class="level-badge">Family • Level 2</div>
+
+        <div class="hero-section">
+            <h1>👨🏾‍👩🏾‍👧🏾‍👦🏾 Ubuntu in Family Business</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+                "I am because we are" - Building businesses that strengthen families and communities for generations
+            </p>
+            <p>
+                Family business is not just about making money—it's about creating legacy, sharing values,
+                and building something that will benefit your children, grandchildren, and community for generations to come.
+            </p>
+        </div>
+
+        <div style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--primary-blue); text-align: center;">Why Family Businesses Matter</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🌱</div>
+                    <h4>Multi-Generational Wealth</h4>
+                    <p>Building assets that grow and provide for future generations, not just immediate needs.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">❤️</div>
+                    <h4>Stronger Family Bonds</h4>
+                    <p>Working together on shared goals creates deeper relationships and mutual understanding.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🏘️</div>
+                    <h4>Community Impact</h4>
+                    <p>Family businesses often stay invested in their communities, creating jobs and supporting local development.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📚</div>
+                    <h4>Values & Legacy</h4>
+                    <p>Passing down not just wealth, but wisdom, work ethic, and family traditions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--primary-blue); text-align: center;">Ubuntu Principles in Business</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Ubuntu teaches us that our success is tied to the success of others. In family business, this means:</p>
+        </div>
+
+        <div class="ubuntu-principles">
+            <div class="principle-card">
+                <div class="icon">🤝</div>
+                <h3>Collective Success</h3>
+                <p>When one family member succeeds, the whole family benefits. We celebrate achievements together and support each other through challenges.</p>
+            </div>
+
+            <div class="principle-card">
+                <div class="icon">🌍</div>
+                <h3>Community First</h3>
+                <p>Our business exists to serve our community. We hire locally, support community projects, and create opportunities for others.</p>
+            </div>
+
+            <div class="principle-card">
+                <div class="icon">🌱</div>
+                <h3>Long-term Thinking</h3>
+                <p>We make decisions considering their impact on future generations. Sustainable practices and ethical business create lasting value.</p>
+            </div>
+
+            <div class="principle-card">
+                <div class="icon">💬</div>
+                <h3>Open Communication</h3>
+                <p>We talk openly about business matters, share ideas freely, and resolve conflicts through respectful dialogue.</p>
+            </div>
+
+            <div class="principle-card">
+                <div class="icon">📚</div>
+                <h3>Knowledge Sharing</h3>
+                <p>We teach each other business skills, share experiences, and help family members grow personally and professionally.</p>
+            </div>
+
+            <div class="principle-card">
+                <div class="icon">⚖️</div>
+                <h3>Fairness & Respect</h3>
+                <p>Everyone's contribution is valued, regardless of age or role. We treat each other with respect and make decisions fairly.</p>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h2>📖 Case Study: Mlandeli Notemba Investments Journey</h2>
+            <p>Our own family business started with a simple idea: to create opportunities for our children and community. Here's how we've grown together:</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>2010: The Beginning</h4>
+                    <p>Started with family discussions about building wealth for future generations. Identified education and business skills as key priorities.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>2015: First Ventures</h4>
+                    <p>Launched initial business activities focused on skills development and community support. Learned through trial and error.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>2020: Formal Structure</h4>
+                    <p>Registered Mlandeli Notemba Investments (Pty) Ltd as our family holding company. Established governance structures.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>2023: Ecosystem Building</h4>
+                    <p>Developed Salatiso platform and BizHelp ecosystem. Created tools and resources for other families to follow our path.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>2025: Multi-Generational</h4>
+                    <p>Now supporting our children's business ventures while building systems that will serve grandchildren and community for decades.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem; font-style: italic;">
+                <strong>Key Lesson:</strong> Start small, learn together, and focus on long-term impact rather than quick profits.
+            </p>
+        </div>
+
+        <div style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--primary-blue); text-align: center;">Everyone Has a Role to Play</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Family business success depends on every member contributing according to their age, skills, and interests.</p>
+        </div>
+
+        <div class="family-roles">
+            <div class="role-card">
+                <div class="age-range">Ages 8-12</div>
+                <h4>🌟 Young Contributors</h4>
+                <ul>
+                    <li>Idea generation and creativity</li>
+                    <li>Simple tasks and learning experiences</li>
+                    <li>Family business ambassadors at school</li>
+                    <li>Learning basic money concepts</li>
+                </ul>
+                <p><strong>Why it matters:</strong> Builds confidence and teaches responsibility from a young age.</p>
+            </div>
+
+            <div class="role-card">
+                <div class="age-range">Ages 13-17</div>
+                <h4>🚀 Teen Operators</h4>
+                <ul>
+                    <li>Hands-on business operations</li>
+                    <li>Digital marketing and social media</li>
+                    <li>Customer service and sales</li>
+                    <li>Learning business registration</li>
+                </ul>
+                <p><strong>Why it matters:</strong> Develops real-world skills and entrepreneurial mindset.</p>
+            </div>
+
+            <div class="role-card">
+                <div class="age-range">Ages 18-35</div>
+                <h4>💼 Young Professionals</h4>
+                <ul>
+                    <li>Strategic planning and execution</li>
+                    <li>Financial management</li>
+                    <li>Partnership development</li>
+                    <li>Mentoring younger family members</li>
+                </ul>
+                <p><strong>Why it matters:</strong> Carries the business forward while building personal careers.</p>
+            </div>
+
+            <div class="role-card">
+                <div class="age-range">Ages 36-55</div>
+                <h4>🎯 Mid-Career Leaders</h4>
+                <ul>
+                    <li>Business strategy and governance</li>
+                    <li>Resource allocation and oversight</li>
+                    <li>Stakeholder relationship management</li>
+                    <li>Succession planning</li>
+                </ul>
+                <p><strong>Why it matters:</strong> Provides stability and guides long-term direction.</p>
+            </div>
+
+            <div class="role-card">
+                <div class="age-range">Ages 55+</div>
+                <h4>🧠 Elders & Mentors</h4>
+                <ul>
+                    <li>Wisdom and experience sharing</li>
+                    <li>Family governance and conflict resolution</li>
+                    <li>Legacy preservation</li>
+                    <li>Community relationship building</li>
+                </ul>
+                <p><strong>Why it matters:</strong> Provides continuity and ensures values are passed down.</p>
+            </div>
+
+            <div class="role-card">
+                <div class="age-range">All Ages</div>
+                <h4>🌱 Continuous Learners</h4>
+                <ul>
+                    <li>Regular family business meetings</li>
+                    <li>Skills development and training</li>
+                    <li>Open communication and feedback</li>
+                    <li>Celebrating achievements together</li>
+                </ul>
+                <p><strong>Why it matters:</strong> Everyone grows personally while strengthening the family business.</p>
+            </div>
+        </div>
+
+        <div class="vision-workshop">
+            <h2>🎨 Family Business Vision Board Workshop</h2>
+            <p>Bring your family together to create a shared vision for your business future. This activity takes 2-3 hours and creates lasting motivation.</p>
+
+            <div class="workshop-steps">
+                <div class="workshop-step">
+                    <div class="step-number">1</div>
+                    <h4>Preparation</h4>
+                    <p>Gather magazines, markers, poster board, and photos. Set a positive, creative atmosphere.</p>
+                </div>
+                <div class="workshop-step">
+                    <div class="step-number">2</div>
+                    <h4>Individual Dreams</h4>
+                    <p>Each person shares what they want the family business to achieve in 5, 10, and 20 years.</p>
+                </div>
+                <div class="workshop-step">
+                    <div class="step-number">3</div>
+                    <h4>Collective Vision</h4>
+                    <p>Find common themes and create visual representations of your shared family business goals.</p>
+                </div>
+                <div class="workshop-step">
+                    <div class="step-number">4</div>
+                    <h4>Action Steps</h4>
+                    <p>Identify 3-5 concrete actions you can take in the next month to start working toward your vision.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>Materials Needed:</strong> Poster board, magazines, markers, scissors, glue, family photos<br>
+                <strong>LifeCV Proof:</strong> Take a photo of your completed vision board and draft family charter
+            </p>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="color: var(--primary-blue);">Ready to Build Your Family Legacy?</h2>
+            <p>Family business is about more than money—it's about creating a future where everyone can thrive together.</p>
+            <button onclick="startVisionWorkshop()" class="btn">🎨 Start Vision Workshop</button>
+            <a href="https://bizhelp-lifecv.web.app/wizard" class="btn secondary">Explore BizHelp Wizard</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🌟 BizHelp Ecosystem</h4>
+                <ul>
+                    <li><a href="https://bizhelp-lifecv.web.app/wizard">BizHelp Wizard</a></li>
+                    <li><a href="https://lifecv-d2724.web.app/training/">LifeCV Training</a></li>
+                    <li><a href="https://salatiso.com">Salatiso Platform</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>📚 Learning Paths</h4>
+                <ul>
+                    <li>Personal First (Level 1-2)</li>
+                    <li>Family First (Level 2-3)</li>
+                    <li>Professional (Level 3-5)</li>
+                    <li>Sazi Life Academy</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>👨🏾‍👩🏾‍👧🏾‍👦🏾 Family Resources</h4>
+                <ul>
+                    <li>Family Business Council Guide</li>
+                    <li>Shareholders Agreements</li>
+                    <li>Succession Planning</li>
+                    <li>Governance Templates</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>💡 Remember</h4>
+                <p>Personal First • Family First</p>
+                <p>Powered by Salatiso</p>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.8;">© 2025 BizHelp by Salatiso - Family Business Legacy. Prepared for Professional User on October 6, 2025</p>
+    </footer>
+
+    <script>
+        // Customization Functions
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value;
+            const familyName = document.getElementById('familyName').value;
+            const docDate = document.getElementById('docDate').value;
+            const docVersion = document.getElementById('docVersion').value;
+
+            // Update document title
+            document.title = `Family Business Guide - ${familyName || 'Family Business'} - ${docVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `Family Business: Why We Build Together - ${docVersion}`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) {
+                footer.innerHTML = `© 2025 BizHelp by Salatiso - ${familyName || 'Family Business'} Legacy. Prepared for ${userName || 'Professional User'} on ${new Date(docDate).toLocaleDateString()}`;
+            }
+
+            alert('✅ Document customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Workshop Functions
+        function startVisionWorkshop() {
+            const workshopPlan = `
+🎨 FAMILY BUSINESS VISION BOARD WORKSHOP
+
+Preparation (30 minutes):
+- Gather: Poster board, magazines, markers, scissors, glue, family photos
+- Set up: Comfortable space, snacks, positive atmosphere
+- Goal: Create shared vision for family business future
+
+Workshop Steps:
+
+1. Individual Dreams (20 minutes)
+   - Each person writes/shares: "What do I want our family business to achieve?"
+   - Timeframes: 1 year, 5 years, 10+ years
+   - Capture on sticky notes or paper
+
+2. Theme Identification (15 minutes)
+   - Group similar ideas together
+   - Find common threads and shared values
+   - Discuss: What unites us as a family business?
+
+3. Vision Creation (30 minutes)
+   - Cut out magazine images and words
+   - Arrange on poster board
+   - Add personal photos and drawings
+   - Create visual representation of your shared future
+
+4. Action Planning (20 minutes)
+   - Identify 3-5 concrete next steps
+   - Assign responsibilities
+   - Set timeline for first actions
+
+5. Documentation (10 minutes)
+   - Take photos of vision board
+   - Write brief family charter
+   - Plan first family business council meeting
+
+LifeCV Proof: Photo of vision board + family charter draft
+
+Remember: This is about shared dreams, not detailed business plans. Focus on inspiration and unity!
+            `;
+
+            alert(workshopPlan);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('docDate').value = today;
+        });
+    </script>
+</body>
+</html>

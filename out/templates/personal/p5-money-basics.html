@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp by Salatiso - Money Basics for Young Entrepreneurs</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .level-badge {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .basics-section {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .basics-section h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--ubuntu-orange);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .money-flow {
+            background: linear-gradient(135deg, var(--success-green), #059669);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .money-flow h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .flow-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .flow-item .amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .profit-formula {
+            background: var(--warning-amber);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .profit-formula .formula {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            color: var(--text-dark);
+        }
+
+        .budget-planner {
+            background: var(--bg-light);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .budget-planner h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .budget-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .budget-column {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .budget-column h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .budget-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .budget-item input {
+            width: 80px;
+            text-align: right;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+        }
+
+        .budget-total {
+            background: var(--success-green);
+            color: white;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .savings-plan {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .savings-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .savings-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .savings-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .startup-costs {
+            background: var(--error-red);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .startup-costs h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .costs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cost-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .btn {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #d4550a;
+        }
+
+        .btn.secondary {
+            background: var(--primary-blue);
+        }
+
+        .btn.secondary:hover {
+            background: #152c6b;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">BizHelp by Salatiso</div>
+            <div class="tagline">Money Basics for Young Entrepreneurs</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label>Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label>Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label>Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label>Document Version:</label>
+                <input type="text" id="docVersion" value="Personal Guide v1.0" placeholder="e.g., Personal Guide v1.0">
+            </div>
+            <button onclick="applyCustomization()" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+
+        <div class="level-badge">Personal • Level 1</div>
+
+        <div class="basics-section">
+            <h1 style="text-align: center; color: var(--primary-blue);">💰 Understanding Money in Business</h1>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+                Money is the fuel that keeps your business running. Understanding these basic concepts will help you
+                make smart decisions and build a successful business that lasts.
+            </p>
+        </div>
+
+        <div class="money-flow">
+            <h2>💸 Money Flow: Income vs Expenses</h2>
+            <p>Think of your business like a bucket. Money comes in (income) and money goes out (expenses). The goal is to have more money coming in than going out!</p>
+
+            <div class="flow-diagram">
+                <div class="flow-item">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">💵</div>
+                    <h4>Income (Money In)</h4>
+                    <p>What customers pay you for your products or services</p>
+                    <div class="amount" id="income-display">R 0</div>
+                </div>
+
+                <div class="flow-arrow">➡️</div>
+
+                <div class="flow-item">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🛒</div>
+                    <h4>Expenses (Money Out)</h4>
+                    <p>What you spend to run your business</p>
+                    <div class="amount" id="expenses-display">R 0</div>
+                </div>
+
+                <div class="flow-arrow">➡️</div>
+
+                <div class="flow-item">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">💰</div>
+                    <h4>Profit (Money Left)</h4>
+                    <p>Income minus expenses = what you keep</p>
+                    <div class="amount" id="profit-display">R 0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profit-formula">
+            <h2>📊 The Profit Formula</h2>
+            <p>This is the most important equation in business. Memorize it!</p>
+            <div class="formula">Profit = Income - Expenses</div>
+            <p style="margin-top: 1rem;">
+                <strong>Simple Example:</strong> You sell lemonade for R10 each. It costs R3 to make each glass.<br>
+                Income: R10 | Expenses: R3 | Profit: R7 per glass<br>
+                <em>Sell 10 glasses = R70 income - R30 expenses = R37 profit!</em>
+            </p>
+        </div>
+
+        <div class="basics-section">
+            <h2>📝 Types of Income & Expenses</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px;">
+                    <h4 style="color: var(--success-green);">💵 Income Examples</h4>
+                    <ul>
+                        <li><strong>Product Sales:</strong> Selling physical items you make or buy</li>
+                        <li><strong>Service Fees:</strong> Money for work you do (tutoring, repairs, etc.)</li>
+                        <li><strong>Subscriptions:</strong> Monthly payments for ongoing services</li>
+                        <li><strong>Commissions:</strong> Percentage of sales from partnerships</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px;">
+                    <h4 style="color: var(--error-red);">🛒 Expense Examples</h4>
+                    <ul>
+                        <li><strong>Materials:</strong> Raw materials, packaging, supplies</li>
+                        <li><strong>Tools & Equipment:</strong> Things you need to do your work</li>
+                        <li><strong>Marketing:</strong> Advertising, business cards, website</li>
+                        <li><strong>Transport:</strong> Getting to customers or delivering products</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="budget-planner">
+            <h2>🧮 Personal Budget Calculator</h2>
+            <p>Use this calculator to plan your business budget. Start small and track everything!</p>
+
+            <div class="budget-grid">
+                <div class="budget-column">
+                    <h4>💵 Monthly Income</h4>
+                    <div class="budget-item">
+                        <span>Product/Service Sales:</span>
+                        <input type="number" id="income_sales" placeholder="0" onchange="calculateBudget()">
+                    </div>
+                    <div class="budget-item">
+                        <span>Other Income:</span>
+                        <input type="number" id="income_other" placeholder="0" onchange="calculateBudget()">
+                    </div>
+                    <div class="budget-total">
+                        Total Income: R<span id="total-income">0</span>
+                    </div>
+                </div>
+
+                <div class="budget-column">
+                    <h4>🛒 Monthly Expenses</h4>
+                    <div class="budget-item">
+                        <span>Materials & Supplies:</span>
+                        <input type="number" id="expense_materials" placeholder="0" onchange="calculateBudget()">
+                    </div>
+                    <div class="budget-item">
+                        <span>Marketing & Advertising:</span>
+                        <input type="number" id="expense_marketing" placeholder="0" onchange="calculateBudget()">
+                    </div>
+                    <div class="budget-item">
+                        <span>Transport & Delivery:</span>
+                        <input type="number" id="expense_transport" placeholder="0" onchange="calculateBudget()">
+                    </div>
+                    <div class="budget-item">
+                        <span>Other Expenses:</span>
+                        <input type="number" id="expense_other" placeholder="0" onchange="calculateBudget()">
+                    </div>
+                    <div class="budget-total">
+                        Total Expenses: R<span id="total-expenses">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--primary-blue); color: white; padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                <h4>💰 Monthly Profit: R<span id="monthly-profit">0</span></h4>
+                <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">
+                    This is how much money you keep each month after paying all expenses.
+                </p>
+            </div>
+        </div>
+
+        <div class="startup-costs">
+            <h2>🚀 Startup Costs: Money You Need First</h2>
+            <p>Before you can start making money, you need some money to get started. These are your "startup costs."</p>
+
+            <div class="costs-grid">
+                <div class="cost-item">
+                    <h5>🛠️ Tools & Equipment</h5>
+                    <p>R200 - R2,000</p>
+                    <small>Basic tools for your business</small>
+                </div>
+                <div class="cost-item">
+                    <h5>📦 Materials</h5>
+                    <p>R100 - R1,000</p>
+                    <small>First batch of supplies</small>
+                </div>
+                <div class="cost-item">
+                    <h5>📱 Marketing</h5>
+                    <p>R50 - R500</p>
+                    <small>Business cards, flyers</small>
+                </div>
+                <div class="cost-item">
+                    <h5>🏢 Registration</h5>
+                    <p>R50 - R500</p>
+                    <small>CIPC fees, domain name</small>
+                </div>
+                <div class="cost-item">
+                    <h5>🚐 Transport</h5>
+                    <p>R100 - R300</p>
+                    <small>Getting to customers</small>
+                </div>
+                <div class="cost-item">
+                    <h5>📚 Learning</h5>
+                    <p>R0 - R200</p>
+                    <small>Books, online courses</small>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem; text-align: center;">
+                <strong>Total Startup Cost Estimate: R500 - R4,500</strong><br>
+                <em>Start small! You don't need everything at once.</em>
+            </p>
+        </div>
+
+        <div class="savings-plan">
+            <div class="savings-card">
+                <div class="icon">🐷</div>
+                <h4>Save from Allowance/Pocket Money</h4>
+                <p>Put aside R20-50 per week from your allowance. Over 6 months = R480-1,200 saved!</p>
+                <p><strong>Tip:</strong> Use a piggy bank or separate savings account</p>
+            </div>
+
+            <div class="savings-card">
+                <div class="icon">👨🏾‍👩🏾‍👧🏾‍👦🏾</div>
+                <h4>Family Support</h4>
+                <p>Talk to family about your business idea. They might invest or help with startup costs.</p>
+                <p><strong>Remember:</strong> This is a loan or investment, not a gift</p>
+            </div>
+
+            <div class="savings-card">
+                <div class="icon">💼</div>
+                <h4>Part-time Work</h4>
+                <p>Weekend jobs, tutoring, or helping neighbors can earn R200-500 per month.</p>
+                <p><strong>Legal jobs:</strong> Babysitting, gardening, car washing</p>
+            </div>
+
+            <div class="savings-card">
+                <div class="icon">🎁</div>
+                <h4>Birthday/Christmas Money</h4>
+                <p>Use gift money for business instead of toys. Explain your business plan to family.</p>
+                <p><strong>Goal:</strong> Save 50% of gift money for business</p>
+            </div>
+        </div>
+
+        <div class="basics-section">
+            <h2>🎯 Money Management Tips</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div style="background: var(--bg-light); padding: 1rem; border-radius: 8px;">
+                    <h4 style="color: var(--primary-blue);">📊 Track Everything</h4>
+                    <p>Use a notebook or app to record every rand that comes in and goes out. This helps you see patterns and make better decisions.</p>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 1rem; border-radius: 8px;">
+                    <h4 style="color: var(--primary-blue);">💰 Save First, Spend Later</h4>
+                    <p>When you get paid, put some money aside for savings before you spend on fun things. Emergency savings protect your business.</p>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 1rem; border-radius: 8px;">
+                    <h4 style="color: var(--primary-blue);">📈 Price to Make Profit</h4>
+                    <p>Don't just cover your costs—price your products so you make a profit. Remember: Profit = Income - Expenses</p>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 1rem; border-radius: 8px;">
+                    <h4 style="color: var(--primary-blue);">🤝 Talk About Money</h4>
+                    <p>Don't be afraid to discuss prices with customers. Practice saying: "This costs R50 because..."</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="color: var(--primary-blue);">Ready to Manage Your Business Money?</h2>
+            <p>Understanding money is key to business success. The BizHelp Wizard can help you create a detailed financial plan for your business.</p>
+            <button onclick="showBudgetReport()" class="btn">📊 View My Budget Report</button>
+            <a href="https://bizhelp-lifecv.web.app/wizard" class="btn secondary">Create Financial Plan</a>
+        </div>
+    </div>
+
+    <footer>
+        <div style="text-align: center; padding: 2rem;">
+            <p>© 2025 BizHelp by Salatiso - Family Business Legacy. Prepared for Professional User on October 6, 2025</p>
+            <p style="margin-top: 1rem;">
+                <a href="https://bizhelp-lifecv.web.app/wizard" style="color: var(--ubuntu-orange);">BizHelp Wizard</a> |
+                <a href="mailto:hub@salatiso.com" style="color: var(--ubuntu-orange);">Get Financial Support</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Customization Functions
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value;
+            const familyName = document.getElementById('familyName').value;
+            const docDate = document.getElementById('docDate').value;
+            const docVersion = document.getElementById('docVersion').value;
+
+            // Update document title
+            document.title = `Money Basics - ${familyName || 'Family Business'} - ${docVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `Money Basics for ${familyName || 'Young Entrepreneurs'} - ${docVersion}`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) {
+                footer.innerHTML = `© 2025 BizHelp by Salatiso - ${familyName || 'Family Business'} Legacy. Prepared for ${userName || 'Professional User'} on ${new Date(docDate).toLocaleDateString()}`;
+            }
+
+            alert('✅ Document customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Budget Calculator Functions
+        function calculateBudget() {
+            // Get income values
+            const sales = parseFloat(document.getElementById('income_sales').value) || 0;
+            const otherIncome = parseFloat(document.getElementById('income_other').value) || 0;
+            const totalIncome = sales + otherIncome;
+
+            // Get expense values
+            const materials = parseFloat(document.getElementById('expense_materials').value) || 0;
+            const marketing = parseFloat(document.getElementById('expense_marketing').value) || 0;
+            const transport = parseFloat(document.getElementById('expense_transport').value) || 0;
+            const otherExpenses = parseFloat(document.getElementById('expense_other').value) || 0;
+            const totalExpenses = materials + marketing + transport + otherExpenses;
+
+            // Calculate profit
+            const profit = totalIncome - totalExpenses;
+
+            // Update displays
+            document.getElementById('total-income').textContent = totalIncome.toFixed(0);
+            document.getElementById('total-expenses').textContent = totalExpenses.toFixed(0);
+            document.getElementById('monthly-profit').textContent = profit.toFixed(0);
+            document.getElementById('income-display').textContent = 'R ' + totalIncome.toFixed(0);
+            document.getElementById('expenses-display').textContent = 'R ' + totalExpenses.toFixed(0);
+            document.getElementById('profit-display').textContent = 'R ' + profit.toFixed(0);
+
+            // Color code profit display
+            const profitDisplay = document.getElementById('profit-display');
+            if (profit > 0) {
+                profitDisplay.style.color = 'var(--success-green)';
+            } else if (profit < 0) {
+                profitDisplay.style.color = 'var(--error-red)';
+            } else {
+                profitDisplay.style.color = 'var(--warning-amber)';
+            }
+        }
+
+        function showBudgetReport() {
+            const totalIncome = document.getElementById('total-income').textContent;
+            const totalExpenses = document.getElementById('total-expenses').textContent;
+            const profit = document.getElementById('monthly-profit').textContent;
+
+            const report = `
+💰 BUSINESS BUDGET REPORT
+
+Monthly Income: R${totalIncome}
+Monthly Expenses: R${totalExpenses}
+Monthly Profit: R${profit}
+
+${profit > 0 ? '🎉 Great! You\'re making a profit!' : profit < 0 ? '⚠️ You\'re spending more than you earn. Consider reducing expenses or increasing prices.' : '⚖️ You\'re breaking even. Focus on increasing sales to make a profit.'}
+
+Next Steps:
+1. Track your actual income and expenses for a month
+2. Compare with this budget
+3. Adjust prices or reduce costs as needed
+4. Save profit for business growth
+
+Generated: ${new Date().toLocaleDateString()}
+            `;
+
+            alert(report);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('docDate').value = today;
+
+            // Initialize budget calculator
+            calculateBudget();
+        });
+    </script>
+</body>
+</html>

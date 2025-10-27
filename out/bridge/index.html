@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salatiso.com - A Journey from Idea to Ecosystem</title>
+    <meta name="description" content="The evolution of Salatiso.com from simple HTML templates to a comprehensive family empowerment ecosystem. A story of learning, failure, and perseverance.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            scroll-behavior: smooth;
+        }
+        
+        /* Aligned color scheme: Legacy (cream/brown) + React (purple/indigo) */
+        .gradient-bg {
+            background: linear-gradient(135deg, #764ba2 0%, #4a2c2a 50%, #667eea 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #764ba2 0%, #4a2c2a 50%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Bridge theme colors */
+        :root {
+            --legacy-cream: #f5f5dc;
+            --legacy-brown: #4a2c2a;
+            --react-purple: #764ba2;
+            --react-indigo: #667eea;
+        }
+        
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .animate-scroll-left {
+            animation: scroll-left 40s linear infinite;
+        }
+        
+        .animate-scroll-left:hover {
+            animation-play-state: paused;
+        }
+        
+        .hero-pattern {
+            background-color: #667eea;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Hero Section -->
+    <section class="hero-pattern text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-600/90 to-indigo-800/90"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Logo/Brand -->
+                <div class="mb-8">
+                    <h1 class="text-6xl md:text-8xl font-black mb-4">
+                        <span class="text-white">Salatiso</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-purple-100 font-light">
+                        From HTML Templates to Family Empowerment Ecosystem
+                    </p>
+                </div>
+                
+                <!-- Main Call to Action -->
+                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-12 border border-white/20">
+                    <p class="text-lg mb-6 leading-relaxed">
+                        This bridge connects where we began and where we are going. From the legacy site that captured early ideas, 
+                        to the new ecosystem that encodes family, Ubuntu, and empowerment. My story does not begin with websites 
+                        or code—it begins in the rural Transkei, rooted in family and culture.
+                    </p>
+                    
+                    <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                        <!-- New Web App -->
+                        <a href="https://salatiso-lifecv.web.app" 
+                           class="group bg-white text-purple-600 px-8 py-4 rounded-xl font-bold text-lg hover:shadow-2xl transition-all transform hover:scale-105 flex items-center gap-3 w-full md:w-auto justify-center">
+                            <i class="fas fa-rocket text-2xl group-hover:rotate-12 transition-transform"></i>
+                            <div class="text-left">
+                                <div class="text-sm font-normal text-purple-500">Experience the New</div>
+                                <div>MNI Ecosystem Web App</div>
+                            </div>
+                            <span class="pulse-dot w-3 h-3 bg-green-500 rounded-full"></span>
+                        </a>
+                        
+                        <!-- Old Site -->
+                        <a href="https://salatiso.com/salatiso/" 
+                           class="group bg-purple-800/50 backdrop-blur text-white px-8 py-4 rounded-xl font-semibold text-lg border-2 border-white/30 hover:bg-purple-700/50 transition-all flex items-center gap-3 w-full md:w-auto justify-center">
+                            <i class="fas fa-history text-2xl"></i>
+                            <div class="text-left">
+                                <div class="text-sm font-normal text-purple-200">Where it began</div>
+                                <div>Legacy HTML Tools</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="animate-bounce">
+                    <a href="#story" class="text-white/70 hover:text-white transition-colors">
+                        <i class="fas fa-chevron-down text-3xl"></i>
+                        <p class="text-sm mt-2">Scroll to explore the journey</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Story Introduction -->
+    <section id="story" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-black mb-8 text-center">
+                    <span class="gradient-text">Why This Story Matters</span>
+                </h2>
+                
+                <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
+                    <p class="text-xl text-center text-gray-600 mb-12">
+                        This is not just about technology. It's about a son honoring his parents' legacy, a father fighting for his child's rights, and a journey from rural Transkei to building tools that empower families everywhere.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-4 gap-8 my-12">
+                        <div class="text-center">
+                            <div class="text-5xl mb-4">🏡</div>
+                            <h3 class="font-bold text-xl mb-2">Rural Roots</h3>
+                            <p class="text-gray-600">Transkei villages: Mahasana, Lenane, Kiriyatswana. Where my father walked to school barefoot.</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-5xl mb-4">�‍👦</div>
+                            <h3 class="font-bold text-xl mb-2">Father's Mission</h3>
+                            <p class="text-gray-600">"I am a father to my son; all else is a means to this end."</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-5xl mb-4">⚖️</div>
+                            <h3 class="font-bold text-xl mb-2">Justice Seeker</h3>
+                            <p class="text-gray-600">Fighting systemic bias in family courts, advocating for equality before the law.</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-5xl mb-4">🌍</div>
+                            <h3 class="font-bold text-xl mb-2">Ecosystem Builder</h3>
+                            <p class="text-gray-600">Bringing enterprise tools back to rural communities—safety, education, empowerment.</p>
+                        </div>
+                    </div>
+                    
+                    <blockquote class="border-l-4 border-purple-500 pl-6 italic text-gray-600 my-8 bg-purple-50 p-6 rounded-r-lg">
+                        "My father walked to school barefoot. I've never been without shoes. That's progress. Now my son has access to tools I wish existed—safety networks, homeschooling resources, platforms that respect family sovereignty. The cycle continues, but we're building the infrastructure our communities deserve."
+                    </blockquote>
+                    
+                    <p class="text-center text-lg text-gray-700 font-semibold mt-8">
+                        This ecosystem isn't about credentials or corporate achievements. It's about lived experience becoming useful knowledge. It's about a rural boy learning in formal systems, then bringing those skills back home to empower the next generation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Evolution Timeline -->
+    <section class="py-20 bg-gradient-to-br from-purple-50 to-indigo-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-black mb-16 text-center">
+                <span class="gradient-text">The Evolution Journey</span>
+            </h2>
+            
+            <div class="max-w-5xl mx-auto">
+                <!-- Timeline Item 1: Rural Roots -->
+                <div class="timeline-item flex flex-col md:flex-row gap-8 mb-16 items-center">
+                    <div class="md:w-1/3 text-center md:text-right">
+                        <span class="text-purple-600 font-bold text-lg">Chapter 1</span>
+                        <h3 class="text-2xl font-bold mb-2">1982-2003</h3>
+                        <p class="text-gray-600">Transkei Roots</p>
+                    </div>
+                    <div class="relative flex-shrink-0">
+                        <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center text-white text-2xl">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="absolute top-16 left-1/2 transform -translate-x-1/2 w-1 h-24 bg-purple-300"></div>
+                    </div>
+                    <div class="md:w-2/3 bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <h4 class="text-xl font-bold mb-3">Born in Transkei - Mlandeli & Notemba's Son</h4>
+                        <p class="text-gray-600 mb-4">
+                            Born in 1982 to parents who modeled entrepreneurship and Ubuntu. Grew up in villages—Mahasana, Lenane, Kiriyatswana—where my father walked barefoot to school, where storytelling by firelight was education, where extended family was your safety net. Schooled across the Eastern Cape, learning Xhosa traditions while the world around me was transforming post-1994.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">Ubuntu Values</span>
+                            <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">Extended Family</span>
+                            <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">Xhosa Heritage</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2: Independence & OHS Mastery -->
+                <div class="timeline-item flex flex-col md:flex-row gap-8 mb-16 items-center">
+                    <div class="md:w-1/3 text-center md:text-right">
+                        <span class="text-purple-600 font-bold text-lg">Chapter 2</span>
+                        <h3 class="text-2xl font-bold mb-2">2003-2012</h3>
+                        <p class="text-gray-600">Lived Experience & Mastery</p>
+                    </div>
+                    <div class="relative flex-shrink-0">
+                        <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center text-white text-2xl">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <div class="absolute top-16 left-1/2 transform -translate-x-1/2 w-1 h-24 bg-purple-300"></div>
+                    </div>
+                    <div class="md:w-2/3 bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <h4 class="text-xl font-bold mb-3">From Rural Boy to Safety Leader</h4>
+                        <p class="text-gray-600 mb-4">
+                            At 18, independent. At 21, providing. Junior Environmental Health Practitioner (EC Dept of Health), Best Trainee at Anglo Platinum (2004), safety leadership across Metrorail, Liberty Group, 5G. Studied law briefly—aspired to justice, dropped out when I saw the corruption. Realized real justice happens through lived experience and practical action, not courtroom games.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">OHS Leadership</span>
+                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">Law Studies (Dropout)</span>
+                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">Self-Reliance</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3: Strategic Leadership & Family Battle -->
+                <div class="timeline-item flex flex-col md:flex-row gap-8 mb-16 items-center">
+                    <div class="md:w-1/3 text-center md:text-right">
+                        <span class="text-purple-600 font-bold text-lg">Chapter 3</span>
+                        <h3 class="text-2xl font-bold mb-2">2013-2022</h3>
+                        <p class="text-gray-600">Corporate Strategy & Legal Fight</p>
+                    </div>
+                    <div class="relative flex-shrink-0">
+                        <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white text-2xl">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <div class="absolute top-16 left-1/2 transform -translate-x-1/2 w-1 h-24 bg-purple-300"></div>
+                    </div>
+                    <div class="md:w-2/3 bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <h4 class="text-xl font-bold mb-3">Boardrooms & Children's Courts</h4>
+                        <p class="text-gray-600 mb-4">
+                            Guided enterprise risk for Telkom/Gyro, advised corporate boards on resilience. But the real fight was personal: Children's Court battles exposed systemic gender bias against fathers. Mapped every injustice, documented the discrimination, prepared to challenge it legally. My son's rights became my mission—everything else was just a means to this end.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">Risk Management</span>
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">Legal Advocacy</span>
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">Father's Rights</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 4: Knowledge to Books -->
+                <div class="timeline-item flex flex-col md:flex-row gap-8 mb-16 items-center">
+                    <div class="md:w-1/3 text-center md:text-right">
+                        <span class="text-purple-600 font-bold text-lg">Chapter 4</span>
+                        <h3 class="text-2xl font-bold mb-2">2023</h3>
+                        <p class="text-gray-600">Pain into Publishing</p>
+                    </div>
+                    <div class="relative flex-shrink-0">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white text-2xl">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="absolute top-16 left-1/2 transform -translate-x-1/2 w-1 h-24 bg-purple-300"></div>
+                    </div>
+                    <div class="md:w-2/3 bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <h4 class="text-xl font-bold mb-3">15+ Books - All Free & Open</h4>
+                        <p class="text-gray-600 mb-4">
+                            "Goliath's Reckoning" exposed gender bias in courts. "The Homeschooling Father" shared what I learned taking control of my son's education. "Beyond Redress" challenged race-based policies. "Safety First" series opened OHS careers to everyone. "Getting to Know Yourself" traced Xhosa heritage. Every book free—impact over income, empowerment over profit.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">15+ Books Published</span>
+                            <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Legal Reform</span>
+                            <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Homeschooling</span>
+                            <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Open Access</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 5: Books to Ecosystem -->
+                <div class="timeline-item flex flex-col md:flex-row gap-8 mb-8 items-center">
+                    <div class="md:w-1/3 text-center md:text-right">
+                        <span class="text-purple-600 font-bold text-lg">Chapter 5</span>
+                        <h3 class="text-2xl font-bold mb-2">2023-Present</h3>
+                        <p class="text-gray-600">Living the Legacy</p>
+                    </div>
+                    <div class="relative flex-shrink-0">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-full flex items-center justify-center text-white text-2xl">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 bg-gradient-to-br from-purple-600 to-indigo-600 text-white rounded-xl p-6 shadow-lg card-hover">
+                        <h4 class="text-xl font-bold mb-3">Mlandeli-Notemba Investments (MNI) Ecosystem</h4>
+                        <p class="mb-4">
+                            Named for my parents. Built to solve real problems: Sonny Network (safety I wish I had), Piggyback (ride-sharing & parcel delivery for rural areas), LifeSync (homeschooling + family governance), DocuHelp, BizHelp, Flamea (legal advocacy). The business organogram mirrors the family organogram. Tech learned in boardrooms, returned to serve the roots. Personal use: free forever.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="pulse-dot w-2 h-2 bg-green-400 rounded-full"></span>
+                            <span>Live & Serving Communities</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-black mb-16 text-center">
+                <span class="gradient-text">By The Numbers</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="text-center">
+                    <div class="stat-number gradient-text">5</div>
+                    <p class="text-gray-600 font-semibold mt-2">Years of Learning</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number gradient-text">50+</div>
+                    <p class="text-gray-600 font-semibold mt-2">Features Built</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number gradient-text">1000+</div>
+                    <p class="text-gray-600 font-semibold mt-2">Hours of Coding</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number gradient-text">∞</div>
+                    <p class="text-gray-600 font-semibold mt-2">Lessons Learned</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ecosystem Overview -->
+    <section class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 text-center">
+                <span class="gradient-text">The Complete Ecosystem</span>
+            </h2>
+            <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
+                What started as simple HTML pages is now a comprehensive platform serving families across multiple touchpoints.
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Web App -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-5xl mb-4">🌐</div>
+                    <h3 class="text-2xl font-bold mb-3">MNI Web App</h3>
+                    <p class="text-gray-600 mb-4">
+                        Modern React/Next.js application with family dashboard, safety triggers, document collaboration, 
+                        and analytics.
+                    </p>
+                    <a href="https://salatiso-lifecv.web.app" 
+                       class="text-purple-600 font-semibold hover:text-purple-700 inline-flex items-center gap-2">
+                        Launch Web App <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <div class="mt-4 flex items-center gap-2 text-sm text-green-600">
+                        <span class="pulse-dot w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span>Live & Active</span>
+                    </div>
+                </div>
+                
+                <!-- Android App -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-5xl mb-4">📱</div>
+                    <h3 class="text-2xl font-bold mb-3">Android Apps</h3>
+                    <p class="text-gray-600 mb-4">
+                        Native Android applications with offline capabilities, mesh networking, and family safety features 
+                        built with Kotlin.
+                    </p>
+                    <span class="text-purple-600 font-semibold inline-flex items-center gap-2">
+                        Coming to Play Store Soon
+                    </span>
+                    <div class="mt-4 flex items-center gap-2 text-sm text-yellow-600">
+                        <span class="pulse-dot w-2 h-2 bg-yellow-500 rounded-full"></span>
+                        <span>In Development</span>
+                    </div>
+                </div>
+                
+                <!-- Sonny Network -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-5xl mb-4">🛡️</div>
+                    <h3 class="text-2xl font-bold mb-3">Sonny Network</h3>
+                    <p class="text-gray-600 mb-4">
+                        Ubuntu-inspired mesh networking for family safety. Check-ins, emergency coordination, and trust-based 
+                        community features.
+                    </p>
+                    <a href="https://salatiso-lifecv.web.app/sonny" 
+                       class="text-purple-600 font-semibold hover:text-purple-700 inline-flex items-center gap-2">
+                        Explore Safety Features <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Sazi Life Academy -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-5xl mb-4">🎓</div>
+                    <h3 class="text-2xl font-bold mb-3">Sazi Life Academy</h3>
+                    <p class="text-gray-600 mb-4">
+                        Educational platform for family empowerment, life skills, and personal development. Built on the 
+                        Salatiso foundation.
+                    </p>
+                    <a href="https://sazi.life" 
+                       class="text-purple-600 font-semibold hover:text-purple-700 inline-flex items-center gap-2">
+                        Visit Sazi Life <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Legacy Tools -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-5xl mb-4">🔧</div>
+                    <h3 class="text-2xl font-bold mb-3">Legacy Tools</h3>
+                    <p class="text-gray-600 mb-4">
+                        The original HTML/JavaScript tools that started it all. LegalHelp, HR Help, DocuHelp, and more. 
+                        Still functional, still teaching.
+                    </p>
+                    <a href="/salatiso/" 
+                       class="text-purple-600 font-semibold hover:text-purple-700 inline-flex items-center gap-2">
+                        Browse Legacy Tools <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- SafetyFirst Bridge -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-5xl mb-4">🌉</div>
+                    <h3 class="text-2xl font-bold mb-3">SafetyFirst.help</h3>
+                    <p class="text-gray-600 mb-4">
+                        Similar bridge site showing the evolution and transition of safety-focused tools. 
+                        A template for this very page.
+                    </p>
+                    <a href="https://safetyfirst.help" 
+                       class="text-purple-600 font-semibold hover:text-purple-700 inline-flex items-center gap-2">
+                        Visit SafetyFirst <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Key Features Showcase -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-black mb-16 text-center">
+                <span class="gradient-text">What Makes It Special</span>
+            </h2>
+            
+            <div class="max-w-5xl mx-auto space-y-12">
+                <!-- Feature 1 -->
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/2">
+                        <div class="bg-gradient-to-br from-purple-100 to-indigo-100 rounded-2xl p-8 flex items-center justify-center h-64">
+                            <i class="fas fa-shield-alt text-8xl text-purple-600"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-3xl font-bold mb-4">Safety First</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">
+                            Safety triggers, check-in systems, emergency coordination, and mesh networking ensure 
+                            family members stay connected and safe. Built from real family needs.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+                    <div class="md:w-1/2">
+                        <div class="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl p-8 flex items-center justify-center h-64">
+                            <i class="fas fa-users text-8xl text-blue-600"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-3xl font-bold mb-4">Family Collaboration</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">
+                            Document collaboration, family trees, project management, and shared resources. 
+                            Everything a family needs to work together effectively.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/2">
+                        <div class="bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl p-8 flex items-center justify-center h-64">
+                            <i class="fas fa-chart-line text-8xl text-green-600"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-3xl font-bold mb-4">Growth & Analytics</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">
+                            Track family progress, achievements, and milestones. Gamification elements, badges, 
+                            and leaderboards make family growth engaging and fun.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why It's Maintained -->
+    <section class="py-20 bg-gradient-to-br from-purple-600 to-indigo-700 text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-black mb-8">
+                    Why This Bridge Must Stay
+                </h2>
+                
+                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-8 border border-white/20">
+                    <p class="text-xl leading-relaxed mb-6">
+                        <strong>Salatiso.com</strong> is not just a domain—it's the entrance to the entire ecosystem. 
+                        While each app has its own Firebase address, this bridge maintains the proper web address and 
+                        tells the story of how it all began.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mt-8">
+                        <div class="bg-white/10 rounded-xl p-6">
+                            <i class="fas fa-bookmark text-4xl mb-4"></i>
+                            <h3 class="font-bold text-lg mb-2">Permanent Home</h3>
+                            <p class="text-purple-100 text-sm">
+                                salatiso.com remains the official entry point to the ecosystem
+                            </p>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-6">
+                            <i class="fas fa-book-open text-4xl mb-4"></i>
+                            <h3 class="font-bold text-lg mb-2">Origin Story</h3>
+                            <p class="text-purple-100 text-sm">
+                                Shows the journey from simple templates to full ecosystem
+                            </p>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-6">
+                            <i class="fas fa-graduation-cap text-4xl mb-4"></i>
+                            <h3 class="font-bold text-lg mb-2">Inspiration</h3>
+                            <p class="text-purple-100 text-sm">
+                                Proves anyone can learn to build meaningful technology
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-xl text-purple-100 italic">
+                    "Everyone can do this. The journey from templates to production apps taught me that 
+                    technology isn't magic—it's just learning, trying, failing, and trying again."
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tech Stack -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 text-center">
+                <span class="gradient-text">Technologies Used</span>
+            </h2>
+            <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
+                From simple HTML to modern frameworks, here's what powers the ecosystem today.
+            </p>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Frontend -->
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h3 class="font-bold text-lg mb-4 text-purple-600">Frontend</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><i class="fab fa-react text-blue-500"></i> React 18</li>
+                            <li><i class="fas fa-code text-purple-500"></i> Next.js 14</li>
+                            <li><i class="fas fa-palette text-cyan-500"></i> Tailwind CSS</li>
+                            <li><i class="fas fa-code-branch text-blue-600"></i> TypeScript</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Mobile -->
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h3 class="font-bold text-lg mb-4 text-purple-600">Mobile</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><i class="fab fa-android text-green-500"></i> Kotlin</li>
+                            <li><i class="fas fa-mobile-alt text-green-600"></i> Android SDK</li>
+                            <li><i class="fas fa-plug text-blue-500"></i> Jetpack Compose</li>
+                            <li><i class="fas fa-database text-yellow-600"></i> Room DB</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Backend -->
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h3 class="font-bold text-lg mb-4 text-purple-600">Backend</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><i class="fas fa-fire text-orange-500"></i> Firebase Auth</li>
+                            <li><i class="fas fa-database text-orange-600"></i> Firestore</li>
+                            <li><i class="fas fa-server text-gray-600"></i> Cloud Functions</li>
+                            <li><i class="fas fa-cloud text-blue-400"></i> Firebase Hosting</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Tools -->
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h3 class="font-bold text-lg mb-4 text-purple-600">Tools</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><i class="fab fa-git-alt text-orange-600"></i> Git & GitHub</li>
+                            <li><i class="fas fa-vial text-green-500"></i> Jest Testing</li>
+                            <li><i class="fas fa-code text-indigo-500"></i> VS Code</li>
+                            <li><i class="fas fa-robot text-purple-500"></i> GitHub Copilot</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-black mb-8">
+                    <span class="gradient-text">Ready to Explore?</span>
+                </h2>
+                
+                <p class="text-xl text-gray-600 mb-12">
+                    Choose your path: Experience the modern ecosystem or explore the legacy tools that started it all.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Modern Ecosystem -->
+                    <div class="bg-gradient-to-br from-purple-600 to-indigo-600 rounded-2xl p-8 text-white text-left card-hover">
+                        <div class="text-5xl mb-4">🚀</div>
+                        <h3 class="text-2xl font-bold mb-3">Modern Ecosystem</h3>
+                        <p class="mb-6 text-purple-100">
+                            Experience the full power of the MNI platform with modern features, safety triggers, 
+                            and family collaboration tools.
+                        </p>
+                        <a href="https://salatiso-lifecv.web.app" 
+                           class="inline-block bg-white text-purple-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+                            Launch Web App →
+                        </a>
+                        <div class="mt-4 flex items-center gap-2 text-sm">
+                            <span class="pulse-dot w-2 h-2 bg-green-400 rounded-full"></span>
+                            <span>Live & Active</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Legacy Site -->
+                    <div class="bg-white border-2 border-purple-200 rounded-2xl p-8 text-left card-hover">
+                        <div class="text-5xl mb-4">📚</div>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Legacy Tools</h3>
+                        <p class="mb-6 text-gray-600">
+                            Explore the original HTML/JavaScript tools that started the journey. Simple, functional, 
+                            and educational.
+                        </p>
+                        <a href="/salatiso/" 
+                           class="inline-block bg-purple-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-purple-700 transition-all">
+                            Browse Legacy Site →
+                        </a>
+                        <div class="mt-4 flex items-center gap-2 text-sm text-gray-500">
+                            <i class="fas fa-history"></i>
+                            <span>Where it all began</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Links -->
+                <div class="mt-12 flex flex-wrap justify-center gap-4">
+                    <a href="https://sazi.life" 
+                       class="text-purple-600 hover:text-purple-700 font-semibold inline-flex items-center gap-2">
+                        <i class="fas fa-graduation-cap"></i> Sazi Life Academy
+                    </a>
+                    <a href="https://safetyfirst.help" 
+                       class="text-purple-600 hover:text-purple-700 font-semibold inline-flex items-center gap-2">
+                        <i class="fas fa-shield-alt"></i> SafetyFirst.help
+                    </a>
+                    <a href="https://salatiso-lifecv.web.app/sonny" 
+                       class="text-purple-600 hover:text-purple-700 font-semibold inline-flex items-center gap-2">
+                        <i class="fas fa-network-wired"></i> Sonny Network
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Books Carousel -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 text-center">
+                <span class="gradient-text">Published Works</span>
+            </h2>
+            <p class="text-center text-gray-700 mb-6 max-w-3xl mx-auto text-lg">
+                The journey from lived experience to ecosystem was crystallised in books. Each title documents not only professional expertise 
+                but also the personal battles, cultural heritage, and family values that shaped the vision. Explore the carousel below for 
+                summaries and links to purchase.
+            </p>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                15+ books—all available for free. Impact over income. Empowerment over profit.
+            </p>
+            
+            <div class="relative overflow-hidden">
+                <div class="flex animate-scroll-left">
+                    <!-- Book 1: Goliath's Reckoning -->
+                    <div class="flex-shrink-0 w-80 mx-4 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 shadow-lg">
+                        <img src="../images/goliath.jpg" alt="Goliath's Reckoning" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold mb-2">Goliath's Reckoning</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Exposing gender bias in South Africa's Children's Courts. A father's fight against systemic discrimination in family law.
+                        </p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">Legal Reform</span>
+                            <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">Father's Rights</span>
+                        </div>
+                        <div class="flex gap-2 text-sm flex-wrap">
+                            <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&pg=GBS.PP1&hl=en_IE" class="text-purple-600 hover:text-purple-700">Google Play</a>
+                            <span>•</span>
+                            <a href="https://books.apple.com/us/book/id6738792026" class="text-purple-600 hover:text-purple-700">Apple Books</a>
+                            <span>•</span>
+                            <a href="https://www.amazon.com/dp/B0DQ15TCMN" class="text-purple-600 hover:text-purple-700">Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 2: The Homeschooling Father -->
+                    <div class="flex-shrink-0 w-80 mx-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 shadow-lg">
+                        <img src="../images/homeschooling_father.jpg" alt="The Homeschooling Father" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold mb-2">The Homeschooling Father</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Why I chose to homeschool, how we make it work, and what formal systems get wrong about education and parenting. My father walked barefoot to school—I've never been without shoes.
+                        </p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Education</span>
+                            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Family Autonomy</span>
+                        </div>
+                        <div class="flex gap-2 text-sm flex-wrap">
+                            <a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en_IE" class="text-blue-600 hover:text-blue-700">Google Play</a>
+                            <span>•</span>
+                            <a href="https://books.apple.com/us/book/id6738792135" class="text-blue-600 hover:text-blue-700">Apple Books</a>
+                            <span>•</span>
+                            <a href="https://www.amazon.com/dp/B0DQ12X4VC" class="text-blue-600 hover:text-blue-700">Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 3: Beyond Redress -->
+                    <div class="flex-shrink-0 w-80 mx-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 shadow-lg">
+                        <img src="../images/redress.jpg" alt="Beyond Redress" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold mb-2">Beyond Redress</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Using the "best interests of the child" principle to challenge race and gender discrimination in South African law.
+                        </p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Constitutional Law</span>
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Children's Rights</span>
+                        </div>
+                        <div class="flex gap-2 text-sm flex-wrap">
+                            <a href="https://play.google.com/books/reader?id=fs0SEQAAQBAJ&pg=GBS.PA1" class="text-green-600 hover:text-green-700">Google Play</a>
+                            <span>•</span>
+                            <a href="https://books.apple.com/us/book/id6738794063" class="text-green-600 hover:text-green-700">Apple Books</a>
+                            <span>•</span>
+                            <a href="https://www.amazon.com/dp/B0DQ188HC4" class="text-green-600 hover:text-green-700">Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 4: Safety First Career -->
+                    <div class="flex-shrink-0 w-80 mx-4 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 shadow-lg">
+                        <img src="../images/SF_Career.jpg" alt="Safety First: OHS Career" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold mb-2">Safety First: OHS Career</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Complete OHS career guide. No tertiary qualification required. Opening safety careers to everyone through accessible education.
+                        </p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">OHS Career</span>
+                            <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">Practical Skills</span>
+                        </div>
+                        <div class="flex gap-2 text-sm flex-wrap">
+                            <a href="https://play.google.com/books/reader?id=vscJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" class="text-yellow-600 hover:text-yellow-700">Google Play</a>
+                            <span>•</span>
+                            <a href="https://books.apple.com/us/book/id6738793825" class="text-yellow-600 hover:text-yellow-700">Apple Books</a>
+                            <span>•</span>
+                            <a href="https://www.amazon.com/dp/B0DQ17GFFT" class="text-yellow-600 hover:text-yellow-700">Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 5: Getting to Know Yourself -->
+                    <div class="flex-shrink-0 w-80 mx-4 bg-gradient-to-br from-red-50 to-pink-50 rounded-xl p-6 shadow-lg">
+                        <img src="../images/Unravelling_Xhosa_History.jpg" alt="Getting to Know Yourself as a South African" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold mb-2">Getting to Know Yourself</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Unravelling Xhosa history from Central Africa to South Africa. Understanding cultural heritage and tribal origins.
+                        </p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-red-100 text-red-700 px-2 py-1 rounded">Xhosa Heritage</span>
+                            <span class="text-xs bg-red-100 text-red-700 px-2 py-1 rounded">Cultural Identity</span>
+                        </div>
+                        <div class="flex gap-2 text-sm flex-wrap">
+                            <a href="https://play.google.com/books/reader?id=VU__EAAAQBAJ&pg=GBS.PA50&hl=en_IE" class="text-red-600 hover:text-red-700">Google Play</a>
+                            <span>•</span>
+                            <a href="https://books.apple.com/us/book/id6738793486" class="text-red-600 hover:text-red-700">Apple Books</a>
+                            <span>•</span>
+                            <a href="https://www.amazon.com/dp/B0DQ16M6SX" class="text-red-600 hover:text-red-700">Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 6: Beyond the Grave -->
+                    <div class="flex-shrink-0 w-80 mx-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 shadow-lg">
+                        <img src="../images/Beyond_the_Grave.jpg" alt="Beyond the Grave" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold mb-2">Beyond the Grave</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            A son's journey through Xhosa tradition, spirituality, and freedom. Honoring ancestors while charting a new path.
+                        </p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded">Spirituality</span>
+                            <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded">Tradition</span>
+                        </div>
+                        <div class="flex gap-2 text-sm flex-wrap">
+                            <a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&pg=GBS.PA1923.w.0.0.0.2&hl=en_IE" class="text-indigo-600 hover:text-indigo-700">Google Play</a>
+                            <span>•</span>
+                            <a href="https://books.apple.com/us/book/id6738793318" class="text-indigo-600 hover:text-indigo-700">Apple Books</a>
+                            <span>•</span>
+                            <a href="https://www.amazon.com/dp/B0DQ15YH6C" class="text-indigo-600 hover:text-indigo-700">Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 7: Safety First Plans -->
+                    <div class="flex-shrink-0 w-80 mx-4 bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 shadow-lg">
+                        <img src="../images/SF_Plans.jpg" alt="Safety First: OHS Plans" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold mb-2">Safety First: OHS Plans</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            A guide to creating, implementing, and assessing effective Occupational Health and Safety Plans.
+                        </p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded">OHS Management</span>
+                            <span class="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded">Compliance</span>
+                        </div>
+                        <div class="flex gap-2 text-sm flex-wrap">
+                            <a href="https://play.google.com/books/reader?id=psgJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" class="text-orange-600 hover:text-orange-700">Google Play</a>
+                            <span>•</span>
+                            <a href="https://books.apple.com/us/book/id6738793632" class="text-orange-600 hover:text-orange-700">Apple Books</a>
+                            <span>•</span>
+                            <a href="https://www.amazon.com/dp/B0DQ16TZW8" class="text-orange-600 hover:text-orange-700">Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 8: Modern Broke and Confused -->
+                    <div class="flex-shrink-0 w-80 mx-4 bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-6 shadow-lg">
+                        <img src="../images/Modern_Broke.jpg" alt="Modern, Broke, and Confused" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold mb-2">Modern, Broke, and Confused</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            A beginner's guide to progress. The Bantu and Khoisan were forced to trade their animal skins for top hats and wool coats in the sweltering African sun.
+                        </p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded">Social Commentary</span>
+                            <span class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded">Personal Growth</span>
+                        </div>
+                        <div class="flex gap-2 text-sm flex-wrap">
+                            <a href="https://play.google.com/books/reader?id=X3ZDEQAAQBAJ&hl=en_IE" class="text-pink-600 hover:text-pink-700">Google Play</a>
+                            <span>•</span>
+                            <a href="https://books.apple.com/us/book/id6738793203" class="text-pink-600 hover:text-pink-700">Apple Books</a>
+                            <span>•</span>
+                            <a href="https://www.amazon.com/dp/B0DQ15PKW1" class="text-pink-600 hover:text-pink-700">Amazon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Book 9: The Perfect Cage - Book 1 -->
+                    <div class="flex-shrink-0 w-80 mx-4 bg-gradient-to-br from-slate-50 to-zinc-50 rounded-xl p-6 shadow-lg">
+                        <img src="../images/The_Perfect_Cage1.jpg" alt="The Perfect Cage: A Dystopian Struggle" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold mb-2">The Perfect Cage: Book 1</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            A Dystopian Struggle for Legacy and Survival. When perfection demanded obedience, humanity now alone must uncover the truth and fight to reclaim freedom.
+                        </p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded">Dystopian Fiction</span>
+                            <span class="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded">Sci-Fi Thriller</span>
+                        </div>
+                        <div class="flex gap-2 text-sm flex-wrap">
+                            <a href="https://play.google.com/books/reader?id=RdU8EQAAQBAJ&pg=GBS.PA1&hl=en_GB" class="text-slate-600 hover:text-slate-700">Google Play</a>
+                            <span>•</span>
+                            <a href="https://books.apple.com/us/book/id6738792693" class="text-slate-600 hover:text-slate-700">Apple Books</a>
+                            <span>•</span>
+                            <a href="https://www.amazon.com/dp/B0DQ141Y6N" class="text-slate-600 hover:text-slate-700">Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-4">
+                    <strong>All books available for free download.</strong> Impact over income. Empowerment over profit.
+                </p>
+                <div class="flex gap-4 justify-center flex-wrap">
+                    <a href="https://play.google.com/store/search?q=salatiso&c=books&hl=en" 
+                       class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+                        View All Books on Google Play →
+                    </a>
+                    <a href="https://www.youtube.com/@Salatiso" 
+                       class="inline-block bg-gradient-to-r from-red-600 to-rose-600 text-white px-8 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+                        Free Audiobooks on YouTube →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h3 class="text-3xl font-bold text-white mb-4">Salatiso</h3>
+                <p class="mb-8">
+                    From family legacy to digital ecosystem. Rooted in Ubuntu, built with purpose, shared with all.
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-6 mb-8">
+                    <a href="https://salatiso-lifecv.web.app" class="hover:text-purple-400 transition-colors">Web App</a>
+                    <a href="https://salatiso.com/salatiso/" class="hover:text-purple-400 transition-colors">Legacy Site</a>
+                    <a href="https://sazi.life" class="hover:text-purple-400 transition-colors">Sazi Life</a>
+                    <a href="https://safetyfirst.help" class="hover:text-purple-400 transition-colors">SafetyFirst</a>
+                    <a href="https://flamea.org" class="hover:text-purple-400 transition-colors">Flamea</a>
+                </div>
+                
+                <div class="border-t border-gray-700 pt-8">
+                    <p class="text-sm">
+                        © 2025 Salatiso / Mlandeli-Notemba Investments. Built with passion, patience, and countless Google searches.
+                    </p>
+                    <p class="text-sm mt-2 text-gray-500">
+                        Proof that anyone can learn to code and build something meaningful.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scroll Animation Script -->
+    <script>
+        // Intersection Observer for timeline animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all timeline items
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{
+  "common": {
+    "loading": "Inapakia...",
+    "error": "Kosa",
+    "success": "Mafanikio",
+    "save": "Hifadhi",
+    "cancel": "Ghairi",
+    "delete": "Futa",
+    "edit": "Hariri",
+    "add": "Ongeza",
+    "search": "Tafuta",
+    "filter": "Chuja",
+    "close": "Funga",
+    "open": "Fungua",
+    "back": "Rudi",
+    "next": "Ifuatayo",
+    "previous": "Iliyopita",
+    "home": "Nyumbani",
+    "about": "Kuhusu",
+    "contact": "Wasiliana",
+    "login": "Ingia",
+    "logout": "Toka",
+    "welcome": "Karibu"
+  },
+  "navigation": {
+    "home": "Nyumbani",
+    "about": "Kuhusu Sisi",
+    "ecosystem": "Mfumo",
+    "journey": "Safari Yetu",
+    "library": "Maktaba",
+    "testing": "Kituo cha Majaribio",
+    "templates": "Violezo",
+    "contact": "Wasiliana",
+    "intranet": "Intranet"
+  },
+  "intranet": {
+    "title": "Salatiso Family Intranet",
+    "subtitle": "Utawala unaozingatia Ubuntu kwa kizazi kijacho",
+    "dashboard": "Dashibodi",
+    "projects": "Miradi",
+    "family": "Familia",
+    "business_plan": "Mpango wa Biashara",
+    "career": "Njia za Kazi",
+    "ecosystem": "Programu za Mfumo",
+    "learning": "Kujifunza",
+    "timeline": "Ratiba",
+    "lifecv": "LifeCV",
+    "simple_dashboard": "Dashibodi Rahisi"
+  }
+}

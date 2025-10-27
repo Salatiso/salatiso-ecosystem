@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNI Beta Testing Guide - Salatiso Ecosystem</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --bg-card: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success-green);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: var(--bg-card);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .section.completed {
+            border-left-color: var(--success-green);
+            background: linear-gradient(135deg, var(--bg-card), rgba(16, 185, 129, 0.05));
+        }
+
+        .section h2 {
+            color: var(--primary-blue);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section.completed h2::before {
+            content: '✅';
+        }
+
+        .section h3 {
+            color: var(--ubuntu-orange);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .test-step {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--ubuntu-orange);
+        }
+
+        .test-step.completed {
+            background: rgba(16, 185, 129, 0.1);
+            border-left-color: var(--success-green);
+        }
+
+        .step-number {
+            background: var(--ubuntu-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .step-number.completed {
+            background: var(--success-green);
+        }
+
+        .feedback-form {
+            background: linear-gradient(135deg, var(--lifecv-purple), var(--primary-blue));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .form-group {
+            margin: 1rem 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group select, .form-group textarea, .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .cta-button {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem 0.5rem 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #DC2626;
+            transform: translateY(-2px);
+        }
+
+        .cta-button.secondary {
+            background: var(--primary-blue);
+        }
+
+        .cta-button.secondary:hover {
+            background: #1E40AF;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--success-green), var(--primary-blue));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--ubuntu-orange);
+            text-align: center;
+        }
+
+        .feature-card.completed {
+            background: rgba(16, 185, 129, 0.1);
+            border-left-color: var(--success-green);
+        }
+
+        .feature-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--warning-amber);
+            margin-left: 0.5rem;
+        }
+
+        .status-indicator.completed {
+            background: var(--success-green);
+        }
+
+        .status-indicator.failed {
+            background: var(--error-red);
+        }
+
+        .footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .completion-badge {
+            background: var(--success-green);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 1rem 0;
+            animation: celebrate 0.5s ease;
+        }
+
+        @keyframes celebrate {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .app-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .app-link {
+            background: var(--bg-card);
+            color: var(--primary-blue);
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 2px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .app-link:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--text-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--text-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--text-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">🏢 MNI</div>
+            <div class="tagline">Beta Testing Guide - Mdeni Jalamba Holdings Platform</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div>Progress: <span id="progressText">0%</span></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">✏️ Customize This Testing Guide</h3>
+            <div class="form-field">
+                <label>Tester Name:</label>
+                <input type="text" id="testerName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label>Organization:</label>
+                <input type="text" id="organization" placeholder="Enter organization or company name">
+            </div>
+            <div class="form-field">
+                <label>Test Date:</label>
+                <input type="date" id="testDate" value="2025-10-08">
+            </div>
+            <div class="form-field">
+                <label>Guide Version:</label>
+                <input type="text" id="guideVersion" value="Beta Testing Guide v1.0" placeholder="e.g., Beta Testing Guide v1.0">
+            </div>
+            <button onclick="applyCustomization()" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📤 Share This Testing Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with team members or keeping printed records
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+        <!-- Introduction Section -->
+        <div class="section" id="introSection">
+            <h2>🎯 Welcome to MNI Beta Testing</h2>
+            <p><strong>Thank you for helping us test MNI!</strong> You're part of building the future of business management and family governance in South Africa.</p>
+
+            <div class="highlight-box">
+                <h3>📱 How to Access MNI</h3>
+                <div class="app-links">
+                    <a href="https://salatiso-lifecv.web.app" class="app-link" target="_blank">
+                        🌐 Web App<br>
+                        <small>salatiso-lifecv.web.app</small>
+                    </a>
+                    <a href="#" class="app-link" onclick="alert('Android app coming soon! Check back for download link.')">
+                        🤖 Android App<br>
+                        <small>Download from Play Store</small>
+                    </a>
+                    <a href="https://lifecv-d2724.web.app/training/" class="app-link" target="_blank">
+                        🎓 Sazi Life Academy<br>
+                        <small>lifecv-d2724.web.app/training/</small>
+                    </a>
+                </div>
+                <p><strong>System Requirements:</strong> Modern web browser, internet connection (works offline too!)</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🎮 Interactive Testing</h4>
+                    <p>Complete sections progressively and track your progress</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Real Feedback</h4>
+                    <p>Your input helps improve MNI for family businesses and governance</p>
+                </div>
+                <div class="feature-card">
+                    <h4>� Training Integration</h4>
+                    <p>Your testing contributes to Sazi Life Academy progression and generates LifeCV proof</p>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="startTesting()">🚀 Start Testing</button>
+        </div>
+
+        <!-- Public Pages Testing -->
+        <div class="section hidden" id="publicSection">
+            <h2>🌐 Public Pages Testing <span class="status-indicator" id="publicStatus"></span></h2>
+
+            <div class="test-step" id="step1">
+                <div class="step-number">1</div>
+                <strong>Landing Page Load</strong>
+                <p>Open BizHelp in your browser. Does the page load within 3 seconds?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Result:</label>
+                        <select id="landingLoad">
+                            <option value="">Select result...</option>
+                            <option value="pass">✅ Loads quickly</option>
+                            <option value="slow">⏰ Loads slowly</option>
+                            <option value="fail">❌ Doesn't load</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Comments:</label>
+                        <textarea id="landingComments" placeholder="Any issues or observations..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step2">
+                <div class="step-number">2</div>
+                <strong>Navigation Menu</strong>
+                <p>Check the header navigation. Can you see: Home, Academy, Templates, Marketplace, Contact?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>All menu items visible?</label>
+                        <select id="navVisible">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ All visible</option>
+                            <option value="partial">⚠️ Some missing</option>
+                            <option value="no">❌ None visible</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Missing items:</label>
+                        <input type="text" id="navMissing" placeholder="Which items are missing?">
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step3">
+                <div class="step-number">3</div>
+                <strong>Language Selection</strong>
+                <p>Look for language selector. Can you change between English and other South African languages?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Language selector works?</label>
+                        <select id="langWorks">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Works perfectly</option>
+                            <option value="partial">⚠️ Some languages missing</option>
+                            <option value="no">❌ Not working</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Available languages:</label>
+                        <input type="text" id="langAvailable" placeholder="English, Afrikaans, Zulu, etc.">
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step4">
+                <div class="step-number">4</div>
+                <strong>BizHelp Academy</strong>
+                <p>Navigate to Academy section. Can you see the 5-level ladder and course content?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Academy loads correctly?</label>
+                        <select id="academyLoads">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Loads with content</option>
+                            <option value="empty">📭 Loads but empty</option>
+                            <option value="error">❌ Error loading</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Content quality:</label>
+                        <select id="academyQuality">
+                            <option value="">Select rating...</option>
+                            <option value="excellent">⭐⭐⭐⭐⭐ Excellent</option>
+                            <option value="good">⭐⭐⭐⭐ Good</option>
+                            <option value="average">⭐⭐⭐ Average</option>
+                            <option value="poor">⭐⭐ Poor</option>
+                            <option value="terrible">⭐ Terrible</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step5">
+                <div class="step-number">5</div>
+                <strong>Templates Section</strong>
+                <p>Check Templates page. Can you browse and preview business document templates?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Templates accessible?</label>
+                        <select id="templatesWork">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Can browse and preview</option>
+                            <option value="browse">📋 Can browse only</option>
+                            <option value="no">❌ Cannot access</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Template categories found:</label>
+                        <input type="text" id="templateCats" placeholder="Family, Personal, Professional...">
+                    </div>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="completePublicSection()">✅ Complete Public Pages</button>
+        </div>
+
+        <!-- Authentication Testing -->
+        <div class="section hidden" id="authSection">
+            <h2>🔐 Authentication Testing <span class="status-indicator" id="authStatus"></span></h2>
+
+            <div class="test-step" id="step6">
+                <div class="step-number">6</div>
+                <strong>Login/Register Options</strong>
+                <p>Look for login/register button. What authentication methods are available?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Available methods:</label>
+                        <select id="authMethods">
+                            <option value="">Select methods...</option>
+                            <option value="email">📧 Email/Password only</option>
+                            <option value="google">🔍 Google Sign-in</option>
+                            <option value="phone">📱 Phone number</option>
+                            <option value="multiple">🔄 Multiple options</option>
+                            <option value="none">❌ No login visible</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Login button location:</label>
+                        <input type="text" id="loginLocation" placeholder="Header, main content, etc.">
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step7">
+                <div class="step-number">7</div>
+                <strong>Trust Score Display</strong>
+                <p>After login/register, can you see your trust score badge?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Trust score visible?</label>
+                        <select id="trustVisible">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Visible and updating</option>
+                            <option value="static">📊 Visible but static</option>
+                            <option value="no">❌ Not visible</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Trust score value:</label>
+                        <input type="text" id="trustValue" placeholder="Current score or N/A">
+                    </div>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="completeAuthSection()">✅ Complete Authentication</button>
+        </div>
+
+        <!-- Dashboard Testing -->
+        <div class="section hidden" id="dashboardSection">
+            <h2>📊 Dashboard Testing <span class="status-indicator" id="dashboardStatus"></span></h2>
+
+            <div class="test-step" id="step8">
+                <div class="step-number">8</div>
+                <strong>Dashboard Access</strong>
+                <p>Navigate to your dashboard. Does it load with your profile information?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Dashboard loads?</label>
+                        <select id="dashboardLoads">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Loads with data</option>
+                            <option value="empty">📭 Loads but empty</option>
+                            <option value="error">❌ Error loading</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Loading time:</label>
+                        <select id="dashboardSpeed">
+                            <option value="">Select speed...</option>
+                            <option value="fast">⚡ Fast (< 2 seconds)</option>
+                            <option value="medium">⏱️ Medium (2-5 seconds)</option>
+                            <option value="slow">🐌 Slow (> 5 seconds)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step9">
+                <div class="step-number">9</div>
+                <strong>LifeCV Integration</strong>
+                <p>Can you see your LifeCV profile data and the LifeCV button?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>LifeCV data visible?</label>
+                        <select id="lifecvVisible">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Profile data shown</option>
+                            <option value="button">🔗 Button only</option>
+                            <option value="no">❌ Not integrated</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>LifeCV button works?</label>
+                        <select id="lifecvButton">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Opens LifeCV app</option>
+                            <option value="link">🔗 External link</option>
+                            <option value="no">❌ Not working</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step10">
+                <div class="step-number">10</div>
+                <strong>Business Management</strong>
+                <p>Check business management section. Can you view/add businesses?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Business section works?</label>
+                        <select id="businessWorks">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Can view and add</option>
+                            <option value="view">👁️ Can view only</option>
+                            <option value="no">❌ Not accessible</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Business types available:</label>
+                        <input type="text" id="businessTypes" placeholder="Sole prop, company, etc.">
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step11">
+                <div class="step-number">11</div>
+                <strong>Academy Progress</strong>
+                <p>Can you see your academy progress and completed courses?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Progress tracking works?</label>
+                        <select id="progressWorks">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Shows progress</option>
+                            <option value="static">📊 Shows but not updating</option>
+                            <option value="no">❌ Not showing</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Courses visible:</label>
+                        <input type="text" id="coursesVisible" placeholder="Number of courses shown">
+                    </div>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="completeDashboardSection()">✅ Complete Dashboard</button>
+        </div>
+
+        <!-- Business Registration Testing -->
+        <div class="section hidden" id="registrationSection">
+            <h2>📝 Business Registration Testing <span class="status-indicator" id="registrationStatus"></span></h2>
+
+            <div class="test-step" id="step12">
+                <div class="step-number">12</div>
+                <strong>SA ID Validator</strong>
+                <p>Try the SA ID validation feature. Does it work with valid/invalid IDs?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>ID validation works?</label>
+                        <select id="idValidator">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Validates correctly</option>
+                            <option value="partial">⚠️ Some issues</option>
+                            <option value="no">❌ Not working</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Test results:</label>
+                        <textarea id="idTestResults" placeholder="Valid ID accepted? Invalid ID rejected?"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step13">
+                <div class="step-number">13</div>
+                <strong>Business Wizard</strong>
+                <p>Test the business registration wizard. Can you complete the steps?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Wizard functionality:</label>
+                        <select id="wizardWorks">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Complete workflow</option>
+                            <option value="partial">⚠️ Some steps missing</option>
+                            <option value="no">❌ Not working</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Steps completed:</label>
+                        <input type="text" id="wizardSteps" placeholder="How many steps in wizard?">
+                    </div>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="completeRegistrationSection()">✅ Complete Registration</button>
+        </div>
+
+        <!-- Contact & Support Testing -->
+        <div class="section hidden" id="contactSection">
+            <h2>📞 Contact & Support Testing <span class="status-indicator" id="contactStatus"></span></h2>
+
+            <div class="test-step" id="step14">
+                <div class="step-number">14</div>
+                <strong>Contact Form</strong>
+                <p>Navigate to Contact page. Can you submit inquiries with different categories?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Contact form works?</label>
+                        <select id="contactWorks">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Can submit forms</option>
+                            <option value="categories">📋 Categories work</option>
+                            <option value="no">❌ Not working</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Categories available:</label>
+                        <input type="text" id="contactCats" placeholder="General, Technical, Business...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-step" id="step15">
+                <div class="step-number">15</div>
+                <strong>Anonymous Submissions</strong>
+                <p>Can you submit contact forms anonymously (without login)?</p>
+                <div class="feedback-form">
+                    <div class="form-group">
+                        <label>Anonymous contact works?</label>
+                        <select id="anonymousWorks">
+                            <option value="">Select result...</option>
+                            <option value="yes">✅ Anonymous submissions work</option>
+                            <option value="login">🔐 Requires login</option>
+                            <option value="no">❌ Not available</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="completeContactSection()">✅ Complete Contact</button>
+        </div>
+
+        <!-- Final Feedback -->
+        <div class="section hidden" id="finalSection">
+            <h2>🎉 Final Feedback & Completion</h2>
+
+            <div class="completion-badge" id="completionBadge" style="display: none;">
+                🎊 Testing Complete! Thank you! 🎊
+            </div>
+
+            <div class="feedback-form">
+                <h3>📊 Overall Experience</h3>
+                <div class="form-group">
+                    <label>Overall rating:</label>
+                    <select id="overallRating">
+                        <option value="">Select rating...</option>
+                        <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                        <option value="4">⭐⭐⭐⭐ Very Good</option>
+                        <option value="3">⭐⭐⭐ Average</option>
+                        <option value="2">⭐⭐ Poor</option>
+                        <option value="1">⭐ Terrible</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>What worked well?</label>
+                    <textarea id="workedWell" placeholder="Features that impressed you..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>What needs improvement?</label>
+                    <textarea id="needsImprovement" placeholder="Issues or suggestions..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Would you recommend BizHelp?</label>
+                    <select id="recommendation">
+                        <option value="">Select answer...</option>
+                        <option value="yes">✅ Definitely yes</option>
+                        <option value="maybe">🤔 Maybe, with improvements</option>
+                        <option value="no">❌ No, needs work</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional comments:</label>
+                    <textarea id="additionalComments" placeholder="Any other feedback..."></textarea>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="submitFeedback()">📤 Submit Final Feedback</button>
+            <button class="cta-button secondary" onclick="downloadResults()">💾 Download Results</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>🏢 MNI - Mdeni Jalamba Holdings Platform</div>
+        <div>Part of the Salatiso Ecosystem | Powered by LifeSync</div>
+        <div>Thank you for your valuable feedback! 🚀</div>
+    </div>
+
+    <script>
+        let currentSection = 0;
+        const sections = ['introSection', 'publicSection', 'authSection', 'dashboardSection', 'registrationSection', 'contactSection', 'finalSection'];
+        const totalSteps = 15;
+        let completedSteps = 0;
+
+        function updateProgress() {
+            const progress = (completedSteps / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = Math.round(progress) + '%';
+        }
+
+        function startTesting() {
+            document.getElementById('introSection').classList.add('completed');
+            document.getElementById('publicSection').classList.remove('hidden');
+            currentSection = 1;
+        }
+
+        function completePublicSection() {
+            document.getElementById('publicSection').classList.add('completed');
+            document.getElementById('publicStatus').classList.add('completed');
+            document.getElementById('authSection').classList.remove('hidden');
+            completedSteps += 5;
+            updateProgress();
+            currentSection = 2;
+        }
+
+        function completeAuthSection() {
+            document.getElementById('authSection').classList.add('completed');
+            document.getElementById('authStatus').classList.add('completed');
+            document.getElementById('dashboardSection').classList.remove('hidden');
+            completedSteps += 2;
+            updateProgress();
+            currentSection = 3;
+        }
+
+        function completeDashboardSection() {
+            document.getElementById('dashboardSection').classList.add('completed');
+            document.getElementById('dashboardStatus').classList.add('completed');
+            document.getElementById('registrationSection').classList.remove('hidden');
+            completedSteps += 4;
+            updateProgress();
+            currentSection = 4;
+        }
+
+        function completeRegistrationSection() {
+            document.getElementById('registrationSection').classList.add('completed');
+            document.getElementById('registrationStatus').classList.add('completed');
+            document.getElementById('contactSection').classList.remove('hidden');
+            completedSteps += 2;
+            updateProgress();
+            currentSection = 5;
+        }
+
+        function completeContactSection() {
+            document.getElementById('contactSection').classList.add('completed');
+            document.getElementById('contactStatus').classList.add('completed');
+            document.getElementById('finalSection').classList.remove('hidden');
+            completedSteps += 2;
+            updateProgress();
+            currentSection = 6;
+        }
+
+        function submitFeedback() {
+            // Collect all form data
+            const feedback = {
+                timestamp: new Date().toISOString(),
+                overallRating: document.getElementById('overallRating').value,
+                workedWell: document.getElementById('workedWell').value,
+                needsImprovement: document.getElementById('needsImprovement').value,
+                recommendation: document.getElementById('recommendation').value,
+                additionalComments: document.getElementById('additionalComments').value,
+                // Add all the test results
+                landingLoad: document.getElementById('landingLoad').value,
+                navVisible: document.getElementById('navVisible').value,
+                langWorks: document.getElementById('langWorks').value,
+                academyLoads: document.getElementById('academyLoads').value,
+                templatesWork: document.getElementById('templatesWork').value,
+                authMethods: document.getElementById('authMethods').value,
+                trustVisible: document.getElementById('trustVisible').value,
+                dashboardLoads: document.getElementById('dashboardLoads').value,
+                lifecvVisible: document.getElementById('lifecvVisible').value,
+                businessWorks: document.getElementById('businessWorks').value,
+                progressWorks: document.getElementById('progressWorks').value,
+                idValidator: document.getElementById('idValidator').value,
+                wizardWorks: document.getElementById('wizardWorks').value,
+                contactWorks: document.getElementById('contactWorks').value,
+                anonymousWorks: document.getElementById('anonymousWorks').value
+            };
+
+            // Show completion badge
+            document.getElementById('completionBadge').style.display = 'inline-block';
+
+            // In a real implementation, this would send to a server
+            console.log('Feedback submitted:', feedback);
+            alert('Thank you for completing the MNI beta testing! Your feedback has been recorded.');
+        }
+
+        function downloadResults() {
+            // Create a simple text summary of results
+            let results = 'MNI Beta Testing Results\\n\\n';
+            results += 'Overall Rating: ' + document.getElementById('overallRating').value + '\\n';
+            results += 'Worked Well: ' + document.getElementById('workedWell').value + '\\n';
+            results += 'Needs Improvement: ' + document.getElementById('needsImprovement').value + '\\n';
+            results += 'Recommendation: ' + document.getElementById('recommendation').value + '\\n\\n';
+
+            // Add test results
+            results += 'Test Results:\\n';
+            results += 'Landing Page: ' + document.getElementById('landingLoad').value + '\\n';
+            results += 'Navigation: ' + document.getElementById('navVisible').value + '\\n';
+            results += 'Languages: ' + document.getElementById('langWorks').value + '\\n';
+            results += 'Academy: ' + document.getElementById('academyLoads').value + '\\n';
+            results += 'Templates: ' + document.getElementById('templatesWork').value + '\\n';
+            results += 'Authentication: ' + document.getElementById('authMethods').value + '\\n';
+            results += 'Trust Score: ' + document.getElementById('trustVisible').value + '\\n';
+            results += 'Dashboard: ' + document.getElementById('dashboardLoads').value + '\\n';
+            results += 'LifeCV: ' + document.getElementById('lifecvVisible').value + '\\n';
+            results += 'Business Mgmt: ' + document.getElementById('businessWorks').value + '\\n';
+            results += 'Academy Progress: ' + document.getElementById('progressWorks').value + '\\n';
+            results += 'ID Validator: ' + document.getElementById('idValidator').value + '\\n';
+            results += 'Business Wizard: ' + document.getElementById('wizardWorks').value + '\\n';
+            results += 'Contact Form: ' + document.getElementById('contactWorks').value + '\\n';
+            results += 'Anonymous Contact: ' + document.getElementById('anonymousWorks').value + '\\n';
+
+            const blob = new Blob([results], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'mni-beta-results.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Mark steps as completed when forms are filled
+        document.querySelectorAll('select, textarea, input').forEach(element => {
+            element.addEventListener('change', function() {
+                if (this.value) {
+                    this.closest('.test-step').classList.add('completed');
+                }
+            });
+        });
+
+        // Customization Functions
+        function applyCustomization() {
+            const testerName = document.getElementById('testerName').value;
+            const organization = document.getElementById('organization').value;
+            const testDate = document.getElementById('testDate').value;
+            const guideVersion = document.getElementById('guideVersion').value;
+
+            // Update document title
+            document.title = `MNI Beta Testing - ${organization || 'Testing Guide'} - ${guideVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `Beta Testing Guide - ${guideVersion}`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('.footer');
+            if (footer) {
+                const footerDivs = footer.querySelectorAll('div');
+                if (footerDivs.length >= 3) {
+                    footerDivs[2].innerHTML = `Completed by ${testerName || 'Tester'} on ${new Date(testDate).toLocaleDateString()} 🚀`;
+                }
+            }
+
+            alert('✅ Testing guide customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('testDate').value = today;
+        });
+    </script>
+</body>
+</html>

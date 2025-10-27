@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp by Salatiso - IP Protection: Securing Your Family Ideas</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .level-badge {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .ip-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .ip-hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .ip-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .ip-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .ip-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .ip-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .patent-guide {
+            background: var(--bg-light);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .patent-guide h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .patent-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .process-step {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--ubuntu-orange);
+        }
+
+        .process-step h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .trademark-section {
+            background: var(--success-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .trademark-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .trademark-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .trademark-type {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .trademark-type h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .copyright-basics {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .copyright-basics h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .copyright-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .copyright-example {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .copyright-example h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .trade-secrets {
+            background: var(--warning-amber);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .trade-secrets h2 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .secret-protection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .secret-method {
+            background: rgba(255,255,255,0.8);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .secret-method h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .family-ip {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .family-ip h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .ip-strategy {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .strategy-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .strategy-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .enforcement-guide {
+            background: var(--error-red);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .enforcement-guide h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .enforcement-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .enforcement-step {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .ip-audit {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .ip-audit h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #d4550a;
+        }
+
+        .btn.secondary {
+            background: var(--primary-blue);
+        }
+
+        .btn.secondary:hover {
+            background: #152c6b;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        footer .footer-section h4 {
+            color: var(--ubuntu-orange);
+            margin-bottom: 1rem;
+        }
+
+        footer .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">BizHelp by Salatiso</div>
+            <div class="tagline">IP Protection: Securing Your Family Ideas</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label>Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label>Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label>Business Idea/Product:</label>
+                <input type="text" id="businessIdea" placeholder="What are you protecting?">
+            </div>
+            <div class="form-field">
+                <label>Document Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label>Document Version:</label>
+                <input type="text" id="docVersion" value="IP Protection Guide v1.0" placeholder="e.g., IP Protection Guide v1.0">
+            </div>
+            <button onclick="applyCustomization()" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+
+        <div class="level-badge">Family • Level 2</div>
+
+        <div class="ip-hero">
+            <h1>🛡️ IP Protection: Securing Your Family Ideas</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+                Protecting your family's intellectual property and creative assets
+            </p>
+            <p>
+                Intellectual Property (IP) is your family's most valuable asset. It includes inventions, brands,
+                creative works, and business secrets that give your family business its competitive advantage.
+            </p>
+        </div>
+
+        <div style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--primary-blue); text-align: center;">Why IP Protection Matters for Family Businesses</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">💰</div>
+                    <h4>Business Value</h4>
+                    <p>IP can be your most valuable asset, worth more than buildings or equipment</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🛡️</div>
+                    <h4>Competitive Advantage</h4>
+                    <p>Protects your unique ideas, products, and services from competitors</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📈</div>
+                    <h4>Family Legacy</h4>
+                    <p>Preserves your family's innovations for future generations</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">⚖️</div>
+                    <h4>Legal Protection</h4>
+                    <p>Gives you legal rights to stop others from using your IP</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ip-types">
+            <div class="ip-card">
+                <div class="icon">🔬</div>
+                <h3>Patents</h3>
+                <p>Protect inventions, processes, and technical innovations. Gives exclusive right to make, use, and sell the invention.</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Products and processes</li>
+                    <li>Machines and devices</li>
+                    <li>Chemical formulas</li>
+                    <li>Manufacturing methods</li>
+                </ul>
+            </div>
+
+            <div class="ip-card">
+                <div class="icon">™️</div>
+                <h3>Trademarks</h3>
+                <p>Protect brand names, logos, slogans, and symbols that identify your products or services.</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Business names</li>
+                    <li>Product names</li>
+                    <li>Logos and symbols</li>
+                    <li>Brand slogans</li>
+                </ul>
+            </div>
+
+            <div class="ip-card">
+                <div class="icon">©️</div>
+                <h3>Copyright</h3>
+                <p>Protects original creative works like writings, music, art, and software code.</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Written materials</li>
+                    <li>Photography and art</li>
+                    <li>Music and videos</li>
+                    <li>Website content</li>
+                </ul>
+            </div>
+
+            <div class="ip-card">
+                <div class="icon">🔒</div>
+                <h3>Trade Secrets</h3>
+                <p>Protects confidential business information that gives competitive advantage.</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Customer lists</li>
+                    <li>Recipes and formulas</li>
+                    <li>Business methods</li>
+                    <li>Technical know-how</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="patent-guide">
+            <h2>🔬 Patent Protection for Your Inventions</h2>
+            <p>Patents protect new, useful inventions and give you exclusive rights for up to 20 years</p>
+
+            <div class="patent-process">
+                <div class="process-step">
+                    <h4>1. Invention Assessment</h4>
+                    <p>Determine if your idea is patentable: new, useful, and non-obvious</p>
+                </div>
+
+                <div class="process-step">
+                    <h4>2. Prior Art Search</h4>
+                    <p>Research existing patents and publications to ensure novelty</p>
+                </div>
+
+                <div class="process-step">
+                    <h4>3. Patent Drafting</h4>
+                    <p>Write detailed patent specification with claims, drawings, and description</p>
+                </div>
+
+                <div class="process-step">
+                    <h4>4. Filing Application</h4>
+                    <p>Submit patent application to CIPC with required forms and fees</p>
+                </div>
+
+                <div class="process-step">
+                    <h4>5. Examination</h4>
+                    <p>CIPC examines application and may request amendments or clarifications</p>
+                </div>
+
+                <div class="process-step">
+                    <h4>6. Grant & Maintenance</h4>
+                    <p>Patent granted if approved; annual renewal fees required to maintain protection</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1rem; background: white; border-radius: 4px;">
+                <h4 style="color: var(--primary-blue);">Patent Costs in South Africa</h4>
+                <ul style="column-count: 2; column-gap: 2rem;">
+                    <li>Filing fee: R200-R500</li>
+                    <li>Examination fee: R1,000-R2,000</li>
+                    <li>Patent attorney: R5,000-R15,000</li>
+                    <li>Annual renewal: R300-R800</li>
+                    <li>Total first year: R6,500-R18,300</li>
+                    <li>20-year total: R15,000-R35,000+</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="trademark-section">
+            <h2>™️ Trademark Protection for Your Brand</h2>
+            <p>Trademarks protect your brand identity and prevent confusion in the marketplace</p>
+
+            <div class="trademark-types">
+                <div class="trademark-type">
+                    <h4>📝 Word Marks</h4>
+                    <p>Protect words, letters, or numbers that identify your brand</p>
+                    <ul>
+                        <li>Business names</li>
+                        <li>Product names</li>
+                        <li>Slogans and taglines</li>
+                        <li>Domain names</li>
+                    </ul>
+                </div>
+
+                <div class="trademark-type">
+                    <h4>🎨 Design Marks</h4>
+                    <p>Protect logos, symbols, and visual elements</p>
+                    <ul>
+                        <li>Company logos</li>
+                        <li>Product packaging</li>
+                        <li>Brand symbols</li>
+                        <li>Color combinations</li>
+                    </ul>
+                </div>
+
+                <div class="trademark-type">
+                    <h4>🔊 Sound Marks</h4>
+                    <p>Protect distinctive sounds or audio signatures</p>
+                    <ul>
+                        <li>Jingles or tunes</li>
+                        <li>Sound effects</li>
+                        <li>Audio logos</li>
+                        <li>Voice signatures</li>
+                    </ul>
+                </div>
+
+                <div class="trademark-type">
+                    <h4>🏷️ Certification Marks</h4>
+                    <p>Indicate products meet certain standards or quality</p>
+                    <ul>
+                        <li>Quality assurance marks</li>
+                        <li>Origin indicators</li>
+                        <li>Certification symbols</li>
+                        <li>Industry standards</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>South African Trademark Process:</strong> File with CIPC → Examination (2-3 months) → Publication (2 months) →
+                Opposition period → Registration → Renewal every 10 years
+            </p>
+        </div>
+
+        <div class="copyright-basics">
+            <h2>©️ Copyright Protection for Creative Works</h2>
+            <p>Copyright automatically protects original creative works from the moment they're created</p>
+
+            <div class="copyright-examples">
+                <div class="copyright-example">
+                    <h4>Written Works</h4>
+                    <p>Books, articles, blogs, website content, marketing materials</p>
+                    <ul>
+                        <li>Business plans and proposals</li>
+                        <li>Training manuals</li>
+                        <li>Customer communications</li>
+                        <li>Social media content</li>
+                    </ul>
+                </div>
+
+                <div class="copyright-example">
+                    <h4>Visual Arts</h4>
+                    <p>Photographs, illustrations, designs, graphics, and artwork</p>
+                    <ul>
+                        <li>Product photography</li>
+                        <li>Marketing materials</li>
+                        <li>Website graphics</li>
+                        <li>Brand illustrations</li>
+                    </ul>
+                </div>
+
+                <div class="copyright-example">
+                    <h4>Digital Content</h4>
+                    <p>Software, apps, websites, databases, and multimedia</p>
+                    <ul>
+                        <li>Business software</li>
+                        <li>Mobile applications</li>
+                        <li>Online platforms</li>
+                        <li>Digital products</li>
+                    </ul>
+                </div>
+
+                <div class="copyright-example">
+                    <h4>Business Materials</h4>
+                    <p>Presentations, videos, training materials, and advertisements</p>
+                    <ul>
+                        <li>Sales presentations</li>
+                        <li>Training videos</li>
+                        <li>Marketing campaigns</li>
+                        <li>Educational content</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1rem; background: var(--bg-light); border-radius: 4px;">
+                <h4 style="color: var(--primary-blue);">Copyright Registration in South Africa</h4>
+                <p>Registration is optional but recommended for enforcement purposes</p>
+                <ul>
+                    <li><strong>Automatic Protection:</strong> Copyright exists from creation</li>
+                    <li><strong>Registration:</strong> Optional with Companies and Intellectual Property Commission (CIPC)</li>
+                    <li><strong>Duration:</strong> Life of author plus 50 years, or 50 years from publication for works</li>
+                    <li><strong>Cost:</strong> R200-R500 for registration</li>
+                    <li><strong>Benefits:</strong> Easier enforcement and legal presumption of ownership</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="trade-secrets">
+            <h2>🔒 Protecting Your Trade Secrets</h2>
+            <p>Trade secrets are valuable confidential information that gives your business competitive advantage</p>
+
+            <div class="secret-protection">
+                <div class="secret-method">
+                    <h4>Non-Disclosure Agreements</h4>
+                    <p>Legal contracts that prevent sharing confidential information</p>
+                    <ul>
+                        <li>Employee agreements</li>
+                        <li>Supplier contracts</li>
+                        <li>Partner arrangements</li>
+                        <li>Customer relationships</li>
+                    </ul>
+                </div>
+
+                <div class="secret-method">
+                    <h4>Access Controls</h4>
+                    <p>Limit access to sensitive information to authorized personnel</p>
+                    <ul>
+                        <li>Password protection</li>
+                        <li>Physical security</li>
+                        <li>Need-to-know basis</li>
+                        <li>Digital restrictions</li>
+                    </ul>
+                </div>
+
+                <div class="secret-method">
+                    <h4>Employee Training</h4>
+                    <p>Educate staff about confidentiality requirements and procedures</p>
+                    <ul>
+                        <li>Security policies</li>
+                        <li>Handling procedures</li>
+                        <li>Incident reporting</li>
+                        <li>Regular reminders</li>
+                    </ul>
+                </div>
+
+                <div class="secret-method">
+                    <h4>Documentation</h4>
+                    <p>Maintain clear records of what constitutes trade secrets</p>
+                    <ul>
+                        <li>Secret registers</li>
+                        <li>Classification systems</li>
+                        <li>Ownership records</li>
+                        <li>Protection measures</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>Key Trade Secrets for Family Businesses:</strong> Customer lists, pricing strategies, recipes, manufacturing processes,
+                supplier relationships, marketing plans, and unique business methods.
+            </p>
+        </div>
+
+        <div class="family-ip">
+            <h2>👨🏾‍👩🏾‍👧🏾‍👦🏾 IP Strategy for Family Businesses</h2>
+            <p>Creating a comprehensive IP protection plan that works for multi-generational family enterprises</p>
+
+            <div class="ip-strategy">
+                <div class="strategy-item">
+                    <h4>IP Audit & Inventory</h4>
+                    <p>Identify and catalog all your family's intellectual property assets</p>
+                    <ul>
+                        <li>List all IP you own or use</li>
+                        <li>Assess protection status</li>
+                        <li>Identify gaps and risks</li>
+                        <li>Prioritize protection needs</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-item">
+                    <h4>Family IP Agreements</h4>
+                    <p>Include IP ownership and protection in family business agreements</p>
+                    <ul>
+                        <li>IP ownership clauses</li>
+                        <li>Invention assignment agreements</li>
+                        <li>Confidentiality requirements</li>
+                        <li>IP transfer provisions</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-item">
+                    <h4>Employee & Contractor IP</h4>
+                    <p>Ensure IP created by employees belongs to your family business</p>
+                    <ul>
+                        <li>Employment contracts</li>
+                        <li>IP assignment clauses</li>
+                        <li>Inventor recognition</li>
+                        <li>Compensation arrangements</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-item">
+                    <h4>IP Education & Training</h4>
+                    <p>Build IP awareness throughout your family and business</p>
+                    <ul>
+                        <li>Family IP workshops</li>
+                        <li>Employee training</li>
+                        <li>Regular updates</li>
+                        <li>Best practices sharing</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-item">
+                    <h4>IP Portfolio Management</h4>
+                    <p>Maintain and manage your IP assets over time</p>
+                    <ul>
+                        <li>Renewal tracking</li>
+                        <li>License management</li>
+                        <li>Value assessment</li>
+                        <li>Portfolio optimization</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-item">
+                    <h4>Succession IP Planning</h4>
+                    <p>Ensure IP transfers smoothly to next generation</p>
+                    <ul>
+                        <li>IP ownership transfer</li>
+                        <li>License agreements</li>
+                        <li>Knowledge transfer</li>
+                        <li>Future protection planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="enforcement-guide">
+            <h2>⚖️ Enforcing Your IP Rights</h2>
+            <p>What to do when someone infringes on your intellectual property</p>
+
+            <div class="enforcement-steps">
+                <div class="enforcement-step">
+                    <h4>1. Document the Infringement</h4>
+                    <p>Gather evidence of the violation with dates, photos, and witness statements</p>
+                </div>
+
+                <div class="enforcement-step">
+                    <h4>2. Send Cease & Desist Letter</h4>
+                    <p>Formal notice demanding the infringer stop using your IP</p>
+                </div>
+
+                <div class="enforcement-step">
+                    <h4>3. Attempt Negotiation</h4>
+                    <p>Try to resolve the dispute through discussion or mediation</p>
+                </div>
+
+                <div class="enforcement-step">
+                    <h4>4. Consider Legal Action</h4>
+                    <p>If negotiation fails, consult attorneys about court action</p>
+                </div>
+
+                <div class="enforcement-step">
+                    <h4>5. Seek Injunction</h4>
+                    <p>Court order to immediately stop the infringement</p>
+                </div>
+
+                <div class="enforcement-step">
+                    <h4>6. Claim Damages</h4>
+                    <p>Seek compensation for losses and legal costs</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>Prevention is Best:</strong> Strong IP protection and monitoring reduce the need for enforcement actions.
+                Regular IP audits help identify potential issues early.
+            </p>
+        </div>
+
+        <div class="ip-audit">
+            <h2>🔍 Conducting an IP Audit</h2>
+            <p>A systematic review of your family's intellectual property assets and protection status</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div>
+                    <h4>1. Inventory Creation</h4>
+                    <p>List all IP assets your family owns or uses</p>
+                </div>
+                <div>
+                    <h4>2. Ownership Verification</h4>
+                    <p>Confirm legal ownership of each IP asset</p>
+                </div>
+                <div>
+                    <h4>3. Protection Assessment</h4>
+                    <p>Check current protection status and expiration dates</p>
+                </div>
+                <div>
+                    <h4>4. Risk Analysis</h4>
+                    <p>Identify potential infringement or protection gaps</p>
+                </div>
+                <div>
+                    <h4>5. Value Assessment</h4>
+                    <p>Determine the economic value of your IP portfolio</p>
+                </div>
+                <div>
+                    <h4>6. Action Plan</h4>
+                    <p>Create plan to address gaps and strengthen protection</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="color: var(--primary-blue);">Protect Your Family's Intellectual Property</h2>
+            <p>Start building your IP protection strategy today to secure your family's business legacy</p>
+            <button onclick="createIPStrategy()" class="btn">🛡️ Create IP Protection Plan</button>
+            <button onclick="conductIPAudit()" class="btn secondary">🔍 Start IP Audit</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🌟 BizHelp Ecosystem</h4>
+                <ul>
+                    <li><a href="https://bizhelp-lifecv.web.app/wizard">BizHelp Wizard</a></li>
+                    <li><a href="https://lifecv-d2724.web.app/training/">LifeCV Training</a></li>
+                    <li><a href="https://salatiso.com">Salatiso Platform</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>📚 Learning Paths</h4>
+                <ul>
+                    <li>Personal First (Level 1-2)</li>
+                    <li>Family First (Level 2-3)</li>
+                    <li>Professional (Level 3-5)</li>
+                    <li>Sazi Life Academy</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>🏛️ IP Resources</h4>
+                <ul>
+                    <li>CIPC Intellectual Property</li>
+                        <li>Patent Applications</li>
+                    <li>Trademark Registration</li>
+                    <li>Copyright Protection</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>💡 Remember</h4>
+                <p>Personal First • Family First</p>
+                <p>Powered by Salatiso</p>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.8;">© 2025 BizHelp by Salatiso - Family Business Legacy. Prepared for Professional User on October 6, 2025</p>
+    </footer>
+
+    <script>
+        // Customization Functions
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value;
+            const familyName = document.getElementById('familyName').value;
+            const businessIdea = document.getElementById('businessIdea').value;
+            const docDate = document.getElementById('docDate').value;
+            const docVersion = document.getElementById('docVersion').value;
+
+            // Update document title
+            document.title = `IP Protection - ${familyName || 'Family Business'} - ${docVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `IP Protection: Securing Your Family Ideas - ${docVersion}`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) {
+                footer.innerHTML = `© 2025 BizHelp by Salatiso - ${familyName || 'Family Business'} Legacy. Prepared for ${userName || 'Professional User'} on ${new Date(docDate).toLocaleDateString()}`;
+            }
+
+            // Update business idea references
+            if (businessIdea) {
+                const elements = document.querySelectorAll('.business-idea-placeholder');
+                elements.forEach(el => {
+                    el.textContent = businessIdea;
+                });
+            }
+
+            alert('✅ Document customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Action Functions
+        function createIPStrategy() {
+            const strategy = `
+FAMILY IP PROTECTION STRATEGY
+
+🎯 Strategy Goals:
+- Identify and protect all family IP assets
+- Prevent unauthorized use by competitors
+- Maximize IP value for business growth
+- Ensure smooth IP transfer to next generation
+
+📋 IP Asset Inventory:
+1. Patents - inventions, processes, products
+2. Trademarks - names, logos, slogans
+3. Copyright - creative works, content, software
+4. Trade Secrets - confidential business information
+
+🔴 Immediate Actions (Next 30 days):
+- Conduct IP audit and inventory
+- Secure trade secrets with NDAs
+- Register trademarks for key brands
+- Document copyright ownership
+
+🟡 Short-term Goals (3-6 months):
+- File patent applications for inventions
+- Register copyrights for valuable works
+- Implement IP training for family/staff
+- Create IP protection policies
+
+🟢 Long-term Vision (1-3 years):
+- Build comprehensive IP portfolio
+- Develop IP licensing strategy
+- Plan IP succession and transfer
+- Monitor and enforce IP rights
+
+💰 Budget Planning:
+- Professional fees: R10,000-R50,000/year
+- Registration fees: R500-R2,000 per application
+- Legal costs: R5,000-R20,000 for enforcement
+- Training and systems: R2,000-R10,000
+
+👥 Responsible Parties:
+- IP Manager: [Name] - Oversees IP portfolio
+- Legal Advisor: [Name] - Handles registrations
+- Family Council: Reviews IP strategy annually
+
+📊 Success Metrics:
+- All key IP assets protected
+- Zero IP infringement incidents
+- IP contributes to business value
+- Family educated on IP importance
+
+LifeCV Proof: IP audit completed + protection plan implemented + registrations filed
+            `;
+            alert(strategy);
+        }
+
+        function conductIPAudit() {
+            const audit = `
+IP AUDIT CHECKLIST
+
+🔍 Step 1: Gather Information
+□ List all products and services
+□ Collect marketing materials and branding
+□ Review business processes and methods
+□ Identify confidential information
+□ Check existing IP registrations
+
+📝 Step 2: Document Assets
+□ Create IP inventory spreadsheet
+□ Note ownership and creation dates
+□ Record protection status
+□ Assess commercial value
+□ Identify protection gaps
+
+⚖️ Step 3: Legal Review
+□ Verify ownership rights
+□ Check registration status
+□ Review license agreements
+□ Assess infringement risks
+□ Evaluate protection adequacy
+
+💰 Step 4: Value Assessment
+□ Estimate economic value
+□ Calculate protection costs
+□ Assess enforcement potential
+□ Determine priority rankings
+
+📋 Step 5: Action Plan
+□ Prioritize protection needs
+□ Set implementation timeline
+□ Assign responsible parties
+□ Establish budget requirements
+□ Plan monitoring and maintenance
+
+🛡️ Step 6: Implementation
+□ File necessary applications
+□ Update policies and agreements
+□ Train staff and family
+□ Establish monitoring procedures
+□ Schedule regular reviews
+
+TOOLS NEEDED:
+- IP inventory template
+- Legal consultation
+- Professional valuation (optional)
+- Registration services
+- Policy templates
+
+EXPECTED TIME: 2-4 weeks
+COST: R5,000-R15,000
+VALUE: Protects assets worth potentially millions
+            `;
+            alert(audit);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('docDate').value = today;
+        });
+    </script>
+</body>
+</html>

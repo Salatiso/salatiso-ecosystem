@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp Mission Cards - Quick Start Pack</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .mission-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card-meta {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .mission-objective {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--ubuntu-orange);
+        }
+
+        .mission-objective strong {
+            color: var(--primary-blue);
+        }
+
+        .steps-list {
+            margin: 1rem 0;
+        }
+
+        .steps-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .steps-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: bold;
+        }
+
+        .proof-section {
+            background: var(--success-green);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .proof-section::before {
+            content: '📤';
+            margin-right: 0.5rem;
+        }
+
+        .tips-section {
+            background: var(--warning-amber);
+            color: var(--text-dark);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #D97706;
+        }
+
+        .tips-section::before {
+            content: '💡';
+            margin-right: 0.5rem;
+        }
+
+        .level-badge {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .time-badge {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .print-instructions {
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .print-instructions h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #DC2626;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .header {
+                background: var(--primary-blue) !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+
+            .card-header {
+                background: var(--primary-blue) !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+
+            .mission-card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                margin-bottom: 1rem;
+                page-break-inside: avoid;
+            }
+
+            .print-instructions {
+                display: none;
+            }
+
+            .container {
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+
+            .card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">BizHelp by Salatiso</div>
+        <div class="tagline">Mission Cards: Quick Start Pack</div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label>Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label>Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label>Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label>Document Version:</label>
+                <input type="text" id="docVersion" value="Quick Start Pack v1.0" placeholder="e.g., Quick Start Pack v1.0">
+            </div>
+            <button onclick="applyCustomization()" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+        <div class="intro-section">
+            <h1>🚀 Your Business Journey Starts Here</h1>
+            <p>Complete these 10 mission cards to build your business foundation. Each card takes 10-30 minutes and creates proof for your LifeCV. Start with Card 1 and progress through them in order.</p>
+
+            <div class="print-instructions">
+                <h3>📄 Printing Instructions</h3>
+                <p>For best results, print on A4 paper, double-sided. Each card is designed to fit on one side of A4. Cut along the edges for individual cards.</p>
+                <button onclick="window.print()" class="btn">Print Mission Cards</button>
+            </div>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Card 1 -->
+            <div class="mission-card">
+                <div class="card-header">
+                    <div class="card-title">Business Name Brainstorm</div>
+                    <div class="card-meta">
+                        <span class="level-badge">Level 1</span>
+                        <span class="time-badge">15 min</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="mission-objective">
+                        <strong>Objective:</strong> Create 3 potential business names that reflect your family's values and vision.
+                    </div>
+
+                    <ol class="steps-list">
+                        <li>Think about your family's heritage and values (Ubuntu, legacy, community)</li>
+                        <li>Brainstorm words related to your business idea</li>
+                        <li>Combine words to create memorable names</li>
+                        <li>Check if names are available (write them down)</li>
+                        <li>Pick your top 3 favorites</li>
+                    </ol>
+
+                    <div class="proof-section">
+                        <strong>Proof Drop:</strong> Photo of your 3 business names + voice note explaining why each name matters to your family.
+                    </div>
+
+                    <div class="tips-section">
+                        <strong>Tip:</strong> Include words like "Family", "Legacy", "Ubuntu", or "Community" to show your values.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="mission-card">
+                <div class="card-header">
+                    <div class="card-title">Family Business Vision</div>
+                    <div class="card-meta">
+                        <span class="level-badge">Level 2</span>
+                        <span class="time-badge">20 min</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="mission-objective">
+                        <strong>Objective:</strong> Define what success looks like for your family business in 5 years.
+                    </div>
+
+                    <ol class="steps-list">
+                        <li>Gather 2-3 family members for a discussion</li>
+                        <li>Ask: "What problems do we want to solve?"</li>
+                        <li>Discuss: "How will this business help our community?"</li>
+                        <li>Write down 3-5 vision statements</li>
+                        <li>Agree on your family's top priority</li>
+                    </ol>
+
+                    <div class="proof-section">
+                        <strong>Proof Drop:</strong> Photo of your vision statements + family group photo with thumbs up.
+                    </div>
+
+                    <div class="tips-section">
+                        <strong>Tip:</strong> Focus on impact, not just money. How will your business create shared prosperity?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="mission-card">
+                <div class="card-header">
+                    <div class="card-title">CIPC Name Search</div>
+                    <div class="card-meta">
+                        <span class="level-badge">Level 2</span>
+                        <span class="time-badge">10 min</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="mission-objective">
+                        <strong>Objective:</strong> Check if your preferred business names are available for registration.
+                    </div>
+
+                    <ol class="steps-list">
+                        <li>Go to cipc.co.za</li>
+                        <li>Find the "Name Search" or "Company Name Reservation" section</li>
+                        <li>Search for your top 3 business names</li>
+                        <li>Note which names are available</li>
+                        <li>If needed, modify names and search again</li>
+                    </ol>
+
+                    <div class="proof-section">
+                        <strong>Proof Drop:</strong> Screenshot of CIPC search results showing at least one available name.
+                    </div>
+
+                    <div class="tips-section">
+                        <strong>Tip:</strong> Names must end with "Proprietary Limited" or "(Pty) Ltd" for companies.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="mission-card">
+                <div class="card-header">
+                    <div class="card-title">Document Preparation</div>
+                    <div class="card-meta">
+                        <span class="level-badge">Level 3</span>
+                        <span class="time-badge">30 min</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="mission-objective">
+                        <strong>Objective:</strong> Gather and prepare all documents needed for company registration.
+                    </div>
+
+                    <ol class="steps-list">
+                        <li>Collect ID copies for all directors (parents/guardians)</li>
+                        <li>Get proof of residential addresses</li>
+                        <li>Prepare your chosen company name</li>
+                        <li>Decide on share structure (who owns what)</li>
+                        <li>Organize documents in a folder</li>
+                    </ol>
+
+                    <div class="proof-section">
+                        <strong>Proof Drop:</strong> Photo of your organized document folder + checklist of completed items.
+                    </div>
+
+                    <div class="tips-section">
+                        <strong>Tip:</strong> IDs need to be certified (copy from original). Police stations or banks can do this for R50-100.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="mission-card">
+                <div class="card-header">
+                    <div class="card-title">Cost Planning</div>
+                    <div class="card-meta">
+                        <span class="level-badge">Level 2</span>
+                        <span class="time-badge">15 min</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="mission-objective">
+                        <strong>Objective:</strong> Calculate startup costs and create a simple budget for your business.
+                    </div>
+
+                    <ol class="steps-list">
+                        <li>List all one-time startup costs</li>
+                        <li>Estimate monthly operating expenses</li>
+                        <li>Calculate your total first-year budget</li>
+                        <li>Identify potential funding sources</li>
+                        <li>Create a simple profit projection</li>
+                    </ol>
+
+                    <div class="proof-section">
+                        <strong>Proof Drop:</strong> Photo of your budget spreadsheet + voice explanation of your numbers.
+                    </div>
+
+                    <div class="tips-section">
+                        <strong>Tip:</strong> Start small! Many successful businesses began with under R5,000 investment.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="mission-card">
+                <div class="card-header">
+                    <div class="card-title">Business Structure Decision</div>
+                    <div class="card-meta">
+                        <span class="level-badge">Level 3</span>
+                        <span class="time-badge">20 min</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="mission-objective">
+                        <strong>Objective:</strong> Choose the right legal structure for your family business.
+                    </div>
+
+                    <ol class="steps-list">
+                        <li>Learn about Sole Proprietor vs Company</li>
+                        <li>Consider liability protection needs</li>
+                        <li>Think about tax implications</li>
+                        <li>Discuss with family members</li>
+                        <li>Make your recommendation</li>
+                    </ol>
+
+                    <div class="proof-section">
+                        <strong>Proof Drop:</strong> Written explanation of your chosen structure + why it fits your family.
+                    </div>
+
+                    <div class="tips-section">
+                        <strong>Tip:</strong> For most families, a (Pty) Ltd provides the best protection and credibility.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="mission-card">
+                <div class="card-header">
+                    <div class="card-title">Market Research</div>
+                    <div class="card-meta">
+                        <span class="level-badge">Level 2</span>
+                        <span class="time-badge">25 min</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="mission-objective">
+                        <strong>Objective:</strong> Understand who will buy your product/service and what they need.
+                    </div>
+
+                    <ol class="steps-list">
+                        <li>Identify your target customers</li>
+                        <li>Talk to 3 potential customers</li>
+                        <li>Ask about their problems and needs</li>
+                        <li>Find out what they currently pay for</li>
+                        <li>Note any common themes</li>
+                    </ol>
+
+                    <div class="proof-section">
+                        <strong>Proof Drop:</strong> Summary of your customer interviews + key insights learned.
+                    </div>
+
+                    <div class="tips-section">
+                        <strong>Tip:</strong> Start with people you know—family, friends, neighbors. Be genuine in your questions.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="mission-card">
+                <div class="card-header">
+                    <div class="card-title">BizHelp Wizard Introduction</div>
+                    <div class="card-meta">
+                        <span class="level-badge">Level 1</span>
+                        <span class="time-badge">10 min</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="mission-objective">
+                        <strong>Objective:</strong> Complete your first BizHelp Wizard session and get personalized guidance.
+                    </div>
+
+                    <ol class="steps-list">
+                        <li>Go to bizhelp-lifecv.web.app/wizard</li>
+                        <li>Create or sign in to your account</li>
+                        <li>Answer the personal assessment questions</li>
+                        <li>Review your customized recommendations</li>
+                        <li>Save your progress</li>
+                    </ol>
+
+                    <div class="proof-section">
+                        <strong>Proof Drop:</strong> Screenshot of your Wizard completion + what surprised you most.
+                    </div>
+
+                    <div class="tips-section">
+                        <strong>Tip:</strong> The Wizard learns from your answers—be honest for the best recommendations!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 9 -->
+            <div class="mission-card">
+                <div class="card-header">
+                    <div class="card-title">Family Council Meeting</div>
+                    <div class="card-meta">
+                        <span class="level-badge">Level 2</span>
+                        <span class="time-badge">30 min</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="mission-objective">
+                        <strong>Objective:</strong> Hold your first family business council to discuss and approve your plans.
+                    </div>
+
+                    <ol class="steps-list">
+                        <li>Set a meeting time with available family members</li>
+                        <li>Prepare an agenda (vision, names, structure)</li>
+                        <li>Present your research and recommendations</li>
+                        <li>Discuss concerns and get feedback</li>
+                        <li>Vote on key decisions (60% approval rule)</li>
+                    </ol>
+
+                    <div class="proof-section">
+                        <strong>Proof Drop:</strong> Meeting minutes + group photo showing family consensus.
+                    </div>
+
+                    <div class="tips-section">
+                        <strong>Tip:</strong> Keep it positive! Focus on shared benefits and how the business serves family values.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 10 -->
+            <div class="mission-card">
+                <div class="card-header">
+                    <div class="card-title">Registration Readiness Check</div>
+                    <div class="card-meta">
+                        <span class="level-badge">Level 3</span>
+                        <span class="time-badge">15 min</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="mission-objective">
+                        <strong>Objective:</strong> Verify you have everything needed to register your company successfully.
+                    </div>
+
+                    <ol class="steps-list">
+                        <li>Check all documents are ready and certified</li>
+                        <li>Confirm company name is available</li>
+                        <li>Review share structure with family</li>
+                        <li>Prepare payment method for R1,250 fee</li>
+                        <li>Create submission checklist</li>
+                    </ol>
+
+                    <div class="proof-section">
+                        <strong>Proof Drop:</strong> Completed checklist + photo of ready-to-submit document package.
+                    </div>
+
+                    <div class="tips-section">
+                        <strong>Tip:</strong> Double-check everything! One missing document can delay registration by weeks.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="intro-section">
+            <h2>🎉 Mission Complete!</h2>
+            <p>Congratulations on completing all 10 mission cards! You've built a solid foundation for your family business. Now you're ready to register your company and start your entrepreneurial journey.</p>
+
+            <div style="background: var(--success-green); color: white; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                <strong>🎊 Celebrate Your Progress:</strong> Share your mission completion with family and upload all proof drops to LifeCV. You've earned your first business foundation badge!
+            </div>
+
+            <p><strong>Next Steps:</strong></p>
+            <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <li>Submit your company registration application</li>
+                <li>Set up your business bank account</li>
+                <li>Register with SARS for taxes</li>
+                <li>Launch your first products or services</li>
+                <li>Continue learning through Sazi Life Academy</li>
+            </ul>
+
+            <div style="margin-top: 2rem;">
+                <a href="https://bizhelp-lifecv.web.app/wizard" class="btn">Continue with BizHelp Wizard</a>
+                <a href="mailto:hub@salatiso.com" class="btn" style="background: var(--primary-blue);">Get Family Support</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Customization Functions
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value;
+            const familyName = document.getElementById('familyName').value;
+            const docDate = document.getElementById('docDate').value;
+            const docVersion = document.getElementById('docVersion').value;
+
+            // Update document title
+            document.title = `BizHelp Mission Cards - ${familyName || 'Family Business'} - ${docVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `Mission Cards: ${familyName || 'Family Business'} Quick Start Pack`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) {
+                footer.innerHTML = `© 2025 BizHelp by Salatiso - ${familyName || 'Family Business'} Legacy. Prepared for ${userName || 'Mission Seeker'} on ${new Date(docDate).toLocaleDateString()}`;
+            }
+
+            alert('✅ Document customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('docDate').value = today;
+        });
+    </script>
+</body>
+</html>

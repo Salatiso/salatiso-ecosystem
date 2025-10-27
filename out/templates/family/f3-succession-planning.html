@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp by Salatiso - Family Business Succession Planning</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .level-badge {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .succession-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .succession-hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .succession-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline-phase {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .timeline-phase::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--ubuntu-orange);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .timeline-phase .phase-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-phase h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .leadership-readiness {
+            background: var(--bg-light);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .leadership-readiness h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .readiness-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .readiness-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .readiness-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .readiness-card .criteria {
+            margin-top: 1rem;
+        }
+
+        .readiness-card .criteria li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .development-pathways {
+            background: var(--success-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .development-pathways h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .pathway-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pathway {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .pathway h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .transition-process {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .transition-process h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .transition-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .transition-step {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--ubuntu-orange);
+        }
+
+        .transition-step h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .knowledge-transfer {
+            background: var(--warning-amber);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .knowledge-transfer h2 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .transfer-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .transfer-method {
+            background: rgba(255,255,255,0.8);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .transfer-method h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .succession-planning {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .succession-planning h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .planning-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .timeline-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .timeline-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .emergency-planning {
+            background: var(--error-red);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .emergency-planning h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .emergency-scenarios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .emergency-scenario {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .family-legacy {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .family-legacy h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #d4550a;
+        }
+
+        .btn.secondary {
+            background: var(--primary-blue);
+        }
+
+        .btn.secondary:hover {
+            background: #152c6b;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        footer .footer-section h4 {
+            color: var(--ubuntu-orange);
+            margin-bottom: 1rem;
+        }
+
+        footer .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">BizHelp by Salatiso</div>
+            <div class="tagline">Family Business Succession Planning</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label>Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label>Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label>Current Leader:</label>
+                <input type="text" id="currentLeader" placeholder="Who is the current business leader?">
+            </div>
+            <div class="form-field">
+                <label>Document Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label>Document Version:</label>
+                <input type="text" id="docVersion" value="Succession Planning v1.0" placeholder="e.g., Succession Planning v1.0">
+            </div>
+            <button onclick="applyCustomization()" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+
+        <div class="level-badge">Family • Level 2</div>
+
+        <div class="succession-hero">
+            <h1>🔄 Family Business Succession</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+                Planning for smooth leadership transitions that preserve your family's legacy
+            </p>
+            <p>
+                Succession planning isn't about retirement—it's about ensuring your business continues to thrive
+                across generations. The best time to plan succession is when you don't need it yet.
+            </p>
+        </div>
+
+        <div style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--primary-blue); text-align: center;">Why Succession Planning Matters</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">💰</div>
+                    <h4>Business Continuity</h4>
+                    <p>Ensures your business doesn't lose momentum during leadership transitions</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">👨🏾‍👩🏾‍👧🏾‍👦🏾</div>
+                    <h4>Family Harmony</h4>
+                    <p>Reduces conflicts by clarifying expectations and roles in advance</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📈</div>
+                    <h4>Value Preservation</h4>
+                    <p>Maintains and grows the business value for future generations</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🎯</div>
+                    <h4>Leadership Development</h4>
+                    <p>Creates clear paths for the next generation to learn and grow</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="succession-timeline">
+            <div class="timeline-phase">
+                <div class="phase-icon">🌱</div>
+                <h3>Phase 1: Foundation (Ages 25-35)</h3>
+                <p>Build business fundamentals, learn core skills, gain experience in different roles</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Complete business education</li>
+                    <li>Work in various departments</li>
+                    <li>Learn financial management</li>
+                    <li>Develop leadership skills</li>
+                </ul>
+            </div>
+
+            <div class="timeline-phase">
+                <div class="phase-icon">🚀</div>
+                <h3>Phase 2: Leadership (Ages 35-45)</h3>
+                <p>Take on management responsibilities, lead projects, prove leadership capability</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Lead major initiatives</li>
+                    <li>Manage teams and budgets</li>
+                    <li>Represent company externally</li>
+                    <li>Develop strategic vision</li>
+                </ul>
+            </div>
+
+            <div class="timeline-phase">
+                <div class="phase-icon">👑</div>
+                <h3>Phase 3: Transition (Ages 45-55)</h3>
+                <p>Gradual handover of responsibilities, mentoring relationship with successor</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Share institutional knowledge</li>
+                    <li>Transfer key relationships</li>
+                    <li>Gradually reduce involvement</li>
+                    <li>Become strategic advisor</li>
+                </ul>
+            </div>
+
+            <div class="timeline-phase">
+                <div class="phase-icon">🌅</div>
+                <h3>Phase 4: Legacy (55+)</h3>
+                <p>Move to advisory role, focus on family governance and long-term vision</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Serve on family council</li>
+                    <li>Provide strategic guidance</li>
+                    <li>Mentor next generation</li>
+                    <li>Preserve family values</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="leadership-readiness">
+            <h2>🎯 Leadership Readiness Assessment</h2>
+            <p>Evaluate potential successors based on skills, experience, and family fit</p>
+
+            <div class="readiness-grid">
+                <div class="readiness-card">
+                    <h4>Business Acumen</h4>
+                    <p>Understanding of your industry, market dynamics, and business operations</p>
+                    <div class="criteria">
+                        <li>Industry knowledge and trends</li>
+                        <li>Financial literacy and analysis</li>
+                        <li>Strategic thinking and planning</li>
+                        <li>Problem-solving skills</li>
+                    </div>
+                </div>
+
+                <div class="readiness-card">
+                    <h4>Leadership Skills</h4>
+                    <p>Ability to inspire, motivate, and guide teams toward common goals</p>
+                    <div class="criteria">
+                        <li>Communication and interpersonal skills</li>
+                        <li>Decision-making under pressure</li>
+                        <li>Conflict resolution abilities</li>
+                        <li>Emotional intelligence</li>
+                    </div>
+                </div>
+
+                <div class="readiness-card">
+                    <h4>Family Dynamics</h4>
+                    <p>Understanding of family relationships and ability to balance family and business</p>
+                    <div class="criteria">
+                        <li>Respect for family values</li>
+                        <li>Ability to manage family expectations</li>
+                        <li>Commitment to family unity</li>
+                        <li>Ubuntu principles in action</li>
+                    </div>
+                </div>
+
+                <div class="readiness-card">
+                    <h4>Personal Qualities</h4>
+                    <p>Character traits essential for long-term leadership success</p>
+                    <div class="criteria">
+                        <li>Integrity and trustworthiness</li>
+                        <li>Work ethic and resilience</li>
+                        <li>Vision and innovation</li>
+                        <li>Learning and adaptability</li>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1rem; background: white; border-radius: 4px;">
+                <h4 style="color: var(--primary-blue);">Assessment Process</h4>
+                <ol>
+                    <li><strong>Self-Assessment:</strong> Each potential successor completes a personal evaluation</li>
+                    <li><strong>360° Feedback:</strong> Gather input from family, employees, and external advisors</li>
+                    <li><strong>Development Planning:</strong> Create personalized growth plans for gaps</li>
+                    <li><strong>Regular Reviews:</strong> Annual assessments with family council oversight</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="development-pathways">
+            <h2>🚀 Development Pathways for Successors</h2>
+            <p>Different paths to leadership based on individual strengths and business needs</p>
+
+            <div class="pathway-options">
+                <div class="pathway">
+                    <h4>📈 Fast Track (3-5 years)</h4>
+                    <p>For high-potential successors with strong business experience</p>
+                    <ul>
+                        <li>Accelerated leadership training</li>
+                        <li>Cross-functional assignments</li>
+                        <li>Mentor relationship with CEO</li>
+                        <li>International exposure</li>
+                    </ul>
+                </div>
+
+                <div class="pathway">
+                    <h4>🔄 Gradual Transition (5-10 years)</h4>
+                    <p>For successors needing more time to develop skills</p>
+                    <ul>
+                        <li>Progressive responsibility increase</li>
+                        <li>Structured training programs</li>
+                        <li>Shadowing current leadership</li>
+                        <li>Project leadership opportunities</li>
+                    </ul>
+                </div>
+
+                <div class="pathway">
+                    <h4>🤝 Partnership Model</h4>
+                    <p>Co-leadership with current and next generation</p>
+                    <ul>
+                        <li>Shared decision-making</li>
+                        <li>Knowledge transfer sessions</li>
+                        <li>Joint external representation</li>
+                        <li>Gradual responsibility shift</li>
+                    </ul>
+                </div>
+
+                <div class="pathway">
+                    <h4>🌐 External CEO Model</h4>
+                    <p>Professional CEO with family oversight</p>
+                    <ul>
+                        <li>Family retains ownership control</li>
+                        <li>Professional management expertise</li>
+                        <li>Family council governance</li>
+                        <li>Successor develops in parallel</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-process">
+            <h2>🔄 The Transition Process</h2>
+            <p>A structured approach to ensure smooth leadership handover</p>
+
+            <div class="transition-steps">
+                <div class="transition-step">
+                    <h4>1. Planning Phase (6-12 months)</h4>
+                    <p>Define transition timeline, identify knowledge gaps, create development plans</p>
+                </div>
+
+                <div class="transition-step">
+                    <h4>2. Preparation Phase (3-6 months)</h4>
+                    <p>Successor takes on new responsibilities, current leader becomes mentor</p>
+                </div>
+
+                <div class="transition-step">
+                    <h4>3. Transition Phase (3-6 months)</h4>
+                    <p>Gradual handover of authority, successor leads with oversight</p>
+                </div>
+
+                <div class="transition-step">
+                    <h4>4. Handover Phase (1-3 months)</h4>
+                    <p>Complete transfer of leadership, establish new reporting structure</p>
+                </div>
+
+                <div class="transition-step">
+                    <h4>5. Integration Phase (6-12 months)</h4>
+                    <p>Successor fully established, former leader moves to advisory role</p>
+                </div>
+
+                <div class="transition-step">
+                    <h4>6. Review Phase (Ongoing)</h4>
+                    <p>Regular assessment of transition success, adjustments as needed</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1rem; background: var(--bg-light); border-radius: 4px;">
+                <h4 style="color: var(--primary-blue);">Success Metrics</h4>
+                <ul style="column-count: 2; column-gap: 2rem;">
+                    <li>Business performance maintained</li>
+                    <li>Employee retention stable</li>
+                    <li>Family relationships positive</li>
+                    <li>Successor confidence growing</li>
+                    <li>Knowledge transfer complete</li>
+                    <li>Leadership style established</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="knowledge-transfer">
+            <h2>📚 Knowledge Transfer Strategies</h2>
+            <p>Ensure institutional knowledge doesn't walk out the door with the current leader</p>
+
+            <div class="transfer-methods">
+                <div class="transfer-method">
+                    <h4>📖 Documentation</h4>
+                    <p>Create comprehensive business manuals, process guides, and knowledge repositories</p>
+                    <ul>
+                        <li>Standard operating procedures</li>
+                        <li>Key supplier and customer relationships</li>
+                        <li>Historical business decisions</li>
+                        <li>Lessons learned database</li>
+                    </ul>
+                </div>
+
+                <div class="transfer-method">
+                    <h4>🗣️ Mentoring Sessions</h4>
+                    <p>Regular one-on-one meetings between current and future leaders</p>
+                    <ul>
+                        <li>Weekly knowledge-sharing meetings</li>
+                        <li>Problem-solving walkthroughs</li>
+                        <li>Decision-making frameworks</li>
+                        <li>Strategic thinking discussions</li>
+                    </ul>
+                </div>
+
+                <div class="transfer-method">
+                    <h4>👥 Shadowing</h4>
+                    <p>Successor observes and participates in key business activities</p>
+                    <ul>
+                        <li>Board meetings and presentations</li>
+                        <li>Customer negotiations</li>
+                        <li>Crisis management situations</li>
+                        <li>Strategic planning sessions</li>
+                    </ul>
+                </div>
+
+                <div class="transfer-method">
+                    <h4>🔄 Job Rotation</h4>
+                    <p>Successor gains experience across all business functions</p>
+                    <ul>
+                        <li>Finance and accounting exposure</li>
+                        <li>Operations and production</li>
+                        <li>Sales and marketing</li>
+                        <li>Human resources experience</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>Pro Tip:</strong> Start knowledge transfer early—don't wait until the last minute.
+                Create a "Transition Timeline" document that maps out what knowledge transfers when.
+            </p>
+        </div>
+
+        <div class="succession-planning">
+            <h2>📋 Succession Planning Timeline</h2>
+            <p>A practical roadmap for implementing succession planning in your family business</p>
+
+            <div class="planning-timeline">
+                <div class="timeline-item">
+                    <h4>Year 1: Assessment & Planning</h4>
+                    <ul>
+                        <li>Identify potential successors</li>
+                        <li>Conduct readiness assessments</li>
+                        <li>Create individual development plans</li>
+                        <li>Establish family council oversight</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Years 2-3: Development & Testing</h4>
+                    <ul>
+                        <li>Implement training programs</li>
+                        <li>Assign stretch assignments</li>
+                        <li>Test leadership in safe environments</li>
+                        <li>Build successor confidence</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Years 4-5: Transition Preparation</h4>
+                    <ul>
+                        <li>Begin knowledge transfer</li>
+                        <li>Plan transition timeline</li>
+                        <li>Communicate with stakeholders</li>
+                        <li>Address potential concerns</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Years 6-7: Active Transition</h4>
+                    <ul>
+                        <li>Gradual responsibility transfer</li>
+                        <li>Monitor business performance</li>
+                        <li>Adjust plans as needed</li>
+                        <li>Celebrate milestones</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Year 8+: Legacy Phase</h4>
+                    <ul>
+                        <li>Former leader becomes advisor</li>
+                        <li>Plan for next succession</li>
+                        <li>Document lessons learned</li>
+                        <li>Continue family business education</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Ongoing: Monitoring & Adjustment</h4>
+                    <ul>
+                        <li>Annual succession reviews</li>
+                        <li>Update development plans</li>
+                        <li>Address changing circumstances</li>
+                        <li>Maintain family alignment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="emergency-planning">
+            <h2>🚨 Emergency Succession Planning</h2>
+            <p>What happens if the current leader can't continue due to unexpected circumstances?</p>
+
+            <div class="emergency-scenarios">
+                <div class="emergency-scenario">
+                    <h4>🏥 Health Crisis</h4>
+                    <p>Sudden illness or accident requiring immediate leadership change</p>
+                    <ul>
+                        <li>Identify interim leader</li>
+                        <li>Medical power of attorney</li>
+                        <li>Communication plan for stakeholders</li>
+                        <li>Business continuity procedures</li>
+                    </ul>
+                </div>
+
+                <div class="emergency-scenario">
+                    <h4>✈️ Travel Accident</h4>
+                    <p>Leader unavailable due to travel or transportation incident</p>
+                    <ul>
+                        <li>24/7 contact protocols</li>
+                        <li>Emergency decision authority</li>
+                        <li>Backup communication systems</li>
+                        <li>Remote access capabilities</li>
+                    </ul>
+                </div>
+
+                <div class="emergency-scenario">
+                    <h4>⚖️ Legal Issues</h4>
+                    <p>Legal proceedings that prevent active leadership</p>
+                    <ul>
+                        <li>Succession clauses in contracts</li>
+                        <li>Legal authority delegation</li>
+                        <li>Independent board oversight</li>
+                        <li>Professional advisor involvement</li>
+                    </ul>
+                </div>
+
+                <div class="emergency-scenario">
+                    <h4>💔 Family Crisis</h4>
+                    <p>Personal or family issues requiring leadership transition</p>
+                    <ul>
+                        <li>Family support systems</li>
+                        <li>Emotional support resources</li>
+                        <li>Interim leadership structure</li>
+                        <li>Return-to-work planning</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>Essential Documents:</strong> Create an "Emergency Succession Binder" with contact lists,
+                authority delegations, business continuity plans, and immediate action checklists.
+            </p>
+        </div>
+
+        <div class="family-legacy">
+            <h2>🌟 Building Your Family Legacy</h2>
+            <p>Succession planning is about more than business continuity—it's about creating a lasting legacy</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div>
+                    <h4>💼 Business Excellence</h4>
+                    <p>Build a business that thrives for generations</p>
+                </div>
+                <div>
+                    <h4>👨🏾‍👩🏾‍👧🏾‍👦🏾 Family Unity</h4>
+                    <p>Strengthen family bonds through shared purpose</p>
+                </div>
+                <div>
+                    <h4>🌍 Community Impact</h4>
+                    <p>Create positive change in your community</p>
+                </div>
+                <div>
+                    <h4>📚 Knowledge Preservation</h4>
+                    <p>Capture and transfer wisdom across generations</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="color: var(--primary-blue);">Start Your Succession Planning Today</h2>
+            <p>Don't wait for a crisis. Begin the conversation and create a plan that protects your family's future.</p>
+            <button onclick="createSuccessionPlan()" class="btn">📝 Create Succession Plan</button>
+            <button onclick="scheduleFamilyMeeting()" class="btn secondary">👨🏾‍👩🏾‍👧🏾‍👦🏾 Schedule Family Discussion</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🌟 BizHelp Ecosystem</h4>
+                <ul>
+                    <li><a href="https://bizhelp-lifecv.web.app/wizard">BizHelp Wizard</a></li>
+                    <li><a href="https://lifecv-d2724.web.app/training/">LifeCV Training</a></li>
+                    <li><a href="https://salatiso.com">Salatiso Platform</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>📚 Learning Paths</h4>
+                <ul>
+                    <li>Personal First (Level 1-2)</li>
+                    <li>Family First (Level 2-3)</li>
+                    <li>Professional (Level 3-5)</li>
+                    <li>Sazi Life Academy</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>🏛️ Succession Resources</h4>
+                <ul>
+                    <li>Leadership Assessment</li>
+                    <li>Knowledge Transfer</li>
+                    <li>Transition Planning</li>
+                    <li>Emergency Protocols</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>💡 Remember</h4>
+                <p>Personal First • Family First</p>
+                <p>Powered by Salatiso</p>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.8;">© 2025 BizHelp by Salatiso - Family Business Legacy. Prepared for Professional User on October 6, 2025</p>
+    </footer>
+
+    <script>
+        // Customization Functions
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value;
+            const familyName = document.getElementById('familyName').value;
+            const currentLeader = document.getElementById('currentLeader').value;
+            const docDate = document.getElementById('docDate').value;
+            const docVersion = document.getElementById('docVersion').value;
+
+            // Update document title
+            document.title = `Succession Planning - ${familyName || 'Family Business'} - ${docVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `Family Business Succession Planning - ${docVersion}`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) {
+                footer.innerHTML = `© 2025 BizHelp by Salatiso - ${familyName || 'Family Business'} Legacy. Prepared for ${userName || 'Professional User'} on ${new Date(docDate).toLocaleDateString()}`;
+            }
+
+            // Update current leader references
+            if (currentLeader) {
+                const elements = document.querySelectorAll('.current-leader-placeholder');
+                elements.forEach(el => {
+                    el.textContent = currentLeader;
+                });
+            }
+
+            alert('✅ Document customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Planning Functions
+        function createSuccessionPlan() {
+            const plan = `
+SUCCESSION PLANNING WORKSHOP OUTLINE
+
+🎯 Workshop Goals:
+- Assess current leadership readiness
+- Identify potential successors
+- Create development pathways
+- Establish transition timeline
+
+📋 Pre-Workshop Preparation:
+- Each family member completes leadership assessment
+- Gather business performance data
+- Prepare individual development plans
+- Schedule 2-hour workshop session
+
+🗓️ Workshop Agenda:
+
+1. Opening & Assessment Review (20 min)
+   - Share leadership assessment results
+   - Discuss strengths and development areas
+   - Identify potential successors
+
+2. Vision & Values Discussion (30 min)
+   - What does successful succession look like?
+   - How do we preserve family values?
+   - What business outcomes matter most?
+
+3. Development Planning (40 min)
+   - Create individual growth plans
+   - Assign mentors and coaches
+   - Set milestones and timelines
+
+4. Transition Planning (20 min)
+   - Outline transition phases
+   - Identify knowledge transfer needs
+   - Plan communication strategy
+
+5. Next Steps & Commitment (10 min)
+   - Assign action items
+   - Schedule follow-up meetings
+   - Commit to regular progress reviews
+
+📊 Success Measures:
+- All potential successors have development plans
+- Transition timeline established
+- Family alignment on succession approach
+- Regular progress tracking in place
+
+LifeCV Proof: Workshop agenda + attendance list + action items + signed commitment
+            `;
+            alert(plan);
+        }
+
+        function scheduleFamilyMeeting() {
+            const meeting = `
+FAMILY SUCCESSION PLANNING MEETING
+
+📅 Suggested Date: [Next family gathering or within 2 weeks]
+
+🎯 Meeting Purpose:
+Discuss succession planning openly and create initial framework
+
+📋 Agenda:
+1. Why succession planning matters to our family
+2. Current leadership assessment
+3. Potential successors discussion
+4. Initial development planning
+5. Next steps and timeline
+
+👥 Attendees:
+- Current business leader(s)
+- Potential successors
+- Family council members
+- Key advisors (optional)
+
+📝 Preparation Needed:
+- Read succession planning guide
+- Think about your role in family business future
+- Prepare questions or concerns
+
+💡 Ground Rules:
+- Speak openly and honestly
+- Listen without judgment
+- Focus on family and business success
+- Commit to follow-through
+
+🎁 Expected Outcomes:
+- Shared understanding of succession needs
+- Initial successor identification
+- Commitment to planning process
+- Next meeting scheduled
+
+Remember: This is about building family legacy together!
+            `;
+            alert(meeting);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('docDate').value = today;
+        });
+    </script>
+</body>
+</html>

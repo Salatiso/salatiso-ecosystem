@@ -1,0 +1,50 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "add": "Adicionar",
+    "search": "Pesquisar",
+    "filter": "Filtrar",
+    "close": "Fechar",
+    "open": "Abrir",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "home": "Início",
+    "about": "Sobre",
+    "contact": "Contato",
+    "login": "Entrar",
+    "logout": "Sair",
+    "welcome": "Bem-vindo"
+  },
+  "navigation": {
+    "home": "Início",
+    "about": "Sobre nós",
+    "ecosystem": "Ecossistema",
+    "journey": "Nossa jornada",
+    "library": "Biblioteca",
+    "testing": "Centro de testes",
+    "templates": "Modelos",
+    "contact": "Contato",
+    "intranet": "Intranet"
+  },
+  "intranet": {
+    "title": "Intranet familiar Salatiso",
+    "subtitle": "Governança centrada em Ubuntu para a próxima geração",
+    "dashboard": "Painel",
+    "projects": "Projetos",
+    "family": "Família",
+    "business_plan": "Plano de negócios",
+    "career": "Carreiras",
+    "ecosystem": "Aplicativos do ecossistema",
+    "learning": "Aprendizagem",
+    "timeline": "Linha do tempo",
+    "lifecv": "LifeCV",
+    "simple_dashboard": "Painel simples"
+  }
+}

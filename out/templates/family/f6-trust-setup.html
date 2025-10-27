@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp by Salatiso - Family Trust Setup: Protecting Wealth for Generations</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .level-badge {
+            background: var(--lifecv-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .trust-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .trust-hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .trust-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .trust-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .trust-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .trust-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .trust-benefits {
+            background: var(--bg-light);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .trust-benefits h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .benefit-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .benefit-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-structure {
+            background: var(--success-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .trust-structure h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .structure-diagram {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .structure-role {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .structure-role h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .estate-planning {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .estate-planning h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .planning-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .planning-step {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--ubuntu-orange);
+        }
+
+        .planning-step h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .tax-benefits {
+            background: var(--warning-amber);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .tax-benefits h2 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .tax-advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tax-advantage {
+            background: rgba(255,255,255,0.8);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .tax-advantage h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .asset-protection {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .asset-protection h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .protection-strategies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .protection-strategy {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .protection-strategy h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-setup {
+            background: var(--error-red);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .trust-setup h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .setup-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .setup-step {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .family-governance {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .family-governance h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #d4550a;
+        }
+
+        .btn.secondary {
+            background: var(--primary-blue);
+        }
+
+        .btn.secondary:hover {
+            background: #152c6b;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        footer .footer-section h4 {
+            color: var(--ubuntu-orange);
+            margin-bottom: 1rem;
+        }
+
+        footer .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Customization Panel Styles */
+        .customization-panel {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Share Section Styles */
+        .share-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: var(--ubuntu-orange);
+        }
+
+        .qr-code {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 1rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">BizHelp by Salatiso</div>
+            <div class="tagline">Family Trust Setup: Protecting Wealth for Generations</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label>Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label>Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label>Trust Type:</label>
+                <select id="trustType">
+                    <option value="">Select trust type</option>
+                    <option value="Testamentary Trust">Testamentary Trust</option>
+                    <option value="Inter Vivos Trust">Inter Vivos Trust</option>
+                    <option value="Special Trust">Special Trust</option>
+                    <option value="Business Trust">Business Trust</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <label>Document Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label>Document Version:</label>
+                <input type="text" id="docVersion" value="Trust Setup Guide v1.0" placeholder="e.g., Trust Setup Guide v1.0">
+            </div>
+            <button onclick="applyCustomization()" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+
+        <div class="level-badge">Family • Level 2</div>
+
+        <div class="trust-hero">
+            <h1>🏦 Family Trust Setup: Protecting Wealth for Generations</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+                Creating lasting wealth protection and succession planning for your family business
+            </p>
+            <p>
+                A family trust is like a protective container for your wealth. It safeguards assets from creditors,
+                divorce, and taxes while ensuring smooth transfer to future generations.
+            </p>
+        </div>
+
+        <div style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--primary-blue); text-align: center;">Why Your Family Needs a Trust</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🛡️</div>
+                    <h4>Asset Protection</h4>
+                    <p>Shield family wealth from business risks, lawsuits, and financial difficulties</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">💰</div>
+                    <h4>Tax Efficiency</h4>
+                    <p>Minimize estate taxes and create tax-efficient wealth transfer strategies</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">👨🏾‍👩🏾‍👧🏾‍👦🏾</div>
+                    <h4>Family Harmony</h4>
+                    <p>Ensure fair distribution and prevent family disputes over inheritance</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🌱</div>
+                    <h4>Multi-Generational</h4>
+                    <p>Preserve and grow wealth across generations with structured governance</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="trust-types">
+            <div class="trust-card">
+                <div class="icon">📜</div>
+                <h3>Testamentary Trust</h3>
+                <p>Created in your will and comes into effect after death. Controls how assets pass to beneficiaries.</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Activated by death</li>
+                    <li>Part of estate planning</li>
+                    <li>Protects minor children</li>
+                    <li>Tax-efficient transfers</li>
+                </ul>
+            </div>
+
+            <div class="trust-card">
+                <div class="icon">🤝</div>
+                <h3>Inter Vivos Trust</h3>
+                <p>Created during lifetime with assets transferred immediately. Provides control while alive.</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Active during lifetime</li>
+                        <li>Immediate asset protection</li>
+                    <li>Flexible management</li>
+                    <li>Privacy protection</li>
+                </ul>
+            </div>
+
+            <div class="trust-card">
+                <div class="icon">⚖️</div>
+                <h3>Special Trust</h3>
+                <p>Designed for asset protection and creditor protection. Popular for business owners.</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Strong creditor protection</li>
+                    <li>Business asset shelter</li>
+                    <li>Professional trustee</li>
+                    <li>Complex structure</li>
+                </ul>
+            </div>
+
+            <div class="trust-card">
+                <div class="icon">🏢</div>
+                <h3>Business Trust</h3>
+                <p>Holds and manages business assets separately from personal wealth.</p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Business succession</li>
+                    <li>Shareholder management</li>
+                    <li>Tax optimization</li>
+                    <li>Professional management</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="trust-benefits">
+            <h2>🎁 Key Benefits of Family Trusts</h2>
+            <p>Understanding the advantages that make trusts essential for family business wealth protection</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>Asset Protection</h4>
+                    <p>Trust assets are generally protected from creditors, lawsuits, and divorce claims</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>Estate Tax Reduction</h4>
+                    <p>Remove assets from estate to reduce inheritance tax liability</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>Privacy Protection</h4>
+                    <p>Trust details remain private, unlike public will records</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>Control & Flexibility</h4>
+                    <p>Set conditions for distributions and maintain control over asset use</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>Business Succession</h4>
+                    <p>Ensure smooth transfer of business ownership to next generation</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>Minors & Dependents</h4>
+                    <p>Protect assets for children and dependents until they mature</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>Charitable Giving</h4>
+                    <p>Structure tax-efficient charitable donations and legacies</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>Professional Management</h4>
+                    <p>Access to professional trustees and investment management</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="trust-structure">
+            <h2>🏗️ How a Family Trust Works</h2>
+            <p>The key roles and relationships in a trust structure</p>
+
+            <div class="structure-diagram">
+                <div class="structure-role">
+                    <h4>Founder/Donor</h4>
+                    <p>Creates the trust and transfers assets. May retain some control through trustee position.</p>
+                </div>
+
+                <div class="structure-role">
+                    <h4>Trustee</h4>
+                    <p>Manages trust assets and makes decisions according to trust deed. Can be individual or corporate.</p>
+                </div>
+
+                <div class="structure-role">
+                    <h4>Beneficiaries</h4>
+                    <p>Receive benefits from the trust. Can include current and future family members.</p>
+                </div>
+
+                <div class="structure-role">
+                    <h4>Trust Protector</h4>
+                    <p>Optional role to oversee trustees and ensure trust purposes are fulfilled.</p>
+                </div>
+
+                <div class="structure-role">
+                    <h4>Appointor</h4>
+                    <p>Has power to appoint/remove trustees. Provides additional control and flexibility.</p>
+                </div>
+
+                <div class="structure-role">
+                    <h4>Guardian</h4>
+                    <p>Cares for minor beneficiaries and ensures their interests are protected.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>Trust Flow:</strong> Founder → Trustee → Manages Assets → Benefits → Beneficiaries
+            </p>
+        </div>
+
+        <div class="estate-planning">
+            <h2>📋 Estate Planning Integration</h2>
+            <p>How trusts fit into your overall estate planning strategy</p>
+
+            <div class="planning-steps">
+                <div class="planning-step">
+                    <h4>1. Asset Inventory</h4>
+                    <p>List all assets: business interests, property, investments, personal possessions</p>
+                </div>
+
+                <div class="planning-step">
+                    <h4>2. Will Preparation</h4>
+                    <p>Create will appointing trustees and outlining final wishes</p>
+                </div>
+
+                <div class="planning-step">
+                    <h4>3. Trust Establishment</h4>
+                    <p>Set up trusts for asset protection and tax-efficient transfers</p>
+                </div>
+
+                <div class="planning-step">
+                    <h4>4. Beneficiary Designations</h4>
+                    <p>Update insurance policies and retirement accounts</p>
+                </div>
+
+                <div class="planning-step">
+                    <h4>5. Power of Attorney</h4>
+                    <p>Appoint agents for financial and healthcare decisions if incapacitated</p>
+                </div>
+
+                <div class="planning-step">
+                    <h4>6. Regular Reviews</h4>
+                    <p>Update plan annually and after major life changes</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1rem; background: var(--bg-light); border-radius: 4px;">
+                <h4 style="color: var(--primary-blue);">Essential Estate Planning Documents</h4>
+                <ul>
+                    <li><strong>Last Will and Testament:</strong> Distributes assets not in trusts</li>
+                    <li><strong>Trust Deeds:</strong> Govern trust operations and distributions</li>
+                    <li><strong>Power of Attorney:</strong> Financial and healthcare decisions</li>
+                    <li><strong>Living Will:</strong> Medical treatment preferences</li>
+                    <li><strong>Letter of Wishes:</strong> Personal guidance to trustees</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tax-benefits">
+            <h2>💰 Tax Benefits of Family Trusts</h2>
+            <p>Understanding the tax advantages available through proper trust structuring</p>
+
+            <div class="tax-advantages">
+                <div class="tax-advantage">
+                    <h4>Estate Duty Reduction</h4>
+                    <p>Assets in trust avoid estate duty on death. Only lifetime transfers may be subject to donations tax.</p>
+                </div>
+
+                <div class="tax-advantage">
+                    <h4>Capital Gains Tax Planning</h4>
+                    <p>Trust can hold assets long-term, potentially reducing CGT on disposal through annual exclusions.</p>
+                </div>
+
+                <div class="tax-advantage">
+                    <h4>Income Tax Efficiency</h4>
+                    <p>Trust income distributed to beneficiaries in lower tax brackets reduces overall tax burden.</p>
+                </div>
+
+                <div class="tax-advantage">
+                    <h4>Donations Tax Optimization</h4>
+                    <p>Annual R100,000 donations tax exemption per donor allows tax-free wealth transfer.</p>
+                </div>
+
+                <div class="tax-advantage">
+                    <h4>Business Asset Protection</h4>
+                    <p>Separate business assets from personal estate, potentially reducing overall estate tax.</p>
+                </div>
+
+                <div class="tax-advantage">
+                    <h4>Foreign Asset Planning</h4>
+                    <p>Offshore trusts can provide additional tax planning opportunities (consult tax advisor).</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>Important:</strong> Tax laws change frequently. Always consult a qualified tax advisor for current South African tax implications.
+            </p>
+        </div>
+
+        <div class="asset-protection">
+            <h2>🛡️ Asset Protection Strategies</h2>
+            <p>How trusts protect family wealth from various risks</p>
+
+            <div class="protection-strategies">
+                <div class="protection-strategy">
+                    <h4>Creditor Protection</h4>
+                    <p>Trust assets generally protected from personal creditors, business liabilities, and lawsuits</p>
+                    <ul>
+                        <li>Business debts don't reach personal assets</li>
+                        <li>Professional negligence claims limited</li>
+                        <li>Divorce settlements may not access trust assets</li>
+                    </ul>
+                </div>
+
+                <div class="protection-strategy">
+                    <h4>Business Risk Mitigation</h4>
+                    <p>Separate business assets from personal wealth to protect family lifestyle</p>
+                    <ul>
+                        <li>Business failure doesn't wipe out family assets</li>
+                        <li>Employee lawsuits contained to business</li>
+                        <li>Supplier claims limited to business assets</li>
+                    </ul>
+                </div>
+
+                <div class="protection-strategy">
+                    <h4>Estate Disputes Prevention</h4>
+                    <p>Clear trust structures prevent family fights over inheritance</p>
+                    <ul>
+                        <li>Pre-determined distribution rules</li>
+                        <li>Professional trustee decisions</li>
+                        <li>Binding agreements reduce disputes</li>
+                    </ul>
+                </div>
+
+                <div class="protection-strategy">
+                    <h4>Generational Wealth Transfer</h4>
+                    <p>Ensure wealth reaches intended beneficiaries without loss</p>
+                    <ul>
+                        <li>Protection from beneficiary creditors</li>
+                        <li>Guardianship for minor beneficiaries</li>
+                        <li>Conditions for responsible distribution</li>
+                    </ul>
+                </div>
+
+                <div class="protection-strategy">
+                    <h4>Tax Optimization</h4>
+                    <p>Minimize tax burden while maximizing wealth preservation</p>
+                    <ul>
+                        <li>Estate duty reduction</li>
+                        <li>Capital gains planning</li>
+                        <li>Income splitting opportunities</li>
+                    </ul>
+                </div>
+
+                <div class="protection-strategy">
+                    <h4>Privacy Protection</h4>
+                    <p>Keep family wealth matters confidential</p>
+                    <ul>
+                        <li>Trust details not public record</li>
+                        <li>Avoid probate publicity</li>
+                        <li>Private wealth management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="trust-setup">
+            <h2>📝 Setting Up Your Family Trust</h2>
+            <p>Step-by-step guide to establishing a trust for your family</p>
+
+            <div class="setup-process">
+                <div class="setup-step">
+                    <h4>1. Define Objectives</h4>
+                    <p>Clearly articulate what the trust should achieve: asset protection, tax planning, succession</p>
+                </div>
+
+                <div class="setup-step">
+                    <h4>2. Choose Trust Type</h4>
+                    <p>Select appropriate trust structure based on your goals and South African requirements</p>
+                </div>
+
+                <div class="setup-step">
+                    <h4>3. Select Trustee</h4>
+                    <p>Choose professional trustee or family member with proper qualifications</p>
+                </div>
+
+                <div class="setup-step">
+                    <h4>4. Draft Trust Deed</h4>
+                    <p>Work with attorney to create legally sound trust document</p>
+                </div>
+
+                <div class="setup-step">
+                    <h4>5. Transfer Assets</h4>
+                    <p>Move assets into trust ownership according to legal requirements</p>
+                </div>
+
+                <div class="setup-step">
+                    <h4>6. Register Trust</h4>
+                    <p>Register with Master of the High Court and obtain tax reference number</p>
+                </div>
+
+                <div class="setup-step">
+                    <h4>7. Establish Administration</h4>
+                    <p>Set up banking, record-keeping, and ongoing management systems</p>
+                </div>
+
+                <div class="setup-step">
+                    <h4>8. Regular Reviews</h4>
+                    <p>Annual review of trust performance and compliance</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;">
+                <strong>Cost Estimate:</strong> R25,000-R75,000 for setup (attorney fees, registration, professional trustee).
+                Annual administration: R5,000-R15,000 depending on complexity.
+            </p>
+        </div>
+
+        <div class="family-governance">
+            <h2>👨🏾‍👩🏾‍👧🏾‍👦🏾 Family Governance Through Trusts</h2>
+            <p>How trusts enable effective family wealth management across generations</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div>
+                    <h4>📊 Investment Oversight</h4>
+                    <p>Professional management of trust assets for long-term growth</p>
+                </div>
+                <div>
+                    <h4>🎓 Education Funding</h4>
+                    <p>Structured support for children's and grandchildren's education</p>
+                </div>
+                <div>
+                    <h4>🏠 Housing Support</h4>
+                    <p>Assistance with home purchases and family housing needs</p>
+                </div>
+                <div>
+                    <h4>💼 Business Development</h4>
+                    <p>Funding for family business ventures and entrepreneurial activities</p>
+                </div>
+                <div>
+                    <h4>🩺 Healthcare Planning</h4>
+                    <p>Medical expense coverage and long-term care planning</p>
+                </div>
+                <div>
+                    <h4>🌍 Philanthropy</h4>
+                    <p>Structured charitable giving that reflects family values</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="color: var(--primary-blue);">Protect Your Family's Wealth Legacy</h2>
+            <p>Start planning today to ensure your business and wealth serve your family for generations</p>
+            <button onclick="createTrustPlan()" class="btn">📋 Create Trust Setup Plan</button>
+            <button onclick="findTrustAdvisor()" class="btn secondary">⚖️ Find Trust Advisor</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🌟 BizHelp Ecosystem</h4>
+                <ul>
+                    <li><a href="https://bizhelp-lifecv.web.app/wizard">BizHelp Wizard</a></li>
+                    <li><a href="https://lifecv-d2724.web.app/training/">LifeCV Training</a></li>
+                    <li><a href="https://salatiso.com">Salatiso Platform</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>📚 Learning Paths</h4>
+                <ul>
+                    <li>Personal First (Level 1-2)</li>
+                    <li>Family First (Level 2-3)</li>
+                    <li>Professional (Level 3-5)</li>
+                    <li>Sazi Life Academy</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>🏛️ Trust Resources</h4>
+                <ul>
+                    <li>Trust Registration</li>
+                    <li>Estate Planning</li>
+                    <li>Asset Protection</li>
+                    <li>Tax Optimization</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>💡 Remember</h4>
+                <p>Personal First • Family First</p>
+                <p>Powered by Salatiso</p>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.8;">© 2025 BizHelp by Salatiso - Family Business Legacy. Prepared for Professional User on October 6, 2025</p>
+    </footer>
+
+    <script>
+        // Customization Functions
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value;
+            const familyName = document.getElementById('familyName').value;
+            const trustType = document.getElementById('trustType').value;
+            const docDate = document.getElementById('docDate').value;
+            const docVersion = document.getElementById('docVersion').value;
+
+            // Update document title
+            document.title = `Trust Setup - ${familyName || 'Family Business'} - ${docVersion}`;
+
+            // Update header
+            const header = document.querySelector('.tagline');
+            if (header) {
+                header.innerHTML = `Family Trust Setup: Protecting Wealth for Generations - ${docVersion}`;
+            }
+
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) {
+                footer.innerHTML = `© 2025 BizHelp by Salatiso - ${familyName || 'Family Business'} Legacy. Prepared for ${userName || 'Professional User'} on ${new Date(docDate).toLocaleDateString()}`;
+            }
+
+            // Update trust type references
+            if (trustType) {
+                const elements = document.querySelectorAll('.trust-type-placeholder');
+                elements.forEach(el => {
+                    el.textContent = trustType;
+                });
+            }
+
+            alert('✅ Document customized successfully!');
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Sharing Functions
+        function downloadPDF() {
+            window.print(); // For now, use print as PDF download
+            alert('💡 Tip: Use your browser\'s "Save as PDF" option when printing');
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('🔗 Link copied to clipboard!');
+            }).catch(() => {
+                alert('Link: ' + url);
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Action Functions
+        function createTrustPlan() {
+            const plan = `
+FAMILY TRUST SETUP PLAN
+
+🎯 Trust Objectives:
+- [List your main goals: asset protection, tax planning, succession, etc.]
+- [Define what success looks like for your family]
+
+📋 Current Assets to Consider:
+□ Business shares and assets
+□ Investment portfolio
+□ Real estate properties
+□ Personal assets and savings
+□ Insurance policies
+□ Retirement funds
+
+🏗️ Recommended Trust Structure:
+Based on your goals: [Testamentary/Inter Vivos/Special/Business Trust]
+
+Key Components:
+- Trustee: [Professional/Individual Family Member]
+- Beneficiaries: [Current and future family members]
+- Appointor: [Person with power to change trustees]
+- Trust Protector: [Optional oversight role]
+
+📅 Implementation Timeline:
+
+Month 1-2: Planning & Design
+- Meet with estate planning attorney
+- Choose trustee and professional advisors
+- Draft trust deed and related documents
+
+Month 3-4: Legal Setup
+- Sign trust deed and registration documents
+- Register trust with Master of the High Court
+- Obtain tax reference number
+
+Month 5-6: Asset Transfer
+- Transfer assets to trust ownership
+- Update beneficiary designations
+- Establish trust banking and administration
+
+Month 7+: Administration & Review
+- Set up regular trustee meetings
+- Establish record-keeping procedures
+- Annual trust performance reviews
+
+💰 Estimated Costs:
+- Legal fees: R25,000-R50,000
+- Trustee setup: R5,000-R10,000
+- Registration fees: R500-R1,000
+- Annual administration: R5,000-R15,000
+
+👥 Professional Team:
+- Estate Planning Attorney
+- Trust Accountant
+- Financial Advisor
+- Insurance Specialist
+
+📊 Success Metrics:
+- Trust legally established and registered
+- Assets successfully transferred
+- Beneficiaries identified and documented
+- Administration procedures in place
+- Family educated on trust operations
+
+LifeCV Proof: Trust deed signed + registration certificate + asset transfer documents + family meeting minutes
+            `;
+            alert(plan);
+        }
+
+        function findTrustAdvisor() {
+            const advisors = `
+TRUST AND ESTATE PLANNING PROFESSIONALS - SOUTH AFRICA
+
+🔍 Finding the Right Advisor:
+
+1. Qualifications to Look For:
+   □ Attorney specializing in estate planning
+   □ Trust and estate administrator certification
+   □ Experience with family businesses
+   □ Knowledge of South African trust law
+
+2. Professional Bodies:
+   □ Law Society of South Africa
+   □ South African Institute of Estate Practitioners
+   □ Fiduciary Institute of South Africa
+   □ South African Revenue Service approved
+
+3. Recommended Firms:
+   □ Werksmans Attorneys (family business focus)
+   □ Cliffe Dekker Hofmeyr
+   □ Edward Nathan Sonnenbergs
+   □ Webber Wentzel
+   □ Bowman Gilfillan
+
+4. Trust Administrators:
+   □ Sanlam Trust
+   □ Old Mutual Trust
+   □ PSG Trust
+   □ Citadel Trust
+
+5. Questions to Ask:
+   □ How many family trusts have you set up?
+   □ What is your experience with business succession?
+   □ Can you provide references?
+   □ What are your fees and billing structure?
+
+6. Initial Consultation:
+   □ Prepare list of assets and goals
+   □ Bring family business information
+   □ Discuss timeline and budget
+   □ Get written proposal and cost estimate
+
+💰 Cost Expectations:
+- Initial consultation: R1,500-R3,000
+- Trust setup: R25,000-R75,000
+- Annual administration: R5,000-R20,000
+- Complex structures: Higher fees
+
+⚠️ Important Notes:
+- Get multiple quotes
+- Check professional indemnity insurance
+- Verify SARS compliance
+- Ensure data protection compliance
+- Review client testimonials
+
+START: Contact 2-3 professionals for initial meetings within the next 2 weeks.
+            `;
+            alert(advisors);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('docDate').value = today;
+        });
+    </script>
+</body>
+</html>

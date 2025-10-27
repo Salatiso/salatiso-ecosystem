@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizHelp by Salatiso - Professional Business Operations</title>
+    <style>
+        :root {
+            --primary-blue: #1E3A8A;
+            --ubuntu-orange: #EA580C;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --lifecv-purple: #7C3AED;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --border-light: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--ubuntu-orange));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .level-badge {
+            background: var(--success-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: var(--primary-blue);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--ubuntu-orange);
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: var(--ubuntu-orange);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--lifecv-purple), var(--primary-blue));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--ubuntu-orange);
+        }
+
+        .feature-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .proof-drop {
+            background: var(--success-green);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .proof-drop::before {
+            content: '📤';
+            font-size: 1.5rem;
+        }
+
+        .cta-button {
+            background: var(--ubuntu-orange);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem 0;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #DC2626;
+        }
+
+        .footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-section h4 {
+            color: var(--ubuntu-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .icon-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .icon-item {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .icon-item::before {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .family-icon::before { content: '👨🏾‍👩🏾‍👧🏾‍👦🏾'; } /* Black/Brown family */
+        .business-icon::before { content: '🏢'; }
+        .growth-icon::before { content: '📈'; }
+        .community-icon::before { content: '🤝🏾'; } /* Brown handshake */
+
+        .customization-panel {
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .customization-panel.show {
+            display: block;
+        }
+
+        .customization-panel label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .customization-panel input, .customization-panel select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-family: inherit;
+        }
+
+        .custom-fields {
+            background: var(--warning-amber);
+            color: var(--text-dark);
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .share-section {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .share-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .share-btn:hover {
+            background: #1E40AF;
+        }
+
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            display: inline-block;
+            margin: 1rem;
+            text-align: center;
+            line-height: 100px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        @media print {
+            .customization-panel, .share-section, .no-print {
+                display: none !important;
+            }
+
+            .custom-fields {
+                background: white !important;
+                border: 1px solid #ccc !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">BizHelp by Salatiso</div>
+            <div class="tagline">Professional Business Operations</div>
+            <div class="level-badge">Professional Foundations • Level 4</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Customization Panel -->
+        <div class="customization-panel" id="customizationPanel">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;" data-translate="customize_document">✏️ Customize This Document</h3>
+            <div class="form-field">
+                <label data-translate="your_name">Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+            <div class="form-field">
+                <label data-translate="family_name">Family/Entity Name:</label>
+                <input type="text" id="familyName" placeholder="Enter family or entity name">
+            </div>
+            <div class="form-field">
+                <label data-translate="date">Date:</label>
+                <input type="date" id="docDate" value="2025-10-06">
+            </div>
+            <div class="form-field">
+                <label data-translate="document_version">Document Version:</label>
+                <input type="text" id="docVersion" value="Professional Guide v1.0" placeholder="e.g., Professional Guide v1.0">
+            </div>
+            <div class="form-field">
+                <label data-translate="language_label">Language / Taal:</label>
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="af">Afrikaans</option>
+                    <option value="nr">isiNdebele</option>
+                    <option value="xh">isiXhosa</option>
+                    <option value="zu">isiZulu</option>
+                    <option value="nso">Sepedi</option>
+                    <option value="st">Sesotho</option>
+                    <option value="tn">Setswana</option>
+                    <option value="ss">siSwati</option>
+                    <option value="ve">Tshivenda</option>
+                    <option value="ts">Xitsonga</option>
+                </select>
+            </div>
+            <button onclick="applyCustomization()" data-translate="apply_changes" style="background: var(--ubuntu-orange); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Apply Changes</button>
+            <button onclick="toggleCustomization()" data-translate="hide_panel" style="background: var(--text-light); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">Hide Panel</button>
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;" data-translate="share_guide">📤 Share This Guide</h3>
+            <div class="share-buttons">
+                <button onclick="downloadPDF()" class="share-btn">📄 Download PDF</button>
+                <button onclick="shareLink()" class="share-btn">🔗 Copy Link</button>
+                <button onclick="printDoc()" class="share-btn">🖨️ Print</button>
+            </div>
+            <div class="qr-code" id="qrCode">QR Code<br>Coming Soon</div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                Perfect for sharing with family members who prefer printed materials
+            </p>
+        </div>
+
+        <!-- Toggle Button -->
+        <div style="text-align: center; margin: 1rem 0;">
+            <button onclick="toggleCustomization()" data-translate="customize_document_btn" style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;" class="no-print">⚙️ Customize Document</button>
+        </div>
+
+        <section class="section">
+            <h2 data-translate="main_title">🏢 Professional Business Operations</h2>
+            <div class="custom-fields">
+                <strong>Prepared for:</strong> <span class="custom-name">[Your Name]</span> | <strong>Family:</strong> <span class="custom-family">[Family/Entity Name]</span> | <strong>Date:</strong> <span class="custom-date">6 October 2025</span> | <strong>Version:</strong> <span class="custom-version">Professional Guide v1.0</span>
+            </div>
+            <p><strong>What are Professional Business Operations?</strong> Professional operations take your family business from personal passion to scalable enterprise. This guide covers the systems, processes, and structures needed for sustainable growth while maintaining your Ubuntu values.</p>
+
+            <div class="highlight-box">
+                <h3>🌟 Professional Excellence Framework</h3>
+                <p><strong>Systems • Processes • Growth • Compliance</strong></p>
+                <p>Professional operations combine efficient systems with ethical practices, ensuring your business serves your community while achieving financial success.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>📊 Key Operational Areas</h2>
+            <p>Professional businesses excel in these core areas:</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="business-icon icon-item"></div>
+                    <h4>Business Systems</h4>
+                    <p>Standardized processes for consistent quality and efficiency.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="growth-icon icon-item"></div>
+                    <h4>Performance Management</h4>
+                    <p>Measuring success and continuous improvement frameworks.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="community-icon icon-item"></div>
+                    <h4>Compliance & Ethics</h4>
+                    <p>Legal requirements and ethical business practices.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="family-icon icon-item"></div>
+                    <h4>Team Development</h4>
+                    <p>Building capable teams that share your vision.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎯 Getting Started</h2>
+
+            <h3>Step 1: Assess Current Operations</h3>
+            <p>Evaluate your current business processes and identify areas for improvement.</p>
+
+            <h3>Step 2: Implement Core Systems</h3>
+            <p>Set up basic operational systems for finance, HR, and customer management.</p>
+
+            <h3>Step 3: Build Your Team</h3>
+            <p>Develop hiring and training processes to build a capable team.</p>
+
+            <div class="proof-drop">
+                <div>
+                    <strong>Proof Drop Opportunity:</strong> Document your operational assessment and upload to LifeCV with a plan for implementing one new system.
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🚀 Ready for Professional Operations?</h2>
+            <p>Your family business is ready to scale professionally. Focus on systems that support growth while honoring your values.</p>
+
+            <div style="text-align: center;">
+                <a href="https://bizhelp-lifecv.web.app" class="cta-button">Access Professional Tools</a>
+            </div>
+
+            <p style="text-align: center; margin-top: 1rem; color: var(--text-light);">
+                Need help? Contact our professional support team at hub@salatiso.com
+            </p>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>📤 Proof Drop</h4>
+                <p>Upload to LifeCV Professional | Level 4</p>
+                <p>Part of Sazi Life Academy</p>
+            </div>
+            <div class="footer-section">
+                <h4>🔗 Connect</h4>
+                <p>bizhelp-lifecv.web.app</p>
+                <p>hub@salatiso.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>💡 Remember</h4>
+                <p>Professional Excellence</p>
+                <p>Powered by Salatiso</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                customize_document: "✏️ Customize This Document",
+                your_name: "Your Name:",
+                family_name: "Family/Entity Name:",
+                date: "Date:",
+                document_version: "Document Version:",
+                language_label: "Language / Taal:",
+                apply_changes: "Apply Changes",
+                hide_panel: "Hide Panel",
+                customize_document_btn: "⚙️ Customize Document",
+                share_guide: "📤 Share This Guide",
+                main_title: "🏢 Professional Business Operations",
+            },
+            af: {
+                customize_document: "✏️ Pas Hierdie Dokument Aan",
+                your_name: "Jou Naam:",
+                family_name: "Familie/Entiteit Naam:",
+                date: "Datum:",
+                document_version: "Dokument Weergawe:",
+                language_label: "Taal / Taal:",
+                apply_changes: "Pas Veranderinge Toe",
+                hide_panel: "Versteek Paneel",
+                customize_document_btn: "⚙️ Pas Dokument Aan",
+                share_guide: "📤 Deel Hierdie Gids",
+                main_title: "🏢 Professionele Besigheidsoperasies",
+            },
+            nr: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Ibizo Lakho:",
+                family_name: "Ibizo Lemndeni/Lesikhungo:",
+                date: "Umhla:",
+                document_version: "Uhlobo Lwedokumenti:",
+                language_label: "Ulimi / Ulimi:",
+                apply_changes: "Sebenzisa Izinguquko",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadana",
+                main_title: "🏢 Imisebenzi Yebhizinisi Yobungcweti",
+            },
+            xh: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Igama Lakho:",
+                family_name: "Igama Losapho/Lombutho:",
+                date: "Umhla:",
+                document_version: "Uhlobo Lwedokumenti:",
+                language_label: "Ulwimi / Ulwimi:",
+                apply_changes: "Sebenzisa Utshintsho",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadana",
+                main_title: "🏢 Imisebenzi Yobungcali Yeshishini",
+            },
+            zu: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Ibizo Lakho:",
+                family_name: "Ibizo Lomndeni/Lesikhungo:",
+                date: "Usuku:",
+                document_version: "Uhlobo Lwedokumenti:",
+                language_label: "Ulimi / Ulimi:",
+                apply_changes: "Sebenzisa Izinguquko",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadana",
+                main_title: "🏢 Imisebenzi Yebhizinisi Yobungcweti",
+            },
+            nso: {
+                customize_document: "✏️ Fetola Tokumente Ye",
+                your_name: "Leina La Gago:",
+                family_name: "Leina La Lapa/Le Entiti:",
+                date: "Letšatši:",
+                document_version: "Mofuta wa Tokumente:",
+                language_label: "Polelo / Polelo:",
+                apply_changes: "Diriša Diphetogo",
+                hide_panel: "Fihla Phanele",
+                customize_document_btn: "⚙️ Fetola Tokumente",
+                share_guide: "📤 Abelana ka Tataiso Ye",
+                main_title: "🏢 Mediro ya Kgwebo ya Setsebi",
+            },
+            st: {
+                customize_document: "✏️ Fetola Tokomane Ena",
+                your_name: "Lebitso La Hao:",
+                family_name: "Lebitso La Lelapa/Entiti:",
+                date: "Letsatsi:",
+                document_version: "Mofuta wa Tokomane:",
+                language_label: "Puo / Puo:",
+                apply_changes: "Sebelisa Liphetoho",
+                hide_panel: "Pata Phanele",
+                customize_document_btn: "⚙️ Fetola Tokomane",
+                share_guide: "📤 Arolelana ka Tataiso Ena",
+                main_title: "🏢 Tshebetso ya Khoebo ya Setsebi",
+            },
+            tn: {
+                customize_document: "✏️ Fetola Tokumente Ye",
+                your_name: "Leina La Gago:",
+                family_name: "Leina La Lapa/Le Entiti:",
+                date: "Letšatši:",
+                document_version: "Mofuta wa Tokumente:",
+                language_label: "Polelo / Polelo:",
+                apply_changes: "Diriša Diphetogo",
+                hide_panel: "Fihla Phanele",
+                customize_document_btn: "⚙️ Fetola Tokumente",
+                share_guide: "📤 Abelana ka Tataiso Ye",
+                main_title: "🏢 Mediro ya Kgwebo ya Setsebi",
+            },
+            ss: {
+                customize_document: "✏️ Lungiselela Le Dokumenti",
+                your_name: "Libito Lakho:",
+                family_name: "Libito Lemndzaba/Lesikhungo:",
+                date: "Lilanga:",
+                document_version: "Inhlobo Yedokumenti:",
+                language_label: "Lulwimi / Lulwimi:",
+                apply_changes: "Sebentisa Tinchubo",
+                hide_panel: "Fihla Iphaneli",
+                customize_document_btn: "⚙️ Lungiselela Idokumenti",
+                share_guide: "📤 Yabelana Ngale Ncwadzi",
+                main_title: "🏢 Imisebenti Yebhizinisi Yelungcweti",
+            },
+            ve: {
+                customize_document: "✏️ Dziṅwalisele Ḓokhumente Ḽi",
+                your_name: "Dzina Ḽa Ḽu:",
+                family_name: "Dzina Ḽa Muya/Dzithavhelo:",
+                date: "Ḓuvha:",
+                document_version: "Mvele wa Ḓokhumente:",
+                language_label: "Ḽuambo / Ḽuambo:",
+                apply_changes: "Shumisani Tshanduko",
+                hide_panel: "Dzumbani Phaneli",
+                customize_document_btn: "⚙️ Dziṅwalisele Ḓokhumente",
+                share_guide: "📤 Kumedzani Ḽiṅwaliso Ḽi",
+                main_title: "🏢 Mishumo ya Mushumo wa Vhuprofeshinali",
+            },
+            ts: {
+                customize_document: "✏️ Lungiselela Dokumente Leyi",
+                your_name: "Vito Ra Wena:",
+                family_name: "Vito Ra Nandzu/Xiyimo:",
+                date: "Siku:",
+                document_version: "Muxaka wa Dokumente:",
+                language_label: "Ririmi / Ririmi:",
+                apply_changes: "Tirhisa Ku Cinca",
+                hide_panel: "Tumbeta Phaneli",
+                customize_document_btn: "⚙️ Lungiselela Dokumente",
+                share_guide: "📤 Avelana hi Buku Leyi",
+                main_title: "🏢 Swiendlo swa Ntirho wa Ximfumo",
+            },
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('languageSelect').value;
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.classList.toggle('show');
+        }
+
+        function applyCustomization() {
+            const userName = document.getElementById('userName').value || '[Your Name]';
+            const familyName = document.getElementById('familyName').value || '[Family/Entity Name]';
+            const docDate = document.getElementById('docDate').value || '2025-10-06';
+            const docVersion = document.getElementById('docVersion').value || 'Professional Guide v1.0';
+
+            // Update custom fields throughout the document
+            document.querySelectorAll('.custom-name').forEach(el => el.textContent = userName);
+            document.querySelectorAll('.custom-family').forEach(el => el.textContent = familyName);
+            document.querySelectorAll('.custom-date').forEach(el => el.textContent = new Date(docDate).toLocaleDateString('en-ZA'));
+            document.querySelectorAll('.custom-version').forEach(el => el.textContent = docVersion);
+
+            // Update title
+            document.title = `BizHelp Professional Operations - ${familyName} (${docVersion})`;
+
+            alert('Document customized successfully! You can now print or share.');
+        }
+
+        function downloadPDF() {
+            window.print();
+        }
+
+        function shareLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Link copied to clipboard!');
+            });
+        }
+
+        function printDoc() {
+            window.print();
+        }
+
+        // Generate QR Code (simple placeholder)
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUrl = window.location.href;
+            document.getElementById('qrCode').innerHTML = `
+                <div style="font-size: 0.7rem;">Scan to open<br>on mobile</div>
+                <div style="font-size: 0.6rem; margin-top: 0.5rem;">${currentUrl.substring(0, 30)}...</div>
+            `;
+        });
+    </script>
+</body>
+</html>
