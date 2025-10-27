@@ -77,7 +77,7 @@ The Salatiso Ecosystem React application has successfully completed Phase 4, ach
 
 ### Task 2: Accessibility & Performance ✅
 
-**Accessibility Library** (`src/utils/accessibility.ts`):
+**Accessibility Library** (`src/utils/accessibility.tsx`):
 - ✅ Custom hooks for accessibility management
   - `useScreenReaderAnnouncement()` - Live region announcements
   - `useKeyboardNavigation()` - Grid/list keyboard navigation
@@ -182,7 +182,7 @@ The Salatiso Ecosystem React application has successfully completed Phase 4, ach
 ## Files Modified/Created (Phase 4)
 
 ### New Files
-1. `src/utils/accessibility.ts` - Accessibility utilities library (320 lines)
+1. `src/utils/accessibility.tsx` - Accessibility utilities library (320 lines)
 2. `.storybook/main.ts` - Storybook configuration (20 lines)
 3. `.storybook/preview.ts` - Storybook preview setup (11 lines)
 4. `src/components/calendar/DualCalendarGrid.stories.tsx` (140 lines)

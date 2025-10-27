@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
@@ -7,10 +7,14 @@ import {
   FileText,
   CheckCircle,
   AlertCircle,
-  Loader2
+  Loader2,
+  Smartphone,
+  HardDrive
 } from 'lucide-react';
 import { AccessibleRadioGroup, AccessibleModal } from '@/components/accessibility';
 import { Contact } from '@/services/ContactsService';
+import { isMobileDevice, getDeviceType } from '@/utils/deviceDetection';
+import { parseVCFContent, parsedContactToContact } from '@/utils/vcfParser';
 
 interface ImportExportProps {
   contacts: Contact[];
@@ -23,6 +27,7 @@ const ImportExport: React.FC<ImportExportProps> = ({
   onImport,
   onClose
 }) => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [activeTab, setActiveTab] = useState<'export' | 'import'>('export');
   const [exportFormat, setExportFormat] = useState<'csv' | 'vcf'>('csv');
   const [isExporting, setIsExporting] = useState(false);
@@ -31,9 +36,44 @@ const ImportExport: React.FC<ImportExportProps> = ({
     success: number;
     errors: string[];
   } | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [deviceType, setDeviceType] = useState<string>('desktop');
+
+  // Track device type on mount
+  useEffect(() => {
+    setIsMobile(isMobileDevice());
+    setDeviceType(getDeviceType());
+  }, []);
+
+  // Track export event (analytics)
+  const trackExportEvent = (format: string) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'export_contacts', {
+        format,
+        contact_count: contacts.length,
+        device_type: deviceType,
+        timestamp: new Date().toISOString()
+      });
+    }
+  };
+
+  // Track import event (analytics)
+  const trackImportEvent = (success: number, errors: number) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'import_contacts', {
+        success_count: success,
+        error_count: errors,
+        device_type: deviceType,
+        file_type: 'csv_or_vcf',
+        timestamp: new Date().toISOString()
+      });
+    }
+  };
 
   const handleExport = async () => {
     setIsExporting(true);
+    trackExportEvent(exportFormat);
 
     try {
       if (exportFormat === 'csv') {
@@ -43,6 +83,12 @@ const ImportExport: React.FC<ImportExportProps> = ({
       }
     } catch (error) {
       console.error('Export failed:', error);
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'exception', {
+          description: 'export_contacts_failed',
+          fatal: false
+        });
+      }
     } finally {
       setIsExporting(false);
     }
@@ -117,7 +163,35 @@ const ImportExport: React.FC<ImportExportProps> = ({
   const handleImport = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
+    await processFile(file);
+  };
 
+  // Handle drag and drop (desktop only)
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+
+    const file = e.dataTransfer.files?.[0];
+    if (file && (file.name.endsWith('.csv') || file.name.endsWith('.vcf'))) {
+      processFile(file);
+      trackImportEvent(0, 0); // Track drag-drop
+    }
+  };
+
+  const processFile = async (file: File) => {
     setIsImporting(true);
     setImportResults(null);
 
@@ -131,7 +205,7 @@ const ImportExport: React.FC<ImportExportProps> = ({
         importedContacts = result.contacts;
         errors = result.errors;
       } else if (file.name.endsWith('.vcf')) {
-        const result = parseVCF(text);
+        const result = parseVCFFile(text);
         importedContacts = result.contacts;
         errors = result.errors;
       } else {
@@ -140,6 +214,7 @@ const ImportExport: React.FC<ImportExportProps> = ({
 
       if (importedContacts.length > 0) {
         onImport(importedContacts);
+        trackImportEvent(importedContacts.length, errors.length);
       }
 
       setImportResults({
@@ -151,6 +226,12 @@ const ImportExport: React.FC<ImportExportProps> = ({
         success: 0,
         errors: ['Failed to parse file. Please check the format.']
       });
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'exception', {
+          description: 'import_contacts_parse_failed',
+          fatal: false
+        });
+      }
     } finally {
       setIsImporting(false);
     }
@@ -404,66 +485,33 @@ const ImportExport: React.FC<ImportExportProps> = ({
     return result;
   };
 
-  const parseVCF = (vcfText: string) => {
-    const contacts: Contact[] = [];
-    const errors: string[] = [];
-    const vcards = vcfText.split('BEGIN:VCARD').slice(1);
-
-    vcards.forEach((vcard, index) => {
-      try {
-        const lines = vcard.split('\n').filter(line => line.trim());
-        let firstName = '';
-        let lastName = '';
-        const phoneNumbers: string[] = [];
-        const emails: string[] = [];
-        const addresses: string[] = [];
-        let notes = '';
-        const tags: string[] = [];
-
-        lines.forEach(line => {
-          if (line.startsWith('FN:')) {
-            const fullName = line.substring(3).split(' ');
-            firstName = fullName[0] || '';
-            lastName = fullName.slice(1).join(' ') || '';
-          } else if (line.startsWith('TEL:')) {
-            phoneNumbers.push(line.substring(4));
-          } else if (line.startsWith('EMAIL:')) {
-            emails.push(line.substring(6));
-          } else if (line.startsWith('ADR:')) {
-            const address = line.substring(4).split(';').slice(2, 3)[0] || '';
-            if (address) addresses.push(address);
-          } else if (line.startsWith('NOTE:')) {
-            notes = line.substring(5).replace(/\\n/g, '\n');
-          } else if (line.startsWith('CATEGORIES:')) {
-            const categories = line.substring(11).split(',');
-            tags.push(...categories);
-          }
-        });
-
-        if (firstName || lastName) {
-          const contact: Contact = {
-            id: Date.now().toString() + index,
-            firstName,
-            lastName,
-            phoneNumbers,
-            emails,
-            addresses,
-            category: 'friend',
-            tags,
-            notes,
-            privacy: 'family',
-            addedBy: 'imported',
-            createdAt: new Date(),
-            updatedAt: new Date()
-          };
-          contacts.push(contact);
-        }
-      } catch (error) {
-        errors.push(`VCARD ${index + 1}: Failed to parse - ${error}`);
-      }
+  const parseVCFFile = (vcfText: string) => {
+    // Use our new VCF parser utility
+    const parsedResult = parseVCFContent(vcfText);
+    
+    const contacts: Contact[] = parsedResult.contacts.map(parsed => {
+      const partial = parsedContactToContact(parsed);
+      return {
+        id: `contact_${Date.now()}_${Math.random().toString(36).substring(7)}`,
+        firstName: partial.firstName || '',
+        lastName: partial.lastName || '',
+        phoneNumbers: partial.phoneNumbers || [],
+        emails: partial.emails || [],
+        addresses: partial.addresses || [],
+        category: partial.category || 'friend',
+        tags: partial.tags || [],
+        notes: partial.notes || '',
+        privacy: 'family' as const,
+        addedBy: 'imported-vcf',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      };
     });
 
-    return { contacts, errors };
+    return {
+      contacts,
+      errors: parsedResult.errors
+    };
   };
 
   const tabs = [
@@ -564,18 +612,65 @@ const ImportExport: React.FC<ImportExportProps> = ({
                   </p>
 
                   <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-ubuntu-warm-700 mb-2">
-                        Select File
-                      </label>
-                      <input
-                        type="file"
-                        accept=".csv,.vcf"
-                        onChange={handleImport}
+                    {/* Device Detection Info */}
+                    {isMobile && (
+                      <div className="bg-blue-50 rounded-lg p-3 flex items-center space-x-2">
+                        <Smartphone className="w-5 h-5 text-blue-600" />
+                        <span className="text-sm text-blue-700">
+                          Mobile device detected - tap to select files
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Drag and Drop Zone (Desktop Only) */}
+                    {!isMobile && (
+                      <div
+                        onDragOver={handleDragOver}
+                        onDragLeave={handleDragLeave}
+                        onDrop={handleDrop}
+                        className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
+                          isDragging
+                            ? 'border-ubuntu-gold bg-ubuntu-gold/5'
+                            : 'border-ubuntu-warm-300 hover:border-ubuntu-gold'
+                        }`}
+                      >
+                        <Upload className="w-12 h-12 mx-auto mb-3 text-ubuntu-warm-400" />
+                        <p className="text-ubuntu-warm-900 font-medium mb-1">
+                          Drag and drop your files here
+                        </p>
+                        <p className="text-ubuntu-warm-600 text-sm mb-3">
+                          or click the button below to browse
+                        </p>
+                        <button
+                          onClick={() => fileInputRef.current?.click()}
+                          className="px-4 py-2 bg-ubuntu-gold text-white rounded-lg hover:bg-ubuntu-gold/90 transition-colors inline-flex items-center space-x-2"
+                        >
+                          <HardDrive className="w-4 h-4" />
+                          <span>Browse Files</span>
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Mobile File Input */}
+                    {isMobile && (
+                      <button
+                        onClick={() => fileInputRef.current?.click()}
                         disabled={isImporting}
-                        className="w-full px-4 py-2 border border-ubuntu-warm-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ubuntu-gold focus:border-transparent file:mr-4 file:py-2 file:px-4 file:rounded-l-lg file:border-0 file:text-sm file:font-medium file:bg-ubuntu-warm-100 file:text-ubuntu-warm-700 hover:file:bg-ubuntu-warm-200"
-                      />
-                    </div>
+                        className="w-full px-4 py-3 bg-ubuntu-gold text-white rounded-lg hover:bg-ubuntu-gold/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors inline-flex items-center justify-center space-x-2"
+                      >
+                        <Upload className="w-5 h-5" />
+                        <span>Choose File</span>
+                      </button>
+                    )}
+
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept=".csv,.vcf"
+                      onChange={handleImport}
+                      disabled={isImporting}
+                      className="hidden"
+                    />
 
                     {isImporting && (
                       <div className="flex items-center space-x-2 text-ubuntu-warm-700">
@@ -585,7 +680,11 @@ const ImportExport: React.FC<ImportExportProps> = ({
                     )}
 
                     {importResults && (
-                      <div className="bg-ubuntu-warm-50 rounded-lg p-4">
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-ubuntu-warm-50 rounded-lg p-4"
+                      >
                         <div className="flex items-start space-x-3">
                           {importResults.errors.length === 0 ? (
                             <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
@@ -604,14 +703,14 @@ const ImportExport: React.FC<ImportExportProps> = ({
                                 <p className="text-sm font-medium text-ubuntu-warm-900">Errors:</p>
                                 <ul className="text-sm text-red-600 mt-1 list-disc list-inside">
                                   {importResults.errors.map((error, index) => (
-                                    <li key={index}>{error}</li>
+                                    <li key={index} className="truncate">{error}</li>
                                   ))}
                                 </ul>
                               </div>
                             )}
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     )}
 
                     <div className="bg-blue-50 rounded-lg p-4">

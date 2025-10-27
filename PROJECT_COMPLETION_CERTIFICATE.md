@@ -73,7 +73,7 @@ Salatiso-React-App/
 │   │       ├── DateSelector.test.tsx ✅ (20 tests)
 │   │       └── EventOverlayManager.test.tsx ✅ (19 tests)
 │   ├── utils/
-│   │   └── accessibility.ts ✅ (NEW: Accessibility library)
+│   │   └── accessibility.tsx ✅ (NEW: Accessibility library)
 │   └── styles/
 │       └── globals.css ✅ (Updated: Added sr-only)
 ├── .storybook/

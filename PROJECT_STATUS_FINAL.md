@@ -76,7 +76,7 @@ OVERALL: ✅ 97% COMPLETE - READY FOR DEPLOYMENT
 - EventOverlayManager.stories.tsx (7 stories)
 
 ### Utilities
-- src/utils/accessibility.ts (NEW)
+- src/utils/accessibility.tsx (NEW)
 - .storybook/main.ts (NEW)
 - .storybook/preview.ts (NEW)
 

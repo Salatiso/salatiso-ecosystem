@@ -23,8 +23,7 @@ import { IncidentForm } from '@/components/dashboard/IncidentForm';
 import { AnalyticsDashboard } from '@/components/dashboard/AnalyticsDashboard';
 import { TeamAssignmentComponent } from '@/components/assignments/TeamAssignmentComponent';
 import { SLATrackingComponent } from '@/components/sla/SLATrackingComponent';
-// TODO: Fix recharts dependency issue before enabling
-// import { PerformanceMetricsComponent } from '@/components/metrics/PerformanceMetricsComponent';
+import { PerformanceMetricsComponent } from '@/components/metrics/PerformanceMetricsComponent';
 import ExportToPDFComponent from '@/components/advanced/ExportToPDFComponent';
 import AdvancedSearchComponent from '@/components/advanced/AdvancedSearchComponent';
 import BulkOperationsComponent from '@/components/advanced/BulkOperationsComponent';
@@ -432,16 +431,12 @@ export default function Dashboard() {
         {/* Performance Metrics Tab */}
         {activeTab === 'performance' && (
           <div className="space-y-6">
-            {/* DISABLED: Commented out to fix recharts dependency issue
             <div>
               <h2 className="text-2xl font-semibold text-gray-900">Performance Metrics</h2>
               <p className="text-gray-600 mt-1">Track team and individual performance with analytics and trends</p>
             </div>
             
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <PerformanceMetricsComponent teamId="team-001" dateRange="month" />
-            </div>
-            */}
+            <PerformanceMetricsComponent teamId="team-001" dateRange="month" />
           </div>
         )}
 

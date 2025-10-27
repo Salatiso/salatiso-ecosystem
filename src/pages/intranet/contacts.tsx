@@ -36,6 +36,8 @@ import InviteModal from '@/components/contacts/InviteModal';
 import PresenceSettingsModal from '@/components/presence/PresenceSettingsModal';
 import ContactDetailModal from '@/components/contacts/ContactDetailModal';
 import ContactBackupRestore from '@/components/contacts/ContactBackupRestore';
+import RecycleBin from '@/components/contacts/RecycleBin';
+import EnhancedCleanupModal from '@/components/contacts/EnhancedCleanupModal';
 import { AccessibleInput, AccessibleSelect } from '@/components/accessibility';
 import contactsService, { Contact } from '@/services/ContactsService';
 import presenceService from '@/services/PresenceService';
@@ -63,6 +65,7 @@ const ContactsPage: React.FC = () => {
   const [selectedContactForInvite, setSelectedContactForInvite] = useState<Contact | null>(null);
   const [selectedContactForDetail, setSelectedContactForDetail] = useState<Contact | null>(null);
   const [showBackupRestore, setShowBackupRestore] = useState(false);
+  const [showRecycleBin, setShowRecycleBin] = useState(false);
   
   // Sorting and pagination
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | 'default'>('default');
@@ -75,6 +78,10 @@ const ContactsPage: React.FC = () => {
   // Bulk operations
   const [selectedContacts, setSelectedContacts] = useState<Set<string>>(new Set());
   const [bulkDeleteConfirm, setBulkDeleteConfirm] = useState(false);
+
+  // Cleanup operations
+  const [showEnhancedCleanup, setShowEnhancedCleanup] = useState(false);
+  const [cleanupStats, setCleanupStats] = useState<{ kept: number; deleted: number } | null>(null);
 
   // Initialize presence tracking
   useEffect(() => {
@@ -222,11 +229,12 @@ const ContactsPage: React.FC = () => {
   };
 
   const handleDeleteContact = async (contactId: string) => {
-    if (!confirm('Are you sure you want to delete this contact?')) return;
+    if (!confirm('Are you sure you want to delete this contact? You can restore it within 30 days from the Recycle Bin.')) return;
+    if (!user) return;
 
     try {
-      // Delete from Firestore
-      await contactsService.deleteContact(contactId);
+      // Soft delete from Firestore (moves to recycle bin)
+      await contactsService.deleteContact(contactId, user.id);
 
       // Update local state
       setContacts(prev => prev.filter(c => c.id !== contactId));
@@ -257,25 +265,36 @@ const ContactsPage: React.FC = () => {
 
   const handleBulkDelete = async () => {
     if (selectedContacts.size === 0) return;
+    if (!user) return;
     
-    if (!confirm(`Are you sure you want to delete ${selectedContacts.size} contacts? This action cannot be undone.`)) {
+    if (!confirm(`Are you sure you want to delete ${selectedContacts.size} contacts? They can be restored within 30 days from the Recycle Bin.`)) {
       return;
     }
 
     try {
-      // Delete all selected contacts from Firestore
+      // Soft delete all selected contacts from Firestore
       for (const contactId of selectedContacts) {
-        await contactsService.deleteContact(contactId);
+        await contactsService.deleteContact(contactId, user.id);
       }
 
       // Update local state
       setContacts(prev => prev.filter(c => !selectedContacts.has(c.id)));
       setSelectedContacts(new Set());
       setBulkDeleteConfirm(false);
-      alert(`✅ Successfully deleted ${selectedContacts.size} contacts`);
+      alert(`✅ Successfully deleted ${selectedContacts.size} contacts. You can restore them from the Recycle Bin.`);
     } catch (error) {
       console.error('Error deleting contacts:', error);
       alert('Failed to delete some contacts. Please try again.');
+    }
+  };
+
+  const handleCleanupComplete = (deletedCount: number) => {
+    // Reload contacts to reflect the deleted ones
+    if (user) {
+      contactsService.getUserContacts(user.id).then(userContacts => {
+        setContacts(userContacts);
+        setCleanupStats({ kept: userContacts.length, deleted: deletedCount });
+      });
     }
   };
 
@@ -541,6 +560,14 @@ const ContactsPage: React.FC = () => {
                 Privacy
               </button>
               <button
+                onClick={() => setShowEnhancedCleanup(true)}
+                className="inline-flex items-center px-4 py-2 border border-orange-300 rounded-lg text-orange-700 hover:bg-orange-50 transition-colors font-medium"
+                title="Review and clean database - remove false entries, duplicates, and organize by category"
+              >
+                <Trash2 className="w-4 h-4 mr-2" />
+                Clean Database
+              </button>
+              <button
                 onClick={() => setShowFamilyImport(true)}
                 className="inline-flex items-center px-4 py-2 border-2 border-indigo-300 rounded-lg text-indigo-700 hover:bg-indigo-50 transition-colors font-medium"
               >
@@ -560,6 +587,13 @@ const ContactsPage: React.FC = () => {
               >
                 <Download className="w-4 h-4 mr-2" />
                 Backup/Restore
+              </button>
+              <button
+                onClick={() => setShowRecycleBin(true)}
+                className="inline-flex items-center px-4 py-2 border border-red-300 rounded-lg text-red-700 hover:bg-red-50 transition-colors"
+              >
+                <Trash2 className="w-4 h-4 mr-2" />
+                Recycle Bin
               </button>
               <button
                 onClick={() => setShowAddForm(true)}
@@ -1099,6 +1133,27 @@ const ContactsPage: React.FC = () => {
           </motion.div>
         </motion.div>
       )}
+
+      {/* Recycle Bin */}
+      {user && (
+        <RecycleBin
+          userId={user.id}
+          isOpen={showRecycleBin}
+          onClose={() => setShowRecycleBin(false)}
+          onContactRestored={(restoredContact) => {
+            // Add restored contact back to the main list
+            setContacts(prev => [...prev, restoredContact]);
+          }}
+        />
+      )}
+
+      {/* Enhanced Cleanup Modal */}
+      <EnhancedCleanupModal
+        isOpen={showEnhancedCleanup}
+        onClose={() => setShowEnhancedCleanup(false)}
+        contacts={contacts}
+        onCleanupComplete={handleCleanupComplete}
+      />
     </div>
     </IntranetLayout>
   );

@@ -89,7 +89,8 @@ export class InvitationService {
     // Update contact with invitation status
     await contactsService.updateContact(contact.id, {
       invitationSent: true,
-      invitationSentDate: new Date()
+      invitationSentDate: new Date(),
+      invitationStatus: 'invited'
     });
 
     return invitation;
@@ -185,7 +186,9 @@ export class InvitationService {
       // Update contact if exists
       if (invitation.recipientContactId) {
         await contactsService.updateContact(invitation.recipientContactId, {
-          invitationAccepted: true
+          invitationAccepted: true,
+          invitationAcceptedDate: new Date(),
+          invitationStatus: 'accepted'
         });
       }
 

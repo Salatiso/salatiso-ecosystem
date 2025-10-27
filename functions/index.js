@@ -1,6 +1,7 @@
 const {setGlobalOptions} = require("firebase-functions");
 const {onCall} = require("firebase-functions/https");
 const {onDocumentCreated} = require("firebase-functions/firestore");
+const {onSchedule} = require("firebase-functions/scheduler");
 const functions = require("firebase-functions");
 const logger = require("firebase-functions/logger");
 const admin = require("firebase-admin");
@@ -543,3 +544,58 @@ exports.onAchievementEarned = functions.firestore
     }
   });
 */
+
+// ===================================================================
+// AUTO-PURGE DELETED CONTACTS
+// ===================================================================
+// Runs daily at 2 AM UTC - automatically deletes contacts marked as deleted
+// for more than 30 days from Firestore
+exports.autoPurgeDeletedContacts = onSchedule(
+    {
+      schedule: "0 2 * * *", // Daily at 2 AM UTC
+      timeZone: "UTC",
+      retryCount: 3,
+      maxInstances: 1,
+    },
+    async (context) => {
+      const db = admin.firestore();
+      const RETENTION_DAYS = 30;
+      const now = new Date();
+      const thirtyDaysAgo = new Date(now.getTime() - RETENTION_DAYS * 24 * 60 * 60 * 1000);
+
+      logger.info(`Starting auto-purge of deleted contacts. Threshold: ${thirtyDaysAgo.toISOString()}`);
+
+      try {
+        // Find all deleted contacts older than 30 days
+        const snapshot = await db.collection("contacts")
+            .where("isDeleted", "==", true)
+            .where("deletedAt", "<", admin.firestore.Timestamp.fromDate(thirtyDaysAgo))
+            .get();
+
+        let deletedCount = 0;
+        const batch = db.batch();
+
+        snapshot.forEach((doc) => {
+          logger.info(`Permanently deleting expired contact: ${doc.id}`);
+          batch.delete(doc.ref);
+          deletedCount++;
+        });
+
+        if (deletedCount > 0) {
+          await batch.commit();
+          logger.info(`Auto-purge completed. Permanently deleted ${deletedCount} expired contacts.`);
+        } else {
+          logger.info("Auto-purge completed. No expired contacts found.");
+        }
+
+        return {
+          success: true,
+          deletedCount: deletedCount,
+          threshold: thirtyDaysAgo.toISOString(),
+        };
+      } catch (error) {
+        logger.error("Error during auto-purge of deleted contacts:", error);
+        throw error;
+      }
+    }
+);

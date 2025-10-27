@@ -226,16 +226,38 @@ const ContactCard: React.FC<ContactCardProps> = ({
             )}
             
             {/* Invitation Status Badge */}
-            {contact.invitationSent && !contact.invitationAccepted && (
-              <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 border border-blue-200">
-                <Mail className="w-3 h-3 mr-1" />
-                Invited
-              </div>
-            )}
-            {contact.invitationAccepted && (
-              <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 border border-green-200">
-                <CheckCircle className="w-3 h-3 mr-1" />
-                Accepted
+            {contact.invitationStatus && contact.invitationStatus !== 'not-invited' && (
+              <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+                contact.invitationStatus === 'invited' ? 'bg-blue-100 text-blue-700 border border-blue-200' :
+                contact.invitationStatus === 'accepted' ? 'bg-green-100 text-green-700 border border-green-200' :
+                contact.invitationStatus === 'pending' ? 'bg-yellow-100 text-yellow-700 border border-yellow-200' :
+                contact.invitationStatus === 'declined' ? 'bg-red-100 text-red-700 border border-red-200' :
+                'bg-gray-100 text-gray-700 border border-gray-200'
+              }`}>
+                {contact.invitationStatus === 'invited' && (
+                  <>
+                    <Mail className="w-3 h-3 mr-1" />
+                    Invited
+                  </>
+                )}
+                {contact.invitationStatus === 'accepted' && (
+                  <>
+                    <CheckCircle className="w-3 h-3 mr-1" />
+                    Accepted
+                  </>
+                )}
+                {contact.invitationStatus === 'pending' && (
+                  <>
+                    <Badge className="w-3 h-3 mr-1" />
+                    Pending
+                  </>
+                )}
+                {contact.invitationStatus === 'declined' && (
+                  <>
+                    <Badge className="w-3 h-3 mr-1" />
+                    Declined
+                  </>
+                )}
               </div>
             )}
           </div>

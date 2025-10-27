@@ -13,12 +13,16 @@ import {
   Tag,
   Shield,
   Loader2,
-  Map
+  Map,
+  ChevronDown,
+  ChevronUp,
+  Zap
 } from 'lucide-react';
 import { AccessibleInput, AccessibleTextarea, AccessibleSelect, AccessibleModal } from '@/components/accessibility';
 import { Contact } from '@/services/ContactsService';
 import TagSelector from './TagSelector';
 import { LocationPicker } from './LocationPicker';
+import { ContactLocationSelector } from './ContactLocationSelector';
 
 interface ContactFormProps {
   contact?: Contact | null;
@@ -33,6 +37,9 @@ const ContactForm: React.FC<ContactFormProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showLocationPicker, setShowLocationPicker] = useState(false);
+  const [expandedAddressIndex, setExpandedAddressIndex] = useState<number | null>(null);
+  const [addressTypes, setAddressTypes] = useState<('residential' | 'work' | 'vacation' | 'other')[]>([]);
+  const [preciseLocations, setPreciseLocations] = useState<Record<number, any>>({});
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -258,32 +265,63 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 </div>
               </div>
 
-              {/* Addresses */}
+              {/* Addresses with Precise GPS Location */}
               <div>
                 <label className="block text-sm font-medium text-ubuntu-warm-700 mb-2">
-                  Addresses
+                  Addresses (with Precise GPS)
                 </label>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {formData.addresses.map((address, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <div className="relative flex-1">
-                        <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-ubuntu-warm-400" />
-                        <input
-                          type="text"
-                          value={address}
-                          onChange={(e) => updateField('addresses', index, e.target.value)}
-                          className="w-full pl-10 pr-4 py-2 border border-ubuntu-warm-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ubuntu-gold focus:border-transparent"
-                          placeholder="Enter address"
-                        />
-                      </div>
-                      {formData.addresses.length > 1 && (
+                    <div key={index} className="space-y-2">
+                      {/* Address Input */}
+                      <div className="flex items-center space-x-2">
+                        <div className="relative flex-1">
+                          <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-ubuntu-warm-400" />
+                          <input
+                            type="text"
+                            value={address}
+                            onChange={(e) => updateField('addresses', index, e.target.value)}
+                            className="w-full pl-10 pr-4 py-2 border border-ubuntu-warm-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ubuntu-gold focus:border-transparent"
+                            placeholder="Enter address (e.g., 123 Main St, City, Country)"
+                          />
+                        </div>
+                        {formData.addresses.length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => removeField('addresses', index)}
+                            className="p-2 text-red-500 hover:text-red-700 transition-colors"
+                          >
+                            <Minus className="w-4 h-4" />
+                          </button>
+                        )}
                         <button
                           type="button"
-                          onClick={() => removeField('addresses', index)}
-                          className="p-2 text-red-500 hover:text-red-700 transition-colors"
+                          onClick={() => setExpandedAddressIndex(expandedAddressIndex === index ? null : index)}
+                          className="p-2 text-ubuntu-warm-600 hover:text-ubuntu-warm-900 transition-colors"
+                          title="Add precise GPS location for this address"
                         >
-                          <Minus className="w-4 h-4" />
+                          {expandedAddressIndex === index ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                         </button>
+                      </div>
+
+                      {/* Expanded GPS Location Selector */}
+                      {expandedAddressIndex === index && address.trim() && (
+                        <div className="ml-2 border-l-4 border-blue-400 pl-3">
+                          <ContactLocationSelector
+                            address={address}
+                            locationType={addressTypes[index] || 'residential'}
+                            existingLocation={preciseLocations[index]}
+                            onLocationChange={(location) => {
+                              const newTypes = [...addressTypes];
+                              newTypes[index] = location.locationType;
+                              setAddressTypes(newTypes);
+                              
+                              const newLocations = { ...preciseLocations };
+                              newLocations[index] = location;
+                              setPreciseLocations(newLocations);
+                            }}
+                          />
+                        </div>
                       )}
                     </div>
                   ))}
@@ -296,6 +334,9 @@ const ContactForm: React.FC<ContactFormProps> = ({
                     Add Address
                   </button>
                 </div>
+                <p className="text-xs text-ubuntu-warm-500 mt-2">
+                  💡 <strong>Tip:</strong> Click the expand arrow next to each address to capture precise GPS coordinates, What3Words address, and location type (residential, work, vacation, etc).
+                </p>
               </div>
 
               {/* Location Coordinates */}

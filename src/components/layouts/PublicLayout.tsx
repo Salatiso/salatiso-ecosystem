@@ -2,9 +2,10 @@ import React, { ReactNode } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Menu, X, Home, Info, MapPin, Book, GraduationCap, Sparkles, TestTube, FileText, Wifi } from 'lucide-react';
+import { Menu, X, Home, Info, MapPin, Book, GraduationCap, Sparkles, TestTube, FileText, Wifi, LogOut, LogIn, User as UserIcon, LayoutDashboard } from 'lucide-react';
 import { useState } from 'react';
 import { SkipLink } from '@/components/accessibility';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface PublicLayoutProps {
   children: ReactNode;
@@ -19,6 +20,30 @@ const PublicLayout: React.FC<PublicLayoutProps> = ({
 }) => {
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, logout, loading } = useAuth();
+
+  // Helper function to get the best display name
+  const getUserDisplayName = (): string => {
+    if (!user) return '';
+    
+    // Try to use first and last name from family member profile
+    if (user.familyMember?.firstName && user.familyMember?.lastName) {
+      return `${user.familyMember.firstName} ${user.familyMember.lastName}`;
+    }
+    
+    // Try to use just first name if available
+    if (user.familyMember?.firstName) {
+      return user.familyMember.firstName;
+    }
+    
+    // Fall back to displayName if set
+    if (user.displayName && user.displayName !== user.email) {
+      return user.displayName;
+    }
+    
+    // Last resort: use email
+    return user.email;
+  };
 
   const navigation = [
     { name: 'About', href: '/about', icon: Info },
@@ -116,14 +141,53 @@ const PublicLayout: React.FC<PublicLayoutProps> = ({
                 ))}
               </nav>
 
-              {/* Auth Button */}
+              {/* Auth Status & Actions */}
               <div className="hidden md:flex items-center space-x-4">
-                <Link href="/intranet" className="btn-primary btn flex items-center space-x-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-md bg-white/20 text-[0.6rem] font-bold uppercase tracking-wide text-white">
-                    MNI
+                {loading ? (
+                  <div className="flex items-center space-x-2 px-3 py-2 text-gray-600">
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-300 border-t-primary-600"></div>
                   </div>
-                  <span>MNI Intranet</span>
-                </Link>
+                ) : user ? (
+                  // User is logged in
+                  <div className="flex items-center space-x-3">
+                    <div className="flex flex-col items-end">
+                      <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Signed in as</p>
+                      <p className="text-sm font-semibold text-gray-900">{getUserDisplayName()}</p>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Link
+                        href="/intranet/simple-dashboard"
+                        className="p-2 rounded-lg bg-green-50 text-green-600 hover:bg-green-100 transition-colors"
+                        title="Go to Dashboard"
+                      >
+                        <LayoutDashboard className="h-5 w-5" />
+                      </Link>
+                      <button
+                        onClick={() => {
+                          logout().then(() => {
+                            router.push('/');
+                          });
+                        }}
+                        className="p-2 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition-colors"
+                        title="Logout"
+                      >
+                        <LogOut className="h-5 w-5" />
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  // User is not logged in
+                  <div className="flex items-center space-x-3">
+                    <span className="text-sm text-gray-600">Not logged in</span>
+                    <Link
+                      href="/intranet/login"
+                      className="inline-flex items-center space-x-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium"
+                    >
+                      <LogIn className="h-4 w-4" />
+                      <span>Login</span>
+                    </Link>
+                  </div>
+                )}
               </div>
 
               {/* Mobile Menu Button */}
@@ -160,16 +224,49 @@ const PublicLayout: React.FC<PublicLayoutProps> = ({
                   </Link>
                 ))}
                 <div className="pt-4 mt-4 border-t border-gray-200">
-                  <Link
-                    href="/intranet"
-                    className="btn-primary btn w-full justify-center flex items-center space-x-2"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <div className="flex h-6 w-6 items-center justify-center rounded-md bg-white/20 text-[0.6rem] font-bold uppercase tracking-wide text-white">
-                      MNI
+                  {loading ? (
+                    <div className="flex items-center justify-center py-2 text-gray-600">
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-300 border-t-primary-600"></div>
                     </div>
-                    <span>MNI Intranet</span>
-                  </Link>
+                  ) : user ? (
+                    // User is logged in - Mobile
+                    <div className="space-y-2">
+                      <div className="px-3 py-2 text-sm">
+                        <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Signed in as</p>
+                        <p className="font-semibold text-gray-900">{getUserDisplayName()}</p>
+                      </div>
+                      <Link
+                        href="/intranet/simple-dashboard"
+                        className="w-full flex items-center space-x-2 px-3 py-2 rounded-lg bg-green-50 text-green-600 hover:bg-green-100 transition-colors font-medium"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <LayoutDashboard className="h-4 w-4" />
+                        <span>Dashboard</span>
+                      </Link>
+                      <button
+                        onClick={() => {
+                          logout().then(() => {
+                            setMobileMenuOpen(false);
+                            router.push('/');
+                          });
+                        }}
+                        className="w-full flex items-center space-x-2 px-3 py-2 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition-colors font-medium"
+                      >
+                        <LogOut className="h-4 w-4" />
+                        <span>Logout</span>
+                      </button>
+                    </div>
+                  ) : (
+                    // User is not logged in - Mobile
+                    <Link
+                      href="/intranet/login"
+                      className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <LogIn className="h-4 w-4" />
+                      <span>Login</span>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

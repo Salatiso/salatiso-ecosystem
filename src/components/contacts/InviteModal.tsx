@@ -26,6 +26,7 @@ const InviteModal: React.FC<InviteModalProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [method, setMethod] = useState<'email' | 'sms' | 'link'>('email');
+  const [selectedEmail, setSelectedEmail] = useState<string>(contact.emails[0] || '');
   const [customMessage, setCustomMessage] = useState('');
   const [sendStatus, setSendStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -37,7 +38,12 @@ const InviteModal: React.FC<InviteModalProps> = ({
 
     try {
       if (method === 'email') {
-        await invitationService.sendEmailInvitation(contact, customMessage);
+        // Create a modified contact with the selected email
+        const contactWithSelectedEmail = {
+          ...contact,
+          emails: [selectedEmail]
+        };
+        await invitationService.sendEmailInvitation(contactWithSelectedEmail, customMessage);
         setSendStatus('success');
         if (onSendSuccess) onSendSuccess();
         setTimeout(onClose, 2000);
@@ -103,16 +109,38 @@ const InviteModal: React.FC<InviteModalProps> = ({
             {/* Contact Info */}
             <div className="bg-ubuntu-aubergine/5 border border-ubuntu-aubergine/20 rounded-lg p-4">
               <h4 className="font-medium text-ubuntu-aubergine mb-3">Inviting:</h4>
-              <div className="space-y-2 text-sm">
+              <div className="space-y-3 text-sm">
                 <p>
                   <span className="font-medium">Name:</span>{' '}
                   {contact.firstName} {contact.lastName}
                 </p>
+                
+                {/* Email Selection */}
                 {contact.emails.length > 0 && (
-                  <p>
-                    <span className="font-medium">Email:</span> {contact.emails[0]}
-                  </p>
+                  <div>
+                    <label className="block font-medium mb-2">
+                      📧 Email:
+                    </label>
+                    {contact.emails.length === 1 ? (
+                      <p className="text-ubuntu-warm-700 bg-white px-3 py-2 rounded border border-ubuntu-warm-200">
+                        {contact.emails[0]}
+                      </p>
+                    ) : (
+                      <select
+                        value={selectedEmail}
+                        onChange={(e) => setSelectedEmail(e.target.value)}
+                        className="w-full px-3 py-2 border border-ubuntu-warm-300 rounded-lg bg-white text-ubuntu-warm-900 focus:outline-none focus:ring-2 focus:ring-ubuntu-gold focus:border-transparent"
+                      >
+                        {contact.emails.map((email, index) => (
+                          <option key={index} value={email}>
+                            {email}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  </div>
                 )}
+
                 {contact.phoneNumbers.length > 0 && (
                   <p>
                     <span className="font-medium">Phone:</span> {contact.phoneNumbers[0]}
@@ -193,7 +221,7 @@ const InviteModal: React.FC<InviteModalProps> = ({
             {/* Info */}
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
               <p className="text-sm text-blue-900">
-                <span className="font-medium">💡 Tip:</span> When {contact.firstName} accepts the invitation, they can join your family tree and collaborate on the Salatiso Ecosystem.
+                <span className="font-medium">💡 Email Template:</span> The invitation will be sent with the new Sonny Network message and will include a link and QR code to your public LifeSync profile.
               </p>
             </div>
           </>
@@ -204,14 +232,14 @@ const InviteModal: React.FC<InviteModalProps> = ({
           <div className="flex items-center justify-end space-x-3 pt-4 border-t border-ubuntu-warm-100">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-ubuntu-warm-700 border border-ubuntu-warm-300 rounded-lg hover:bg-ubuntu-warm-50 transition-colors"
+              className="px-4 py-2 text-ubuntu-warm-700 border border-ubuntu-warm-300 rounded-lg hover:bg-ubuntu-warm-50 transition-colors font-medium"
             >
               Cancel
             </button>
             <button
               onClick={handleSendInvitation}
-              disabled={isLoading || (method === 'email' && contact.emails.length === 0)}
-              className="flex items-center space-x-2 px-4 py-2 bg-ubuntu-gold text-white rounded-lg hover:bg-ubuntu-orange disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              disabled={isLoading || (method === 'email' && !selectedEmail)}
+              className="flex items-center space-x-2 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium shadow-sm"
             >
               {isLoading ? (
                 <>

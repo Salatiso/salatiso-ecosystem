@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { AccessibleModal } from '@/components/accessibility';
 import { Contact, contactsService } from '@/services/ContactsService';
+import { useAuth } from '@/contexts/AuthContext';
 import { DuplicateMatch, duplicateDetectionService } from '@/services/DuplicateDetectionService';
 
 interface MergeDialogProps {
@@ -31,6 +32,8 @@ const MergeDialog: React.FC<MergeDialogProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [expandedFields, setExpandedFields] = useState<Set<string>>(new Set(['emails', 'phoneNumbers']));
   const [fieldsToUpdate, setFieldsToUpdate] = useState<Set<string>>(new Set());
+
+  const { user } = useAuth();
 
   const existingContact = duplicate.existingContact;
   const newContact = duplicate.newContact;
@@ -66,10 +69,11 @@ const MergeDialog: React.FC<MergeDialogProps> = ({
 
       await contactsService.updateContact(existingContact.id, merged);
       
-      // Delete the duplicate contact if it's a new import
+      // Delete the duplicate contact if it's a new import (pass current user's id)
       if (newContact.id && newContact.id !== existingContact.id) {
         try {
-          await contactsService.deleteContact(newContact.id);
+          const userId = user?.id;
+          await contactsService.deleteContact(newContact.id, userId);
         } catch (error) {
           console.warn('Could not delete duplicate contact:', error);
         }

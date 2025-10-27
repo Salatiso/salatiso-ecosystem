@@ -414,17 +414,31 @@ const TemplatesPage: React.FC = () => {
   }, [templates, selectedCategory, searchTerm, sortBy, selectedFilter, showSonnyOnly]);
 
   const handleViewTemplate = (template: Template) => {
-    window.open(template.path, '_blank');
+    // Extract category and template name from path: /templates/category/template-name.html
+    const pathParts = template.path.match(/\/templates\/([^\/]+)\/([^\.]+)/);
+    if (pathParts && pathParts[1] && pathParts[2]) {
+      const category = pathParts[1];
+      const templateName = pathParts[2];
+      router.push(`/templates/${category}/${templateName}`);
+    }
   };
 
   const handleDownloadTemplate = (template: Template) => {
-    // Create a temporary anchor element to trigger download
-    const link = document.createElement('a');
-    link.href = template.path;
-    link.download = `${template.name.replace(/\s+/g, '_')}_v${template.version}.html`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Since we can't use API routes with static export, fetch directly from public folder
+    const pathParts = template.path.match(/\/templates\/([^\/]+)\/([^\.]+)/);
+    if (pathParts && pathParts[1] && pathParts[2]) {
+      const category = pathParts[1];
+      const templateName = pathParts[2];
+      const templatePath = `/templates/${category}/${templateName}.html`;
+      
+      // Create download link
+      const link = document.createElement('a');
+      link.href = templatePath;
+      link.download = `${template.name.replace(/\s+/g, '_')}_v${template.version}.html`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
 
@@ -676,7 +690,7 @@ const TemplatesPage: React.FC = () => {
                           View
                         </button>
                         <button
-                          onClick={() => window.open(template.path, '_blank')}
+                          onClick={() => handleDownloadTemplate(template)}
                           className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm"
                         >
                           <Download className="w-4 h-4" />

@@ -7,7 +7,7 @@
 ## Accessibility Enhancements Implemented
 
 ### 1. Utility Library Created
-**File**: `src/utils/accessibility.ts`
+**File**: `src/utils/accessibility.tsx`
 - ✅ Custom hooks for accessibility management:
   - `useScreenReaderAnnouncement()` - Manage live region announcements
   - `useKeyboardNavigation()` - Handle grid/list keyboard navigation
@@ -218,7 +218,7 @@
 
 ## Files Modified
 
-1. ✅ `src/utils/accessibility.ts` - NEW: Accessibility utilities library
+1. ✅ `src/utils/accessibility.tsx` - NEW: Accessibility utilities library
 2. ✅ `src/styles/globals.css` - Added `.sr-only` CSS utility
 3. ✅ `src/components/calendar/DualCalendarGrid.tsx` - WCAG AA enhancements
 4. ✅ `src/components/calendar/DateSelector.tsx` - Semantic HTML + ARIA

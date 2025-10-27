@@ -9,7 +9,7 @@
  * - Contrast compliance utilities
  */
 
-import { useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 
 /**
  * Custom hook for managing screen reader announcements

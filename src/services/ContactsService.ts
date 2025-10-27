@@ -75,6 +75,27 @@ export interface Contact {
   // Additional Fields
   fileAs?: string; // How contact should be filed
   
+  // Precise Location Data - GPS Coordinates for Addresses
+  // Each address can have precise GPS, accuracy, and What3Words
+  addressLocations?: Array<{
+    addressIndex: number; // Index in addresses array
+    address: string; // Full address string
+    locationType: 'residential' | 'work' | 'vacation' | 'other';
+    latitude: number;
+    longitude: number;
+    accuracy: number; // Accuracy in meters
+    what3words: string; // 3-word address code
+    readings?: Array<{
+      latitude: number;
+      longitude: number;
+      accuracy: number;
+      what3words: string;
+      timestamp: string; // ISO format
+      readingNumber: number;
+    }>;
+    capturedAt: string; // ISO format - when GPS was captured
+  }>;
+  
   // Sonny Network Integration Fields
   isHouseholdMember?: boolean;
   isFamilyMember?: boolean;
@@ -93,12 +114,19 @@ export interface Contact {
   invitationSent?: boolean;
   invitationSentDate?: Date;
   invitationAccepted?: boolean;
+  invitationStatus?: 'not-invited' | 'invited' | 'accepted' | 'declined' | 'pending';
+  invitationAcceptedDate?: Date;
   
   // Relationship & Life Status
   status?: 'active' | 'developing' | 'deceased' | 'unknown';
   dateOfBirth?: string; // ISO format: YYYY-MM-DD
   residenceLocation?: string;
   residenceType?: 'permanent' | 'temporary' | 'visiting';
+  
+  // Soft Delete & Recycle Bin
+  isDeleted?: boolean; // Marks contact as deleted (soft delete)
+  deletedAt?: Date; // When the contact was deleted
+  deletedBy?: string; // User ID who deleted the contact
 }
 
 /**
@@ -138,6 +166,7 @@ class ContactsService {
   async getUserContacts(userId: string): Promise<Contact[]> {
     try {
       const contactsRef = collection(db, this.collectionName);
+      // Query by addedBy only, then filter deleted in memory to avoid composite index
       const q = query(
         contactsRef,
         where('addedBy', '==', userId),
@@ -145,15 +174,54 @@ class ContactsService {
       );
       
       const querySnapshot = await getDocs(q);
-      return querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-        createdAt: doc.data().createdAt?.toDate() || new Date(),
-        updatedAt: doc.data().updatedAt?.toDate() || new Date(),
-        lastSeen: doc.data().lastSeen?.toDate()
-      } as Contact));
+      // Filter out deleted contacts in memory (avoids Firestore composite index requirement)
+      return querySnapshot.docs
+        .filter(doc => !doc.data().isDeleted) // ← Filter deleted in memory
+        .map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+          createdAt: doc.data().createdAt?.toDate() || new Date(),
+          updatedAt: doc.data().updatedAt?.toDate() || new Date(),
+          lastSeen: doc.data().lastSeen?.toDate()
+        } as Contact));
     } catch (error) {
       console.error('Error getting user contacts:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get deleted (archived) contacts for recycle bin
+   */
+  async getDeletedContacts(userId: string): Promise<Contact[]> {
+    try {
+      const contactsRef = collection(db, this.collectionName);
+      // Query by addedBy only, filter deleted in memory to avoid composite index
+      const q = query(
+        contactsRef,
+        where('addedBy', '==', userId),
+        orderBy('createdAt', 'desc')
+      );
+      
+      const querySnapshot = await getDocs(q);
+      // Filter to only deleted contacts and sort by deletedAt
+      return querySnapshot.docs
+        .filter(doc => doc.data().isDeleted === true)
+        .sort((a, b) => {
+          const dateA = a.data().deletedAt?.toDate?.() || new Date(0);
+          const dateB = b.data().deletedAt?.toDate?.() || new Date(0);
+          return dateB.getTime() - dateA.getTime(); // Descending
+        })
+        .map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+          createdAt: doc.data().createdAt?.toDate() || new Date(),
+          updatedAt: doc.data().updatedAt?.toDate() || new Date(),
+          lastSeen: doc.data().lastSeen?.toDate(),
+          deletedAt: doc.data().deletedAt?.toDate()
+        } as Contact));
+    } catch (error) {
+      console.error('Error getting deleted contacts:', error);
       throw error;
     }
   }
@@ -273,16 +341,67 @@ class ContactsService {
   }
 
   /**
-   * Delete a contact
+   * Delete a contact (soft delete - moves to recycle bin)
    */
-  async deleteContact(contactId: string): Promise<void> {
+  async deleteContact(contactId: string, userId?: string): Promise<void> {
     try {
       const contactRef = doc(db, this.collectionName, contactId);
-      console.log(`[ContactsService] Deleting contact ${contactId}`);
-      await deleteDoc(contactRef);
-      console.log(`[ContactsService] Successfully deleted contact ${contactId}`);
+      console.log(`[ContactsService] Soft deleting contact ${contactId} (requestedBy: ${userId})`);
+
+      // If userId not provided, try to derive from auth context if available (best-effort)
+      // Importing auth here would create a runtime dependency; keep it optional and allow callers
+      // to pass the uid. If not available, set deletedBy to null to avoid Firestore rejects.
+      const deletedByValue = userId ?? null;
+
+      await updateDoc(contactRef, {
+        isDeleted: true,
+        deletedAt: Timestamp.now(),
+        deletedBy: deletedByValue,
+        updatedAt: Timestamp.now()
+      });
+
+      console.log(`[ContactsService] Successfully soft deleted contact ${contactId}`);
     } catch (error: any) {
       console.error(`[ContactsService] Error deleting contact ${contactId}:`, error);
+      console.error('[ContactsService] Error code:', error?.code);
+      console.error('[ContactsService] Error message:', error?.message);
+      throw error;
+    }
+  }
+
+  /**
+   * Restore a contact from recycle bin
+   */
+  async restoreContact(contactId: string): Promise<void> {
+    try {
+      const contactRef = doc(db, this.collectionName, contactId);
+      console.log(`[ContactsService] Restoring contact ${contactId}`);
+      
+      await updateDoc(contactRef, {
+        isDeleted: false,
+        deletedAt: null,
+        deletedBy: null,
+        updatedAt: Timestamp.now()
+      });
+      
+      console.log(`[ContactsService] Successfully restored contact ${contactId}`);
+    } catch (error: any) {
+      console.error(`[ContactsService] Error restoring contact ${contactId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Permanently delete a contact (removes from Firestore)
+   */
+  async permanentlyDeleteContact(contactId: string): Promise<void> {
+    try {
+      const contactRef = doc(db, this.collectionName, contactId);
+      console.log(`[ContactsService] Permanently deleting contact ${contactId}`);
+      await deleteDoc(contactRef);
+      console.log(`[ContactsService] Successfully permanently deleted contact ${contactId}`);
+    } catch (error: any) {
+      console.error(`[ContactsService] Error permanently deleting contact ${contactId}:`, error);
       console.error('[ContactsService] Error code:', error.code);
       console.error('[ContactsService] Error message:', error.message);
       throw error;
@@ -602,6 +721,69 @@ class ContactsService {
       return allContacts.filter(c => c.isHouseholdMember === true);
     } catch (error) {
       console.error('Error getting household members:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Delete all non-family contacts (cleanup operation)
+   * Keeps only contacts with emails in the FAMILY_EMAILS set
+   */
+  async deleteAllNonFamilyContacts(userId: string): Promise<{ kept: number; deleted: number }> {
+    const FAMILY_EMAILS = new Set([
+      'tina@salatiso.com',
+      'kwakhomdeni@gmail.com',
+      'spiceinc@gmail.com',
+      'mdeninotembac@gmail.com',
+      'visasande@gmail.com'
+    ]);
+
+    try {
+      console.log('[ContactsService] Starting cleanup: removing non-family contacts...');
+
+      // Get all contacts
+      const contactsRef = collection(db, this.collectionName);
+      const q = query(
+        contactsRef,
+        where('addedBy', '==', userId)
+      );
+
+      const snapshot = await getDocs(q);
+      const allContacts = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      console.log(`[ContactsService] Total contacts: ${allContacts.length}`);
+
+      // Categorize
+      let kept = 0;
+      let deleted = 0;
+
+      for (const contact of allContacts) {
+        const emails = (contact.emails || []).map((e: string) => e.toLowerCase());
+        const isFamily = emails.some(e => FAMILY_EMAILS.has(e));
+
+        if (isFamily) {
+          kept++;
+          console.log(`[ContactsService] KEEP: ${contact.firstName} ${contact.lastName}`);
+        } else {
+          // Permanently delete
+          try {
+            const contactRef = doc(db, this.collectionName, contact.id);
+            await deleteDoc(contactRef);
+            deleted++;
+            console.log(`[ContactsService] DELETE: ${contact.firstName} ${contact.lastName}`);
+          } catch (error) {
+            console.error(`[ContactsService] Error deleting ${contact.firstName}:`, error);
+          }
+        }
+      }
+
+      console.log(`[ContactsService] Cleanup complete. Kept: ${kept}, Deleted: ${deleted}`);
+      return { kept, deleted };
+    } catch (error) {
+      console.error('Error during cleanup:', error);
       throw error;
     }
   }

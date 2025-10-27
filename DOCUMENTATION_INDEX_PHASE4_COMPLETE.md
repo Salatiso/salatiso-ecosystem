@@ -66,7 +66,7 @@
 
 ### For Accessibility
 1. **PHASE_4_TASK2_ACCESSIBILITY_COMPLETE.md** - WCAG compliance
-2. **src/utils/accessibility.ts** - Accessibility utilities
+2. **src/utils/accessibility.tsx** - Accessibility utilities
 3. **Component accessibility enhancements** - ARIA implementations
 
 ### For Deployment
@@ -117,7 +117,7 @@ src/
 │   └── __tests__/
 │       └── *.test.tsx (76 tests)
 ├── utils/
-│   └── accessibility.ts (320 lines)
+│   └── accessibility.tsx (320 lines)
 └── styles/
     └── globals.css (+ sr-only utility)
 ```
