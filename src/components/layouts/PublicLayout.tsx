@@ -58,7 +58,9 @@ const PublicLayout: React.FC<PublicLayoutProps> = ({
   const footerQuickLinks = [
     ...navigation,
     { name: 'Contact', href: '/contact' },
-    { name: 'Ecosystem Overview', href: '/ecosystem' }
+    { name: 'Ecosystem Overview', href: '/ecosystem' },
+    { name: 'Privacy Policy', href: '/privacy-policy' },
+    { name: 'Terms of Service', href: '/terms-of-service' }
   ];
 
   const ecosystemLinks = [
@@ -386,10 +388,26 @@ const PublicLayout: React.FC<PublicLayoutProps> = ({
               </div>
             </div>
 
-            <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-              <p className="text-gray-400 text-sm">
-                © 2025 Mlandeli Notemba Investments (Pty) Ltd. All rights reserved.
-              </p>
+            <div className="border-t border-gray-800 mt-8 pt-8">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-gray-400 text-sm">
+                  © 2025 Mlandeli Notemba Investments (Pty) Ltd. All rights reserved.
+                </p>
+                <div className="flex items-center gap-6 text-sm">
+                  <Link
+                    href="/privacy-policy"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Privacy Policy
+                  </Link>
+                  <Link
+                    href="/terms-of-service"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Terms of Service
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </footer>

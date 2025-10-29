@@ -12,6 +12,28 @@
       "cleanUrls": true,
       "headers": [
         {
+          "source": "/__/auth/**",
+          "headers": [
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin-allow-popups"
+            },
+            {
+              "key": "Cross-Origin-Embedder-Policy",
+              "value": "unsafe-none"
+            }
+          ]
+        },
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin-allow-popups"
+            }
+          ]
+        },
+        {
           "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|ico|woff|woff2)",
           "headers": [
             {
@@ -34,7 +56,7 @@
           "headers": [
             {
               "key": "Cache-Control",
-              "value": "public, max-age=3600, must-revalidate"
+              "value": "public, max-age=0, must-revalidate"
             }
           ]
         }
@@ -52,6 +74,28 @@
       "cleanUrls": true,
       "headers": [
         {
+          "source": "/__/auth/**",
+          "headers": [
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin-allow-popups"
+            },
+            {
+              "key": "Cross-Origin-Embedder-Policy",
+              "value": "unsafe-none"
+            }
+          ]
+        },
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin-allow-popups"
+            }
+          ]
+        },
+        {
           "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|ico|woff|woff2)",
           "headers": [
             {
@@ -74,7 +118,7 @@
           "headers": [
             {
               "key": "Cache-Control",
-              "value": "public, max-age=3600, must-revalidate"
+              "value": "public, max-age=0, must-revalidate"
             }
           ]
         }
