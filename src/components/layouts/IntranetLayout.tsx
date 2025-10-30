@@ -10,6 +10,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { SkipLink } from '@/components/accessibility';
 import Sidebar from '@/components/navigation/Sidebar';
 import EcosystemHeader from '@/components/navigation/EcosystemHeader';
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 interface IntranetLayoutProps {
   children: ReactNode;
@@ -39,35 +40,37 @@ const IntranetLayout: React.FC<IntranetLayoutProps> = ({
   );
 
   return (
-    <>
-      <Head>
-        <title>{title} - Mlandeli-Notemba Investments</title>
-        <meta name="robots" content="noindex, nofollow" />
-      </Head>
+    <ProtectedRoute>
+      <>
+        <Head>
+          <title>{title} - Mlandeli-Notemba Investments</title>
+          <meta name="robots" content="noindex, nofollow" />
+        </Head>
 
-      {/* Skip Navigation Links */}
-      <SkipLink href="#main-content">Skip to main content</SkipLink>
-      <SkipLink href="#sidebar-navigation">Skip to navigation</SkipLink>
+        {/* Skip Navigation Links */}
+        <SkipLink href="#main-content">Skip to main content</SkipLink>
+        <SkipLink href="#sidebar-navigation">Skip to navigation</SkipLink>
 
-      <div className="min-h-screen bg-ubuntu-warm-50 flex">
-        {/* Sidebar - All responsive behavior handled internally */}
-        <Sidebar onLogout={() => {
-          logout();
-          router.push('/login');
-        }} />
+        <div className="min-h-screen bg-ubuntu-warm-50 flex">
+          {/* Sidebar - All responsive behavior handled internally */}
+          <Sidebar onLogout={() => {
+            logout();
+            router.push('/login');
+          }} />
 
-        {/* Main Content */}
-        <div className="flex-1 lg:ml-64">
-          {/* Enhanced Header with Ecosystem Navigation */}
-          <EcosystemHeader />
+          {/* Main Content */}
+          <div className="flex-1 lg:ml-64">
+            {/* Enhanced Header with Ecosystem Navigation */}
+            <EcosystemHeader />
 
-          {/* Page Content */}
-          <main id="main-content" className="flex-1">
-            {children}
-          </main>
+            {/* Page Content */}
+            <main id="main-content" className="flex-1">
+              {children}
+            </main>
+          </div>
         </div>
-      </div>
-    </>
+      </>
+    </ProtectedRoute>
   );
 };
 

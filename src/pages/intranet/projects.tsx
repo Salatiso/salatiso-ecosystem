@@ -293,10 +293,10 @@ const ProjectTracker: React.FC = () => {
 
   const roleAssignments = [
     { name: 'Salatiso (Founder)', roles: ['Vision', 'Governance', 'IP', 'Oversight'], color: 'bg-red-100 text-red-800' },
-    { name: 'Visa', roles: ['Marketing', 'Subsidiary Leadership', 'Global Expansion'], color: 'bg-blue-100 text-blue-800' },
-    { name: 'Tina', roles: ['Branding', 'Education Liaison', 'Finance/Dividend Oversight'], color: 'bg-green-100 text-green-800' },
-    { name: 'Kwakho', roles: ['Community Engagement', 'Support', 'Partnerships'], color: 'bg-purple-100 text-purple-800' },
-    { name: 'Solo', roles: ['Development', 'CTO Path', 'AI & Tech Governance'], color: 'bg-yellow-100 text-yellow-800' },
+    { name: 'Visa (Parent Company Lead)', roles: ['Marketing', 'Subsidiary Leadership', 'Global Expansion'], color: 'bg-blue-100 text-blue-800' },
+    { name: 'Tina (Mother/Family Steward)', roles: ['Branding', 'Education Liaison', 'Finance/Dividend Oversight', 'Family Governance'], color: 'bg-green-100 text-green-800' },
+    { name: 'Kwakho (Community Lead)', roles: ['Community Engagement', 'Support', 'Partnerships', 'Social Impact'], color: 'bg-purple-100 text-purple-800' },
+    { name: 'Solo (CTO Path)', roles: ['Development', 'CTO Path', 'AI & Tech Governance', 'Innovation'], color: 'bg-yellow-100 text-yellow-800' },
     { name: 'Next Generation', roles: ['Career Paths at 18', 'Marketing, Tech, Legal, Finance, Community'], color: 'bg-gray-100 text-gray-800' }
   ];
 

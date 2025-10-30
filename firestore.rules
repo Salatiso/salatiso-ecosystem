@@ -6,8 +6,8 @@ service cloud.firestore {
       // Allow reading own user doc
       allow read: if request.auth != null && request.auth.uid == userId;
       
-      // Allow creating own user doc on first login
-      allow create: if request.auth != null && request.resource.data.id == request.auth.uid;
+  // Allow creating own user doc on first login
+  allow create: if request.auth != null && request.resource.data.id == request.auth.uid;
       
       // Allow updating own user doc
       allow update: if request.auth != null && request.auth.uid == userId;
