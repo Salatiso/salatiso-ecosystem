@@ -18,6 +18,9 @@ export {
   AccessibleRadioGroup,
 } from './AccessibleForm';
 
+// Accessible Button Component
+export { AccessibleButton } from './AccessibleButton';
+
 // Accessible Navigation Components
 export {
   AccessibleMenu,

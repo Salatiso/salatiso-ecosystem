@@ -4,9 +4,11 @@ const { i18n } = require('./next-i18next.config');
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: false,  // Disabled due to SWC binary corruption - will use Terser instead
-  // Enable static export for Firebase Hosting (as it was before)
-  output: 'export',
-  trailingSlash: true,
+  // Enable static export for Firebase Hosting (only in production)
+  ...(process.env.NODE_ENV === 'production' && {
+    output: 'export',
+    trailingSlash: true,
+  }),
   images: {
     domains: ['firebasestorage.googleapis.com', 'lh3.googleusercontent.com'],
     unoptimized: true, // Required for static export

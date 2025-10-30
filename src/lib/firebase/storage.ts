@@ -19,7 +19,7 @@ import {
   listAll,
   StorageError,
 } from 'firebase/storage'
-import { app } from './config'
+import app from '@/config/firebase'
 
 /**
  * Initialize Firebase Cloud Storage
