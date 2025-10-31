@@ -4,14 +4,11 @@ const { i18n } = require('./next-i18next.config');
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: false,  // Disabled due to SWC binary corruption - will use Terser instead
-  // Enable static export for Firebase Hosting (only in production)
-  ...(process.env.NODE_ENV === 'production' && {
-    output: 'export',
-    trailingSlash: true,
-  }),
+  // NOTE: Static export (output: 'export') disables API routes!
+  // We need API routes for KB initialization, so we CANNOT use static export
+  // Firebase Hosting still works with server-side rendering via Cloud Functions
   images: {
     domains: ['firebasestorage.googleapis.com', 'lh3.googleusercontent.com'],
-    unoptimized: true, // Required for static export
     formats: ['image/webp', 'image/avif'],
   },
   env: {
