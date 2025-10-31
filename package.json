@@ -12,7 +12,9 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build",
+    "verify:firebase": "node verify-firebase-collections-alt.js",
+    "verify:firebase:full": "node verify-firebase-collections.js"
   },
   "dependencies": {
     "@daily-co/daily-js": "^0.84.0",
